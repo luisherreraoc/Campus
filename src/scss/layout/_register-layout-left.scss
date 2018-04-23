@@ -1,0 +1,133 @@
+/*------------------------------------*\
+  #CONTAINER-LEFT
+\*------------------------------------*/
+
+.container-left {
+  // optimaze this code block
+  background: url(/assets/img/cover-photo.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+
+.container-left-heading {
+  // optimaze this code block
+  color: #fff;
+  text-align: left;
+  margin-top: 24vh;
+  margin-left: 4rem;
+  max-width: 75rem;
+}
+
+  .container-left-heading h1 {
+    font-size: $font-size-h1;
+    font-weight: $font-weight-h1;
+    letter-spacing: .05rem;
+  }
+
+  .container-left-heading h2 {
+    font-size: $font-size-h2;
+    font-weight: $font-weight-h2;
+    line-height: 1;
+  }
+
+
+
+/*------------------------------------*\
+  #CONTAINER-LEFT-LOGO
+\*------------------------------------*/
+
+.container-left-logo img {
+  margin: 7rem 0 0 2.5rem; 
+  height: 6.5rem;
+}
+
+
+/*------------------------------------*\
+  #MEDIA QUERIES
+\*------------------------------------*/
+// 1. Add landscape mode & device's styles. Because looks different on mobile and desktop
+// 2. Check how media queries are defined in Bootstrap 4 documentation
+// 3. Optimize code
+
+// MOBILE
+@media (max-width: 767.98px) {
+  /*------------------------------------*\
+    #CONTAINER-LEFT
+  \*------------------------------------*/
+  .container-left {
+    background-image: linear-gradient(to right,  #6497EF 0%, #43C6E9 51%, #6497EF 100%);
+    height: 20vh;
+  }
+
+  /*------------------------------------*\
+    #HEADING
+  \*------------------------------------*/
+  .container-left-heading {
+    display: none;
+  } 
+
+  /*------------------------------------*\
+    #CONTAINER-LEFT-LOGO
+  \*------------------------------------*/
+  .navbar-brand {
+    margin: 0 auto 0 auto;
+  }
+
+  .navbar-brand img {
+    margin-top: 2.5rem;
+    height: 5.5rem;
+  }
+
+}
+
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 767.98px) and (max-width: 1199.98px) {
+  /*------------------------------------*\
+    #HEADING
+  \*------------------------------------*/
+  .container-left-heading h1 {
+    font-size: $font-size-h1-media-tablet;
+  }
+
+  .container-left-heading h2 {
+    font-size: $font-size-h2-media-tablet;
+  }
+
+}
+
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 1599.99px) {
+  /*------------------------------------*\
+    #HEADING
+  \*------------------------------------*/
+  .container-left-heading {
+    max-width: 70%;
+  }
+
+    .container-left-heading h1 {
+      font-size: $font-size-h1;
+    }
+
+    .container-left-heading h2 {
+      font-size: $font-size-h2;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

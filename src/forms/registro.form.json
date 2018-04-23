@@ -1,0 +1,216 @@
+[
+	{
+        "key": "resgistro_id",
+        "label": "",
+        "value": "",
+        "required": false,
+        "order": 1,
+        "maxlength": "80",
+        "type": "hidden"
+    },
+    {
+        "key": "registro_first_name",
+        "label": "Nombre de usuario",
+        "value": "",
+        "required": true,
+        "order": 2,
+        "maxlength": "80",
+        "type": "text"
+    },
+    {
+        "key": "registro_last_name",
+        "label": "Apellidos de usuario",
+        "value": "",
+        "required": true,
+        "order": 2,
+        "maxlength": "80",
+        "type": "text"
+    },
+    {
+        "key": "registro_email",
+        "label": "Correo electrónico",
+        "value": "",
+        "required": true,
+        "order": 2,
+        "maxlength": "120",
+        "type": "email"
+    },
+	{
+        "key": "registro_password",
+        "label": "Contraseña",
+        "value": "",
+        "required": true,
+        "order": 3,
+        "maxlength": "80",
+        "type": "password"
+    },
+    {
+        "key": "registro_password2",
+        "label": "Confirmar contraseña",
+        "value": "",
+        "required": true,
+        "order": 4,
+        "maxlength": "80",
+        "type": "password"
+    },
+    {
+        "key": "registro_job",
+        "label": "Seleciona tu profesión",
+        "value": "",
+        "required": true,
+        "order": 5,
+        "type": "select-list",
+        "maxlength": "120",
+        "options" : [
+            { "value": "Médico", "text": "Médico" },
+            { "value": "Licenciado de la salud", "text": "Licenciado de la salud" },
+            { "value": "Enfermero", "text": "Enfermero" }
+        ]
+    },
+    {
+        "key": "registro_especialization",
+        "label": "Seleciona tu espacialización/es",
+        "value": "",
+        "required": true,
+        "order": 6,
+        "type": "select-list",
+        "maxlength": "120",
+        "options" : [
+            { "value": "Anestesiología", "text": "Anestesiología" },
+            { "value": "Cardiología", "text": "Cardiología" },
+            { "value": "Cirugía", "text": "Cirugía" },
+            { "value": "Emergentología", "text": "Emergentología" },
+            { "value": "Gatroenterología", "text": "Gatroenterología" },
+            { "value": "Generalista", "text": "Generalista" },
+            { "value": "Anestesiologia", "text": "Anestesiologia" }
+        ]
+    },
+    {
+        "key": "registro_collage",
+        "label": "Seleciona si pertenece a algún Colegio de médicos o Sociedad",
+        "value": "",
+        "required": true,
+        "order": 7,
+        "type": "select-list-multiple",
+        "maxlength": "120",
+        "options" : [
+            { "value": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito I", "text": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito I" },
+            { "value": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito II", "text": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito II" },
+            { "value": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito III", "text": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito III" },
+            { "value": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito IV", "text": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito IV" },
+            { "value": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito V", "text": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito V" },
+            { "value": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito VI", "text": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito VI" },
+            { "value": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito VII", "text": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito VII" },
+            { "value": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito VIII", "text": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito VIII" },
+            { "value": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito IX", "text": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito IX" },
+            { "value": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito X", "text": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito X" },
+            { "value": "Colegio de Médicos de la Provincia de Catamarca", "text": "Colegio de Médicos de la Provincia de Catamarca" },
+            { "value": "Consejo Médico de la Provincia de Córdoba ", "text": "Consejo Médico de la Provincia de Córdoba " },
+            { "value": "Consejo de Médicos de la Provincia de Jujuy ", "text": "Consejo de Médicos de la Provincia de Jujuy " },
+            { "value": "Consejo Superior de Médicos de la Provincia de La Pampa ", "text": "Consejo Superior de Médicos de la Provincia de La Pampa " },
+            { "value": "Consejo de Médicos de la Provincia de La Rioja", "text": "Consejo de Médicos de la Provincia de La Rioja" },
+            { "value": "Colegio de Médicos de la Provincia de Misiones ", "text": "Colegio de Médicos de la Provincia de Misiones " },
+            { "value": "Colegio de Médicos de la Provincia de Salta", "text": "Colegio de Médicos de la Provincia de Salta" },
+            { "value": "Consejo Médico de la Provincia de Santa Cruz ", "text": "Consejo Médico de la Provincia de Santa Cruz " },
+            { "value": "Colegio de Médicos de la Provincia de Santa Fe ", "text": "Colegio de Médicos de la Provincia de Santa Fe " },
+            { "value": "Consejo Médico de la Provincia de Santiago del Estero ", "text": "Consejo Médico de la Provincia de Santiago del Estero " },
+            { "value": "Sociedad Argentina de Diabetes", "text": "Sociedad Argentina de Diabetes" }
+        ],
+        "bind":"collage"
+    },
+
+
+    {
+        "key": "registro_accepted_terms",
+        "label": "He leido y aceptado los Terminos y Condiciones",
+        "value": false,
+        "required": true,
+        "order": 8,
+        "maxlength": "80",
+        "type": "checkbox"
+    },
+     {
+        "key": "registro_especialization_2",
+        "label": "Seleciona tu espacialización/es",
+        "value": "",
+        "required": true,
+        "order": 6,
+        "type": "select",
+        "maxlength": "120",
+       "options" : [
+            { "value": "Anestesiología", "text": "Anestesiología" },
+            { "value": "Cardiología", "text": "Cardiología" },
+            { "value": "Cirugía", "text": "Cirugía" },
+            { "value": "Emergentología", "text": "Emergentología" },
+            { "value": "Gatroenterología", "text": "Gatroenterología" },
+            { "value": "Generalista", "text": "Generalista" },
+            { "value": "Anestesiologia", "text": "Anestesiologia" }
+        ]
+    },
+    {
+        "key": "registro_collage_2",
+        "label": "Seleciona si pertenece a algún Colegio de médicos o Sociedad",
+        "value": "",
+        "required": true,
+        "order": 7,
+        "type": "select",
+        "maxlength": "120",
+        "options" : [
+            { "value": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito I", "text": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito I" },
+            { "value": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito II", "text": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito II" },
+            { "value": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito III", "text": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito III" },
+            { "value": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito IV", "text": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito IV" },
+            { "value": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito V", "text": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito V" },
+            { "value": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito VI", "text": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito VI" },
+            { "value": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito VII", "text": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito VII" },
+            { "value": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito VIII", "text": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito VIII" },
+            { "value": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito IX", "text": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito IX" },
+            { "value": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito X", "text": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito X" },
+            { "value": "Colegio de Médicos de la Provincia de Catamarca", "text": "Colegio de Médicos de la Provincia de Catamarca" },
+            { "value": "Consejo Médico de la Provincia de Córdoba ", "text": "Consejo Médico de la Provincia de Córdoba " },
+            { "value": "Consejo de Médicos de la Provincia de Jujuy ", "text": "Consejo de Médicos de la Provincia de Jujuy " },
+            { "value": "Consejo Superior de Médicos de la Provincia de La Pampa ", "text": "Consejo Superior de Médicos de la Provincia de La Pampa " },
+            { "value": "Consejo de Médicos de la Provincia de La Rioja", "text": "Consejo de Médicos de la Provincia de La Rioja" },
+            { "value": "Colegio de Médicos de la Provincia de Misiones ", "text": "Colegio de Médicos de la Provincia de Misiones " },
+            { "value": "Colegio de Médicos de la Provincia de Salta", "text": "Colegio de Médicos de la Provincia de Salta" },
+            { "value": "Consejo Médico de la Provincia de Santa Cruz ", "text": "Consejo Médico de la Provincia de Santa Cruz " },
+            { "value": "Colegio de Médicos de la Provincia de Santa Fe ", "text": "Colegio de Médicos de la Provincia de Santa Fe " },
+            { "value": "Consejo Médico de la Provincia de Santiago del Estero ", "text": "Consejo Médico de la Provincia de Santiago del Estero " },
+            { "value": "Sociedad Argentina de Diabetes", "text": "Sociedad Argentina de Diabetes" }
+        ],
+        "multiple": true,
+        "bind":"collage"
+    },
+    {
+        "key": "lead_status",
+        "label": "Estado del Lead",
+        "value": "",
+        "required": false,
+        "order": 9,
+        "type": "select",
+        "maxlength": "120",
+        "options" : [
+            { "value": "Contacto urgente", "text": "Contacto urgente" },
+            { "value": "No es mercado objetivo", "text": "No es mercado objetivo" },
+            { "value": "No interesa por precio", "text": "No interesa por precio" },
+            { "value": "No interesa por área de interés", "text": "No interesa por área de interés" },
+            { "value": "No Contactado", "text": "No Contactado" },
+            { "value": "No interesa por falta de tiempo", "text": "No interesa por falta de tiempo" },
+            { "value": "Contactado por otro asesor", "text": "Contactado por otro asesor" },
+            { "value": "Re llamar", "text": "Re llamar" },
+            { "value": "Segunda vuelta sin resultados", "text": "Segunda vuelta sin resultados" },
+            { "value": "No atiende 1era", "text": "No atiende 1era" },
+            { "value": "No atiende 2da", "text": "No atiende 2da" },
+            { "value": "Imposible contactar", "text": "Imposible contactar" },
+            { "value": "Averiguando datos", "text": "Averiguando datos" },
+            { "value": "Lead interesado", "text": "Lead interesado" },
+            { "value": "Reasignado", "text": "Reasignado" },
+            { "value": "Reasignado - No atiende 1°", "text": "Reasignado - No atiende 1°" },
+            { "value": "Reasignado - No atiende 2°", "text": "Reasignado - No atiende 2°" },
+            { "value": "Reasignado - Rellamar", "text": "Reasignado - Rellamar" },
+            { "value": "Reasignado - No interesado", "text": "Reasignado - No interesado" },
+            { "value": "Chequear MKT", "text": "Chequear MKT" },
+            { "value": "Contactar Local", "text": "Contactar Local" }
+        ]
+    }
+]

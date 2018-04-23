@@ -1,0 +1,259 @@
+/*------------------------------------*\
+  #CONTAINER-LEFT
+\*------------------------------------*/
+
+.container-left {
+  background-color: $color-campus-layout-left-dblue;
+}
+
+.container-left-photo {
+  margin-top: 20vh;
+}
+
+
+.container-left-heading {
+  margin-top: -2vh;
+}
+
+  .container-left-heading h1 {
+    color: #fff;
+    font-size: 2.6rem;
+    font-weight: 500;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 6rem;
+  }
+
+
+/*------------------------------------*\
+  #USER-PHOTO
+\*------------------------------------*/
+
+.container-icon-user {
+  width: 16rem;
+  height: 16rem;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-top: 25rem;
+  left: 50%;
+  position: relative;
+  transform: translate(-50%, -50%);
+}
+
+  .container-icon-user img {
+    width: 16rem;
+    height: 16rem;
+
+  }
+
+  #icon-user {
+    cursor: pointer;
+  }
+
+  #imageUpload {
+    display: none;
+  }
+
+/*------------------------------------*\
+  #USER-PHOTO-NAME
+\*------------------------------------*/
+
+.container-user-name {
+  margin-top: -5rem;
+  margin-bottom: 15rem;
+}
+
+  .container-user-name h2 {
+    color: #fff;
+    font-size: 2.1rem;
+    font-weight: 500;
+    text-align: center;
+  }
+
+
+
+
+
+
+/*------------------------------------*\
+  #CONTAINER-RIGHT
+\*------------------------------------*/
+
+.container-right {
+  height: 100vh;
+}
+
+
+.container-title {
+  color: #6497EF;
+  font-size: 2.6rem;
+  font-weight: 500;
+  margin-top: 22rem;
+  margin-bottom: 7rem;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+
+.container-form {
+  margin-top: 10.5vh;
+}
+
+
+/*------------------------------------*\
+  #CONTAINER-CERTIFICATE-ICON
+\*------------------------------------*/
+
+.container-certificate-icon {
+  width: 12.5rem;
+  height: 9rem;
+}
+
+  .container-certificate-icon img {
+    margin-left: -1.5rem;
+    width: 12.5rem;
+    height: 9rem;
+  }
+
+.container-certificate h2 {
+  color: #808080;
+  font-size: 1.8rem;
+  font-weight: 300;
+}
+
+
+
+/*------------------------------------*\
+  #CONTAINER-CERTIFICATE-TEXT
+\*------------------------------------*/
+
+.container-certificate-text h3 {
+  color: #808080  ;
+  font-weight: 300;
+  font-size: 1.6rem;
+  margin-top: 1.5rem;
+}
+
+.container-certificate-text img {
+  height: 1.8rem;
+  width: 1.8rem;
+  margin-left: .5rem;
+}
+
+/*------------------------------------*\
+  #CONTAINER-CERTIFICATE-BUTTON
+\*------------------------------------*/
+
+// .btn-submit, .btn-submit:focus, .btn-submit:active {
+//   font-size: 1.8rem;
+//   font-weight: 300;
+//   text-transform: uppercase;
+
+//   background-size: 200% auto;
+//   border-radius: 50rem;
+//   outline: none;
+
+//   display: block;
+//   width: 100%;
+
+//   padding: 1rem 1rem 1rem 1rem;
+
+//   transition: .5s;
+// }
+
+// .btn-submit {
+//   border: none;
+//   margin-top: 1.5rem;
+//   color: #fff;
+//   background-image: linear-gradient(to right,  #6497EF 0%, #43C6E9 51%, #6497EF 100%);
+// }
+
+//   .btn-submit:hover {
+//     background-position: right center;
+//   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*------------------------------------*\
+  #LOGO
+\*------------------------------------*/
+
+.navbar {
+  float: right;
+
+}
+
+.navbar-brand img {
+  margin-left: 2.5rem;
+  margin-top: 3rem;
+  height: 6.5rem;
+  margin-right: 3rem;
+}
+
+
+/*------------------------------------*\
+  #HEADINGS
+\*------------------------------------*/
+
+
+
+
+/*------------------------------------*\
+  #CONTAINER-FORM
+\*------------------------------------*/
+
+form {
+  max-width: 42rem;
+}
+
+.form-group {
+  margin-top: 2rem;
+  border-radius: 0;
+  border-bottom: .1rem solid #8e8e8e;
+}
+
+.form-control {
+  color: #515151;
+  font-size: 2.66rem;
+  font-weight: 300;
+  outline: none;
+  border: none;
+  padding: .375rem 0;
+}
+
+  /* Removes default Boostrap 4 input outline styles */
+  .form-control:focus {
+    border-color: inherit;
+    box-shadow: none;
+  }
+
+
+
+
+
+
+

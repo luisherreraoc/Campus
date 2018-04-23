@@ -1,0 +1,10 @@
+<mk-form name="registro" [ids]="ids" [only]="_steps[_step]"></mk-form>
+  	
+<button class="btn-registration" (click)="nextStep()">{{_butonLabel}}</button>
+<button *ngIf="_showIngresar" class="btn-registration"><a routerLink="/public/login">INGRESAR</a></button>
+
+
+
+
+
+	

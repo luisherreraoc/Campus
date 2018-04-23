@@ -1,0 +1,22 @@
+[
+	
+	{
+	    "key": "username",
+	    "label": "Nombre de usuario",
+	    "value": "",
+	    "required": true,
+	    "order": 1,
+	    "maxlength": "80",
+	    "type": "text"
+    },
+    {
+	    "key": "password",
+	    "label": "Contraseña",
+	    "value": "",
+	    "required": true,
+	    "order": 2,
+	    "maxlength": "80",
+	    "type": "password"
+    }
+	
+]

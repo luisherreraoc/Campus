@@ -1,0 +1,96 @@
+  .container-form {
+      margin-top: 12vh;
+    }
+
+    form {
+      border: .14rem solid #43C6E9;
+      padding: 5rem;
+    }
+
+    .heading-para {
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+    }
+
+    p {
+      font-size: 1.6rem;
+    }
+
+
+    /*------------------------------------*\
+  #FORM
+\*------------------------------------*/
+
+.form-group {
+  border-radius: 0;
+  border-bottom: .1rem solid #8e8e8e;
+  width: 42rem;
+}
+
+.form-control {
+  color: $form-input-text-color;
+  font-size: $form-font-size-input;
+  font-weight: $form-font-weight-input;
+  outline: none;
+  border: none;
+  padding: .375rem 0;
+}
+
+/* Removes default Boostrap 4 input outline styles */
+.form-control:focus {
+  border-color: inherit;
+  box-shadow: none;
+}
+
+.form-password-text {
+  text-align: right;
+  font-weight: 600;
+}
+
+
+
+/* select field; selector is taken using dev tools, thus might be confusing */
+select.form-control:not([size]):not([multiple]) {
+  height: 6rem;
+  color: $form-input-text-color;
+}
+
+label {
+  color: $form-input-label-color;
+  font-size: $label-font-size;
+  font-weight: $label-font-weight;
+}
+
+
+
+
+
+
+/*------------------------------------*\
+  #MEDIA QUERIES
+\*------------------------------------*/
+// Optimize code
+
+// MOBILE
+@media (max-width: 767.98px) {
+  .container-right-form {
+    background-color: #fff;
+    padding: 2.5rem 1.8rem 0 1.8rem;
+    border-radius: .5rem;
+    margin-top: -7rem;
+  }
+
+  .form-group {
+    max-width: 32rem;
+  }
+}
+
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 767.98px) and (max-width: 1199.98px) {
+  .form-group {
+    max-width: 38rem;
+  }
+}
+
+

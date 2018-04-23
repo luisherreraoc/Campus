@@ -1,0 +1,76 @@
+/*------------------------------------*\
+  #BUTTONS
+\*------------------------------------*/
+
+// TO GENERIC; SEPARATE TO BUTTONS FOR DIFFERENT COMPONENTS 
+
+.btn-registration, .btn-enter,
+.btn-registration:focus, .btn-enter:focus
+.btn-registration:active, .btn-enter:active {
+  font-size: 2.66rem;
+  font-weight: 400;
+  text-transform: uppercase;
+
+  background-size: 200% auto;
+  border-radius: 50rem;
+  outline: none;
+
+  display: block;
+  width: 42rem; 
+
+  padding: 1.5rem 0 1.5rem 0;
+
+  transition: .5s;
+}
+
+.btn-registration {
+  border: none;
+  margin-top: 4rem;
+  color: #fff;
+  background-image: linear-gradient(to right,  #6497EF 0%, #43C6E9 51%, #6497EF 100%);
+}
+
+  .btn-registration:hover {
+    background-position: right center;
+  }
+
+.btn-enter {
+  margin-top: 1.8rem;
+  color: #43C6E9;
+  background-color: #fff;
+  border: .14rem solid #43C6E9;
+}
+
+  .btn-enter:hover {
+    border-color: #6497EF;
+    color: #6497EF;
+  }
+
+
+/*------------------------------------*\
+  #MEDIA QUERIES
+\*------------------------------------*/
+// Optimize code
+
+// MOBILE
+@media (max-width: 767.98px) {
+  .btn-registration, .btn-enter,
+  .btn-registration:focus, .btn-enter:focus
+  .btn-registration:active, .btn-enter:active {
+    font-size: 2rem;
+    padding: .9rem 0 .9rem 0;
+    width: 32rem;
+  }
+}
+
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 767.98px) and (max-width: 1199.98px) {
+  .btn-registration, .btn-enter,
+  .btn-registration:focus, .btn-enter:focus
+  .btn-registration:active, .btn-enter:active {
+    font-size: 2.4rem;
+    padding: 1.2rem 0 1.2rem 0;
+    width: 38rem;
+  }
+}

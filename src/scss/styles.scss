@@ -1,0 +1,97 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+html {
+  font-size: 62.5%; /* 1rem = 10px */
+}
+
+@import '~scss/base/typography';
+@import '~scss/layout/register-layout-left';
+@import '~scss/layout/register-layout-right';
+@import '~scss/forms/form-registration-1';
+@import '~scss/forms/form-registration-2';
+@import '~scss/components/buttons';
+
+
+.form-group .list-container .list-group .list-group-item.selected
+{
+	border: none;
+    color: #fff;
+    background-image: -webkit-gradient(linear, left top, right top, color-stop(0%, #43C6E9), to(#6497EF));
+    background-image: linear-gradient(to right, #43C6E9 0%, #6497EF 100%);
+}
+
+.list-container
+{
+	max-height: 57vh;
+    overflow-y: auto;
+}
+ 
+
+article.container-right-form {
+    /*min-height: 90vh;
+    position: relative;*/
+    padding-bottom: 100px;
+}
+
+article .btn-registration
+{
+	position: absolute;
+	bottom: 6vh;
+}
+
+
+/* KIRIAN */
+
+.mat-option:focus:not(.mat-option-disabled),
+.mat-option:hover:not(.mat-option-disabled)
+{
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%, #43C6E9), to(#6497EF)) !important;
+    background: linear-gradient(to right, #43C6E9 0%, #6497EF 100%) !important;
+    color: #fff;
+    opacity:0.8;
+}
+
+
+.mat-option
+{
+	color:rgba(0,0,0,.87)
+}
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled)
+{
+	color:#3f51b5
+}
+.mat-accent .mat-option.mat-selected:not(.mat-option-disabled)
+{
+	color:#ff4081
+}
+.mat-warn .mat-option.mat-selected:not(.mat-option-disabled)
+{
+	color:#f44336
+}
+.mat-option.mat-selected:not(.mat-option-multiple):not(.mat-option-disabled)
+{
+	background:rgba(0,0,0,.04)
+}
+.mat-option.mat-active
+{
+	background:rgba(0,0,0,.04);
+	color:rgba(0,0,0,.87)
+}
+.mat-option.mat-option-disabled{color:rgba(0,0,0,.38)}
+
+.mat-autocomplete-panel .mat-option.mat-selected:not(.mat-active):not(:hover){background:#fff}
+.mat-autocomplete-panel .mat-option.mat-selected:not(.mat-active):not(:hover):not(.mat-option-disabled)
+{
+	/*color:rgba(0,0,0,.87)*/
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%, #43C6E9), to(#6497EF)) !important;
+    background: linear-gradient(to right, #43C6E9 0%, #6497EF 100%) !important;
+    color: #fff;
+    opacity:0.8;
+}
+
+.mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple){
+	/*background:rgba(0,0,0,.12)*/
+}

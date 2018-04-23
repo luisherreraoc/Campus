@@ -1,0 +1,52 @@
+/*------------------------------------*\
+  #LIST
+\*------------------------------------*/
+
+.heading-para {
+  font-size: 2.8rem;
+  font-weight: 300;
+  text-align: center;
+  letter-spacing: .05rem;
+  margin-top: 2rem;
+  margin-bottom: 2.5rem;
+  color: #515151;
+}
+
+
+.list-container {
+  color: #515151;
+  font-size: 2.13rem;
+  font-weight: 300;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.list-group { height: 42.4rem; }
+
+  .list-group-item {
+    padding: 1.25rem 1.25rem;
+    text-align: center;
+    border: none;
+    border-top: .1rem solid #8e8e8e;
+    border-bottom: .1rem solid #8e8e8e;
+    transition: all .3s ease;
+  }
+
+    .list-group-item:hover {
+      background-color: #43C6E9;
+      color: #fff;
+    }
+
+    .list-group-item li:hover + li {
+      border-bottom: .1rem solid #43C6E9;
+    }
+
+    .list-group-item a {
+      color: #8e8e8e;
+      text-decoration: none;
+      transition: all .3s ease;
+    }
+
+      .list-group-item:hover a {
+        color: #fff;
+      }
