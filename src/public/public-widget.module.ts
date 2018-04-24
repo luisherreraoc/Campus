@@ -15,9 +15,7 @@ import { LoginComponent }										from './components/login/login.component';
 import { RegistroComponent }									from './components/registro/registro.component';
 //import { PasswordRecoveryComponent }							from './components/password/password-recovery.component';
 //import { PasswordChangeComponent }							from './components/password/password-change.component';
-//import { DialogTermsAndConditionsComponent }					from './components/dialogs/dialog-terms-and-conditions.component'
-
-
+	
 /**
  *	Widget module for common components and directives
  */

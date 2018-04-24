@@ -9,6 +9,9 @@ import { RouterModule, Routes }                                   from '@angular
 import { Logger, Loader, CoreModule, CommonModule, FormModule }   from 'mk';
 
 
+import { MatDialogModule }                                        from '@angular/material';
+
+
 // -- App imports ---------------------------------------------------------------------------
 import { appRoutes } from './app.routes';
 
@@ -17,7 +20,7 @@ import { PublicModule }	from '../public/public.module';
 
 @NgModule({
     declarations: [
-          AppComponent,
+          AppComponent
     ],
     imports: [
         BrowserModule,
@@ -28,7 +31,9 @@ import { PublicModule }	from '../public/public.module';
       
         CoreModule.forRoot(),
         CommonModule,
-        FormModule
+        FormModule,
+
+        MatDialogModule
     ],
     providers: [ Loader, Logger ],
     bootstrap: [AppComponent]

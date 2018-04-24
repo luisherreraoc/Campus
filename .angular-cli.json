@@ -9,7 +9,10 @@
       "outDir": "dist",
       "assets": [
         "assets",
-        "favicon.ico"
+        "favicon.ico",
+        "forms.config.json",
+        "forms",
+        "moks"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -19,7 +22,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "scss/styles.scss"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",

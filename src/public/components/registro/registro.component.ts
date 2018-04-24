@@ -1,9 +1,11 @@
 // -- Angular imports -----------------------------------------------------------------------------------------
-import { Component, OnInit }                         							from '@angular/core';
+import { Component, OnInit, Inject }                         							from '@angular/core';
 import { AbstractControl, FormGroup }        									from '@angular/forms';
 import { Observable, BehaviorSubject, Subscription } 							from "rxjs/Rx"; 
 import { Http, Response, Headers, RequestOptions } 								from '@angular/http';
 import { Router } 																from '@angular/router';
+
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA}                               from '@angular/material';
 
 import { Logger, MkFormService, MkForm }										from 'mk';	
 
@@ -100,7 +102,13 @@ export class RegistroComponent
 	private _subscriptions: Array<any>;
     private ids: any;
 
-	public constructor ( private _logger: Logger, private _fs: MkFormService, private _http: Http, private _router: Router, private rs: RegistroService ) 
+	public constructor ( 
+        private _logger: Logger, 
+        private _fs: MkFormService, 
+        private _http: Http, 
+        private _router: Router, 
+        private _rs: RegistroService,
+        private _dialog: MatDialog ) 
 	{ 
 		_logger.log('REGISTRO COMPONENT'); 
 
@@ -118,7 +126,7 @@ export class RegistroComponent
   		this._subscriptions = new Array();
 
         //this.ids = { 'registro': [0] };
-        this._fs.addServices(rs);
+        this._fs.addServices(_rs);
 	}
 
 	public ngOnInit ()
@@ -160,6 +168,11 @@ export class RegistroComponent
         {
             this._step++;
         }
+    }
+
+    private openTerms () : void
+    {
+        
     }
 
 }
