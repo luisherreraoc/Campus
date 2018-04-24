@@ -180,37 +180,5 @@
         ],
         "multiple": true,
         "bind":"collage"
-    },
-    {
-        "key": "lead_status",
-        "label": "Estado del Lead",
-        "value": "",
-        "required": false,
-        "order": 9,
-        "type": "select",
-        "maxlength": "120",
-        "options" : [
-            { "value": "Contacto urgente", "text": "Contacto urgente" },
-            { "value": "No es mercado objetivo", "text": "No es mercado objetivo" },
-            { "value": "No interesa por precio", "text": "No interesa por precio" },
-            { "value": "No interesa por área de interés", "text": "No interesa por área de interés" },
-            { "value": "No Contactado", "text": "No Contactado" },
-            { "value": "No interesa por falta de tiempo", "text": "No interesa por falta de tiempo" },
-            { "value": "Contactado por otro asesor", "text": "Contactado por otro asesor" },
-            { "value": "Re llamar", "text": "Re llamar" },
-            { "value": "Segunda vuelta sin resultados", "text": "Segunda vuelta sin resultados" },
-            { "value": "No atiende 1era", "text": "No atiende 1era" },
-            { "value": "No atiende 2da", "text": "No atiende 2da" },
-            { "value": "Imposible contactar", "text": "Imposible contactar" },
-            { "value": "Averiguando datos", "text": "Averiguando datos" },
-            { "value": "Lead interesado", "text": "Lead interesado" },
-            { "value": "Reasignado", "text": "Reasignado" },
-            { "value": "Reasignado - No atiende 1°", "text": "Reasignado - No atiende 1°" },
-            { "value": "Reasignado - No atiende 2°", "text": "Reasignado - No atiende 2°" },
-            { "value": "Reasignado - Rellamar", "text": "Reasignado - Rellamar" },
-            { "value": "Reasignado - No interesado", "text": "Reasignado - No interesado" },
-            { "value": "Chequear MKT", "text": "Chequear MKT" },
-            { "value": "Contactar Local", "text": "Contactar Local" }
-        ]
     }
 ]

@@ -118,9 +118,9 @@ export class RegistroComponent
 
         this._step = 0;
         this._steps = [
-            new Array("registro_first_name", "registro_last_name", "registro_email", "registro_password", "registro_password2", "lead_status"),
+            new Array("registro_first_name", "registro_last_name", "registro_email", "registro_password", "registro_password2" ),
             new Array("registro_job"),
-            new Array(),
+            new Array("registro_especialization"),
             new Array("registro_collage"),
             new Array("registro_first_name", "registro_email", "registro_password", "registro_especializacion_2", "registro_collage_2")
         ];
