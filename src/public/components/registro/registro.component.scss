@@ -4,4 +4,26 @@
 	{
 		display: none !important;
 	}
+
+	#terms-wrapper
+	{
+		position: absolute;
+	    top: 0px;
+	    left: 0px;
+	    right: 0px;
+	    bottom: 0px;
+	    background-color: white;
+	    margin: 50px;
+	}
+
+	#terms
+	{
+		border: 2px solid #67cbec;
+    	padding: 38px;
+		
+		button
+		{
+			width:50%;
+		}
+	}
 }

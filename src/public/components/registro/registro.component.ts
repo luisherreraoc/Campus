@@ -100,7 +100,9 @@ export class RegistroComponent
     private _form: MkForm;
 	private _form_group: FormGroup;
 	private _subscriptions: Array<any>;
-    private ids: any;
+    private _ids: any;
+    private _showTerms: boolean;
+
 
 	public constructor ( 
         private _logger: Logger, 
@@ -111,6 +113,8 @@ export class RegistroComponent
         private _dialog: MatDialog ) 
 	{ 
 		_logger.log('REGISTRO COMPONENT'); 
+
+        this._showTerms = false;
 
         this._step = 0;
         this._steps = [
@@ -126,7 +130,7 @@ export class RegistroComponent
   		this._subscriptions = new Array();
 
         //this.ids = { 'registro': [0] };
-        this._fs.addServices(_rs);
+        //this._fs.addServices(_rs);
 	}
 
 	public ngOnInit ()
@@ -154,25 +158,35 @@ export class RegistroComponent
             { 
                 this._form = form; 
                 this._form_group = this._form.formGroup;
+                this._form_group.reset();
+                
             }
         });
     }
 
     private nextStep () : void
     {
-        if ( this._step >= this._steps.length - 1 )
+        let len: number = this._steps.length - 1;
+        if ( this._step < len ) 
         {
-            debugger
+            this._step++;
+            this._showIngresar = this._step >= 1 && this._step < len ? false : true;
+            this._butonLabel = 'SIGUIENTE';
         }
         else
         {
-            this._step++;
+            console.log('RS send info');
         }
     }
 
     private openTerms () : void
     {
-        
+        this._showTerms = true;
     }
 
+    private acceptTerms () : void
+    {
+        this._showTerms = false;
+        this._form_group.patchValue({'registro_accepted_terms': true});
+    }
 }

@@ -1,13 +1,27 @@
-<mk-form name="registro" [ids]="ids" [only]="_steps[_step]"></mk-form>
+<mk-form name="registro" [ids]="_ids" [only]="_steps[_step]"></mk-form>
 
-<ng-container *ngIf="_step>=_steps.length-1">
-	<input type="checkbox" id="cbox1" value="first_checkbox"><label style="font-size: 1.5rem; display: inline-block; float: right;"> He leído y aceptado los <span style="font-weight: bold; text-decoration: underline; text-decoration-color: #0cb1ff;" (click)="openDialogTerms()">Términos y condiciones</span> </label>
+<ng-container *ngIf="_step>=_steps.length-1" [formGroup]="_form_group">
+	<input type="checkbox" id="cbox1" value="first_checkbox" formControlName="registro_accepted_terms"><label style="font-size: 1.5rem; display: inline-block; float: right;"> He leído y aceptado los <span style="font-weight: bold; text-decoration: underline; text-decoration-color: #0cb1ff;" (click)="openTerms()">Términos y condiciones</span> </label>
 </ng-container>
   	
 <button class="btn-registration" (click)="nextStep()">{{_butonLabel}}</button>
-<button *ngIf="_showIngresar" class="btn-registration"><a routerLink="/public/login">INGRESAR</a></button>
+<a routerLink="/public/login"><button *ngIf="_showIngresar" class="btn-registration white-btn">INGRESAR</button></a>
 
+<div id="terms-wrapper" *ngIf="_showTerms">
 
+	<div id="terms">
+
+		<h1>Términos y Condiciones</h1>
+
+		<p>
+			Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+		</p>
+
+		<button class="btn-registration" (click)="acceptTerms()">ACEPTO</button>
+
+	</div>
+
+</div>
 
 
 

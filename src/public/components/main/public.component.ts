@@ -4,7 +4,8 @@ import { Logger }														from 'mk';
 			
 
 @Component({
-	templateUrl: './public.component.html'
+	templateUrl: './public.component.html',
+	styleUrls: ['./public.component.scss']
 })
 export class PublicComponent
 {
