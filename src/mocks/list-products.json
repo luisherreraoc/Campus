@@ -1,0 +1,50 @@
+{
+	"status":"OK",
+	"data": [
+		{
+			"codigo":"221",
+			"id":"221",
+			"deleted_at":null,
+			"producto_id":"5",
+			"idioma_id":"1",
+			"nombre":"Urgencias m\u00e1s frecuentes en oftalmolog\u00eda",
+			"descripcion":"Descripci\u00f3n Urgencias m\u00e1s frecuentes en oftalmolog\u00eda",
+			"metodo_acceso":"suite",
+			"url_home":"http:\/\/www.oceanomedicina.com\/",
+			"url_publica":"http:\/\/www.escuelaeuropeadesalud.com\/",
+			"url_acceso":"http:\/\/campus.escuelaeuropeadesalud.com\/auth\/lime\/login.php",
+			"url_redireccion":"http:\/\/campus.escuelaeuropeadesalud.com\/course\/view.php?id=57",
+			"url_logout":"http:\/\/campus.escuelaeuropeadesalud.com\/auth\/lime\/logout.php",
+			"iva_id":"0",
+			"precio_sin_iva":"0.00",
+			"precio_con_iva":"0.00",
+			"informacion_multimedia":"{\"default_image\": \"img\/productos\/urgencias-oftalmologia.png\"}",
+			"accion":"http:\/\/actions.oceano.com\/urgencias-oftalmologia\/signup",
+			"sello_id":"4",
+			"tipo":"S",
+			"entidad_certificadora_id":"2",
+			"plataforma_id":"1",
+			"deleted":"0",
+			"duracion_horas":"150",
+			"product_code":"9104390",
+			"sello": {
+				"id":"4",
+				"nombre":"oceano-medicina",
+				"imagen":"\/img\/sellos\/oceano-medicina.png"
+			},
+			"datos_certificado":[],
+			"licencia_id":"0d154961c289e9fd68f21ebe44d0366d",
+			"licencia":"26404",
+			"owned":true,
+			"pvid":"221",
+			"falta_datos":0,
+			"owner": {
+				"id":"154",
+				"first_name":"Usuario",
+				"last_name":"Serio"
+			},
+			"show":true,
+			"status":"valid"
+		}
+	]
+}
