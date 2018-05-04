@@ -16,11 +16,11 @@ import { MatDialogModule }                                        from '@angular
 import { appRoutes } from './app.routes';
 
 import { PublicModule }	from '../public/public.module';
-
+import { CampusModule } from '../campus/campus.module';
 
 @NgModule({
     declarations: [
-          AppComponent
+        AppComponent,
     ],
     imports: [
         BrowserModule,
@@ -28,6 +28,7 @@ import { PublicModule }	from '../public/public.module';
         RouterModule.forRoot( appRoutes, { enableTracing: true } ),
       
         PublicModule,
+        CampusModule,
       
         CoreModule.forRoot(),
         CommonModule,
@@ -36,6 +37,7 @@ import { PublicModule }	from '../public/public.module';
         MatDialogModule
     ],
     providers: [ Loader, Logger ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    exports: [ ]
 })
 export class AppModule { }

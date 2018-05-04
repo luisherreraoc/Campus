@@ -7,7 +7,8 @@ import { Logger, Loader }																		from 'mk';
 // --- App imports ------------------------------------------------------------------------------------------------------
 //import { PasswordRecoveryService }																from './services/password-recovery.service';
 
-import { RegistroService }																		from './components/registro/registro.service';
+import { RegistroService }																		from './services/registro.service';
+import { PasswordService }																		from './services/password.service';
 
 @NgModule({
 	imports: 		[ ],
@@ -30,6 +31,11 @@ export class PublicServiceModule
 					provide: RegistroService,
 					useClass: RegistroService,
 					deps: [ Http, Loader, Logger ]
+				},
+				{
+					provide: PasswordService,
+					useClass: PasswordService,
+					deps: [ Http, Loader, Loader ]
 				}
 
 			]

@@ -9,9 +9,11 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA}                               
 
 import { Logger, MkFormService, MkForm }										from 'mk';	
 
-import { RegistroService }                                                      from './registro.service';
+import { RegistroService }                                                      from '../../services/registro.service';
 
-const especialidad = {
+const redirect_url: string = 'localhost:4200/public/login';
+
+const especialidad: any = {
     "Médico": [
         { "value":"Alergia e Inmunología Clínica", "text": " Alergia e Inmunología Clínica"},
         { "value":"Anestesiología", "text": " Anestesiología"},
@@ -121,8 +123,8 @@ export class RegistroComponent
             new Array("registro_first_name", "registro_last_name", "registro_email", "registro_password", "registro_password2" ),
             new Array("registro_job"),
             new Array("registro_especialization"),
-            new Array("registro_collage"),
-            new Array("registro_first_name", "registro_email", "registro_password", "registro_especializacion_2", "registro_collage_2")
+            new Array("registro_college"),
+            new Array("registro_first_name", "registro_email", "registro_password", "registro_especializacion_2", "registro_college_2")
         ];
         this._showIngresar = true;
         this._butonLabel = 'SIGUIENTE';
@@ -166,16 +168,30 @@ export class RegistroComponent
 
     private nextStep () : void
     {
+        let aux: any;
+        let data: any;
         let len: number = this._steps.length - 1;
+
         if ( this._step < len ) 
         {
             this._step++;
             this._showIngresar = this._step >= 1 && this._step < len ? false : true;
-            this._butonLabel = 'SIGUIENTE';
+            this._butonLabel = this._step === len ? 'REGISTRARSE' : 'SIGUIENTE';
         }
         else
         {
-            console.log('RS send info');
+            aux = this._form_group.getRawValue();
+            data = {
+                'first_name': aux.registro_first_name,
+                'last_name': aux.registro_last_name,
+                'email': aux.registro_email,
+                'password': aux.registro_password,
+                'job': aux.registro_job,
+                'especialization': aux.registro_especialization,
+                'college': aux.registro_college,
+                'redirect': redirect_url
+            }
+            this.send(data);
         }
     }
 
@@ -188,5 +204,14 @@ export class RegistroComponent
     {
         this._showTerms = false;
         this._form_group.patchValue({'registro_accepted_terms': true});
+    }
+
+    private send ( data: {[key:string]:any}) : void
+    {
+        this._rs.register(data)
+        .subscribe( ( response: any ) =>
+        {
+            debugger
+        });
     }
 }
