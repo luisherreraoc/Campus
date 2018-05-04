@@ -1,0 +1,49 @@
+[
+	
+	{
+	    "key": "user_first_name",
+	    "label": "Nombre",
+	    "value": "",
+	    "required": true,
+	    "order": 1,
+	    "maxlength": "80",
+	    "type": "text"
+    },
+    {
+	    "key": "user_last_name",
+	    "label": "Apellido",
+	    "value": "",
+	    "required": true,
+	    "order": 2,
+	    "maxlength": "80",
+	    "type": "text"
+    },
+    {
+	    "key": "user_prefix",
+	    "label": "Prefijo",
+	    "value": "",
+	    "required": false,
+	    "order": 2,
+	    "maxlength": "80",
+	    "type": "text"
+    },
+    {
+	    "key": "user_telefono",
+	    "label": "Teléfono",
+	    "value": "",
+	    "required": true,
+	    "order": 2,
+	    "maxlength": "80",
+	    "type": "text"
+    },
+    {
+	    "key": "user_password",
+	    "label": "Contraseña",
+	    "value": "",
+	    "required": true,
+	    "order": 2,
+	    "maxlength": "80",
+	    "type": "password"
+    }
+	
+]

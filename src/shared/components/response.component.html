@@ -1,0 +1,17 @@
+
+<img src="{{_img}}"/>
+
+<h1>{{_title}}</h1>
+
+<p>{{_text}}</p>
+
+<ng-container *ngIf="_recovery">	
+	<input type="text" name="recovery" />
+</ng-container>
+
+<ng-container *ngIf="_change">	
+	<mk-form name="passchange"></mk-form>
+</ng-container>
+
+<button class="btn-registration" (click)="_callback()">{{_btn}}</button>
+
