@@ -15,9 +15,11 @@ import { publicRoutes }											from './public.routes';
 import { PublicComponent }										from './components/main/public.component';
 import { LoginComponent }										from './components/login/login.component';
 import { RegistroComponent }									from './components/registro/registro.component';
-//import { PasswordRecoveryComponent }							from './components/password/password-recovery.component';
+import { PasswordRecoveryComponent }							from './components/password-recovery/password-recovery.component';
 //import { PasswordChangeComponent }							from './components/password/password-change.component';
-	
+
+import { SharedModule }											from '../shared/shared.module';
+
 /**
  *	Widget module for common components and directives
  */
@@ -30,10 +32,12 @@ import { RegistroComponent }									from './components/registro/registro.compon
     	MkC,
     	FormModule,
     	
-    	ReactiveFormsModule
+    	ReactiveFormsModule,
+
+    	SharedModule
 	],
 	entryComponents:[ ],
-	declarations: 	[ PublicComponent, LoginComponent, RegistroComponent, /*PasswordRecoveryComponent, PasswordChangeComponent, DialogTermsAndConditionsComponent,*/ ],
+	declarations: 	[ PublicComponent, LoginComponent, RegistroComponent, PasswordRecoveryComponent,/*PasswordChangeComponent, DialogTermsAndConditionsComponent,*/ ],
 	exports: 		[ PublicComponent ]
 })
 export class PublicWidgetModule

@@ -80,13 +80,13 @@
             { "value": "Cardiología", "text": "Cardiología" },
             { "value": "Cirugía", "text": "Cirugía" },
             { "value": "Emergentología", "text": "Emergentología" },
-            { "value": "Gatroenterología", "text": "Gatroenterología" },
+            { "value": "Gastroenterología", "text": "Gastroenterología" },
             { "value": "Generalista", "text": "Generalista" },
             { "value": "Anestesiologia", "text": "Anestesiologia" }
         ]
     },
     {
-        "key": "registro_collage",
+        "key": "registro_college",
         "label": "Seleciona si pertenece a algún Colegio de médicos o Sociedad",
         "value": "",
         "required": true,
@@ -118,8 +118,6 @@
         ],
         "bind":"collage"
     },
-
-
     {
         "key": "registro_accepted_terms",
         "label": "He leido y aceptado los Terminos y Condiciones",
@@ -148,7 +146,7 @@
         ]
     },
     {
-        "key": "registro_collage_2",
+        "key": "registro_college_2",
         "label": "Seleciona si pertenece a algún Colegio de médicos o Sociedad",
         "value": "",
         "required": true,

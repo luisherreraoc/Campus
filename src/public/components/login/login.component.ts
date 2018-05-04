@@ -5,8 +5,11 @@ import { Observable, BehaviorSubject, Subscription } 							from "rxjs/Rx";
 import { Http, Response, Headers, RequestOptions } 								from '@angular/http';
 import { Router } 																from '@angular/router';
 
-import { Logger, MkFormService, MkForm }										from 'mk';
-		
+import { Logger, MkFormService, MkForm }                                        from 'mk';
+
+import { environment }                                                          from '../../../environments/environment';
+
+import { AuthService }                                                          from '../../../shared/services/auth.service';
 
 
 @Component({
@@ -14,11 +17,12 @@ import { Logger, MkFormService, MkForm }										from 'mk';
 })
 export class LoginComponent
 {
+    private _publicUrl: string = '/' + environment.pathPublic;
 	private _form: MkForm;
 	private _form_group: FormGroup;
 	private _subscriptions: Array<any>;
 
-	public constructor ( private _logger: Logger, private _fs: MkFormService, private _http: Http, private _router: Router ) 
+	public constructor ( private _logger: Logger, private _fs: MkFormService, private _http: Http, private _router: Router, private _as: AuthService ) 
 	{ 
 		_logger.log('LOGIN COMPONENT'); 
 
@@ -45,7 +49,6 @@ export class LoginComponent
         .map( forms => forms.find( form => form.name === "login" ) )
         .subscribe( form =>
         {
-        	debugger
             if (form) 
             { 
                 this._form = form; 
@@ -61,11 +64,12 @@ export class LoginComponent
     	obj.product_id = 0;
     	obj.grant_type = 'password';
 
-    	this._http.post( 'http://sso-test.oceano.com/sso/login?', obj )
+    	this._as.login(obj)
     	.subscribe( ( response: Response ) =>
     	{
+            debugger
     		let res: any = response.json();
-    		this._router.navigateByUrl('/public');
+    		this._router.navigateByUrl(this._publicUrl);
     	});
     }
 }

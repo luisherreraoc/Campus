@@ -12,7 +12,7 @@
         "favicon.ico",
         "forms.config.json",
         "forms",
-        "moks"
+        "mocks"
       ],
       "index": "index.html",
       "main": "main.ts",

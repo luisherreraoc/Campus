@@ -9,7 +9,7 @@ import { PublicServiceModule }																				from './public-service.module'
 import { PublicWidgetModule }																				from './public-widget.module';
 
 @NgModule({
-	imports: 		[ 
+	imports: 		[
 		PublicServiceModule.forRoot(), 
 		PublicWidgetModule
 	],
