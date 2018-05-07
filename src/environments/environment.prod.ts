@@ -14,6 +14,7 @@ export const environment = {
   pathCampus: 'campus',
   pathAcount: 'mi-cuenta',
   pathCourses: 'mis-cursos',
+  pathCertificates: 'mis-certificados',
   
   ssoLoginUrl: 'http://sso-test.oceano.com/sso/login',
 

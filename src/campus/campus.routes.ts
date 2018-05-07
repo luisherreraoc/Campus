@@ -1,0 +1,35 @@
+// -- Angular imports -------------------------------------------------------------------------------
+import { RouterModule, Routes } from '@angular/router';
+
+// -- App imports -----------------------------------------------------------------------------------
+import { CampusComponent }										from './components/main/campus.component';
+import { AcountComponent }										from './components/acount/acount.component';
+import { CoursesComponent }										from './components/courses/courses.component';
+import { CertificatesComponent }								from './components/certificates/certificates.component';
+
+import { AuthGuard }											from '../shared/services/auth-guard.service';
+
+
+import { environment }											from '../environments/environment';
+
+export const campusRoutes: Routes = 
+[
+	{ 
+		path: environment.pathCampus, 
+		component: CampusComponent,
+		canActivate: [AuthGuard],
+		children: [
+			{	
+				path: '',
+				canActivateChild: [AuthGuard],
+				children: [
+					//{ path: '', redirectTo: environment.pathAcount, pathMatch: 'full' },
+					{ path: environment.pathAcount, component: AcountComponent },
+					{ path: environment.pathCourses, component: CoursesComponent },
+					{ path: environment.pathCertificates, component: CertificatesComponent }
+				],
+				//component: CampusComponent
+			}
+		]
+	}
+];
