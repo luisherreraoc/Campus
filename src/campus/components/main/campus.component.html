@@ -1,0 +1,23 @@
+<section class="container-fluid {{_outer_class}}">
+  	
+  	<div class="row">
+    
+    	<section class="container-left col-md-5 col-lg-6 col-xl-7">
+      
+      	<section class="container-left-heading">
+        	<a routerLink="/{{_acount}}" routerLinkActive="active">MI CUENTA</a>
+        	<a routerLink="/{{_courses}}" routerLinkActive="active">MIS CURSOS</a>
+          <a routerLink="/{{_certificates}}" routerLinkActive="active">CERTIFICACIONES</a>
+      	</section>
+    
+      </section>
+
+      <section class="container-right col-md-7 col-lg-6 col-xl-5 d-flex align-items-center justify-content-center">
+  
+      		<router-outlet></router-outlet>
+
+    	</section>
+    
+  	</div>
+
+</section>

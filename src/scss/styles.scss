@@ -98,3 +98,46 @@ article .btn-registration
 .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple){
 	/*background:rgba(0,0,0,.12)*/
 }
+
+
+
+/* FORMS */
+
+/* Columnas del 50% del ancho disponible */
+div[cols="col-6"]
+{
+	&:first-child
+	{
+		margin-right: 2%;
+	}
+
+	width: 49%;
+	display: inline-block;
+
+	div
+	{
+		width: 100%;
+	}
+}
+
+/* Columnas del 100% del ancho disponible */
+div[cols="col-12"]
+{
+	width: 100%;
+	display: inline-block;
+
+	div
+	{
+		width: 100%;
+	}
+}
+
+
+
+/* DIOALOGS */
+.mat-dialog-container[aria-describedby="pene"]
+{
+	background-color: transparent;
+	color: red;
+	box-shadow: none;
+}

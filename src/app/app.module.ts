@@ -36,7 +36,14 @@ import { CampusModule } from '../campus/campus.module';
 
         MatDialogModule
     ],
-    providers: [ Loader, Logger ],
+    providers: [ 
+        Loader, 
+        Logger,
+        {
+            provide: Window,
+            useValue: window
+        }
+    ],
     bootstrap: [AppComponent],
     exports: [ ]
 })
