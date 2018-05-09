@@ -8,6 +8,7 @@ import { Logger, Loader }																		from 'mk';
 //import { PasswordRecoveryService }																from './services/password-recovery.service';
 
 import { CoursesService }																		from './services/courses.service';
+import { UserService }																			from './services/user.service';
 
 @NgModule({
 	imports: 		[ ],
@@ -29,6 +30,11 @@ export class CampusServiceModule
 				{
 					provide: CoursesService,
 					useClass: CoursesService,
+					deps: [ Http, Loader, Loader ]
+				},
+				{
+					provide: UserService,
+					useClass: UserService,
 					deps: [ Http, Loader, Loader ]
 				}
 

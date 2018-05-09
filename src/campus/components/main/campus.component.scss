@@ -1,0 +1,40 @@
+@import '~scss/abstracts/variables';
+
+:host ::ng-deep
+{
+	.container-left
+	{
+		background-image: none;
+	}
+
+	section 
+	{
+		-webkit-transition: background-color 300ms ease-in;
+    	-ms-transition: background-color 300ms ease-in;
+    	transition: background-color 300ms ease-in;
+	}
+
+	.mis-cursos
+	{
+		.container-left
+		{
+			background-color: $color-cursos;
+		}
+	}
+
+	.mi-cuenta
+	{
+		.container-left
+		{
+			background-color: $color-cuenta;
+		}
+	}
+
+	.mis-certificaciones
+	{
+		.container-left
+		{
+			background-color: $color-certificaciones;
+		}
+	}
+}

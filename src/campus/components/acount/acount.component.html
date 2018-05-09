@@ -1,6 +1,8 @@
 <h1>MI CUENTA</h1>
 
-<mk-form name="user" [only]="onl1" ></mk-form>
-<mk-form name="user" cols="2" [only]="onl2" ></mk-form>
+<mk-form name="user" [only]="_onl1" [ids]="_ids"></mk-form>
+<mk-form name="user" cols="2" [only]="_onl2" [ids]="_ids"></mk-form>
 
-<span>Cambiar contraseña</span>
+<span><img src="{{_key}}"/></span><a routerLink="/{{_pass_change}}" routerLinkActive="active">Cambiar contraseña</a>
+
+<button _ngcontent-c3="" class="btn" (click)="openDialog()">ACTUALIZAR</button>

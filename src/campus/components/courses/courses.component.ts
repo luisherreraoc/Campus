@@ -22,7 +22,6 @@ export class CoursesComponent
 
 	public ngOnInit () : void
 	{
-		debugger
 		this._subscriptions = [
             this.subscribeCourses()
         ];
@@ -36,13 +35,12 @@ export class CoursesComponent
 
     private subscribeCourses () : Subscription
     {
-    	debugger
     	return this._cs.list({})
     	.subscribe( (resp: any) =>
     	{
     		if ( resp.status === 200 )
     		{
-
+                this._courses = resp.data;
     		}
     		else
     		{

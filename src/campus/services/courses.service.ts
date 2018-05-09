@@ -36,7 +36,6 @@ export class CoursesService extends DataService<Producto>
 
 	public list ( data: {[key:string]:any} ) : Observable<any>
 	{
-		debugger
 		//return this.http.post(this._prodUrl,data)
 		return this.http.get(this._prodUrl,data)
 		.map( (resp: any) =>

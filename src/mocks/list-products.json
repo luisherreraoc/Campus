@@ -27,7 +27,7 @@
 		    "producto_licencia": 
 		    {
 			    "licencia_id_": "2321",
-			    "licencia_codigo": "0d154961c289e9fd68f21ebe44d0366d",
+			    "licencia_codigo": "5aae0625cb69f9bf9f7f47d839497d4e",
 			    "licencia_identidad_id": "15454",
 			    "licencia_estado": "valid"
 		    }
@@ -36,10 +36,10 @@
       	{
 		    "producto_id": "221",
 		    "producto_codigo": "221",
-		    "producto_nombre": "Urgencias m\u00e1s frecuentes en oftalmolog\u00eda",
+		    "producto_nombre": "Urgencias m\u00e1s frecuentes en oftalmolog\u00eda 1111",
 	 	    "producto_descripcion": "Descripci\u00f3n Urgencias m\u00e1s frecuentes en oftalmolog\u00eda",
 		    "producto_url_acceso": "http:\/\/campus.escuelaeuropeadesalud.com\/auth\/lime\/login.php",
-		    "producto_inpormacion_multimedia": 
+		    "producto_informacion_multimedia": 
 		    {
 		    	"default_image": "img\/productos\/urgencias-oftalmologia.png"
 			},
@@ -58,7 +58,7 @@
 		    "producto_licencia": 
 		    {
 			    "licencia_id_": "2321",
-			    "licencia_codigo": "0d154961c289e9fd68f21ebe44d0366d",
+			    "licencia_codigo": "5aae0625cb69f9bf9f7f47d839497d4e",
 			    "licencia_identidad_id": "15454",
 			    "licencia_estado": "valid"
 		    }

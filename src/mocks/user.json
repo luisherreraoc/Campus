@@ -1,0 +1,16 @@
+{
+	"status":"OK",
+	"data": 
+		{	
+			"user_id": "154", 
+			"user_first_name": "Selene", 
+			"user_last_name": "de Campoamor", 
+			"user_prefix": "5689", 
+			"user_telefono": "45678931", 
+			"user_password": "1234567", 
+			"user_job": "Medico", 
+			"user_especialization": [], 
+			"user_college": []
+		}
+	
+}

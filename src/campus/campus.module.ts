@@ -8,7 +8,8 @@ import { Loader, Logger, MkFormService }																	from 'mk';
 import { CampusServiceModule }																				from './campus-service.module'
 import { CampusWidgetModule }																				from './campus-widget.module';
 
-import { CoursesService }																		from './services/courses.service';
+import { CoursesService }																					from './services/courses.service';
+import { UserService }																						from './services/user.service';
 
 @NgModule({
 	imports: 		[ 
@@ -22,10 +23,10 @@ import { CoursesService }																		from './services/courses.service';
 })
 export class CampusModule
 {
-	public constructor ( private logger: Logger, private fs: MkFormService, private cs: CoursesService ) 
+	public constructor ( private logger: Logger, private fs: MkFormService, private cs: CoursesService, private us: UserService ) 
 	{ 
 		this.logger.log('CAMPUS-MODULE'); 
 
-		fs.addServices([cs]);
+		fs.addServices([cs, us]);
 	}
 }

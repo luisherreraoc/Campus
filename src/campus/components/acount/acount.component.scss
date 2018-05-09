@@ -1,0 +1,30 @@
+@import '~scss/abstracts/variables';
+
+:host ::ng-deep
+{
+	div[cols="col-6"]:first-child
+	{
+		width: 20%;
+	}
+
+	div[cols="col-6"]:last-child
+	{
+		width: 78%;
+	}
+
+	a
+	{
+		font-weight: bold;
+	}
+
+	button
+	{
+		color: white;
+		background-color: $color-cuenta;
+	}
+
+	h1
+	{
+		color: $color-cuenta;
+	}
+}

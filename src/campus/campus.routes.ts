@@ -23,7 +23,7 @@ export const campusRoutes: Routes =
 				path: '',
 				canActivateChild: [AuthGuard],
 				children: [
-					//{ path: '', redirectTo: environment.pathAcount, pathMatch: 'full' },
+					{ path: '', redirectTo: environment.pathAcount, pathMatch: 'full' },
 					{ path: environment.pathAcount, component: AcountComponent },
 					{ path: environment.pathCourses, component: CoursesComponent },
 					{ path: environment.pathCertificates, component: CertificatesComponent }

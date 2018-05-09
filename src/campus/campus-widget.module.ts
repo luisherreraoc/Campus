@@ -15,11 +15,16 @@ import { campusRoutes }											from './campus.routes';
 import { CampusComponent }										from './components/main/campus.component';
 import { AcountComponent }										from './components/acount/acount.component';
 import { CoursesComponent }										from './components/courses/courses.component';
-import { CourseComponent }										from './components/course/course.component';
+import { CourseCardComponent }									from './components/course-card/course-card.component';
 import { CertificatesComponent }								from './components/certificates/certificates.component';
-import { CertificateComponent }									from './components/certificate/certificate.component';
+import { CertificateCardComponent }								from './components/certificate-card/certificate-card.component';
 
 import { SharedModule }											from '../shared/shared.module';
+
+
+// --- Dialogs --------------------------------------------------------------------------
+import { UserJobsDialogComponent } from './components/dialogs/user-jobs-dialog.component';
+
 
 /**
  *	Widget module for common components and directives
@@ -37,8 +42,8 @@ import { SharedModule }											from '../shared/shared.module';
 
     	SharedModule
 	],
-	entryComponents:[ ],
-	declarations: 	[ CampusComponent, AcountComponent, CoursesComponent, CourseComponent, CertificatesComponent, CertificateComponent ],
+	entryComponents:[ UserJobsDialogComponent ],
+	declarations: 	[ CampusComponent, AcountComponent, CoursesComponent, CourseCardComponent, CertificatesComponent, CertificateCardComponent, UserJobsDialogComponent ],
 	exports: 		[ CampusComponent ]
 })
 export class CampusWidgetModule
