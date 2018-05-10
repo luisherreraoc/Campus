@@ -7,7 +7,7 @@ import { FormsModule, ReactiveFormsModule } 					from '@angular/forms';
 // --- Mk imports -----------------------------------------------------------------------
 import { Logger, CoreModule, CommonModule as MkC, FormModule }	from 'mk';
 
-import { ResponseComponent }									from './components/response.component';
+import { ResponseComponent }									from './components/response/response.component';
 
 /**
  *	Widget module for common components and directives

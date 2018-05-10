@@ -38,10 +38,10 @@ export const environment = {
   ssoLoginUrl: 'http://sso-test.oceano.com/sso/login',
   ssoRedirectUrl: 'https://sso.oceano.com/sso/redirect?licencia_id=',
 
-  apiPasswordChange: 'recovery-mail.json',
+  apiPasswordChange: '/recovery-mail.json',
 
-  recoveryMail: 'recovery-mail.json',
-  newPassword: 'recovery-mail.json',
+  recoveryMail: '/recovery-mail.json',
+  newPassword: '/recovery-mail.json',
   getConsumerProducts: './mocks/list-products.json',
 
   icon_key: '/assets/img/icon-key.png'

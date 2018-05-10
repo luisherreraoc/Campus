@@ -26,13 +26,13 @@ export class PasswordService
 	public recoveryMail ( data: {[key:string]:any} ) : Observable<any>
 	{
 		//return this.http.post(this._apiUrl + '/' + this._recoveryMail,data);
-		return this.http.get(this._apiUrl + '/' + this._recoveryMail,data);
+		return this.http.get(this._apiUrl + this._recoveryMail,data);
 	} 
 
 	public newPass ( data: { usr: string, pass: string } ) : Observable<any>
 	{
 		let d: any = data;
 		//return this.http.post(this._apiUrl + '/' + this._newPassword,data);
-		return this.http.get(this._apiUrl + '/' + this._recoveryMail, d);
+		return this.http.get(this._apiUrl + this._recoveryMail, d);
 	} 
 }

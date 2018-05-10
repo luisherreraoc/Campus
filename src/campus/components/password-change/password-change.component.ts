@@ -1,6 +1,8 @@
 import { Component, Inject, ViewContainerRef }                         	from '@angular/core';
 import { Observable, BehaviorSubject, Subscription } 					from "rxjs/Rx";
 
+import { Router }                                                       from '@angular/router';
+
 import { environment }													from '../../../environments/environment';
 
 import { UserService }                                                  from '../../services/user.service';
@@ -16,15 +18,20 @@ export class PasswordChangeComponent
 	private _form: MkForm;
 	private _subscriptions: Array<Subscription>;
 	
-	public constructor ( private _logger: Logger, private _fs: MkFormService, private _us: UserService ) 
+    private _showResponse: boolean;
+
+	public constructor ( private _logger: Logger, private _router: Router, private _fs: MkFormService, private _us: UserService ) 
 	{ 
 		_logger.log('PasswordChangeComponent');
+
+        this._showResponse = false;
 	}
 
 	public ngOnInit () : void
 	{
 		this._subscriptions = [	
 			this.subscribeQuestionForm()
+
 		];
 	}
 
@@ -55,11 +62,16 @@ export class PasswordChangeComponent
 
         this._us.passwordChange(data)
         .subscribe( (response:any) => {
-            debugger
+            this._showResponse = true;
         },
         (err:any) => {
 
         });
+    }
+
+    private goToAcount () : void
+    {
+        this._router.navigate([environment.pathCampus + '/' + environment.pathAcount])
     }
 }
 

@@ -1,18 +1,18 @@
 // -- Angular imports -----------------------------------------------------------------------------------------
-import { Component, OnInit, Inject, Input }                         			from '@angular/core';
-import { AbstractControl, FormGroup }        									from '@angular/forms';
-import { Observable, BehaviorSubject, Subscription } 							from "rxjs/Rx"; 
-import { Http, Response, Headers, RequestOptions } 								from '@angular/http';
-import { Router, ActivatedRoute } 										        from '@angular/router';
+import { Component, OnInit, Inject, Input, Output, EventEmitter }                from '@angular/core';
+import { AbstractControl, FormGroup }                                            from '@angular/forms';
+import { Observable, BehaviorSubject, Subscription }                             from "rxjs/Rx"; 
+import { Http, Response, Headers, RequestOptions } 								 from '@angular/http';
+import { Router, ActivatedRoute } 										         from '@angular/router';
 
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA }                             from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA }                              from '@angular/material';
 
-import { Logger, MkFormService, MkForm }										from 'mk';
+import { Logger, MkFormService, MkForm }										 from 'mk';
 
 @Component({
     selector: 'cam-response',
 	templateUrl: './response.component.html',
-    //styleUrls: ['./response.component.scss']
+    styleUrls: ['./response.component.scss']
 })
 export class ResponseComponent
 {
@@ -22,6 +22,8 @@ export class ResponseComponent
     @Input('btn') _btn: string;
     @Input('form') _name: string;
     @Input('callback') _callback: any;
+
+    @Output('onBtnClick') _onBtnClick: EventEmitter<any> = new EventEmitter();
 
     private _form: MkForm;
     private _form_group: FormGroup;
@@ -63,5 +65,15 @@ export class ResponseComponent
                 this._form_group.reset();
             }
         });
+    }
+
+    private onClick () : void
+    {
+        if ( this._callback ) 
+        {
+            this._callback();
+        }
+
+        this._onBtnClick.emit();
     }
 }
