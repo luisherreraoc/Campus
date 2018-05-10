@@ -18,6 +18,7 @@ import { CoursesComponent }										from './components/courses/courses.componen
 import { CourseCardComponent }									from './components/course-card/course-card.component';
 import { CertificatesComponent }								from './components/certificates/certificates.component';
 import { CertificateCardComponent }								from './components/certificate-card/certificate-card.component';
+import { PasswordChangeComponent }								from './components/password-change/password-change.component';
 
 import { SharedModule }											from '../shared/shared.module';
 
@@ -43,7 +44,7 @@ import { UserJobsDialogComponent } from './components/dialogs/user-jobs-dialog.c
     	SharedModule
 	],
 	entryComponents:[ UserJobsDialogComponent ],
-	declarations: 	[ CampusComponent, AcountComponent, CoursesComponent, CourseCardComponent, CertificatesComponent, CertificateCardComponent, UserJobsDialogComponent ],
+	declarations: 	[ CampusComponent, AcountComponent, CoursesComponent, CourseCardComponent, CertificatesComponent, CertificateCardComponent, UserJobsDialogComponent, PasswordChangeComponent ],
 	exports: 		[ CampusComponent ]
 })
 export class CampusWidgetModule

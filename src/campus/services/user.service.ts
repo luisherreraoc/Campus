@@ -10,6 +10,8 @@ import { Loader }										from 'mk';
 
 import { User, UserInterface }				    		from '../models/user.model';
 
+import { environment }									from '../../environments/environment';
+
 export class UserService extends DataService<User>
 {
 
@@ -27,4 +29,10 @@ export class UserService extends DataService<User>
 		console.log("GETBYID");
 		return this.http.get('./mocks/user.json');
 	};
+
+	public passwordChange ( data: any ) : Observable<Response>
+	{
+		return this.http.post( environment.apiUrl + environment.apiPasswordChange, data )
+		.map( res => res.json() );
+	}
 }

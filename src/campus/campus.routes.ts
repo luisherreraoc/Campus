@@ -6,6 +6,7 @@ import { CampusComponent }										from './components/main/campus.component';
 import { AcountComponent }										from './components/acount/acount.component';
 import { CoursesComponent }										from './components/courses/courses.component';
 import { CertificatesComponent }								from './components/certificates/certificates.component';
+import { PasswordChangeComponent }								from './components/password-change/password-change.component';
 
 import { AuthGuard }											from '../shared/services/auth-guard.service';
 
@@ -26,7 +27,8 @@ export const campusRoutes: Routes =
 					{ path: '', redirectTo: environment.pathAcount, pathMatch: 'full' },
 					{ path: environment.pathAcount, component: AcountComponent },
 					{ path: environment.pathCourses, component: CoursesComponent },
-					{ path: environment.pathCertificates, component: CertificatesComponent }
+					{ path: environment.pathCertificates, component: CertificatesComponent },
+					{ path: environment.pathPasswordChange, component: PasswordChangeComponent }
 				],
 				//component: CampusComponent
 			}

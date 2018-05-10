@@ -24,6 +24,8 @@ export class AcountComponent
 
 	private _ids: any;
 
+    private _pass_change: string;
+
 	public constructor ( private logger: Logger, private _fs: MkFormService, private _dialog: MatDialog, private _vcr: ViewContainerRef ) 
 	{ 
 		logger.log('ACOUNT COMPONENT'); 
@@ -32,6 +34,8 @@ export class AcountComponent
 	 	this._key = environment.icon_key;
 
 	 	this._ids = {'user':'154'};
+
+        this._pass_change = environment.pathPasswordChange;
 	}
 
 	public ngOnInit () : void

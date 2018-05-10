@@ -33,9 +33,12 @@ export const environment = {
   pathAcount: 'mi-cuenta',
   pathCourses: 'mis-cursos',
   pathCertificates: 'mis-certificaciones',
+  pathPasswordChange: 'cambiar-contrasena',
 
   ssoLoginUrl: 'http://sso-test.oceano.com/sso/login',
   ssoRedirectUrl: 'https://sso.oceano.com/sso/redirect?licencia_id=',
+
+  apiPasswordChange: 'recovery-mail.json',
 
   recoveryMail: 'recovery-mail.json',
   newPassword: 'recovery-mail.json',
