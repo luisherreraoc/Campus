@@ -17,7 +17,7 @@ import { AuthService }                                                          
 })
 export class LoginComponent
 {
-    private _publicUrl: string = '/' + environment.pathPublic;
+    private _campusUrl: string = '/' + environment.pathCampus;
 	private _form: MkForm;
 	private _form_group: FormGroup;
 	private _subscriptions: Array<any>;
@@ -68,8 +68,7 @@ export class LoginComponent
     	.subscribe( ( response: Response ) =>
     	{
             debugger
-    		let res: any = response.json();
-    		this._router.navigateByUrl(this._publicUrl);
+    		this._router.navigateByUrl(this._campusUrl);
     	});
     }
 }

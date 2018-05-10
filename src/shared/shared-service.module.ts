@@ -28,6 +28,7 @@ export class SharedServiceModule
 		return {
 			ngModule: SharedServiceModule,
 			providers: [
+				StorageService,
 				{
 					provide: AuthGuard,
 					useClass: AuthGuard,
@@ -37,11 +38,6 @@ export class SharedServiceModule
 					provide: AuthService,
 					useClass: AuthService,
 					deps: [ Http, Logger, Loader ]
-				},
-				{
-					provide: StorageService,
-					useClass: StorageService,
-					deps: [ Logger ]
 				},
 			]
 		}

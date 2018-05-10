@@ -7,11 +7,13 @@ import { Http }																								from '@angular/http';
 import { Loader, Logger }																					from 'mk';
 import { PublicServiceModule }																				from './public-service.module'
 import { PublicWidgetModule }																				from './public-widget.module';
+import { SharedModule }																						from '../shared/shared.module';
 
 @NgModule({
 	imports: 		[
 		PublicServiceModule.forRoot(), 
-		PublicWidgetModule
+		PublicWidgetModule,
+		SharedModule
 	],
 	entryComponents:[ ],
 	declarations: 	[ ],
