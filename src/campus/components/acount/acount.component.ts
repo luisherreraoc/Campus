@@ -72,9 +72,16 @@ export class AcountComponent
     		panelClass: 'custom-dialog',
     		//backdropClass: 'backdropClass',
     		viewContainerRef: this._vcr,
-			width: '1200px',
+			width: '700px',
       		data: { ids: this._ids, ref: this._vcr }
-    	});
-    }
+		});
+		this._subscriptions.push(this.subscribeDialogClose(dialogRef));
+	}
+	
+	private subscribeDialogClose (dialogRef: any) : Subscription 
+	{
+		return dialogRef.beforeClose().subscribe(resp => { debugger });
+
+	}
 }
 

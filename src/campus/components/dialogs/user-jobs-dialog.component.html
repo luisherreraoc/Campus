@@ -1,23 +1,8 @@
-<div class="first-form-container" *ngIf="firstMenu">
+<div class="first-form-container" *ngIf="showFirst">
     <div class="select-job">
         <mk-form name="user" ids="data.ids" [only]="_onl1"></mk-form>
     </div>
     <div class="button-container">
-        <button _ngcontent-c3="" class="btn" (click)="next()" >ACEPTAR</button>
-    </div>
-</div>
-
-<div class="second-form-container" *ngIf="secondMenu">
-    <div class="select-especialization">
-        <mk-form name="user" ids="data.ids" [only]="_onl2"></mk-form>
-        <div class="button-container">
-            <button _ngcontent-c3="" class="btn" (click)="previous()">ATRÁS</button>
-        </div>
-    </div>
-    <div class="select-college">
-        <mk-form name="user" ids="data.ids" [only]="_onl3"></mk-form>
-        <div class="button-container">
-            <button _ngcontent-c3="" class="btn" (click)="next()">ACEPTAR</button>
-        </div>
+        <button _ngcontent-c3="" class="btn" (click)="openDialog(); hideDialog()" >ACEPTAR</button>
     </div>
 </div>

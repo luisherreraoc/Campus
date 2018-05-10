@@ -1,0 +1,19 @@
+.select-especialization,
+.select-college {
+    background-color: white;
+    box-shadow:  6px 6px 12px rgba(0,0,0,.5);
+}
+
+.button-container {
+    text-align: center;
+}
+
+.second-form-container {
+    display: flex;
+    justify-content: space-around;    
+}
+
+.select-especialization,
+.select-college {
+    width: 500px;
+}

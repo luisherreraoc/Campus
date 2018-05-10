@@ -1,11 +1,13 @@
-import { Component, Inject }                                      from '@angular/core';
-import { Observable, BehaviorSubject, Subscription }                from "rxjs/Rx";
+import { Component, Inject, ViewContainerRef } from '@angular/core';
+import { Observable, BehaviorSubject, Subscription } from "rxjs/Rx";
 
-import { environment }                                              from '../../../environments/environment';
+import { environment } from '../../../environments/environment';
 
-import { Logger, MkFormService, MkForm }                        from 'mk';      
+import { Logger, MkFormService, MkForm } from 'mk';      
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+
+import { UserEspColDialogComponent } from '../dialogs/user-esp-col-dialog.component';
 
 @Component({
     selector: 'user-jobs-dialog',
@@ -15,36 +17,37 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 export class UserJobsDialogComponent 
 {
 
-    firstMenu = true;
-    secondMenu = false;
+    private showFirst = true;
 
     private _onl1: Array<string>;
-    private _onl2: Array<string>;
-    private _onl3: Array<string>;
+
+    private _ids: any;
 
 
-    constructor( public dialogRef: MatDialogRef<UserJobsDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any) 
+    constructor(
+        public dialogRef: MatDialogRef<UserJobsDialogComponent>, 
+        @Inject(MAT_DIALOG_DATA) 
+        public data: any,  
+        private _dialog: MatDialog, 
+        private _vcr: ViewContainerRef ) 
     { 
         this._onl1 = ['user_job'];
-        this._onl2 = ['user_especialization'];
-        this._onl3 = ['user_college'];
     }
 
-    onNoClick(): void 
+    hideDialog () : void 
     {
-        debugger
-        this.dialogRef.close();
+        this.showFirst = false;
     }
 
-    public next () : void
+    private openDialog () : void
     {
-        this.firstMenu = false;
-        this.secondMenu = true;
-    }
+    	let dialogRef = this._dialog.open(UserEspColDialogComponent, {
 
-    public previous () : void
-    {
-        this.firstMenu = true;
-        this.secondMenu = false;
+    		id: 'user-esp-col-dialog',
+    		panelClass: 'custom-dialog',
+    		viewContainerRef: this._vcr,
+			width: '1200px',
+      		data: { ids: this._ids, ref: this._vcr },
+    	});
     }
 }

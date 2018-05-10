@@ -24,6 +24,7 @@ import { SharedModule }											from '../shared/shared.module';
 
 // --- Dialogs --------------------------------------------------------------------------
 import { UserJobsDialogComponent } from './components/dialogs/user-jobs-dialog.component';
+import { UserEspColDialogComponent } from './components/dialogs/user-esp-col-dialog.component';
 
 
 /**
@@ -42,8 +43,8 @@ import { UserJobsDialogComponent } from './components/dialogs/user-jobs-dialog.c
 
     	SharedModule
 	],
-	entryComponents:[ UserJobsDialogComponent ],
-	declarations: 	[ CampusComponent, AcountComponent, CoursesComponent, CourseCardComponent, CertificatesComponent, CertificateCardComponent, UserJobsDialogComponent ],
+	entryComponents:[ UserJobsDialogComponent, UserEspColDialogComponent ],
+	declarations: 	[ CampusComponent, AcountComponent, CoursesComponent, CourseCardComponent, CertificatesComponent, CertificateCardComponent, UserJobsDialogComponent, UserEspColDialogComponent ],
 	exports: 		[ CampusComponent ]
 })
 export class CampusWidgetModule
