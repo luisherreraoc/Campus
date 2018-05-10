@@ -9,19 +9,25 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
     selector: 'user-jobs-dialog',
-    template: `
-        <mk-form name="user" ids="data.ids" [only]="_only"></mk-form>
-        <button _ngcontent-c3="" class="btn" (click)="next()">SIGUIENTE</button>
-    `
+    templateUrl: 'user-jobs-dialog.component.html',
+    styleUrls: ['user-jobs-dialog.component.css']
 })
 export class UserJobsDialogComponent 
 {
 
-    private _only: Array<string>;
+    firstMenu = true;
+    secondMenu = false;
+
+    private _onl1: Array<string>;
+    private _onl2: Array<string>;
+    private _onl3: Array<string>;
+
 
     constructor( public dialogRef: MatDialogRef<UserJobsDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any) 
     { 
-        this._only = ['user_job'];
+        this._onl1 = ['user_job'];
+        this._onl2 = ['user_especialization'];
+        this._onl3 = ['user_college'];
     }
 
     onNoClick(): void 
@@ -32,6 +38,13 @@ export class UserJobsDialogComponent
 
     public next () : void
     {
-        debugger
+        this.firstMenu = false;
+        this.secondMenu = true;
+    }
+
+    public previous () : void
+    {
+        this.firstMenu = true;
+        this.secondMenu = false;
     }
 }

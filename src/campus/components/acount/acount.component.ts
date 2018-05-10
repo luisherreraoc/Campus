@@ -69,10 +69,10 @@ export class AcountComponent
     		//ariaLabel: 'ariaLabel',
     		//hasBackdrop: false,
     		id: 'user-jobs-dialog',
-    		//panelClass: 'panelClass',
+    		panelClass: 'custom-dialog',
     		//backdropClass: 'backdropClass',
     		viewContainerRef: this._vcr,
-    		width: '500px',
+			width: '1200px',
       		data: { ids: this._ids, ref: this._vcr }
     	});
     }
