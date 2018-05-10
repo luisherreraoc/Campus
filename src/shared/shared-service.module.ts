@@ -8,6 +8,7 @@ import { Router }             																	from '@angular/router';
 // --- App imports ------------------------------------------------------------------------------------------------------
 import { AuthGuard }																			from './services/auth-guard.service';
 import { AuthService }																			from './services/auth.service';
+import { StorageService }																		from './services/storage.service';
 
 //import { PasswordService }																		from './services/password.service';
 
@@ -36,7 +37,12 @@ export class SharedServiceModule
 					provide: AuthService,
 					useClass: AuthService,
 					deps: [ Http, Logger, Loader ]
-				}
+				},
+				{
+					provide: StorageService,
+					useClass: StorageService,
+					deps: [ Logger ]
+				},
 			]
 		}
 	}
