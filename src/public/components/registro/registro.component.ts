@@ -105,6 +105,7 @@ export class RegistroComponent
     private _ids: any;
     private _showTerms: boolean;
 
+    private _question: any;
 
 	public constructor ( 
         private _logger: Logger, 
@@ -177,6 +178,22 @@ export class RegistroComponent
             this._step++;
             this._showIngresar = this._step >= 1 && this._step < len ? false : true;
             this._butonLabel = this._step === len ? 'REGISTRARSE' : 'SIGUIENTE';
+
+            if ( this._step == 2 )
+            {
+                let job:any = this._form.find('registro_job').value || 'Médico';
+
+                this._fs.getFormQuestions('registro').map( (q:any) =>
+                {
+                    if(q.key == 'registro_especialization')
+                    {
+                        debugger
+                        q.options = especialidad[job];
+
+                        this._question = q;
+                    }
+                });
+            }
         }
         else
         {
