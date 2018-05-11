@@ -1,9 +1,9 @@
-import { Component, Inject, ViewContainerRef }                         							from '@angular/core';
-import { Observable, BehaviorSubject, Subscription } 					from "rxjs/Rx";
+import { Component, Inject, ViewContainerRef } from '@angular/core';
+import { Observable, BehaviorSubject, Subscription } from "rxjs/Rx";
 
-import { environment }													from '../../../environments/environment';
+import { environment } from '../../../environments/environment';
 
-import { Logger, MkFormService, MkForm }												from 'mk';			
+import { Logger, MkFormService, MkForm } from 'mk';
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
