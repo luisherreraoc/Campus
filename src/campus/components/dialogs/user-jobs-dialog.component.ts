@@ -14,9 +14,6 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 })
 export class UserJobsDialogComponent 
 {
-
-    private showFirst = true;
-
     private _onl1: Array<string>;
 
     private _ids: any;
