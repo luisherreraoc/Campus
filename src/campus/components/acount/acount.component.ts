@@ -1,13 +1,14 @@
-import { Component, Inject, ViewContainerRef }                         							from '@angular/core';
-import { Observable, BehaviorSubject, Subscription } 					from "rxjs/Rx";
+import { Component, Inject, ViewContainerRef } from '@angular/core';
+import { Observable, BehaviorSubject, Subscription } from "rxjs/Rx";
 
-import { environment }													from '../../../environments/environment';
+import { environment } from '../../../environments/environment';
 
-import { Logger, MkFormService, MkForm }												from 'mk';			
+import { Logger, MkFormService, MkForm } from 'mk';
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 import { UserJobsDialogComponent } from '../dialogs/user-jobs-dialog.component';
+import { UserEspColDialogComponent } from '../dialogs/user-esp-col-dialog.component';
 
 @Component({
 	templateUrl: './acount.component.html',
@@ -66,19 +67,33 @@ export class AcountComponent
         });
     }
 
-    private openDialog () : void
+    private openFirstDialog() : void
     {
     	let dialogRef = this._dialog.open(UserJobsDialogComponent, {
-    		//ariaDescribedBy: 'ariaDescribedBy',
-    		//ariaLabel: 'ariaLabel',
-    		//hasBackdrop: false,
     		id: 'user-jobs-dialog',
-    		//panelClass: 'panelClass',
-    		//backdropClass: 'backdropClass',
-    		viewContainerRef: this._vcr,
-    		width: '500px',
+    		panelClass: 'custom-dialog',
+			viewContainerRef: this._vcr,
+			width: '700px',
       		data: { ids: this._ids, ref: this._vcr }
-    	});
-    }
+		});
+		this._subscriptions.push(this.subscribeDialogClose(dialogRef));
+	}
+
+	private openSecondDialog() : void
+    {
+    	let dialogRef = this._dialog.open(UserEspColDialogComponent, {
+    		id: 'user-esp-col-dialog',
+    		panelClass: 'custom-dialog',
+			viewContainerRef: this._vcr,
+      		data: { ids: this._ids, ref: this._vcr }
+		});
+	}
+	
+	private subscribeDialogClose (dialogRef: any) : Subscription 
+	{
+		return dialogRef.afterClosed().subscribe(resp => { this.openSecondDialog() });
+
+	}
+
 }
 

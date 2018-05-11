@@ -1,37 +1,35 @@
-import { Component, Inject }                                      from '@angular/core';
-import { Observable, BehaviorSubject, Subscription }                from "rxjs/Rx";
+import { Component, Inject, ViewContainerRef } from '@angular/core';
+import { Observable, BehaviorSubject, Subscription } from "rxjs/Rx";
 
-import { environment }                                              from '../../../environments/environment';
+import { environment } from '../../../environments/environment';
 
-import { Logger, MkFormService, MkForm }                        from 'mk';      
+import { Logger, MkFormService, MkForm } from 'mk';      
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
     selector: 'user-jobs-dialog',
-    template: `
-        <mk-form name="user" ids="data.ids" [only]="_only"></mk-form>
-        <button _ngcontent-c3="" class="btn" (click)="next()">SIGUIENTE</button>
-    `
+    templateUrl: 'user-jobs-dialog.component.html',
+    styleUrls: ['user-jobs-dialog.component.css']
 })
 export class UserJobsDialogComponent 
 {
+    private _onl1: Array<string>;
 
-    private _only: Array<string>;
+    private _ids: any;
 
-    constructor( public dialogRef: MatDialogRef<UserJobsDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any) 
+
+    constructor(
+        public dialogRef: MatDialogRef<UserJobsDialogComponent>, 
+        @Inject(MAT_DIALOG_DATA) 
+        public data: any ) 
     { 
-        this._only = ['user_job'];
+        this._onl1 = ['user_job'];
     }
 
-    onNoClick(): void 
+    hideDialog () : void 
     {
-        debugger
         this.dialogRef.close();
     }
-
-    public next () : void
-    {
-        debugger
-    }
+    
 }

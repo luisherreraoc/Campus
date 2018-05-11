@@ -22,9 +22,11 @@ import { PasswordChangeComponent }								from './components/password-change/pas
 
 import { SharedModule }											from '../shared/shared.module';
 
+// import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 // --- Dialogs --------------------------------------------------------------------------
 import { UserJobsDialogComponent } from './components/dialogs/user-jobs-dialog.component';
+import { UserEspColDialogComponent } from './components/dialogs/user-esp-col-dialog.component';
 
 
 /**
@@ -41,10 +43,12 @@ import { UserJobsDialogComponent } from './components/dialogs/user-jobs-dialog.c
     	
     	ReactiveFormsModule,
 
-    	SharedModule
+		SharedModule
+		
+		// NoopAnimationsModule
 	],
-	entryComponents:[ UserJobsDialogComponent ],
-	declarations: 	[ CampusComponent, AcountComponent, CoursesComponent, CourseCardComponent, CertificatesComponent, CertificateCardComponent, UserJobsDialogComponent, PasswordChangeComponent ],
+	entryComponents:[ UserJobsDialogComponent, UserEspColDialogComponent ],
+	declarations: 	[ CampusComponent, AcountComponent, CoursesComponent, CourseCardComponent, CertificatesComponent, CertificateCardComponent, UserJobsDialogComponent, UserEspColDialogComponent, PasswordChangeComponent ],
 	exports: 		[ CampusComponent ]
 })
 export class CampusWidgetModule
