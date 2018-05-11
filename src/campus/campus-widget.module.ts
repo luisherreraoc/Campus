@@ -19,6 +19,8 @@ import { CourseCardComponent }									from './components/course-card/course-car
 import { CertificatesComponent }								from './components/certificates/certificates.component';
 import { CertificateCardComponent }								from './components/certificate-card/certificate-card.component';
 import { PasswordChangeComponent }								from './components/password-change/password-change.component';
+import { AvatarComponent }										from './components/avatar/avatar.component';
+import { CropperComponent }										from './components/cropper/cropper.component';
 
 import { SharedModule }											from '../shared/shared.module';
 
@@ -26,6 +28,8 @@ import { SharedModule }											from '../shared/shared.module';
 // --- Dialogs --------------------------------------------------------------------------
 import { UserJobsDialogComponent } from './components/dialogs/user-jobs-dialog.component';
 
+// --- Img Copper -----------------------------------------------------------------------
+import { ImageCropperComponent, CropperSettings } from "ngx-img-cropper";
 
 /**
  *	Widget module for common components and directives
@@ -43,8 +47,8 @@ import { UserJobsDialogComponent } from './components/dialogs/user-jobs-dialog.c
 
     	SharedModule
 	],
-	entryComponents:[ UserJobsDialogComponent ],
-	declarations: 	[ CampusComponent, AcountComponent, CoursesComponent, CourseCardComponent, CertificatesComponent, CertificateCardComponent, UserJobsDialogComponent, PasswordChangeComponent ],
+	entryComponents:[ UserJobsDialogComponent, CropperComponent ],
+	declarations: 	[ CampusComponent, AcountComponent, CoursesComponent, CourseCardComponent, CertificatesComponent, CertificateCardComponent, UserJobsDialogComponent, PasswordChangeComponent, ImageCropperComponent, AvatarComponent, CropperComponent ],
 	exports: 		[ CampusComponent ]
 })
 export class CampusWidgetModule

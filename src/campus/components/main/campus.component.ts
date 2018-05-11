@@ -1,4 +1,4 @@
-import { Component }                         							from '@angular/core';
+import { Component, ViewChild }                         							from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } 						from '@angular/router';
 
 import { Observable, BehaviorSubject, Subscription } 					from "rxjs/Rx";
@@ -9,7 +9,7 @@ import { environment }													from '../../../environments/environment';
 
 @Component({
 	templateUrl: './campus.component.html',
-	styleUrls: ['./campus.component.scss']
+	styleUrls: ['./campus.component.scss'],
 })
 export class CampusComponent
 {

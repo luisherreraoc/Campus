@@ -5,7 +5,7 @@ import { environment }                                              from '../../
 
 import { Logger, MkFormService, MkForm }                        from 'mk';      
 
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA}                 from '@angular/material';
 
 @Component({
     selector: 'user-jobs-dialog',

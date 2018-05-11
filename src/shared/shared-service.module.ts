@@ -37,7 +37,7 @@ export class SharedServiceModule
 				{
 					provide: AuthService,
 					useClass: AuthService,
-					deps: [ Http, Logger, Loader ]
+					deps: [ Http, Logger, Loader, StorageService ]
 				},
 			]
 		}

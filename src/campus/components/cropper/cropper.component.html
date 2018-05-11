@@ -1,0 +1,11 @@
+<div class="result" *ngIf="_data.image">
+    <img [src]="_data.image" [width]="_cropperSettings.croppedWidth" [height]="_cropperSettings.croppedHeight" (load)="console.log(_data.image)">
+</div>
+
+<div class="cropper">	
+	<img-cropper #cropper [image]="_data" [settings]="_cropperSettings"></img-cropper>
+</div>
+
+<span>Mové la foto para encuadrarla</span>
+
+<button _ngcontent-c3="" class="btn" >Recortar</button>
