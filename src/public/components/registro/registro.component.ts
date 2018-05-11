@@ -187,7 +187,6 @@ export class RegistroComponent
                 {
                     if(q.key == 'registro_especialization')
                     {
-                        debugger
                         q.options = especialidad[job];
 
                         this._question = q;
