@@ -21,7 +21,7 @@ export class UserEspColDialogComponent
 
 
     constructor( 
-        public dialogRef: MatDialog, 
+        public dialogRef: MatDialogRef<UserEspColDialogComponent>, 
         @Inject(MAT_DIALOG_DATA) 
         public data: any ) 
     { 
@@ -31,7 +31,7 @@ export class UserEspColDialogComponent
 
     public next () : void
     {
-        this.dialogRef.closeAll();
+        this.dialogRef.close();
     }
 
 }
