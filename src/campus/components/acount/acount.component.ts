@@ -92,7 +92,7 @@ export class AcountComponent
 	
 	private subscribeDialogClose (dialogRef: any) : Subscription 
 	{
-		return dialogRef.beforeClose().subscribe(resp => { this.openSecondDialog() });
+		return dialogRef.afterClosed().subscribe(resp => { this.openSecondDialog() });
 
 	}
 
