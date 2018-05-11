@@ -24,7 +24,11 @@ export class AcountComponent
 
 	private _ids: any;
 
-	public constructor ( private logger: Logger, private _fs: MkFormService, private _dialog: MatDialog, private _vcr: ViewContainerRef ) 
+	public constructor ( 
+		private logger: Logger, 
+		private _fs: MkFormService, 
+		private _dialog: MatDialog, 
+		private _vcr: ViewContainerRef ) 
 	{ 
 		logger.log('ACOUNT COMPONENT'); 
 		this._onl1 = ['user_first_name', 'user_last_name'];
@@ -65,12 +69,8 @@ export class AcountComponent
     private openDialog () : void
     {
     	let dialogRef = this._dialog.open(UserJobsDialogComponent, {
-    		//ariaDescribedBy: 'ariaDescribedBy',
-    		//ariaLabel: 'ariaLabel',
-    		//hasBackdrop: false,
     		id: 'user-jobs-dialog',
     		panelClass: 'custom-dialog',
-    		//backdropClass: 'backdropClass',
     		viewContainerRef: this._vcr,
 			width: '700px',
       		data: { ids: this._ids, ref: this._vcr }
@@ -82,6 +82,10 @@ export class AcountComponent
 	{
 		return dialogRef.beforeClose().subscribe(resp => { debugger });
 
+	}
+
+	private closeDialogs (dialogRef : any) : void {
+		return dialogRef.closeAll(); 
 	}
 }
 
