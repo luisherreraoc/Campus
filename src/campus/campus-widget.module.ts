@@ -21,6 +21,7 @@ import { CertificateCardComponent }								from './components/certificate-card/c
 
 import { SharedModule }											from '../shared/shared.module';
 
+// import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 // --- Dialogs --------------------------------------------------------------------------
 import { UserJobsDialogComponent } from './components/dialogs/user-jobs-dialog.component';
@@ -41,7 +42,9 @@ import { UserEspColDialogComponent } from './components/dialogs/user-esp-col-dia
     	
     	ReactiveFormsModule,
 
-    	SharedModule
+		SharedModule
+		
+		// NoopAnimationsModule
 	],
 	entryComponents:[ UserJobsDialogComponent, UserEspColDialogComponent ],
 	declarations: 	[ CampusComponent, AcountComponent, CoursesComponent, CourseCardComponent, CertificatesComponent, CertificateCardComponent, UserJobsDialogComponent, UserEspColDialogComponent ],
