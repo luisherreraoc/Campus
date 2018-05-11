@@ -85,7 +85,6 @@ export class AcountComponent
     		id: 'user-esp-col-dialog',
     		panelClass: 'custom-dialog',
 			viewContainerRef: this._vcr,
-			width: '1200px',
       		data: { ids: this._ids, ref: this._vcr }
 		});
 	}
