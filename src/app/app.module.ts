@@ -9,7 +9,7 @@ import { RouterModule, Routes }                                   from '@angular
 import { Logger, Loader, CoreModule, CommonModule, FormModule }   from 'mk';
 
 
-import { MatDialogModule }                                        from '@angular/material';
+import { MatDialogModule, MatIconModule }                                        from '@angular/material';
 
 
 // -- App imports ---------------------------------------------------------------------------
@@ -34,7 +34,8 @@ import { CampusModule } from '../campus/campus.module';
         CommonModule,
         FormModule,
 
-        MatDialogModule
+        MatDialogModule,
+        MatIconModule
     ],
     providers: [ 
         Loader, 

@@ -1,0 +1,22 @@
+[
+	
+	{
+	    "key": "username",
+	    "label": "Nombre y Appellido",
+	    "value": "",
+	    "required": true,
+	    "order": 1,
+	    "maxlength": "200",
+	    "type": "text"
+    },
+    {
+	    "key": "email",
+	    "label": "E-mail",
+	    "value": "",
+	    "required": true,
+	    "order": 2,
+	    "maxlength": "80",
+	    "type": "email"
+    }
+	
+]

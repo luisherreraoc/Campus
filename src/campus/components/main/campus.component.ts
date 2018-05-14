@@ -48,7 +48,7 @@ export class CampusComponent
 
 	private getSegment () : string
 	{
-		let reg: any = new RegExp('\/.*\/(.*)|\/?');
+		let reg: any = new RegExp('\/.*\/([^;]*)|\/?');
 		let segment = this._router.url;
 		let res: any = reg.exec(segment);
 		return res[1];

@@ -33,6 +33,7 @@ export const environment = {
   pathAcount: 'mi-cuenta',
   pathCourses: 'mis-cursos',
   pathCertificates: 'mis-certificaciones',
+  pathCertificateRequest: 'pedir-certificacion',
   pathPasswordChange: 'cambiar-contrasena',
 
   ssoLoginUrl: 'http://sso-test.oceano.com/sso/login',

@@ -18,15 +18,15 @@ export class AuthService
 {
 	// store the URL so we can redirect after logging in
   	private _redirectUrl: string;
-	private _ssoLogin: string;
+	  private _ssoLogin: string;
 
     private _user_id: string;
 
 	public constructor ( private _http: Http, private _logger: Logger, private _loader: Loader, private _storage: StorageService )
 	{
-		this._ssoLogin = environment.ssoLoginUrl;
+		  this._ssoLogin = environment.ssoLoginUrl;
 
-        this._user_id = 'token';
+      this._user_id = 'token';
 	}
 
 	public get redirectUrl () : string { return this._redirectUrl; }
@@ -35,7 +35,6 @@ export class AuthService
 
   	public login( data: any ): Observable<Response> 
   	{
-          debugger
   	  	return this._http.post( this._ssoLogin, data )
         .map( (response:any) => {
             let res: any = response.json();
