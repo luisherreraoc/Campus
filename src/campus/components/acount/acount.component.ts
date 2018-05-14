@@ -8,7 +8,6 @@ import { Logger, MkFormService, MkForm } from 'mk';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 import { UserJobsDialogComponent } from '../dialogs/user-jobs-dialog.component';
-import { UserEspColDialogComponent } from '../dialogs/user-esp-col-dialog.component';
 
 @Component({
 	templateUrl: './acount.component.html',

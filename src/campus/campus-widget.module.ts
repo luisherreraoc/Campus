@@ -26,8 +26,6 @@ import { SharedModule }											from '../shared/shared.module';
 
 // --- Dialogs --------------------------------------------------------------------------
 import { UserJobsDialogComponent } from './components/dialogs/user-jobs-dialog.component';
-import { UserEspColDialogComponent } from './components/dialogs/user-esp-col-dialog.component';
-
 
 /**
  *	Widget module for common components and directives
@@ -47,8 +45,8 @@ import { UserEspColDialogComponent } from './components/dialogs/user-esp-col-dia
 		
 		// NoopAnimationsModule
 	],
-	entryComponents:[ UserJobsDialogComponent, UserEspColDialogComponent ],
-	declarations: 	[ CampusComponent, AcountComponent, CoursesComponent, CourseCardComponent, CertificatesComponent, CertificateCardComponent, UserJobsDialogComponent, UserEspColDialogComponent, PasswordChangeComponent ],
+	entryComponents:[ UserJobsDialogComponent ],
+	declarations: 	[ CampusComponent, AcountComponent, CoursesComponent, CourseCardComponent, CertificatesComponent, CertificateCardComponent, UserJobsDialogComponent, PasswordChangeComponent ],
 	exports: 		[ CampusComponent ]
 })
 export class CampusWidgetModule
