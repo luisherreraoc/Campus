@@ -54,6 +54,7 @@ export class AvatarComponent
     	return Observable.fromEvent(this._input.nativeElement, 'change')
     	.subscribe( (ev:any) =>
     	{
+
     		let img: any = new Image();
     		let file: File = ev.target.files[0];
     		let reader: FileReader = new FileReader();
@@ -87,7 +88,7 @@ export class AvatarComponent
 		return dialogRef.beforeClose()
 		.subscribe( ( me ) => 
 		{
-			let dial: MatDialog = this._dialog;
+			//let dial: MatDialog = this._dialog;
 			let d: MatDialogRef<any> = dialogRef;
 			debugger
 			// Esto no esta muy bonito,queda para arreglar -----
@@ -95,6 +96,12 @@ export class AvatarComponent
 			this._subscriptions[len].unsubscribe();
 			this._subscriptions.pop();
 			// -------------------------------------------------
+
+			let cropped = d.componentInstance.cropped;
+
+			this._img.nativeElement.src = cropped;
+
+			//this._input.src = d.containerInstance.data
 		});
 	}
 

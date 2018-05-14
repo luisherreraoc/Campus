@@ -23,6 +23,7 @@ export class CropperComponent
 	@ViewChild('cropper', undefined) _cropper:ImageCropperComponent;
 
    	public _data: any;
+   	public cropped: any;
 
     private _cropperSettings: CropperSettings;
     private _subscriptions: Array<Subscription>;
@@ -64,6 +65,12 @@ export class CropperComponent
             sub.unsubscribe()
         });
         this._subscriptions.length = 0;
+    }
+
+    private onLoad ( img: any ) : void
+    {
+    	debugger
+    	this.cropped = img;
     }
 
 }

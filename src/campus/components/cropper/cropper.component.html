@@ -1,5 +1,5 @@
 <div class="result" *ngIf="_data.image">
-    <img [src]="_data.image" [width]="_cropperSettings.croppedWidth" [height]="_cropperSettings.croppedHeight" (load)="console.log(_data.image)">
+    <img [src]="_data.image" [width]="_cropperSettings.croppedWidth" [height]="_cropperSettings.croppedHeight" (load)="onLoad(_data.image)">
 </div>
 
 <div class="cropper">	
