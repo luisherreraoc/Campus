@@ -1,8 +1,22 @@
-<div class="first-form-container">
+<div class="first-form-container" *ngIf="firstMenu">
     <div class="select-job">
-        <mk-form name="user" ids="data.ids" [only]="_onl1"></mk-form>
+        <mk-form name="user" ids="data.ids" [only]="_steps[_step]"></mk-form>
     </div>
     <div class="button-container">
-        <button _ngcontent-c3="" class="btn" (click)="hideDialog()" >ACEPTAR</button>
+        <button _ngcontent-c3="" class="btn" (click)="next()" >ACEPTAR</button>
+    </div>
+</div>
+
+<div class="second-form-container" *ngIf="secondMenu">
+    <div class="select-especialization">
+        <ng-container *ngIf="_step == 1">
+            <mk-form-select-list-multiple [question]="_question" form="user"></mk-form-select-list-multiple>
+        </ng-container>
+    </div>
+    <div class="select-college">
+        <mk-form name="user" ids="data.ids" [only]="_only"></mk-form>
+        <div class="button-container">
+            <button _ngcontent-c3="" class="btn" (click)="next()">ACEPTAR</button>
+        </div>
     </div>
 </div>

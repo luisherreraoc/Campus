@@ -31,7 +31,7 @@ export class AcountComponent
 	{ 
 		logger.log('ACOUNT COMPONENT'); 
 		this._onl1 = ['user_first_name', 'user_last_name'];
-	 	this._onl2 = ['user_prefix', 'user_telefono'];
+		this._onl2 = ['user_prefix', 'user_telefono'];
 	 	this._key = environment.icon_key;
 
 	 	this._ids = {'user':'154'};
@@ -73,27 +73,9 @@ export class AcountComponent
     		id: 'user-jobs-dialog',
     		panelClass: 'custom-dialog',
 			viewContainerRef: this._vcr,
-			width: '700px',
-      		data: { ids: this._ids, ref: this._vcr }
+      		data: { 
+				ids: this._ids, 
+				ref: this._vcr
+			}
 		});
-		this._subscriptions.push(this.subscribeDialogClose(dialogRef));
-	}
-
-	private openSecondDialog() : void
-    {
-    	let dialogRef = this._dialog.open(UserEspColDialogComponent, {
-    		id: 'user-esp-col-dialog',
-    		panelClass: 'custom-dialog',
-			viewContainerRef: this._vcr,
-      		data: { ids: this._ids, ref: this._vcr }
-		});
-	}
-	
-	private subscribeDialogClose (dialogRef: any) : Subscription 
-	{
-		return dialogRef.afterClosed().subscribe(resp => { this.openSecondDialog() });
-
-	}
-
-}
-
+	}}

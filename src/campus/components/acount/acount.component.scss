@@ -35,5 +35,18 @@
 			background-color: transparent;
 			box-shadow: none; 
 		}
+
+		.form-group li:last-child {
+			border-bottom: none;
+		}
+
+		.form-group li:first-child {
+			border-top: none;
+		}
+
+		.form-group {
+			border-top: none;
+			border-bottom: none;
+		}
 	}
 }
