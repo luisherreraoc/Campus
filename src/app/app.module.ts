@@ -20,7 +20,7 @@ import { CampusModule } from '../campus/campus.module';
 
 @NgModule({
     declarations: [
-        AppComponent,
+        AppComponent
     ],
     imports: [
         BrowserModule,

@@ -23,10 +23,10 @@ import { PasswordChangeComponent }								from './components/password-change/pas
 
 import { SharedModule }											from '../shared/shared.module';
 
+// import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 // --- Dialogs --------------------------------------------------------------------------
 import { UserJobsDialogComponent } from './components/dialogs/user-jobs-dialog.component';
-
 
 /**
  *	Widget module for common components and directives
@@ -42,7 +42,9 @@ import { UserJobsDialogComponent } from './components/dialogs/user-jobs-dialog.c
     	
     	ReactiveFormsModule,
 
-    	SharedModule
+		SharedModule
+		
+		// NoopAnimationsModule
 	],
 	entryComponents:[ UserJobsDialogComponent ],
 	declarations: 	[ CampusComponent, AcountComponent, CoursesComponent, CourseCardComponent, CertificatesComponent, CertificateCardComponent, CertificateRequestComponent, UserJobsDialogComponent, PasswordChangeComponent ],

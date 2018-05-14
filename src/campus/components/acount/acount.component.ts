@@ -1,9 +1,9 @@
-import { Component, Inject, ViewContainerRef }                         							from '@angular/core';
-import { Observable, BehaviorSubject, Subscription } 					from "rxjs/Rx";
+import { Component, Inject, ViewContainerRef } from '@angular/core';
+import { Observable, BehaviorSubject, Subscription } from "rxjs/Rx";
 
-import { environment }													from '../../../environments/environment';
+import { environment } from '../../../environments/environment';
 
-import { Logger, MkFormService, MkForm }												from 'mk';			
+import { Logger, MkFormService, MkForm } from 'mk';
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
@@ -30,7 +30,7 @@ export class AcountComponent
 	{ 
 		logger.log('ACOUNT COMPONENT'); 
 		this._onl1 = ['user_first_name', 'user_last_name'];
-	 	this._onl2 = ['user_prefix', 'user_telefono'];
+		this._onl2 = ['user_prefix', 'user_telefono'];
 	 	this._key = environment.icon_key;
 
 	 	this._ids = {'user':'154'};
@@ -66,19 +66,15 @@ export class AcountComponent
         });
     }
 
-    private openDialog () : void
+    private openFirstDialog() : void
     {
     	let dialogRef = this._dialog.open(UserJobsDialogComponent, {
-    		//ariaDescribedBy: 'ariaDescribedBy',
-    		//ariaLabel: 'ariaLabel',
-    		//hasBackdrop: false,
     		id: 'user-jobs-dialog',
-    		//panelClass: 'panelClass',
-    		//backdropClass: 'backdropClass',
-    		viewContainerRef: this._vcr,
-    		width: '500px',
-      		data: { ids: this._ids, ref: this._vcr }
-    	});
-    }
-}
-
+    		panelClass: 'custom-dialog',
+			viewContainerRef: this._vcr,
+      		data: { 
+				ids: this._ids, 
+				ref: this._vcr
+			}
+		});
+	}}
