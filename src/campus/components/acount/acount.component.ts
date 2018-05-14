@@ -33,7 +33,7 @@ export class AcountComponent
 	{ 
 		logger.log('ACOUNT COMPONENT'); 
 		this._onl1 = ['user_first_name', 'user_last_name'];
-	 	this._onl2 = ['user_prefix', 'user_telefono'];
+		this._onl2 = ['user_prefix', 'user_telefono'];
 	 	this._key = environment.icon_key;
 
 	 	this._ids = {'user':'154'};
@@ -75,44 +75,7 @@ export class AcountComponent
 			viewContainerRef: this._vcr,
       		data: { 
 				ids: this._ids, 
-				ref: this._vcr 
+				ref: this._vcr
 			}
 		});
-		// this._subscriptions.push(this.subscribeDialogClose(dialogRef));
-	}
-
-	// private openSecondDialog() : void
-    // {
-	// 	// let job:any = this._form.find('user_job').value || 'Médico';
-
-	// 	// this._fs.getFormQuestions('registro').map( (q:any) =>
-	// 	// {
-	// 	// 	if(q.key == 'user_especialization')
-	// 	// 	{
-	// 	// 		q.options = especialidad[job];
-
-	// 	// 	}
-	// 	// });
-
-    // 	let dialogRef = this._dialog.open(UserEspColDialogComponent, {
-    // 		id: 'user-esp-col-dialog',
-    // 		panelClass: 'custom-dialog',
-	// 		viewContainerRef: this._vcr,
-    //   		data: { 
-	// 			ids: this._ids, 
-	// 			ref: this._vcr 
-	// 			// pasar la info recuperada arriba como data
-	// 		}
-	// 	});
-	// }
-	
-	// private subscribeDialogClose (dialogRef: any) : Subscription 
-	// {
-	// 	return dialogRef.afterClosed()
-	// 		.subscribe(resp => { 
-	// 			this.openSecondDialog()
-	// 		});
-	// }
-
-}
-
+	}}

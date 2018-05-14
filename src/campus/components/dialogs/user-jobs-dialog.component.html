@@ -1,12 +1,3 @@
-<!-- <div class="first-form-container">
-    <div class="select-job">
-        <mk-form name="user" ids="data.ids" [only]="_onl1"></mk-form>
-    </div>
-    <div class="button-container">
-        <button _ngcontent-c3="" class="btn" (click)="hideDialog()" >ACEPTAR</button>
-    </div>
-</div> -->
-
 <div class="first-form-container" *ngIf="firstMenu">
     <div class="select-job">
         <mk-form name="user" ids="data.ids" [only]="_steps[_step]"></mk-form>
@@ -23,7 +14,7 @@
         </ng-container>
     </div>
     <div class="select-college">
-        <mk-form name="user" ids="data.ids" [only]="_onl3"></mk-form>
+        <mk-form name="user" ids="data.ids" [only]="_only"></mk-form>
         <div class="button-container">
             <button _ngcontent-c3="" class="btn" (click)="next()">ACEPTAR</button>
         </div>

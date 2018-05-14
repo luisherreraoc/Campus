@@ -102,9 +102,7 @@ export class UserJobsDialogComponent
     private _step: number;
     private _steps: Array<Array<string>>;
 
-    private _onl1: Array<string>;
-    private _onl2: Array<string>;
-    private _onl3: Array<string>;
+    private _only: Array<string>;
 
     private _form: MkForm;
     private _form_group: FormGroup;
@@ -112,6 +110,8 @@ export class UserJobsDialogComponent
     private _ids: any;
 
     private _question: any;
+
+    private test: any;
 
     constructor( 
         public dialogRef: MatDialogRef<UserJobsDialogComponent>, 
@@ -133,10 +133,10 @@ export class UserJobsDialogComponent
             new Array("user_especialization")
         ];
 
-        this._onl3 = ['user_college'];
+        this._only = ['user_college'];
 
         this._form_group = new FormGroup({});
-        this._subscriptions = new Array();
+        this._subscriptions = new Array();        
     }
 
     public ngOnInit ()
@@ -163,9 +163,7 @@ export class UserJobsDialogComponent
             if (form) 
             { 
                 this._form = form; 
-                this._form_group = this._form.formGroup;
-                this._form_group.reset();
-                
+                this._form_group = this._form.formGroup;                
             }
         });
     }
@@ -180,13 +178,6 @@ export class UserJobsDialogComponent
             this._step++;
             this.firstMenu = false;
             this.secondMenu = true;
-
-            aux = this._form_group.getRawValue();
-            data = {
-                'user_job': aux.user_job
-            }
-
-            this.send(data);
             
             if ( this._step == 1 ) {
                 let job : any = this._form.find('user_job').value || 'Médico';
@@ -202,6 +193,7 @@ export class UserJobsDialogComponent
         } else {
             aux = this._form_group.getRawValue();
             data = {
+                'user_job': aux.user_job,
                 'user_especialization': aux.user_especialization,
                 'user_college': aux.user_college
             }
@@ -220,31 +212,3 @@ export class UserJobsDialogComponent
     }
 
 }
-
-// @Component({
-//     selector: 'user-jobs-dialog',
-//     templateUrl: 'user-jobs-dialog.component.html',
-//     styleUrls: ['user-jobs-dialog.component.css']
-// })
-// export class UserJobsDialogComponent 
-// {
-//     private _onl1: Array<string>;
-
-//     private _ids: any;
-
-
-//     constructor(
-//         public dialogRef: MatDialogRef<UserJobsDialogComponent>, 
-//         @Inject(MAT_DIALOG_DATA) 
-//         public data: any ) 
-//     { 
-//         this._onl1 = ['user_job'];
-//     }
-
-//     hideDialog () : void 
-//     {
-//         this.dialogRef.close();
-//         // junto con el close pasar la información seleccionada en el form al parent 
-//     }
-    
-// }
