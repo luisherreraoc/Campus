@@ -180,6 +180,13 @@ export class UserJobsDialogComponent
             this._step++;
             this.firstMenu = false;
             this.secondMenu = true;
+
+            aux = this._form_group.getRawValue();
+            data = {
+                'user_job': aux.user_job
+            }
+
+            this.send(data);
             
             if ( this._step == 1 ) {
                 let job : any = this._form.find('user_job').value || 'Médico';
@@ -195,7 +202,6 @@ export class UserJobsDialogComponent
         } else {
             aux = this._form_group.getRawValue();
             data = {
-                'user_job': aux.user_job,
                 'user_especialization': aux.user_especialization,
                 'user_college': aux.user_college
             }
