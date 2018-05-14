@@ -35,5 +35,9 @@
 			background-color: transparent;
 			box-shadow: none; 
 		}
+
+		.form-group li:last-child {
+			border-bottom: none;
+		}
 	}
 }
