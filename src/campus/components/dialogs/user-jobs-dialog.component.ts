@@ -30,6 +30,7 @@ export class UserJobsDialogComponent
     hideDialog () : void 
     {
         this.dialogRef.close();
+        // junto con el close pasar la información seleccionada en el form al parent 
     }
     
 }
