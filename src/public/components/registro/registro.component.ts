@@ -213,8 +213,6 @@ export class RegistroComponent
 
             if (aux.registro_accepted_terms === true) {
                 this.send(data);
-                console.log(data);
-                console.log(aux);
             } else {
                 alert('Por favor, acepte los términos y condiciones');
             }
@@ -253,7 +251,8 @@ export class RegistroComponent
         this._rs.register(data)
         .subscribe( ( response: any ) =>
         {
-            debugger
+            debugger;
+            this._router.navigateByUrl('/public/login');
         });
     }
 }
