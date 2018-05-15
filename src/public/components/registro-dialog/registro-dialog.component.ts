@@ -3,8 +3,7 @@ import { MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'registro-dialog',
-  templateUrl: './registro-dialog.component.html',
-  styleUrls: ['./registro-dialog.component.css']
+  templateUrl: './registro-dialog.component.html'
 })
 export class RegistroDialogComponent implements OnInit {
 
