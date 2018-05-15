@@ -132,9 +132,7 @@ export class RegistroComponent
         this._butonLabel = 'SIGUIENTE';
 		this._form_group = new FormGroup({});
         this._subscriptions = new Array();
-          
-        this._checkDisable = false;
-
+        
         //this.ids = { 'registro': [0] };
         //this._fs.addServices(_rs);
 	}
@@ -212,9 +210,14 @@ export class RegistroComponent
                 'college': aux.registro_college,
                 'redirect': redirect_url
             }
-            this.send(data);
-            console.log(data);
-            console.log(aux);
+
+            if (aux.registro_accepted_terms === true) {
+                this.send(data);
+                console.log(data);
+                console.log(aux);
+            } else {
+                alert('Por favor, acepte los términos y condiciones');
+            }
         }
     }
 
@@ -224,11 +227,12 @@ export class RegistroComponent
 
         if (this._step == 2 && aux.registro_job === null) {
             this._step--;
-            alert('please select job')
+            alert('Por favor, seleccione un empleo');
         }
 
         if (this._step == 3 && aux.registro_especialization === null) {
             this._step--;
+            alert('Por favor, seleccione una especialización');
         }
 
     }
