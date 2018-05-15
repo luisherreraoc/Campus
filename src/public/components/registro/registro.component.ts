@@ -104,6 +104,7 @@ export class RegistroComponent
 	private _subscriptions: Array<any>;
     private _ids: any;
     private _showTerms: boolean;
+    private _checkDisable: boolean;
 
     private _question: any;
 
@@ -130,7 +131,9 @@ export class RegistroComponent
         this._showIngresar = true;
         this._butonLabel = 'SIGUIENTE';
 		this._form_group = new FormGroup({});
-  		this._subscriptions = new Array();
+        this._subscriptions = new Array();
+          
+        this._checkDisable = false;
 
         //this.ids = { 'registro': [0] };
         //this._fs.addServices(_rs);
@@ -179,6 +182,8 @@ export class RegistroComponent
             this._showIngresar = this._step >= 1 && this._step < len ? false : true;
             this._butonLabel = this._step === len ? 'REGISTRARSE' : 'SIGUIENTE';
 
+            this.checkSelected();
+
             if ( this._step == 2 )
             {
                 let job:any = this._form.find('registro_job').value || 'Médico';
@@ -208,7 +213,24 @@ export class RegistroComponent
                 'redirect': redirect_url
             }
             this.send(data);
+            console.log(data);
+            console.log(aux);
         }
+    }
+
+    private checkSelected () : void 
+    {
+        let aux = this._form_group.getRawValue();
+
+        if (this._step == 2 && aux.registro_job === null) {
+            this._step--;
+            alert('please select job')
+        }
+
+        if (this._step == 3 && aux.registro_especialization === null) {
+            this._step--;
+        }
+
     }
 
     private openTerms () : void
