@@ -272,7 +272,7 @@ export class RegistroComponent
         .subscribe( ( response: any ) =>
         {
             debugger;
-            this._router.navigateByUrl('/public/login');
+            // this._router.navigateByUrl('/public/login');
         });
     }
 }
