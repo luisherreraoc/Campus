@@ -73,7 +73,7 @@
         "value": "",
         "required": true,
         "order": 6,
-        "type": "select-list",
+        "type": "select-list-multiple",
         "maxlength": "120",
         "options" : [
             { "value": "Anestesiología", "text": "Anestesiología" },

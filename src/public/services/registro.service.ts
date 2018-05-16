@@ -34,6 +34,9 @@ export class RegistroService extends DataService<Registro>
 
 	public register ( data: {[key:string]:any} ) : Observable<any>
 	{
-		return this.http.post(this._dsUrl,data);
+		return this.http.post(this._dsUrl + '/api/user/register', data)
+		.map( (response : any) => { 
+			return response.json()
+		});
 	} 
 }

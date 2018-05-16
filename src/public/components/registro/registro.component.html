@@ -1,4 +1,4 @@
-<mk-form name="registro" [ids]="_ids" [only]="_steps[_step]"></mk-form>
+<mk-form name="registro" [ids]="_ids" [only]="_steps[_step]" required></mk-form>
 
 <ng-container *ngIf="step == 2">
 	<mk-form-select-list-multiple [question]="question" form="registro"></mk-form-select-list-multiple>

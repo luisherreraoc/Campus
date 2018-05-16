@@ -17,6 +17,8 @@ import { LoginComponent }										from './components/login/login.component';
 import { RegistroComponent }									from './components/registro/registro.component';
 import { PasswordRecoveryComponent }							from './components/password-recovery/password-recovery.component';
 //import { PasswordChangeComponent }							from './components/password/password-change.component';
+import { RegistroDialogComponent } from './components/registro-dialog/registro-dialog.component'
+
 
 import { SharedModule }											from '../shared/shared.module';
 
@@ -36,8 +38,14 @@ import { SharedModule }											from '../shared/shared.module';
 
     	SharedModule
 	],
-	entryComponents:[ ],
-	declarations: 	[ PublicComponent, LoginComponent, RegistroComponent, PasswordRecoveryComponent,/*PasswordChangeComponent, DialogTermsAndConditionsComponent,*/ ],
+	entryComponents:[ RegistroDialogComponent ],
+	declarations: 	[ 
+		PublicComponent, 
+		LoginComponent, 
+		RegistroComponent, 
+		PasswordRecoveryComponent,
+		RegistroDialogComponent, 
+		/*PasswordChangeComponent, DialogTermsAndConditionsComponent,*/ ],
 	exports: 		[ PublicComponent ]
 })
 export class PublicWidgetModule
