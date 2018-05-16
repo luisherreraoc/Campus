@@ -248,7 +248,7 @@ export class RegistroComponent
                 id: 'registro-dialog',
                 viewContainerRef: this._vcr,
                 data: {
-                    texto: 'seleccione una especialización'
+                    texto: 'seleccione su especialización/es'
                 }
             });
         }
