@@ -37,7 +37,6 @@ export class RegistroService extends DataService<Registro>
 		return this.http.post(this._dsUrl,data)
 		.map( (response : any) => { 
 			console.log(data)
-			console.log(response) 
 		});
 	} 
 }
