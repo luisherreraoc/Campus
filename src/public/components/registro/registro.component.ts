@@ -1,5 +1,5 @@
 // -- Angular imports -----------------------------------------------------------------------------------------
-import { Component, OnInit, Inject }                         							from '@angular/core';
+import { Component, OnInit, Inject, ViewContainerRef }                         							from '@angular/core';
 import { AbstractControl, FormGroup }        									from '@angular/forms';
 import { Observable, BehaviorSubject, Subscription } 							from "rxjs/Rx"; 
 import { Http, Response, Headers, RequestOptions } 								from '@angular/http';
@@ -10,6 +10,8 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA}                               
 import { Logger, MkFormService, MkForm }										from 'mk';	
 
 import { RegistroService }                                                      from '../../services/registro.service';
+
+import { RegistroDialogComponent } from '../registro-dialog/registro-dialog.component'
 
 const redirect_url: string = 'localhost:4200/public/login';
 
@@ -104,6 +106,7 @@ export class RegistroComponent
 	private _subscriptions: Array<any>;
     private _ids: any;
     private _showTerms: boolean;
+    private _checkDisable: boolean;
 
     private _question: any;
 
@@ -113,7 +116,8 @@ export class RegistroComponent
         private _http: Http, 
         private _router: Router, 
         private _rs: RegistroService,
-        private _dialog: MatDialog ) 
+        private _dialog: MatDialog,
+        private _vcr: ViewContainerRef ) 
 	{ 
 		_logger.log('REGISTRO COMPONENT'); 
 
@@ -130,8 +134,8 @@ export class RegistroComponent
         this._showIngresar = true;
         this._butonLabel = 'SIGUIENTE';
 		this._form_group = new FormGroup({});
-  		this._subscriptions = new Array();
-
+        this._subscriptions = new Array();
+        
         //this.ids = { 'registro': [0] };
         //this._fs.addServices(_rs);
 	}
@@ -179,6 +183,8 @@ export class RegistroComponent
             this._showIngresar = this._step >= 1 && this._step < len ? false : true;
             this._butonLabel = this._step === len ? 'REGISTRARSE' : 'SIGUIENTE';
 
+            this.checkSelected();
+
             if ( this._step == 2 )
             {
                 let job:any = this._form.find('registro_job').value || 'Médico';
@@ -207,8 +213,46 @@ export class RegistroComponent
                 'college': aux.registro_college,
                 'redirect': redirect_url
             }
-            this.send(data);
+
+            if (aux.registro_accepted_terms === true) {
+                this.send(data);
+            } else {
+                let dialogRef = this._dialog.open(RegistroDialogComponent, {
+                    id: 'registro-dialog',
+                    viewContainerRef: this._vcr,
+                    data: {
+                        texto: 'acepte los términos y condiciones'
+                    }
+                });            }
         }
+    }
+
+    private checkSelected () : void 
+    {
+        let aux = this._form_group.getRawValue();
+
+        if (this._step == 2 && aux.registro_job === null) {
+            this._step--;
+            let dialogRef = this._dialog.open(RegistroDialogComponent, {
+                id: 'registro-dialog',
+                viewContainerRef: this._vcr,
+                data: {
+                    texto: 'seleccione un empleo'
+                }
+            });
+        }
+
+        if (this._step == 3 && aux.registro_especialization === null) {
+            this._step--;
+            let dialogRef = this._dialog.open(RegistroDialogComponent, {
+                id: 'registro-dialog',
+                viewContainerRef: this._vcr,
+                data: {
+                    texto: 'seleccione su especialización/es'
+                }
+            });
+        }
+
     }
 
     private openTerms () : void
@@ -227,7 +271,8 @@ export class RegistroComponent
         this._rs.register(data)
         .subscribe( ( response: any ) =>
         {
-            debugger
+            debugger;
+            // this._router.navigateByUrl('/public/login');
         });
     }
 }
