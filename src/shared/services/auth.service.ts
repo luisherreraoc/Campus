@@ -38,7 +38,8 @@ export class AuthService
   	  	return this._http.post( this._ssoLogin, data )
         .map( (response:any) => {
             let res: any = response.json();
-            this._storage.set(this._user_id, res.access_token)
+			this._storage.set(this._user_id, res.access_token)
+			console.log(this._user_id);
             return res;
         });
   	}
@@ -51,5 +52,11 @@ export class AuthService
   	public isLoggedIn () : boolean
   	{
   		return this._storage.get(this._user_id) != undefined;
-  	}
+	}
+	
+	public getToken () 
+	{
+		return this._storage.get(this._user_id);
+	}
+
 }

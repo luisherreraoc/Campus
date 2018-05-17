@@ -16,7 +16,7 @@ export class StorageService
     {
         return localStorage.getItem(name);
     }
-
+    
     public set ( name: string, item: any ) : void
     {
         localStorage.setItem( name, item );
