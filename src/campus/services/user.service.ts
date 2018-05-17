@@ -12,6 +12,8 @@ import { Loader }										from 'mk';
 
 import { User, UserInterface }				    		from '../models/user.model';
 
+import { AuthService } from '../../shared/services/auth.service';
+
 export class UserService extends DataService<User>
 {
 
@@ -20,9 +22,13 @@ export class UserService extends DataService<User>
 	public constructor ( 
 		private http: Http, 
 		private loader: Loader, 
-		private logger: Logger )
+		private logger: Logger,
+		private _as: AuthService )
 	{
 		super(User, logger, loader);
+
+		console.log(_as);
+		console.log('TUSCOJONES33');
 	}
 
 
@@ -38,8 +44,14 @@ export class UserService extends DataService<User>
 		return this.http.get( environment.apiUrl + environment.apiPasswordChange, data )
 		.map( res => res.json() );
 	}
+
 	public register ( data: {[key:string]:any} ) : Observable<any>
 	{
 		return this.http.post(this._dsUrl,data);
 	} 
+
+	public saveAvantar ( img: string ) : Observable<any>
+	{
+		return this.http.post('http://ds-test.oceano.com/api/test/post',img);
+	}
 }

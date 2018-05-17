@@ -3,7 +3,7 @@ import { Router, ActivatedRoute, NavigationEnd } 						from '@angular/router';
 
 import { Observable, BehaviorSubject, Subscription } 					from "rxjs/Rx";
 
-import { Logger }														from 'mk';
+import { Logger, Loader }												from 'mk';
 
 import { environment }													from '../../../environments/environment';		
 
@@ -29,7 +29,7 @@ export class AvatarComponent
 
 	private _subscriptions: Array<Subscription>;
 
-	public constructor ( private _logger: Logger, private _dialog: MatDialog, private _vcr: ViewContainerRef, private _us: UserService ) 
+	public constructor ( private _logger: Logger, private _loader: Loader, private _dialog: MatDialog, private _vcr: ViewContainerRef, private _us: UserService ) 
 	{ 
 		_logger.log('Avatar Component');
 	}
@@ -85,33 +85,37 @@ export class AvatarComponent
 	private subscribeDialogClosed ( dialogRef: MatDialogRef<any> ) : Subscription
 	{
 		return dialogRef.beforeClose()
+		.takeUntil(dialogRef.afterClosed())
 		.subscribe( ( me ) => 
 		{
-			//let dial: MatDialog = this._dialog;
 			let d: MatDialogRef<any> = dialogRef;
-			
-			// Esto no esta muy bonito,queda para arreglar -----
-			let len: number = this._subscriptions.length - 1;
-			this._subscriptions[len].unsubscribe();
-			this._subscriptions.pop();
-			// -------------------------------------------------
-
-			let cropped = d.componentInstance.cropped;
-
-			this._img.nativeElement.src = cropped;
-
-
+			let c: string = d.componentInstance.cropped;
+			this._img.nativeElement.src = c;
+			this._input.nativeElement.value = '';
+			this.saveAvatar(c);
 		});
 	}
 
 	private openDialog ( image: any ) : void
     {
-    	let dialogRef = this._dialog.open( CropperComponent, {
+    	let dialogRef = this._dialog.open( CropperComponent, 
+    	{
     		id: 'user-avatar-cropper-dialog',
     		viewContainerRef: this._vcr,
       		data: { img: image, rep: this._img }
     	});
+    	this.subscribeDialogClosed( dialogRef );
+    	
+    }
 
-    	this._subscriptions.push( this.subscribeDialogClosed( dialogRef ) );
+    private saveAvatar ( img: string ) : void
+    {
+    	this._loader.show('avatar');
+    	this._us.saveAvantar(img)
+    	.subscribe( ( resp: any ) =>
+    	{
+    		this._loader.dismiss('avatar');
+    		debugger
+    	});
     }
 }
