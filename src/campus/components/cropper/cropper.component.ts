@@ -1,4 +1,4 @@
-import { Component, ViewChild, Inject }                         		from '@angular/core';
+import { Component, ViewChild, Inject, ElementRef, Renderer2 }                         		from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } 						from '@angular/router';
 
 import { Observable, BehaviorSubject, Subscription } 					from "rxjs/Rx";
@@ -12,6 +12,10 @@ import { ImageCropperComponent, CropperSettings } 						from "ngx-img-cropper";
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA}                 		from '@angular/material';
 
+// TEST
+import { DOCUMENT } from '@angular/platform-browser';
+
+
 @Component({
 	selector: 'cropper',
 	templateUrl: './cropper.component.html',
@@ -19,44 +23,27 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA}                 		from '@angul
 })
 export class CropperComponent
 {
-	@ViewChild('input', undefined) _input:any;
-	@ViewChild('cropper', undefined) _cropper:ImageCropperComponent;
+	@ViewChild('img', undefined) _img: ElementRef;
+	@ViewChild('cropper', undefined) _cropper: ElementRef;
 
-   	public _data: any;
-   	public cropped: any;
+    public dragEnabled: boolean;
+    public cropped: string;
 
-    private _cropperSettings: CropperSettings;
+   	private _context: CanvasRenderingContext2D;
     private _subscriptions: Array<Subscription>;
 
-	public constructor ( private _logger: Logger, public dialogRef: MatDialogRef<CropperComponent>, @Inject(MAT_DIALOG_DATA) public data: any ) 
+	public constructor ( private _logger: Logger, public dialogRef: MatDialogRef<CropperComponent>, @Inject(MAT_DIALOG_DATA) public data: any, @Inject(DOCUMENT) private document: any, private _renderer:Renderer2 ) 
 	{ 
-		this._logger.log('CROPPER  COMPONENT'); 
-
-		this._subscriptions = new Array();
-
-		// Cropper 
-		this._cropperSettings = new CropperSettings();
-	    this._cropperSettings.width = 160;
-	    this._cropperSettings.height = 160;
-	    this._cropperSettings.croppedWidth = 160;
-	    this._cropperSettings.croppedHeight = 160;
-	    this._cropperSettings.canvasWidth = 400;
-	    this._cropperSettings.canvasHeight = 300;
-	 	this._cropperSettings.noFileInput = true;
-	 	this._cropperSettings.rounded = true;
-	 	this._cropperSettings.showCenterMarker = false;
-
-	    this._data = {};
+		this._logger.log('CROPPER  COMPONENT');
 	}
 
 	public ngOnInit () : void
 	{
-		debugger
 		this._subscriptions = [];
+        this.dragEnabled = true;
+		this._img.nativeElement.src = this.data.img.src;
+		//this._context = (<HTMLCanvasElement>this._cropper.nativeElement).getContext('2d');
 
-		setTimeout( () => {
-			this._cropper.setImage(this.data.img);
-		},100);
 	}
 
 	public ngOnDestroy () : void 
@@ -67,10 +54,39 @@ export class CropperComponent
         this._subscriptions.length = 0;
     }
 
-    private onLoad ( img: any ) : void
+    private crop () : void
     {
-    	debugger
-    	this.cropped = img;
+        let cropper: HTMLElement = this._cropper.nativeElement;
+        let img: HTMLElement = this._img.nativeElement;
+
+        let left: number = cropper.offsetLeft - img.offsetLeft;
+        let top: number =  cropper.offsetTop - img.offsetTop;
+        let width: number = cropper.offsetWidth;
+        let height: number = cropper.offsetHeight;
+
+        let crop_canvas: any = this._renderer.createElement('canvas');
+
+        let dataURL: string;
+
+        crop_canvas.width = width;
+        crop_canvas.height = height;
+
+        crop_canvas.getContext('2d').drawImage(this._img.nativeElement, left, top, width, height, 0, 0, width, height);
+        
+        this.cropped = dataURL = crop_canvas.toDataURL("image/png");
+
+        this._img.nativeElement.src = dataURL;
+        
+        this._img.nativeElement.left = '0px';
+        this._img.nativeElement.top = '0px';
+
+        this.dragEnabled = false;
     }
 
+    private imgLoaded () : void
+    {
+        console.log('LOADED');
+        this._img.nativeElement.left = 0;
+        this._img.nativeElement.top = 0;
+    }
 }

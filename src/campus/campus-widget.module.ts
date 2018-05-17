@@ -24,6 +24,7 @@ import { CropperComponent }										from './components/cropper/cropper.componen
 
 import { SharedModule }											from '../shared/shared.module';
 
+import { DraggableDirective } 									from './directives/draggable.directive';
 
 // --- Dialogs --------------------------------------------------------------------------
 import { UserJobsDialogComponent } from './components/dialogs/user-jobs-dialog.component';
@@ -48,7 +49,7 @@ import { ImageCropperComponent, CropperSettings } from "ngx-img-cropper";
     	SharedModule
 	],
 	entryComponents:[ UserJobsDialogComponent, CropperComponent ],
-	declarations: 	[ CampusComponent, AcountComponent, CoursesComponent, CourseCardComponent, CertificatesComponent, CertificateCardComponent, UserJobsDialogComponent, PasswordChangeComponent, ImageCropperComponent, AvatarComponent, CropperComponent ],
+	declarations: 	[ CampusComponent, AcountComponent, CoursesComponent, CourseCardComponent, CertificatesComponent, CertificateCardComponent, UserJobsDialogComponent, PasswordChangeComponent, ImageCropperComponent, AvatarComponent, CropperComponent, DraggableDirective ],
 	exports: 		[ CampusComponent ]
 })
 export class CampusWidgetModule

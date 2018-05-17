@@ -9,6 +9,8 @@ import { environment }													from '../../../environments/environment';
 
 import { CropperComponent }												from '../cropper/cropper.component';
 	
+import { UserService }													from '../../services/user.service';
+
 // --- Img Cropp --------------------------------------------------------------
 import { ImageCropperComponent, CropperSettings } 						from "ngx-img-cropper";
 
@@ -27,10 +29,9 @@ export class AvatarComponent
 
 	private _subscriptions: Array<Subscription>;
 
-	public constructor ( private _logger: Logger, private _dialog: MatDialog, private _vcr: ViewContainerRef ) 
+	public constructor ( private _logger: Logger, private _dialog: MatDialog, private _vcr: ViewContainerRef, private _us: UserService ) 
 	{ 
 		_logger.log('Avatar Component');
-
 	}
 
 	public ngOnInit () : void
@@ -54,7 +55,6 @@ export class AvatarComponent
     	return Observable.fromEvent(this._input.nativeElement, 'change')
     	.subscribe( (ev:any) =>
     	{
-
     		let img: any = new Image();
     		let file: File = ev.target.files[0];
     		let reader: FileReader = new FileReader();
@@ -68,7 +68,6 @@ export class AvatarComponent
 	    			img.src = loadEvent.target.result;
 	    			that.openDialog(img);
 	    		}
-
 	    		reader.readAsDataURL(file);
 	    	}
     	});
@@ -90,7 +89,7 @@ export class AvatarComponent
 		{
 			//let dial: MatDialog = this._dialog;
 			let d: MatDialogRef<any> = dialogRef;
-			debugger
+			
 			// Esto no esta muy bonito,queda para arreglar -----
 			let len: number = this._subscriptions.length - 1;
 			this._subscriptions[len].unsubscribe();
@@ -101,7 +100,7 @@ export class AvatarComponent
 
 			this._img.nativeElement.src = cropped;
 
-			//this._input.src = d.containerInstance.data
+
 		});
 	}
 
