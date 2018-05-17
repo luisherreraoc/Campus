@@ -67,7 +67,6 @@ export class LoginComponent
     	this._as.login(obj)
     	.subscribe( ( response: Response ) =>
     	{
-            debugger
     		this._router.navigateByUrl(this._campusUrl);
     	});
     }

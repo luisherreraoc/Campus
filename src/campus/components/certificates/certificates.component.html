@@ -1,5 +1,7 @@
 <ng-container *ngFor="let certificate of _certificates">
 
-	<certificate-card></certificate-card>
+	<certificate-card [certificate]="certificate" (request)="showRequest($event)"></certificate-card>
 
 </ng-container>
+
+<certificate-request *ngIf="_showRequest" (close)="closeRequest()"></certificate-request>

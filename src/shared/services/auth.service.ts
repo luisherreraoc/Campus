@@ -11,7 +11,7 @@ export class AuthService
 {
 	// store the URL so we can redirect after logging in
   	private _redirectUrl: string;
-	private _ssoLogin: string;
+	  private _ssoLogin: string;
 
     private _user_id: string;
 
@@ -19,6 +19,7 @@ export class AuthService
 	{
 		this._ssoLogin = environment.ssoLoginUrl;
         this._user_id = 'token';
+
 	}
 
 	public get redirectUrl () : string { return this._redirectUrl; }

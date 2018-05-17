@@ -9,7 +9,7 @@ import { RouterModule, Routes }                                   from '@angular
 import { Logger, Loader, CoreModule, CommonModule, FormModule }   from 'mk';
 
 
-import { MatDialogModule }                                        from '@angular/material';
+import { MatDialogModule, MatIconModule }                                        from '@angular/material';
 
 // -- App imports ---------------------------------------------------------------------------
 import { appRoutes } from './app.routes';
@@ -20,7 +20,7 @@ import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
     declarations: [
-        AppComponent,
+        AppComponent
     ],
     imports: [
         BrowserModule,
@@ -35,7 +35,8 @@ import { SharedModule } from '../shared/shared.module';
         CommonModule,
         FormModule,
 
-        MatDialogModule
+        MatDialogModule,
+        MatIconModule
     ],
     providers: [
         Loader, 

@@ -18,6 +18,7 @@ import { CoursesComponent }										from './components/courses/courses.componen
 import { CourseCardComponent }									from './components/course-card/course-card.component';
 import { CertificatesComponent }								from './components/certificates/certificates.component';
 import { CertificateCardComponent }								from './components/certificate-card/certificate-card.component';
+import { CertificateRequestComponent }							from './components/certificate-request/certificate-request.component';
 import { PasswordChangeComponent }								from './components/password-change/password-change.component';
 import { AvatarComponent }										from './components/avatar/avatar.component';
 import { CropperComponent }										from './components/cropper/cropper.component';
@@ -25,6 +26,7 @@ import { CropperComponent }										from './components/cropper/cropper.componen
 import { SharedModule }											from '../shared/shared.module';
 
 import { DraggableDirective } 									from './directives/draggable.directive';
+
 
 // --- Dialogs --------------------------------------------------------------------------
 import { UserJobsDialogComponent } from './components/dialogs/user-jobs-dialog.component';
@@ -46,10 +48,11 @@ import { ImageCropperComponent, CropperSettings } from "ngx-img-cropper";
     	
     	ReactiveFormsModule,
 
-    	SharedModule
+		SharedModule
 	],
 	entryComponents:[ UserJobsDialogComponent, CropperComponent ],
-	declarations: 	[ CampusComponent, AcountComponent, CoursesComponent, CourseCardComponent, CertificatesComponent, CertificateCardComponent, UserJobsDialogComponent, PasswordChangeComponent, ImageCropperComponent, AvatarComponent, CropperComponent, DraggableDirective ],
+	declarations: 	[ CampusComponent, AcountComponent, CoursesComponent, CourseCardComponent, CertificatesComponent, CertificateCardComponent, CertificateRequestComponent, UserJobsDialogComponent, PasswordChangeComponent, ImageCropperComponent, AvatarComponent, CropperComponent, DraggableDirective ],
+
 	exports: 		[ CampusComponent ]
 })
 export class CampusWidgetModule

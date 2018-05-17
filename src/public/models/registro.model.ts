@@ -10,7 +10,7 @@ export interface RegistroInterface extends ModelInterface
     registro_email: string;
     registro_password: string;
     registro_job: string;
-    registro_especialization: number | string;
+    registro_especialization: Array<any>;
     registro_accepted_terms: boolean;
     registro_collage: Array<any>;
 }
@@ -21,7 +21,7 @@ export class Registro extends Model
 
     public constructor ( m: RegistroInterface )
     {
-        let inter: RegistroInterface = m ? m : <RegistroInterface>{ "resgistro_id": "", "registro_first_name": "", "registro_email": "", "registro_password": "", "registro_job": "", "registro_especialization": "", "registro_collage": [], "registro_accepted_terms": false }
+        let inter: RegistroInterface = m ? m : <RegistroInterface>{ "resgistro_id": "", "registro_first_name": "", "registro_email": "", "registro_password": "", "registro_job": "", "registro_especialization": [], "registro_collage": [], "registro_accepted_terms": false }
         super(inter);
         debugger
     }
