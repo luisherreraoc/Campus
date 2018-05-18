@@ -32,9 +32,6 @@ import { DraggableDirective } 									from './directives/draggable.directive';
 import { UserJobsDialogComponent } from './components/dialogs/user-jobs-dialog.component';
 import { UserInfoDialog } from './components/dialogs/user-info-dialog.component';
 
-// --- Img Copper -----------------------------------------------------------------------
-import { ImageCropperComponent, CropperSettings } from "ngx-img-cropper";
-
 /**
  *	Widget module for common components and directives
  */
@@ -62,8 +59,7 @@ import { ImageCropperComponent, CropperSettings } from "ngx-img-cropper";
 		CertificateRequestComponent, 
 		UserJobsDialogComponent, 
 		UserInfoDialog,
-		PasswordChangeComponent, 
-		ImageCropperComponent, 
+		PasswordChangeComponent,
 		AvatarComponent, 
 		CropperComponent, 
 		DraggableDirective ],

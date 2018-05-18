@@ -7,9 +7,6 @@ import { Logger }														from 'mk';
 
 import { environment }													from '../../../environments/environment';		
 
-// --- Img Cropp --------------------------------------------------------------
-import { ImageCropperComponent, CropperSettings } 						from "ngx-img-cropper";
-
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA}                 		from '@angular/material';
 
 // TEST

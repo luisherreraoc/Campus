@@ -11,9 +11,6 @@ import { CropperComponent }												from '../cropper/cropper.component';
 	
 import { UserService }													from '../../services/user.service';
 
-// --- Img Cropp --------------------------------------------------------------
-import { ImageCropperComponent, CropperSettings } 						from "ngx-img-cropper";
-
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } 					from '@angular/material';
 
 @Component({
