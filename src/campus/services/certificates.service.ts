@@ -16,7 +16,6 @@ export class CertificatesService
 
 	public register ( data: {[key:string]:any} ) : Observable<any>
 	{
-        console.log(data);
 		return this.http.post(this._dsUrl,data);
 	} 
 }
