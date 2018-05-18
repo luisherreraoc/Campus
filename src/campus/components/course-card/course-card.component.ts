@@ -1,10 +1,13 @@
-import { Component, Input }                         					from '@angular/core';
+import { Component, Input, ViewContainerRef }                         					from '@angular/core';
 
-import { Logger }														from 'mk';
+import { Logger, MkFormService, MkForm }								from 'mk';
 
 import { Producto, ProductoInterface }				    				from '../../models/producto.model';			
 
 import { environment }													from '../../../environments/environment';
+import { MatDialog } 													from '@angular/material';
+
+import { UserInfoDialog } from '../dialogs/user-info-dialog.component';
 
 @Component({
 	selector: 'course-card',
@@ -15,12 +18,12 @@ export class CourseCardComponent
 {
 	@Input('course') set course ( c: any )
 	{
-		debugger
 		this._id = c.producto_id;
 		this._title = c.producto_nombre;
 		this._img = this._suite + c.producto_informacion_multimedia.default_image;
 		this._redirect = c.producto_url_acceso;
 		this._code = c.producto_licencia.licencia_codigo;
+		this._state = c.producto_licencia.licencia_estado;
 	}
 
 	private _suite: string;
@@ -30,15 +33,34 @@ export class CourseCardComponent
 	private _img: string;
 	private _redirect: string;
 	private	_code: string;
+	private _state: string;
+	private _ids: any;
 
-	public constructor ( private logger: Logger, private window: Window ) 
+	public constructor ( 
+		private logger: Logger, 
+		private window: Window,
+		private _fs: MkFormService,
+		private _dialog: MatDialog,
+		private _vcr: ViewContainerRef ) 
 	{ 
 		logger.log('COURSE CARD COMPONENT'); 
 		this._suite = environment.suiteUrl;
+		this._ids = {'user' : '154'};
 	}
 
 	private go () : void 
 	{
-		window.open(environment.ssoRedirectUrl + this._code);
+		if (this._state === 'no iniciado')
+		{
+			let dialogRef = this._dialog.open(UserInfoDialog, {
+				id: 'user-info-dialog',
+				data: {
+					_ids: this._ids,
+					_vcr: this._vcr
+				}
+			});
+		} else {
+			window.open(environment.ssoRedirectUrl + this._code);
+		}
 	}
 }

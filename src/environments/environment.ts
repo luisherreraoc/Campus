@@ -43,7 +43,8 @@ export const environment = {
 
   recoveryMail: '/recovery-mail.json',
   newPassword: '/recovery-mail.json',
-  getConsumerProducts: 'http://ds-test.oceano.com/api/product/stamp_user?stamp_id=4&user_id=',
+  // getConsumerProducts: 'http://ds-test.oceano.com/api/product/stamp_user?stamp_id=4&user_id=',
+  getConsumerProducts: './mocks/list-products.json',
 
   icon_key: '/assets/img/icon-key.png'
 };

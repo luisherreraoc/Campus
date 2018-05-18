@@ -40,9 +40,10 @@ export class CoursesService extends DataService<Producto>
 	{
 		//return this.http.post(this._prodUrl,data)
 
-		let user_id = this._as.getToken();
+		// let user_id = this._as.getToken();
 
-		return this.http.get(this._prodUrl + user_id,data)
+		// return this.http.get(this._prodUrl + user_id,data)
+		return this.http.get(this._prodUrl, data)
 		.map( (resp: any) =>
 		{
 			let datos: any = resp.json();
