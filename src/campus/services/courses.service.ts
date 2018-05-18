@@ -42,12 +42,6 @@ export class CoursesService extends DataService<Producto>
 
 		let user_id = this._as.getToken();
 
-		// return this.http.get( this._dsUrl + '/api/product/stamp_user?stamp_id=4&user_id=' + user_id)
-		// 	.map((response : any ) => {	
-		// 		console.log(response.json());
-		// 		return response;
-		// 	});
-
 		return this.http.get(this._prodUrl + user_id,data)
 		.map( (resp: any) =>
 		{
@@ -64,7 +58,7 @@ export class CoursesService extends DataService<Producto>
 				productos.push(new Producto(aux));
 			}
 			resp.data = productos;
-			console.log(resp);
+			console.log(datos);
 			return resp;
 		});
 	} 
