@@ -15,6 +15,7 @@ import { Producto, ProductoInterface }				    		from '../models/producto.model';
 import { Sello, SelloInterface }                				from '../models/sello.model';
 import { EntidadCertificadora, EntidadCertificadoraInterface } 	from '../models/entidad-certificadora.model';
 import { Licencia, LicenciaInterface }              			from '../models/licencia.model';
+import { AuthService } from '../../shared/services/auth.service';
 
 export class CoursesService extends DataService<Producto>
 {
@@ -23,21 +24,24 @@ export class CoursesService extends DataService<Producto>
 	public constructor ( 
 		private http: Http, 
 		private loader: Loader, 
-		private logger: Logger )
+		private logger: Logger,
+		private _as: AuthService )
 	{
 		super(Producto, logger, loader);
 	}
 
 
 	public getById ( id: number|string ) : Observable<any> 
-	{
+	{		
 		return null
 	};
 
 	public list ( data: {[key:string]:any} ) : Observable<any>
 	{
 		//return this.http.post(this._prodUrl,data)
-		return this.http.get(this._prodUrl,data)
+		let user_id = this._as.getToken();
+
+		return this.http.get(this._prodUrl + user_id,data)
 		.map( (resp: any) =>
 		{
 			let datos: any = resp.json();
@@ -53,6 +57,7 @@ export class CoursesService extends DataService<Producto>
 				productos.push(new Producto(aux));
 			}
 			resp.data = productos;
+			console.log(datos);
 			return resp;
 		});
 	} 

@@ -9,7 +9,12 @@ import { Logger, Loader }																		from 'mk';
 
 import { CoursesService }																		from './services/courses.service';
 import { UserService }																			from './services/user.service';
+<<<<<<< HEAD
 import { AuthService }																			from '../shared/services/auth.service';
+=======
+import { AuthService } from '../shared/services/auth.service';
+import { CertificatesService } from './services/certificates.service';
+>>>>>>> master
 
 @NgModule({
 	imports: 		[ ],
@@ -37,6 +42,11 @@ export class CampusServiceModule
 					provide: UserService,
 					useClass: UserService,
 					deps: [ Http, Loader, Logger ]
+				},
+				{
+					provide: CertificatesService,
+					useClass: CertificatesService,
+					deps: [ Http ]
 				}
 
 			]

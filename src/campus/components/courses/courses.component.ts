@@ -1,7 +1,7 @@
 import { Component }                         							from '@angular/core';
 import { Observable, BehaviorSubject, Subscription } 					from "rxjs/Rx"; 
 
-import { Logger }														from 'mk';
+import { Logger, Loader }														from 'mk';
 
 import { CoursesService }												from '../../services/courses.service';			
 
@@ -14,7 +14,7 @@ export class CoursesComponent
 	private _subscriptions: Array<any>;
 	private _courses: Array<any>;
 
-	public constructor ( private logger: Logger, private _cs: CoursesService ) 
+	public constructor ( private logger: Logger, private _cs: CoursesService, private loader: Loader ) 
 	{ 
 		logger.log('COURSES COMPONENT'); 
 		this._subscriptions = new Array();
@@ -45,8 +45,9 @@ export class CoursesComponent
     		else
     		{
     			this.logger.error('Error: ' + resp.message);
-    		}
-    	});
-
+			}
+		}, 		
+		(error: any) => { console.log('error')}
+		);
     }
 }

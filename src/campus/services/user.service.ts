@@ -19,6 +19,8 @@ export class UserService extends DataService<User>
 
 	private _dsUrl: string = environment.dsUrl;
 
+	private stamp_id : string;
+
 	public constructor ( 
 		private http: Http, 
 		private loader: Loader, 
@@ -31,10 +33,10 @@ export class UserService extends DataService<User>
 		console.log('TUSCOJONES33');
 	}
 
-
 	public getById ( id: number|string ) : Observable<Response> 
-	{
+	{	
 		console.log("GETBYID");
+
 		return this.http.get('./mocks/user.json');
 	};
 

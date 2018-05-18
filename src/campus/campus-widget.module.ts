@@ -30,6 +30,7 @@ import { DraggableDirective } 									from './directives/draggable.directive';
 
 // --- Dialogs --------------------------------------------------------------------------
 import { UserJobsDialogComponent } from './components/dialogs/user-jobs-dialog.component';
+import { UserInfoDialog } from './components/dialogs/user-info-dialog.component';
 
 // --- Img Copper -----------------------------------------------------------------------
 import { ImageCropperComponent, CropperSettings } from "ngx-img-cropper";
@@ -50,9 +51,22 @@ import { ImageCropperComponent, CropperSettings } from "ngx-img-cropper";
 
 		SharedModule
 	],
-	entryComponents:[ UserJobsDialogComponent, CropperComponent ],
-	declarations: 	[ CampusComponent, AcountComponent, CoursesComponent, CourseCardComponent, CertificatesComponent, CertificateCardComponent, CertificateRequestComponent, UserJobsDialogComponent, PasswordChangeComponent, ImageCropperComponent, AvatarComponent, CropperComponent, DraggableDirective ],
-
+	entryComponents:[ UserJobsDialogComponent, CropperComponent, UserInfoDialog ],
+	declarations: 	[ 
+		CampusComponent, 
+		AcountComponent, 
+		CoursesComponent, 
+		CourseCardComponent, 
+		CertificatesComponent, 
+		CertificateCardComponent, 
+		CertificateRequestComponent, 
+		UserJobsDialogComponent, 
+		UserInfoDialog,
+		PasswordChangeComponent, 
+		ImageCropperComponent, 
+		AvatarComponent, 
+		CropperComponent, 
+		DraggableDirective ],
 	exports: 		[ CampusComponent ]
 })
 export class CampusWidgetModule

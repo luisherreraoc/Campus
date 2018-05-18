@@ -11,10 +11,13 @@ import { CampusWidgetModule }																				from './campus-widget.module';
 import { CoursesService }																					from './services/courses.service';
 import { UserService }																						from './services/user.service';
 
+import { SharedModule } from '../shared/shared.module'
+
 @NgModule({
 	imports: 		[ 
 		CampusServiceModule.forRoot(), 
-		CampusWidgetModule
+		CampusWidgetModule,
+		SharedModule
 	],
 	entryComponents:[ ],
 	declarations: 	[ ],
