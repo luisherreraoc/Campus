@@ -19,7 +19,6 @@ export class AuthService
 	{
 		this._ssoLogin = environment.ssoLoginUrl;
         this._user_id = 'token';
-
 	}
 
 	public get redirectUrl () : string { return this._redirectUrl; }
