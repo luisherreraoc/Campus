@@ -47,6 +47,7 @@ export class CertificateRequestComponent
 		let data: any = this._fs.getFormData('certificate-request').formGroup.getRawValue();
 		this.logger.log(data);
 		this._cfs.register(data);
+		this.close();
 	}
 
 	 private subscribeQuestionForm () : Subscription
