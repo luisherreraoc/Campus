@@ -10,6 +10,7 @@ import { Producto, ProductoInterface }				    				from '../../models/producto.mo
 import { Http }															from '@angular/http';
 
 import { environment }													from '../../../environments/environment';
+import { CertificatesService } from '../../services/certificates.service';
 		
 
 @Component({
@@ -24,7 +25,7 @@ export class CertificateRequestComponent
 	private _form: MkForm;
 	private _subscriptions: Array<Subscription>;
 
-	public constructor ( private logger: Logger, private _route: ActivatedRoute, private _fs: MkFormService, private _http: Http ) 
+	public constructor ( private logger: Logger, private _route: ActivatedRoute, private _fs: MkFormService, private _http: Http, private _cfs: CertificatesService ) 
 	{ 
 		logger.log('CERTIFICATE REQUEST COMPONENT');
 	}
@@ -45,7 +46,7 @@ export class CertificateRequestComponent
 	{
 		let data: any = this._fs.getFormData('certificate-request').formGroup.getRawValue();
 		this.logger.log(data);
-		this._http.post( environment.dsUrl, data );
+		this._cfs.register(data);
 	}
 
 	 private subscribeQuestionForm () : Subscription
