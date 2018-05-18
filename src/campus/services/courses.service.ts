@@ -39,11 +39,9 @@ export class CoursesService extends DataService<Producto>
 	public list ( data: {[key:string]:any} ) : Observable<any>
 	{
 		//return this.http.post(this._prodUrl,data)
+		let user_id = this._as.getToken();
 
-		// let user_id = this._as.getToken();
-
-		// return this.http.get(this._prodUrl + user_id,data)
-		return this.http.get(this._prodUrl, data)
+		return this.http.get(this._prodUrl + user_id,data)
 		.map( (resp: any) =>
 		{
 			let datos: any = resp.json();
