@@ -68,7 +68,14 @@ export class LoginComponent
     	this._as.login(obj)
     	.subscribe( ( response: Response ) =>
     	{
-    		this._router.navigateByUrl(url);
+            if ( response['ok'] )
+            {
+                this._router.navigateByUrl(url);
+            }
+            else
+            {
+                this._logger.log(response['error_description']);
+            }            
     	});
     }
 }
