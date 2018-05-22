@@ -7,14 +7,14 @@ import { AuthService }                                                          
 import { environment }                                                                  from '../../environments/environment';
 
 @Injectable()
-export class AuthGuard implements CanActivate 
+export class PublicGuard implements CanActivate 
 {
     private _campusSegment: string;
     private _publicSegment: string;
 
     constructor ( private _logger: Logger, private _loader: Loader, private _as: AuthService, private _router: Router )
     {
-        _logger.log('AUTH-GUARD');
+        _logger.log('PUBLIC-GUARD');
 
         this._campusSegment = environment.pathCampus;
         this._publicSegment = environment.pathPublic;
@@ -22,12 +22,13 @@ export class AuthGuard implements CanActivate
 
     public canActivate( route: ActivatedRouteSnapshot, state: RouterStateSnapshot ) : boolean
     {
-        debugger
         return this.checkLogin(state);
     }
 
     public canActivateChild( route: ActivatedRouteSnapshot, state: RouterStateSnapshot ): boolean 
-    {       
+    {
+        let path: string = this.getFragmanet(state);        
+
         return this.canActivate(route, state);
     }
 
@@ -35,13 +36,12 @@ export class AuthGuard implements CanActivate
     {
         let loged: boolean = this._as.isLoggedIn();
         let path: string = this.getFragmanet(state);
-        let loginPath: string = environment.pathPublic + '/' + environment.pathLogin;
-        if ( !loged )
+        if ( loged )
         {
             this._as.redirectUrl = path === environment.pathCampus ? state.url : null;
-            this._router.navigate([loginPath]);
+            this._router.navigate([environment. pathCampus]);
         }
-        return loged;
+        return !loged;
     }
 
     private getFragmanet ( state: RouterStateSnapshot ) : string

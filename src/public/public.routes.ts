@@ -9,18 +9,27 @@ import { PasswordRecoveryComponent }							from '../public/components/password-r
 
 import { environment }											from '../environments/environment';
 
+import { PublicGuard }											from '../shared/services/public-guard.service';
+
 export const publicRoutes: Routes = 
 [
 	{ 
 		path: environment.pathPublic, 
 		component: PublicComponent,
+		canActivate: [PublicGuard],
 		children: [
-			{ path: '', redirectTo: environment.pathLogin, pathMatch: 'full' },
-			//{ path: '**', redirectTo: environment.pathLogin, pathMatch: 'full' },
-			{ path: environment.pathLogin, component: LoginComponent },
-			{ path: environment.pathRegistro, component: RegistroComponent },
-			{ path: environment.pathPassRecovery + '/:usr', component: PasswordRecoveryComponent },
-			{ path: environment.pathPassRecovery, component: PasswordRecoveryComponent }
+				{	
+				path: '',
+				canActivateChild: [PublicGuard],
+				children: [
+					{ path: '', redirectTo: environment.pathLogin, pathMatch: 'full' },
+					//{ path: '**', redirectTo: environment.pathLogin, pathMatch: 'full' },
+					{ path: environment.pathLogin, component: LoginComponent },
+					{ path: environment.pathRegistro, component: RegistroComponent },
+					{ path: environment.pathPassRecovery + '/:usr', component: PasswordRecoveryComponent },
+					{ path: environment.pathPassRecovery, component: PasswordRecoveryComponent }
+				]
+			}
 		]
 	}
 ];

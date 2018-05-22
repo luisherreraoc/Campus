@@ -60,6 +60,7 @@ export class LoginComponent
     private send () : void
     {
     	let obj: any = this._form_group.getRawValue();
+        let url: string = this._as.redirectUrl ? this._as.redirectUrl : this._campusUrl;
 
     	obj.product_id = 0;
     	obj.grant_type = 'password';
@@ -67,7 +68,7 @@ export class LoginComponent
     	this._as.login(obj)
     	.subscribe( ( response: Response ) =>
     	{
-    		this._router.navigateByUrl(this._campusUrl);
+    		this._router.navigateByUrl(url);
     	});
     }
 }

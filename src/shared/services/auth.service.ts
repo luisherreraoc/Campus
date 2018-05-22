@@ -11,7 +11,7 @@ export class AuthService
 {
 	// store the URL so we can redirect after logging in
   	private _redirectUrl: string;
-	  private _ssoLogin: string;
+	private _ssoLogin: string;
 
     private _user_id: string;
 
@@ -19,6 +19,7 @@ export class AuthService
 	{
 		this._ssoLogin = environment.ssoLoginUrl;
         this._user_id = 'token';
+        this.clearRedirect();
 	}
 
 	public get redirectUrl () : string { return this._redirectUrl; }
@@ -29,9 +30,10 @@ export class AuthService
   	{
   	  	return this._http.post( this._ssoLogin, data )
         .map( (response:any) => {
+            debugger
             let res: any = response.json();
-			this._storage.set(this._user_id, res.access_token)
-			console.log(this._user_id);
+			this._storage.set(this._user_id, res.access_token);
+            this.clearRedirect();
             return res;
         });
   	}
@@ -39,6 +41,7 @@ export class AuthService
   	public logout(): void 
   	{
   	  	this._storage.clear();
+        this._redirectUrl = null;
   	}
 
   	public isLoggedIn () : boolean
@@ -51,4 +54,8 @@ export class AuthService
 		return this._storage.get(this._user_id);
 	}
 
+    private clearRedirect () : void
+    {
+        this._redirectUrl = null;
+    }
 }
