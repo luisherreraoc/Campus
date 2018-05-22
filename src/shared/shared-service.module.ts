@@ -6,6 +6,7 @@ import { Logger, Loader }																		from 'mk';
 import { Router }             																	from '@angular/router';
 
 // --- App imports ------------------------------------------------------------------------------------------------------
+import { PublicGuard }																			from './services/public-guard.service';
 import { AuthGuard }																			from './services/auth-guard.service';
 import { AuthService }																			from './services/auth.service';
 import { StorageService }																		from './services/storage.service';
@@ -29,6 +30,11 @@ export class SharedServiceModule
 			ngModule: SharedServiceModule,
 			providers: [
 				StorageService,
+				{
+					provide: PublicGuard,
+					useClass: PublicGuard,
+					deps: [ Logger, Loader, AuthService, Router ]
+				},
 				{
 					provide: AuthGuard,
 					useClass: AuthGuard,

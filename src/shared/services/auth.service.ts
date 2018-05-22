@@ -30,6 +30,7 @@ export class AuthService
   	{
   	  	return this._http.post( this._ssoLogin, data )
         .map( (response:any) => {
+            debugger
             let res: any = response.json();
 			this._storage.set(this._user_id, res.access_token);
             this.clearRedirect();
