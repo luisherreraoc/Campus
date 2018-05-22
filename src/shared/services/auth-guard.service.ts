@@ -7,8 +7,6 @@ import { AuthService } 																	from './auth.service';
 @Injectable()
 export class AuthGuard implements CanActivate 
 {
-
-
   	constructor ( private _logger: Logger, private _loader: Loader, private _as: AuthService, private _router: Router )
   	{
   		_logger.log('AUTH-GUARD');
@@ -19,6 +17,7 @@ export class AuthGuard implements CanActivate
     	this._logger.error('AuthGuard #canActivate called');
     	
     	let url: string = state.url;
+        debugger
     	return this.checkLogin(url);
   	}
 
