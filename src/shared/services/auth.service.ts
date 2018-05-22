@@ -1,17 +1,10 @@
-import { Injectable } from '@angular/core';
-
-import { Http, Response } from '@angular/http';
-
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/delay';
+import { Injectable, Inject }                                                   from '@angular/core';
+import { Http, Response }                                                       from '@angular/http';
+import { Observable }                                                           from 'rxjs/Observable';
 
 import { StorageService }                                                       from './storage.service';
-
 import { environment }                                                          from '../../environments/environment';
-
-import { Logger, Loader }	from 'mk';
+import { Logger, Loader }	                                                    from 'mk';
 
 @Injectable()
 export class AuthService 
@@ -24,9 +17,8 @@ export class AuthService
 
 	public constructor ( private _http: Http, private _logger: Logger, private _loader: Loader, private _storage: StorageService )
 	{
-		  this._ssoLogin = environment.ssoLoginUrl;
-
-      this._user_id = 'token';
+		this._ssoLogin = environment.ssoLoginUrl;
+        this._user_id = 'token';
 	}
 
 	public get redirectUrl () : string { return this._redirectUrl; }

@@ -11,12 +11,12 @@ import { Logger, Loader, CoreModule, CommonModule, FormModule }   from 'mk';
 
 import { MatDialogModule, MatIconModule }                                        from '@angular/material';
 
-
 // -- App imports ---------------------------------------------------------------------------
 import { appRoutes } from './app.routes';
 
 import { PublicModule }	from '../public/public.module';
 import { CampusModule } from '../campus/campus.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
     declarations: [
@@ -27,6 +27,7 @@ import { CampusModule } from '../campus/campus.module';
         BrowserAnimationsModule,
         RouterModule.forRoot( appRoutes, { enableTracing: true } ),
       
+        SharedModule,
         PublicModule,
         CampusModule,
       
@@ -37,7 +38,7 @@ import { CampusModule } from '../campus/campus.module';
         MatDialogModule,
         MatIconModule
     ],
-    providers: [ 
+    providers: [
         Loader, 
         Logger,
         {

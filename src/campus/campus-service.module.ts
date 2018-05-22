@@ -9,8 +9,10 @@ import { Logger, Loader }																		from 'mk';
 
 import { CoursesService }																		from './services/courses.service';
 import { UserService }																			from './services/user.service';
+
 import { AuthService } from '../shared/services/auth.service';
 import { CertificatesService } from './services/certificates.service';
+
 
 @NgModule({
 	imports: 		[ ],
