@@ -271,8 +271,7 @@ export class RegistroComponent
         this._rs.register(data)
         .subscribe( ( response: any ) =>
         {
-            debugger;
-            // this._router.navigateByUrl('/public/login');
+            this._router.navigateByUrl('/public/login');
         });
     }
 }

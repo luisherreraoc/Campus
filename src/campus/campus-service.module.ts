@@ -39,7 +39,7 @@ export class CampusServiceModule
 				{
 					provide: UserService,
 					useClass: UserService,
-					deps: [ Http, Loader, Logger ]
+					deps: [ Http, Loader, Logger, AuthService ]
 				},
 				{
 					provide: CertificatesService,

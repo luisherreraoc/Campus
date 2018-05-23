@@ -23,7 +23,6 @@ export class Registro extends Model
     {
         let inter: RegistroInterface = m ? m : <RegistroInterface>{ "resgistro_id": "", "registro_first_name": "", "registro_email": "", "registro_password": "", "registro_job": "", "registro_especialization": [], "registro_collage": [], "registro_accepted_terms": false }
         super(inter);
-        debugger
     }
 
     public get type () { return Registro }
