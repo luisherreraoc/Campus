@@ -30,13 +30,10 @@ export class UserService extends DataService<User>
 		super(User, logger, loader);
 
 		console.log(_as);
-		console.log('TUSCOJONES33');
 	}
 
 	public getById ( id: number|string ) : Observable<Response> 
 	{	
-		console.log("GETBYID");
-
 		return this.http.get('./mocks/user.json');
 	};
 
