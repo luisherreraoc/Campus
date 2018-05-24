@@ -47,7 +47,7 @@ export class CoursesComponent
     			this.logger.error('Error: ' + resp.message);
 			}
 		}, 		
-		(error: any) => { console.log('error')}
+		(error: any) => { console.log(error)}
 		);
     }
 }

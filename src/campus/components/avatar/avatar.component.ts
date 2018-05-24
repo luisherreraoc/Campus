@@ -112,7 +112,6 @@ export class AvatarComponent
     	.subscribe( ( resp: any ) =>
     	{
     		this._loader.dismiss('avatar');
-    		debugger
     	});
     }
 }

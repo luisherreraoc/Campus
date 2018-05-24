@@ -22,7 +22,6 @@ export class AuthGuard implements CanActivate
 
     public canActivate( route: ActivatedRouteSnapshot, state: RouterStateSnapshot ) : boolean
     {
-        debugger
         return this.checkLogin(state);
     }
 

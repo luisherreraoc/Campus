@@ -78,11 +78,12 @@ export class CropperComponent
         this._img.nativeElement.top = '0px';
 
         this.dragEnabled = false;
+
+        this.dialogRef.close();
     }
 
     private imgLoaded () : void
     {
-        console.log('LOADED');
         this._img.nativeElement.left = 0;
         this._img.nativeElement.top = 0;
     }

@@ -2,6 +2,8 @@ import { Injectable, Inject }                                                   
 import { Http, Response }                                                       from '@angular/http';
 import { Observable }                                                           from 'rxjs/Observable';
 
+import { RouterModule, Routes, Router }                                         from '@angular/router';
+
 import { StorageService }                                                       from './storage.service';
 import { environment }                                                          from '../../environments/environment';
 import { Logger, Loader }	                                                    from 'mk';
@@ -15,7 +17,7 @@ export class AuthService
 
     private _user_id: string;
 
-	public constructor ( private _http: Http, private _logger: Logger, private _loader: Loader, private _storage: StorageService )
+	public constructor ( private _http: Http, private _logger: Logger, private _loader: Loader, private _storage: StorageService, private _router: Router )
 	{
 		this._ssoLogin = environment.ssoLoginUrl;
         this._user_id = 'token';
@@ -45,6 +47,7 @@ export class AuthService
   	{
   	  	this._storage.clear();
         this._redirectUrl = null;
+        this._router.navigateByUrl('');
   	}
 
   	public isLoggedIn () : boolean
