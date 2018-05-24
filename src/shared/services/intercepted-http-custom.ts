@@ -17,12 +17,12 @@ export function httpFactoryCustom(xhrBackend: XHRBackend, requestOptions: Reques
 @Injectable()
 export class InterceptedHttpCustom extends InterceptedHttp 
 {
-    private as: AuthService;
+    private _as: AuthService;
 
     public constructor( backend: ConnectionBackend,  defaultOptions: RequestOptions, private injector: Injector) 
     {
         super(backend, defaultOptions);
-        setTimeout(() => this.as = injector.get(AuthService));
+        setTimeout(() => this._as = injector.get(AuthService));
     }
 
     public request(url: string | Request, options?: RequestOptionsArgs): Observable<Response> 
@@ -40,7 +40,7 @@ export class InterceptedHttpCustom extends InterceptedHttp
             if ( response.code === 400 )
             {
                 console.error(response);
-                this.as.logout();
+                this._as.logout();
                 throw Observable.throw(res);
             }
             return res;
