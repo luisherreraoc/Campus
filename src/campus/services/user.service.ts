@@ -30,21 +30,17 @@ export class UserService extends DataService<User>
 		super(User, logger, loader);
 
 		console.log(_as);
-		console.log('TUSCOJONES33');
 	}
 
 	public getById ( id: number|string ) : Observable<Response> 
 	{	
-		console.log("GETBYID");
-
 		return this.http.get('./mocks/user.json');
 	};
 
 	public passwordChange ( data: any ) : Observable<Response>
 	{
-		//return this.http.post( environment.apiUrl + environment.apiPasswordChange, data )
-		return this.http.get( environment.apiUrl + environment.apiPasswordChange, data )
-		.map( res => res.json() );
+		return this.http.post( environment.dsUrl + environment.apiPasswordChange + this._as.getToken(), data ).map(res => res.json());
+		//return this.http.get( environment.apiUrl + environment.apiPasswordChange, data ).map( res => res.json() );
 	}
 
 	public register ( data: {[key:string]:any} ) : Observable<any>
