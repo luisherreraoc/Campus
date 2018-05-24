@@ -37,9 +37,8 @@ export class InterceptedHttpCustom extends InterceptedHttp
         .map( (res: any) => 
         {
             let response: any = res.json();
-            if ( response.code === 400 )
+            if ( response.code === 1945 )
             {
-                console.error(response);
                 this._as.logout();
                 throw Observable.throw(res);
             }
