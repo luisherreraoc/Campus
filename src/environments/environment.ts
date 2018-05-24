@@ -19,10 +19,10 @@ export const environment = {
   production: false,
   
   domain: 'http://localhost:4200',
-  apiUrl: './mocks',
+  apiUrl: 'http://api-test.oceano.com',
   dsUrl: 'http://ds-test.oceano.com',
   ssoUrl: 'https://sso.oceano.com',
-  suiteUrl: 'http://suite.oceano.com/',
+  suiteUrl: 'http://suite.oceano.com',
   
   pathPublic: 'public',
   pathLogin: 'login',
@@ -39,7 +39,7 @@ export const environment = {
   ssoLoginUrl: 'http://sso-test.oceano.com/sso/login',
   ssoRedirectUrl: 'https://sso.oceano.com/sso/redirect?licencia_id=',
 
-  apiPasswordChange: '/recovery-mail.json',
+  apiPasswordChange: '/api/user/change_password/',
 
   recoveryMail: '/recovery-mail.json',
   newPassword: '/recovery-mail.json',
