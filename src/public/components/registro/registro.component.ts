@@ -112,6 +112,7 @@ export class RegistroComponent
 
     private _sended: boolean;
     private _response_obj: {title:string,text:string,img:string,btn:string,callback:any};
+    private _error: boolean;
 
 	public constructor ( 
         private _logger: Logger, 
@@ -143,11 +144,13 @@ export class RegistroComponent
         this._sended = false;
         this._response_obj = {
             title: '',
-            text: 'Se le ha enviado un email para la verificación de sus datos.',
+            text: '',
             img: '',
-            btn: 'INGRESAR',
-            callback: this.goToLogin
+            btn: '',
+            callback: null
         };
+
+        this._error = false;
 	}
 
 	public ngOnInit ()
@@ -288,8 +291,28 @@ export class RegistroComponent
         this._loader.show('registro');
         this._rs.register(data)
         .subscribe( 
-            ( response: any ) => { this._logger.info('Mail enviado') },      
-            ( error: any ) => { this._logger.error('Error')},
+            ( response: any ) => { 
+                this._logger.info('Mail enviado');
+                this._response_obj = {
+                    title: '',
+                    text: 'Se le ha enviado un email para la verificación de sus datos.',
+                    img: '',
+                    btn: 'INGRESAR',
+                    callback: this.goToLogin
+                };
+
+            },      
+            ( error: any ) => { 
+                this._logger.error('Error');
+                this._response_obj = {
+                    title: '',
+                    text: 'Ha habido un error en el proceso de registro.',
+                    img: '',
+                    btn: 'DE ACUERDO',
+                    callback: this.goToRegistro
+                };
+                this._error = true;
+            },
             ( ) => { 
                 this._loader.dismiss('registro');
                 this._sended = true;
@@ -300,5 +323,10 @@ export class RegistroComponent
     private goToLogin () : void
     {
         this._router.navigateByUrl('/public/login');
+    }
+
+    private goToRegistro () : void
+    {
+         this._router.navigateByUrl('/public/registro');   
     }
 }
