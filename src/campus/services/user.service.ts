@@ -54,6 +54,7 @@ export class UserService extends DataService<User>
 
 	public saveAvantar ( img: string ) : Observable<any>
 	{
+		debugger
 		return this.http.post('http://ds-test.oceano.com/api/test/post',img);
 	}
 }
