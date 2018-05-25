@@ -18,12 +18,12 @@ export class CourseCardComponent
 {
 	@Input('course') set course ( c: any )
 	{
-		this._id = c.producto_id;
-		this._title = c.producto_nombre;
-		this._img = this._suite + c.producto_informacion_multimedia.default_image;
-		this._redirect = c.producto_url_acceso;
-		this._code = c.producto_licencia.licencia_codigo;
-		this._state = c.producto_licencia.licencia_estado;
+		this._id = c.id;
+		this._title = c.name;
+		this._img = this._suite + '/' + c.multimidia.default_image;
+		this._redirect = c.url_access;
+		this._code = c.licenses[0] ? c.licenses[0].licencia_codigo : null;
+		this._state = c.licenses[0] ? c.licenses[0].status : null;
 	}
 
 	private _suite: string;
