@@ -19,10 +19,10 @@ export const environment = {
   production: false,
   
   domain: 'http://localhost:4200',
-  apiUrl: './mocks',
+  apiUrl: 'http://ds-test.oceano.com',
   dsUrl: 'http://ds-test.oceano.com',
   ssoUrl: 'https://sso.oceano.com',
-  suiteUrl: 'http://suite.oceano.com/',
+  suiteUrl: 'http://suite.oceano.com',
   
   pathPublic: 'public',
   pathLogin: 'login',

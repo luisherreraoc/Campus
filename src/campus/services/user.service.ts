@@ -18,6 +18,7 @@ export class UserService extends DataService<User>
 {
 
 	private _dsUrl: string = environment.dsUrl;
+	private _apiUrl: string = environment.apiUrl;
 
 	private stamp_id : string;
 
@@ -54,7 +55,10 @@ export class UserService extends DataService<User>
 
 	public saveAvantar ( img: string ) : Observable<any>
 	{
-		debugger
-		return this.http.post('http://ds-test.oceano.com/api/test/post',img);
+		let data: any = {
+			'avatar': img,
+			'user_id': this._as.getToken()
+		}
+		return this.http.post(this._dsUrl + '/api/user/avatar', data);
 	}
 }
