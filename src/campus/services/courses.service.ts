@@ -51,9 +51,9 @@ export class CoursesService extends DataService<Producto>
 			for (let p of datos.data)
 			{
 				aux = p; 
-				aux.producto_sello = new Sello(aux.producto_sello);
-				aux.producto_entidad_certificadora = new EntidadCertificadora(aux.producto_entidad_certificadora);
-				aux.producto_licencia = new Licencia(aux.producto_licencia);
+				aux.stamp = new Sello(aux.stamp);
+				aux.certifying_entity = new EntidadCertificadora(aux.certifying_entity);
+				aux.license = new Licencia(aux.license);
 				productos.push(new Producto(aux));
 			}
 			resp.data = productos;

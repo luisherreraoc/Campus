@@ -27,7 +27,17 @@ export class InterceptedHttpCustom extends InterceptedHttp
 
     public request(url: string | Request, options?: RequestOptionsArgs): Observable<Response> 
     {
-        return super.request(url, options);
+        return super.request(url, options)
+        .map( (res: any) => 
+        {
+            let response: any = res.json();
+            if ( response.code === 1945 )
+            {
+                this._as.logout();
+                throw Observable.throw(res);
+            }
+            return res;
+        });
     }
 
     public get(url: string, options?: RequestOptionsArgs): Observable<Response> 
@@ -50,18 +60,49 @@ export class InterceptedHttpCustom extends InterceptedHttp
     public post(url: string, body: string, options?: RequestOptionsArgs): Observable<Response> 
     {
         url = super.updateUrl(url);
-        return super.post(url, body, super.getRequestOptionArgs(options)).catch(super.handleError);
+        return super.post(url, body, super.getRequestOptionArgs(options))
+        .map( (res: any) => 
+        {
+            let response: any = res.json();
+            if ( response.code === 1945 )
+            {
+                this._as.logout();
+                throw Observable.throw(res);
+            }
+            return res;
+        })
     }
 
     public put(url: string, body: string, options?: RequestOptionsArgs): Observable<Response> 
     {
         url = super.updateUrl(url);
-        return super.put(url, body, super.getRequestOptionArgs(options)).catch(super.handleError);
+        return super.put(url, body, super.getRequestOptionArgs(options))
+        .map( (res: any) => 
+        {
+            let response: any = res.json();
+            if ( response.code === 1945 )
+            {
+                this._as.logout();
+                throw Observable.throw(res);
+            }
+            return res;
+        })
     }
 
     public delete(url: string, options?: RequestOptionsArgs): Observable<Response> 
     {
         url = super.updateUrl(url);
-        return super.delete(url, super.getRequestOptionArgs(options)).catch(super.handleError);
+        return super.delete(url, super.getRequestOptionArgs(options))
+        .map( (res: any) => 
+        {
+            let response: any = res.json();
+            if ( response.code === 1945 )
+            {
+                this._as.logout();
+                throw Observable.throw(res);
+            }
+            return res;
+        })
     }
+
 }

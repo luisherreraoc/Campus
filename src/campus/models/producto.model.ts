@@ -7,14 +7,15 @@ import { Licencia }              from './licencia.model';
 
 export interface ProductoInterface extends ModelInterface
 {
-    producto_id: number|string,
-    producto_nombre: string,
-    producto_descripcion: string,
-    producto_url_acceso: string,
-    producto_informacion_multimedia: { default_image: string },
-    producto_sello: Sello,
-    producto_entidad_certificadora: EntidadCertificadora,
-    producto_licencia: Licencia
+    id: number|string,
+    name: string,
+    description: string,
+    url_access: string,
+    multimidia: { default_image: string },
+    stamp: Sello,
+    certifying_entity: EntidadCertificadora,
+    licences: Array<Licencia>,
+    certificate: any
 }
 
 export class Producto extends Model
@@ -23,10 +24,9 @@ export class Producto extends Model
 
     public constructor ( m: ProductoInterface )
     {
-        let inter: ProductoInterface = m ? m : <ProductoInterface>{ "producto_id": "", "producto_nombre": "", "producto_descripcion": "", "producto_url_acceso": "", "producto_informacion_multimedia": { "default_image": "" }, "producto_sello": null, "producto_entidad_certificadora": null, "producto_licencia": null }
+        let inter: ProductoInterface = m ? m : <ProductoInterface>{ id: "", name: "", description: "", url_access: "", multimidia: { default_image: "" }, stamp: null, certifying_entity: null, licences: [], certificate: null };
         super(inter);
     }
 
     public get type () { return Producto }
 }
-
