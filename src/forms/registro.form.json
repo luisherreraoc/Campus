@@ -42,7 +42,9 @@
         "required": true,
         "order": 3,
         "maxlength": "80",
-        "type": "password"
+        "type": "password",
+        "checker": true,
+        "toggler": true
     },
     {
         "key": "registro_password2",
@@ -51,7 +53,9 @@
         "required": true,
         "order": 4,
         "maxlength": "80",
-        "type": "password"
+        "type": "password",
+        "checker": true,
+        "toggler": true
     },
     {
         "key": "registro_job",
