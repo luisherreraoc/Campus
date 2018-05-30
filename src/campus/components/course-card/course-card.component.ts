@@ -22,8 +22,9 @@ export class CourseCardComponent
 		this._title = c.name;
 		this._img = this._suite + '/' + c.multimidia.default_image;
 		this._redirect = c.url_access;
-		this._code = c.licenses[0] ? c.licenses[0].licencia_codigo : null;
-		this._state = c.licenses[0] ? c.licenses[0].status : null;
+		debugger
+		this._code = c.license ? c.license.code : null;
+		this._state = c.license ? c.license.status : null;
 	}
 
 	private _suite: string;

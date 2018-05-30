@@ -53,7 +53,7 @@ export class CoursesService extends DataService<Producto>
 				aux = p; 
 				aux.stamp = new Sello(aux.stamp);
 				aux.certifying_entity = new EntidadCertificadora(aux.certifying_entity);
-				aux.licenses = new Licencia(aux.licenses[0]);
+				aux.license = new Licencia(aux.license);
 				productos.push(new Producto(aux));
 			}
 			resp.data = productos;
