@@ -9,6 +9,11 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 import { UserJobsDialogComponent } from '../dialogs/user-jobs-dialog.component';
 
+import { AuthService } from '../../../shared/services/auth.service';
+import { UserService } from '../../services/user.service';
+
+import { Loader } from 'mk';
+
 @Component({
 	templateUrl: './acount.component.html',
 	styleUrls: ['./acount.component.scss']
@@ -26,42 +31,55 @@ export class AcountComponent
 
     private _pass_change: string;
 
-	public constructor ( private logger: Logger, private _fs: MkFormService, private _dialog: MatDialog, private _vcr: ViewContainerRef ) 
+	public constructor ( 
+		private logger: Logger, 
+		private _fs: MkFormService, 
+		private _dialog: MatDialog, 
+		private _vcr: ViewContainerRef, 
+		private _as: AuthService,
+		private _us: UserService,
+		private _loader: Loader ) 
 	{ 
 		logger.log('ACOUNT COMPONENT'); 
-		this._onl1 = ['user_first_name', 'user_last_name'];
-		this._onl2 = ['user_prefix', 'user_telefono'];
+
+		this._onl1 = ['oauth_user_first_name', 'oauth_user_last_name'];
+		this._onl2 = ['user_details_prefix', 'oauth_user_phone'];
 	 	this._key = environment.icon_key;
+	 	this._ids = null;
 
-	 	this._ids = {'user':'154'};
-
-        this._pass_change = environment.pathPasswordChange;
+	 	this._pass_change = environment.pathPasswordChange;
+	 	this._form = null;
 	}
 
 	public ngOnInit () : void
 	{
-		this._subscriptions = [	
-			this.subscribeQuestionForm()
-		];
-	}
+		let source: User = this._us.users.getValue().find( (usr:User) => usr.token === this._as.getToken() );
+		let obs: Observable<any> = source ? Observable.of(source) : this._us.get(this._as.getToken());
+
+		this._loader.show('acount');
+		this._subscriptions = [	this.subscriptions(obs) ];
+	}	
 
 	public ngOnDestroy () : void 
     { 
-        this._subscriptions.forEach( sub => {
-            sub.unsubscribe()
-        });
-        this._subscriptions.length = 0;
+        this._subscriptions.forEach( sub => sub.unsubscribe() );
+        this._subscriptions.length = 0; 
     }
 
-    private subscribeQuestionForm () : Subscription
+    private subscriptions ( observable: Observable<any> ) : Subscription
     {
-    	return this._fs.forms
-        .map( forms => forms.find( form => form.name === "user" ))
-        .subscribe( form =>
+    	return observable
+    	.switchMap( ( user:any, i:number ) => 
+    	{
+    		this._ids = {'user': user.oauth_user_id }; 
+    		return this._fs.forms.map( forms => forms.find( form => form.name === "user" ));
+    	})
+    	.subscribe( form =>
         {
-            if (form) 
-            { 
-                this._form = form;
+        	if (form) 
+            { 	
+            	this._form = form;
+            	this._loader.dismiss('acount');
             }
         });
     }

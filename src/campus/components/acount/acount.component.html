@@ -1,7 +1,7 @@
 <h1>MI CUENTA</h1>
 
-<mk-form name="user" [only]="_onl1" [ids]="_ids"></mk-form>
-<mk-form name="user" cols="2" [only]="_onl2" [ids]="_ids"></mk-form>
+<mk-form *ngIf="_ids" name="user" [only]="_onl1" [ids]="_ids"></mk-form>
+<mk-form *ngIf="_ids" name="user" cols="2" [only]="_onl2" [ids]="_ids"></mk-form>
 
 <span><img src="{{_key}}"/></span><a routerLink="/campus/{{_pass_change}}" routerLinkActive="active">Cambiar contraseña</a>
 

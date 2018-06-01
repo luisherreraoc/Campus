@@ -30,19 +30,21 @@ export class CoursesService extends DataService<Producto>
 		super(Producto, logger, loader);
 	}
 
+	public get courses () : Observable<Array<Producto>> { return this.subject.asObservable(); }
 
 	public getById ( id: number|string ) : Observable<any> 
 	{		
 		return null
 	};
 
-	public list ( data: {[key:string]:any} ) : Observable<any>
+	public load ( data: {[key:string]:any} = {} ) : Observable<any>
 	{
-		//return this.http.post(this._prodUrl,data)
 		let user_id = this._as.getToken();
 
-		return this.http.get(this._prodUrl + user_id,data)
-		.map( (resp: any) =>
+		this.loader.show('courses');
+
+		return this.http.get(this._prodUrl + user_id, data)
+		.subscribe( (resp: any) =>
 		{
 			let datos: any = resp.json();
 			let productos: Array<Producto> = new Array();
@@ -56,9 +58,14 @@ export class CoursesService extends DataService<Producto>
 				aux.license = new Licencia(aux.license);
 				productos.push(new Producto(aux));
 			}
-			resp.data = productos;
-			console.log(datos);
-			return resp;
+			
+			this.loader.dismiss('courses');
+
+			for(let prod of productos)
+			{
+				this.updateData(prod);
+			}
+            this.emit();
 		});
 	} 
 }

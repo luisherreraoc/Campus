@@ -66,7 +66,9 @@ export class LoginComponent
     	obj.grant_type = 'password';
 
     	this._as.login(obj)
-    	.subscribe( ( response: Response ) =>
+    	.first()
+        .takeUntil(this.ngOnDestroy)
+        .subscribe( ( response: Response ) =>
     	{
             if ( response['ok'] )
             {

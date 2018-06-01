@@ -11,6 +11,9 @@ import { CropperComponent }												from '../cropper/cropper.component';
 	
 import { UserService }													from '../../services/user.service';
 
+import { AuthService }													from '../../../shared/services/auth.service';
+
+
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } 					from '@angular/material';
 
 @Component({
@@ -26,17 +29,35 @@ export class AvatarComponent
 
 	private _subscriptions: Array<Subscription>;
 
-	public constructor ( private _logger: Logger, private _loader: Loader, private _dialog: MatDialog, private _vcr: ViewContainerRef, private _us: UserService ) 
+	public constructor ( 
+		private _logger: Logger, 
+		private _loader: Loader, 
+		private _dialog: MatDialog, 
+		private _vcr: ViewContainerRef, 
+		private _us: UserService, 
+		private _as: AuthService ) 
 	{ 
 		_logger.log('Avatar Component');
 	}
 
 	public ngOnInit () : void
 	{
+		let source: User = this._us.users.getValue().find( (usr:User) => usr.token === this._as.getToken() );
+		
 		this._subscriptions = [
 			this.subscribeFileChange(),
-			this.subscribeButtonClick()
+			this.subscribeButtonClick(),
+			this.subscribeUser()
 		];
+		
+		if ( !source ) 
+		{
+			this._us.get(this._as.getToken()).first().takeUntil(this.ngOnDestroy)
+			.subscribe( user => 
+			{
+				this.updateSrc(user); 
+			});
+		}
 	}
 
 	public ngOnDestroy () : void 
@@ -79,9 +100,23 @@ export class AvatarComponent
 		});
 	}
 
+	private subscribeUser () : Subscription
+	{
+		return this._us.users
+		.map( users => users.find(user => user.token === this._as.getToken()) )
+		.subscribe( (user:any) =>
+		{
+			if ( user )
+			{
+				this.updateSrc(user);
+			}
+		});
+	}
+
 	private subscribeDialogClosed ( dialogRef: MatDialogRef<any> ) : Subscription
 	{
 		return dialogRef.beforeClose()
+		.first()
 		.takeUntil(dialogRef.afterClosed())
 		.subscribe( ( me ) => 
 		{
@@ -102,16 +137,25 @@ export class AvatarComponent
       		data: { img: image, rep: this._img }
     	});
     	this.subscribeDialogClosed( dialogRef );
-    	
     }
 
     private saveAvatar ( img: string ) : void
     {
     	this._loader.show('avatar');
     	this._us.saveAvantar(img)
-    	.subscribe( ( resp: any ) =>
-    	{
-    		this._loader.dismiss('avatar');
-    	});
+    	.first()
+    	.takeUntil(this.ngOnDestroy)
+    	.subscribe( ( resp: any ) => this._loader.dismiss('avatar') );
     }
+
+    private updateSrc ( user: any ) : void
+    {
+    	user.oauth_user_details.map( (detail:any) => 
+		{
+			if ( Object.keys(detail).find((v:string) => v === 'avatar') )
+			{	
+				this._img.nativeElement.src = detail.avatar;
+			}
+		});
+    } 
 }

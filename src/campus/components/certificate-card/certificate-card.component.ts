@@ -19,7 +19,7 @@ export class CertificateCardComponent
 	{
 		this._id = c.producto_id;
 		this._title = c.producto_nombre;
-		this._code = c.producto_licencia.licencia_codigo;
+		this._code = c.license.code;
 	}
 
 	@Output('request') _request: EventEmitter<string> = new EventEmitter<string>();
