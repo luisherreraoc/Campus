@@ -44,7 +44,9 @@
         "maxlength": "80",
         "type": "password",
         "checker": true,
-        "toggler": true
+        "toggler": true,
+        "checkagainst": true,
+        "checkmatch": "mismopass"
     },
     {
         "key": "registro_password2",
@@ -55,7 +57,8 @@
         "maxlength": "80",
         "type": "password",
         "checker": true,
-        "toggler": true
+        "toggler": true,
+        "checkmatch": "mismopass"
     },
     {
         "key": "registro_job",
