@@ -76,6 +76,7 @@ export class PasswordRecoveryComponent
 
     public ngOnInit () : void
     {
+
         this._subscriptions = [
             this.subscribeQuestionForm()
         ];
@@ -108,10 +109,12 @@ export class PasswordRecoveryComponent
         else
         {
             form = this._form.getRawValue();
-            if ( form.password === form.password2 ) 
+            if ( form.new_passwd === form.passwd ) 
             {
+                form.token = this._usr;
                 this._loader.show('password');
-                this._ps.recoveryMail(this._form.getRawValue())
+            
+                this._ps.newPass(form)
                 .subscribe( (response:any) =>
                 {
                     let res: any = response.json();
@@ -150,6 +153,7 @@ export class PasswordRecoveryComponent
 
     private setResponseNewPass ( res: any ) : void
     {
+        debugger
         this._response_obj = {
             title: 'Tu constraseña ha sido modificada con éxito.',
             text: '',

@@ -74,6 +74,7 @@ export class PasswordChangeComponent
                 {
                     this.setResponseObjBad();
                 }
+                this._loader.dismiss('change-password');
             },
             ( err:any ) => {
                 this.setResponseObjBad();

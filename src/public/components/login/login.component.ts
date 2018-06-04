@@ -67,7 +67,6 @@ export class LoginComponent
 
     	this._as.login(obj)
     	.first()
-        .takeUntil(Observable.of(this.ngOnDestroy))
         .subscribe( ( response: Response ) =>
     	{
             if ( response['ok'] )

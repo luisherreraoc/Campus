@@ -32,7 +32,7 @@ export class PasswordService
 	public newPass ( data: { usr: string, pass: string } ) : Observable<any>
 	{
 		let d: any = data;
-		//return this.http.post(this._apiUrl + '/' + this._newPassword,data);
-		return this.http.get(this._dsUrl + this._recoveryMail, d);
+		return this.http.post(this._dsUrl + this._newPassword,data);
+		//return this.http.get(this._dsUrl + this._recoveryMail, d);
 	} 
 }

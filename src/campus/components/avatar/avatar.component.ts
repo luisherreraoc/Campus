@@ -118,7 +118,6 @@ export class AvatarComponent
 	{
 		return dialogRef.beforeClose()
 		.first()
-		.takeUntil(dialogRef.afterClosed())
 		.subscribe( ( me ) => 
 		{
 			let d: MatDialogRef<any> = dialogRef;
@@ -145,7 +144,6 @@ export class AvatarComponent
     	this._loader.show('avatar');
     	this._us.saveAvantar(img)
     	.first()
-    	.takeUntil(Observable.of(this.ngOnDestroy))
     	.subscribe( ( resp: any ) => this._loader.dismiss('avatar') );
     }
 
