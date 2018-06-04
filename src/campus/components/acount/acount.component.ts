@@ -12,6 +12,8 @@ import { UserJobsDialogComponent } from '../dialogs/user-jobs-dialog.component';
 import { AuthService } from '../../../shared/services/auth.service';
 import { UserService } from '../../services/user.service';
 
+import { User } from '../../models/user.model';
+
 import { Loader } from 'mk';
 
 @Component({
@@ -53,7 +55,7 @@ export class AcountComponent
 
 	public ngOnInit () : void
 	{
-		let source: User = this._us.users.getValue().find( (usr:User) => usr.token === this._as.getToken() );
+		let source: User = this._us.users.getValue().find( (usr:User) => usr['token'] === this._as.getToken() );
 		let obs: Observable<any> = source ? Observable.of(source) : this._us.get(this._as.getToken());
 
 		this._loader.show('acount');

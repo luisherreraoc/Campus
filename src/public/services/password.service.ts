@@ -14,7 +14,7 @@ import { Registro, RegistroInterface }				    from '../models/registro.model';
 
 export class PasswordService
 {
-	private _apiUrl: string = environment.apiUrl;
+	private _dsUrl: string = environment.dsUrl;
 	private _recoveryMail: string = environment.recoveryMail;
 	private _newPassword: string = environment.newPassword;
 
@@ -25,14 +25,14 @@ export class PasswordService
 
 	public recoveryMail ( data: {[key:string]:any} ) : Observable<any>
 	{
-		//return this.http.post(this._apiUrl + '/' + this._recoveryMail,data);
-		return this.http.get(this._apiUrl + this._recoveryMail,data);
+		return this.http.post(this._dsUrl + this._recoveryMail,data);
+		//return this.http.get(this._apiUrl + this._recoveryMail,data);
 	} 
 
 	public newPass ( data: { usr: string, pass: string } ) : Observable<any>
 	{
 		let d: any = data;
 		//return this.http.post(this._apiUrl + '/' + this._newPassword,data);
-		return this.http.get(this._apiUrl + this._recoveryMail, d);
+		return this.http.get(this._dsUrl + this._recoveryMail, d);
 	} 
 }

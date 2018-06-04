@@ -13,6 +13,7 @@ import { UserService }													from '../../services/user.service';
 
 import { AuthService }													from '../../../shared/services/auth.service';
 
+import { User }															from '../../models/user.model';
 
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } 					from '@angular/material';
 
@@ -42,7 +43,7 @@ export class AvatarComponent
 
 	public ngOnInit () : void
 	{
-		let source: User = this._us.users.getValue().find( (usr:User) => usr.token === this._as.getToken() );
+		let source: User = this._us.users.getValue().find( (usr:User) => usr['token'] === this._as.getToken() );
 		
 		this._subscriptions = [
 			this.subscribeFileChange(),
@@ -52,7 +53,7 @@ export class AvatarComponent
 		
 		if ( !source ) 
 		{
-			this._us.get(this._as.getToken()).first().takeUntil(this.ngOnDestroy)
+			this._us.get(this._as.getToken()).first().takeUntil(Observable.of(this.ngOnDestroy))
 			.subscribe( user => 
 			{
 				this.updateSrc(user); 
@@ -103,7 +104,7 @@ export class AvatarComponent
 	private subscribeUser () : Subscription
 	{
 		return this._us.users
-		.map( users => users.find(user => user.token === this._as.getToken()) )
+		.map( users => users.find(user => user['token'] === this._as.getToken()) )
 		.subscribe( (user:any) =>
 		{
 			if ( user )
@@ -144,7 +145,7 @@ export class AvatarComponent
     	this._loader.show('avatar');
     	this._us.saveAvantar(img)
     	.first()
-    	.takeUntil(this.ngOnDestroy)
+    	.takeUntil(Observable.of(this.ngOnDestroy))
     	.subscribe( ( resp: any ) => this._loader.dismiss('avatar') );
     }
 

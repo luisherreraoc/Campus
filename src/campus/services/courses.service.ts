@@ -1,6 +1,6 @@
 import { Inject, Injectable, Optional }							from '@angular/core';
 import { Response, Http } 										from "@angular/http";
-import { Observable, BehaviorSubject } 							from "rxjs/Rx"; 
+import { Observable, BehaviorSubject,Subscription } 			from "rxjs/Rx"; 
 		
 import { environment }											from '../../environments/environment';
 		
@@ -37,7 +37,7 @@ export class CoursesService extends DataService<Producto>
 		return null
 	};
 
-	public load ( data: {[key:string]:any} = {} ) : Observable<any>
+	public load ( data: {[key:string]:any} = {} ) : Subscription
 	{
 		let user_id = this._as.getToken();
 

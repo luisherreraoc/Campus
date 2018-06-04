@@ -93,7 +93,7 @@ export class PasswordRecoveryComponent
         if ( this._recovery )
         {
             this._loader.show('password');
-            this._ps.recoveryMail({email: this._mail})
+            this._ps.recoveryMail({email: this._mail, url: environment.domain})
             .subscribe( (response:any) =>
             {
                 let res: any = response.json();
