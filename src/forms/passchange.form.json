@@ -1,20 +1,26 @@
 [
     {
-        "key": "password",
+        "key": "new_passwd",
         "label": "Contraseña",
         "value": "",
         "required": true,
         "order": 1,
         "maxlength": "80",
-        "type": "password"
+        "type": "password",
+        "checker": true,
+        "toggler": true,
+        "checkmatch": "mismopass"
     },
     {
-        "key": "password2",
+        "key": "passwd",
         "label": "Confirmar contraseña",
         "value": "",
         "required": true,
         "order": 2,
         "maxlength": "80",
-        "type": "password"
+        "type": "password",
+        "checker": true,
+        "toggler": true,
+        "checkmatch": "mismopass"
     }
 ]

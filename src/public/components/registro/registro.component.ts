@@ -7,7 +7,7 @@ import { Router } 																from '@angular/router';
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA}                               from '@angular/material';
 
-import { Logger, MkFormService, MkForm }										from 'mk';	
+import { Logger, MkFormService, MkForm, Loader }								from 'mk';	
 
 import { RegistroService }                                                      from '../../services/registro.service';
 
@@ -110,6 +110,10 @@ export class RegistroComponent
 
     private _question: any;
 
+    private _sended: boolean;
+    private _response_obj: {title:string,text:string,img:string,btn:string,callback:any};
+    private _error: boolean;
+
 	public constructor ( 
         private _logger: Logger, 
         private _fs: MkFormService, 
@@ -117,7 +121,8 @@ export class RegistroComponent
         private _router: Router, 
         private _rs: RegistroService,
         private _dialog: MatDialog,
-        private _vcr: ViewContainerRef ) 
+        private _vcr: ViewContainerRef,
+        private _loader: Loader ) 
 	{ 
 		_logger.log('REGISTRO COMPONENT'); 
 
@@ -136,8 +141,16 @@ export class RegistroComponent
 		this._form_group = new FormGroup({});
         this._subscriptions = new Array();
         
-        //this.ids = { 'registro': [0] };
-        //this._fs.addServices(_rs);
+        this._sended = false;
+        this._response_obj = {
+            title: '',
+            text: '',
+            img: '',
+            btn: '',
+            callback: null
+        };
+
+        this._error = false;
 	}
 
 	public ngOnInit ()
@@ -206,15 +219,21 @@ export class RegistroComponent
                 'last_name': aux.registro_last_name,
                 'email': aux.registro_email,
                 'password': aux.registro_password,
-                'job': aux.registro_job,
-                'especialization': aux.registro_especialization,
-                'college': aux.registro_college,
-                'redirect': redirect_url
+                'role': 2,
+                'details': [
+                    { 'job': aux.registro_job },
+                    { 'especialization': aux.registro_especialization },
+                    { 'college': aux.registro_college }
+                ],
+                    'redirect': redirect_url
             }
 
-            if (aux.registro_accepted_terms === true) {
+            if (aux.registro_accepted_terms === true) 
+            {
                 this.send(data);
-            } else {
+            } 
+            else 
+            {
                 let dialogRef = this._dialog.open(RegistroDialogComponent, {
                     id: 'registro-dialog',
                     viewContainerRef: this._vcr,
@@ -239,10 +258,45 @@ export class RegistroComponent
 
     private send ( data: {[key:string]:any}) : void
     {
+        this._loader.show('registro');
         this._rs.register(data)
-        .subscribe( ( response: any ) =>
-        {
-            this._router.navigateByUrl('/public/login');
-        });
+        .subscribe( 
+            ( response: any ) => { 
+                this._logger.info('Mail enviado');
+                this._response_obj = {
+                    title: '',
+                    text: 'Se le ha enviado un email para la verificación de sus datos.',
+                    img: '',
+                    btn: 'INGRESAR',
+                    callback: this.goToLogin
+                };
+
+            },      
+            ( error: any ) => { 
+                this._logger.error('Error');
+                this._response_obj = {
+                    title: '',
+                    text: 'Ha habido un error en el proceso de registro.',
+                    img: '',
+                    btn: 'DE ACUERDO',
+                    callback: this.goToRegistro
+                };
+                this._error = true;
+            },
+            ( ) => { 
+                this._loader.dismiss('registro');
+                this._sended = true;
+            }
+        );
+    }
+
+    private goToLogin () : void
+    {
+        this._router.navigateByUrl('/public/login');
+    }
+
+    private goToRegistro () : void
+    {
+         this._router.navigateByUrl('/public/registro');   
     }
 }

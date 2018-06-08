@@ -60,14 +60,23 @@ export class LoginComponent
     private send () : void
     {
     	let obj: any = this._form_group.getRawValue();
+        let url: string = this._as.redirectUrl ? this._as.redirectUrl : this._campusUrl;
 
     	obj.product_id = 0;
     	obj.grant_type = 'password';
 
     	this._as.login(obj)
-    	.subscribe( ( response: Response ) =>
+    	.first()
+        .subscribe( ( response: Response ) =>
     	{
-    		this._router.navigateByUrl(this._campusUrl);
+            if ( response['ok'] )
+            {
+                this._router.navigateByUrl(url);
+            }
+            else
+            {
+                this._logger.log(response['error_description']);
+            }            
     	});
     }
 }

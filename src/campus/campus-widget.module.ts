@@ -20,10 +20,13 @@ import { CertificatesComponent }								from './components/certificates/certific
 import { CertificateCardComponent }								from './components/certificate-card/certificate-card.component';
 import { CertificateRequestComponent }							from './components/certificate-request/certificate-request.component';
 import { PasswordChangeComponent }								from './components/password-change/password-change.component';
+import { AvatarComponent }										from './components/avatar/avatar.component';
+import { CropperComponent }										from './components/cropper/cropper.component';
 
 import { SharedModule }											from '../shared/shared.module';
 
-// import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import { DraggableDirective } 									from './directives/draggable.directive';
+
 
 // --- Dialogs --------------------------------------------------------------------------
 import { UserJobsDialogComponent } from './components/dialogs/user-jobs-dialog.component';
@@ -44,10 +47,8 @@ import { UserInfoDialog } from './components/dialogs/user-info-dialog.component'
     	ReactiveFormsModule,
 
 		SharedModule
-		
-		// NoopAnimationsModule
 	],
-	entryComponents:[ UserJobsDialogComponent, UserInfoDialog ],
+	entryComponents:[ UserJobsDialogComponent, CropperComponent, UserInfoDialog ],
 	declarations: 	[ 
 		CampusComponent, 
 		AcountComponent, 
@@ -57,8 +58,11 @@ import { UserInfoDialog } from './components/dialogs/user-info-dialog.component'
 		CertificateCardComponent, 
 		CertificateRequestComponent, 
 		UserJobsDialogComponent, 
+		UserInfoDialog,
 		PasswordChangeComponent,
-		UserInfoDialog ],
+		AvatarComponent, 
+		CropperComponent, 
+		DraggableDirective ],
 	exports: 		[ CampusComponent ]
 })
 export class CampusWidgetModule

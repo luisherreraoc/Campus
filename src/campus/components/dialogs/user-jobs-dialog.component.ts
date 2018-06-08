@@ -10,7 +10,7 @@ import { Logger, MkFormService, MkForm } from 'mk';
 
 import { UserService } from '../../services/user.service';
 
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA}                 from '@angular/material';
 
 const especialidad: any = {
     "Médico": [
@@ -129,11 +129,11 @@ export class UserJobsDialogComponent
         
         this._step = 0;
         this._steps = [
-            new Array("user_job"),
-            new Array("user_especialization")
+            new Array("user_details_job"),
+            new Array("user_details_especialization")
         ];
 
-        this._only = ['user_college'];
+        this._only = ['user_details_college'];
 
         this._form_group = new FormGroup({});
         this._subscriptions = new Array();        
@@ -180,10 +180,10 @@ export class UserJobsDialogComponent
             this.secondMenu = true;
             
             if ( this._step == 1 ) {
-                let job : any = this._form.find('user_job').value || 'Médico';
+                let job : any = this._form.find('user_details_job').value || 'Médico';
 
                 this._fs.getFormQuestions('user').map( (q:any) => {
-                    if(q.key == 'user_especialization') {
+                    if(q.key == 'user_details_especialization') {
                         q.options = especialidad[job];
 
                         this._question = q;
@@ -191,11 +191,12 @@ export class UserJobsDialogComponent
                 });
             }
         } else {
+            debugger
             aux = this._form_group.getRawValue();
             data = {
-                'user_job': aux.user_job,
-                'user_especialization': aux.user_especialization,
-                'user_college': aux.user_college
+                'user_details_job': aux.user_details_job,
+                'user_details_especialization': aux.user_details_especialization,
+                'user_details_college': aux.user_details_college
             }
             this.send(data);
             this.dialogRef.close();
@@ -207,6 +208,7 @@ export class UserJobsDialogComponent
         this._us.register(data)
         .subscribe( (response: any ) =>
         { 
+            debugger
             console.log(data) 
         });
     }

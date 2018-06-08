@@ -25,6 +25,11 @@ export class CoursesComponent
 		this._subscriptions = [
             this.subscribeCourses()
         ];
+
+        if ( this._cs.subject.getValue().length <= 0 )
+        {
+        	this._cs.load();
+		}
 	}
 	
 	public ngOnDestroy () : void 
@@ -35,19 +40,6 @@ export class CoursesComponent
 
     private subscribeCourses () : Subscription
     {
-    	return this._cs.list({})
-    	.subscribe( (resp: any) =>
-    	{
-    		if ( resp.status === 200 )
-    		{
-                this._courses = resp.data;
-    		}
-    		else
-    		{
-    			this.logger.error('Error: ' + resp.message);
-			}
-		}, 		
-		(error: any) => { console.log('error')}
-		);
+    	return this._cs.courses.subscribe( courses => this._courses = courses);
     }
 }

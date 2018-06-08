@@ -1,0 +1,7 @@
+<div #cropper styel="position: relative">
+	<img #img src="" [draggable]="dragEnabled" (load)="imgLoaded()"/>
+</div>
+
+<span>Mové la foto para encuadrarla</span>
+
+<button class="btn" (click)="crop()">RECORTAR</button>
