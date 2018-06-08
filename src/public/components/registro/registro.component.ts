@@ -125,7 +125,7 @@ export class RegistroComponent
 
         this._step = 0;
         this._steps = [
-            new Array("registro_first_name", "registro_last_name", "registro_email", "registro_password", "registro_password2" ),
+            new Array("registro_first_name", "registro_last_name", "registro_email", "registro_password", "registro_password1", "registro_password2" ),
             new Array("registro_job"),
             new Array("registro_especialization"),
             new Array("registro_college"),
@@ -183,8 +183,6 @@ export class RegistroComponent
             this._showIngresar = this._step >= 1 && this._step < len ? false : true;
             this._butonLabel = this._step === len ? 'REGISTRARSE' : 'SIGUIENTE';
 
-            this.checkSelected();
-
             if ( this._step == 2 )
             {
                 let job:any = this._form.find('registro_job').value || 'Médico';
@@ -193,7 +191,7 @@ export class RegistroComponent
                 {
                     if(q.key == 'registro_especialization')
                     {
-                        q.options = especialidad[job];
+                        q.options = especialidad[job.value];
 
                         this._question = q;
                     }
@@ -223,36 +221,9 @@ export class RegistroComponent
                     data: {
                         texto: 'acepte los términos y condiciones'
                     }
-                });            }
+                });    
+            }
         }
-    }
-
-    private checkSelected () : void 
-    {
-        let aux = this._form_group.getRawValue();
-
-        if (this._step == 2 && aux.registro_job === null) {
-            this._step--;
-            let dialogRef = this._dialog.open(RegistroDialogComponent, {
-                id: 'registro-dialog',
-                viewContainerRef: this._vcr,
-                data: {
-                    texto: 'seleccione un empleo'
-                }
-            });
-        }
-
-        if (this._step == 3 && aux.registro_especialization === null) {
-            this._step--;
-            let dialogRef = this._dialog.open(RegistroDialogComponent, {
-                id: 'registro-dialog',
-                viewContainerRef: this._vcr,
-                data: {
-                    texto: 'seleccione su especialización/es'
-                }
-            });
-        }
-
     }
 
     private openTerms () : void
@@ -271,8 +242,7 @@ export class RegistroComponent
         this._rs.register(data)
         .subscribe( ( response: any ) =>
         {
-            debugger;
-            // this._router.navigateByUrl('/public/login');
+            this._router.navigateByUrl('/public/login');
         });
     }
 }

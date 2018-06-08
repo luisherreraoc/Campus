@@ -35,14 +35,17 @@
         "maxlength": "120",
         "type": "email"
     },
-	{
-        "key": "registro_password",
+    {
+        "key": "registro_password1",
         "label": "Contraseña",
         "value": "",
         "required": true,
         "order": 3,
         "maxlength": "80",
-        "type": "password"
+        "type": "password",
+        "toggler": true,
+        "checker": true,
+        "checkmatch": "mismopass"
     },
     {
         "key": "registro_password2",
@@ -51,7 +54,9 @@
         "required": true,
         "order": 4,
         "maxlength": "80",
-        "type": "password"
+        "type": "password",
+        "checkmatch": "mismopass",
+        "checkagainst": true
     },
     {
         "key": "registro_job",
@@ -89,7 +94,6 @@
         "key": "registro_college",
         "label": "Seleciona si pertenece a algún Colegio de médicos o Sociedad",
         "value": "",
-        "required": true,
         "order": 7,
         "type": "select-list-multiple",
         "maxlength": "120",
@@ -149,7 +153,6 @@
         "key": "registro_college_2",
         "label": "Seleciona si pertenece a algún Colegio de médicos o Sociedad",
         "value": "",
-        "required": true,
         "order": 7,
         "type": "select",
         "maxlength": "120",
