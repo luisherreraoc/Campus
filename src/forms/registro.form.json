@@ -45,7 +45,6 @@
         "type": "password",
         "checker": true,
         "toggler": true,
-        "checkagainst": true,
         "checkmatch": "mismopass"
     },
     {
@@ -56,8 +55,8 @@
         "order": 4,
         "maxlength": "80",
         "type": "password",
-        "checker": true,
         "toggler": true,
+        "checkagainst": true,
         "checkmatch": "mismopass"
     },
     {
