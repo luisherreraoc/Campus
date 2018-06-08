@@ -196,6 +196,8 @@ export class RegistroComponent
             this._showIngresar = this._step >= 1 && this._step < len ? false : true;
             this._butonLabel = this._step === len ? 'REGISTRARSE' : 'SIGUIENTE';
 
+            console.log(this._form.find('registro_job').value)
+
             if ( this._step == 2 )
             {
                 let job:any = this._form.find('registro_job').value || 'Médico';

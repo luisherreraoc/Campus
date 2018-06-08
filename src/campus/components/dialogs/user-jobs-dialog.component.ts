@@ -178,13 +178,15 @@ export class UserJobsDialogComponent
             this._step++;
             this.firstMenu = false;
             this.secondMenu = true;
+
+            console.log(this._form.find('user_details_job').value.value)
             
             if ( this._step == 1 ) {
                 let job : any = this._form.find('user_details_job').value || 'Médico';
 
                 this._fs.getFormQuestions('user').map( (q:any) => {
                     if(q.key == 'user_details_especialization') {
-                        q.options = especialidad[job];
+                        q.options = especialidad[job.value];
 
                         this._question = q;
                     }
