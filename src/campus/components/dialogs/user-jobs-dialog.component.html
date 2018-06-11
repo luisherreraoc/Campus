@@ -3,7 +3,7 @@
         <mk-form name="user" ids="data.ids" [only]="_steps[_step]"></mk-form>
     </div>
     <div class="button-container">
-        <button _ngcontent-c3="" class="btn" (click)="next()" >ACEPTAR</button>
+        <button mkStepvalidate [form]="_form_group" [filter]="_steps[_step]" _ngcontent-c3="" class="btn" (onClicked)="next()" >ACEPTAR</button>
     </div>
 </div>
 

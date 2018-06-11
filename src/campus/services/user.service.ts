@@ -64,9 +64,12 @@ export class UserService extends DataService<User>
 		return this.http.post( environment.dsUrl + environment.apiPasswordChange + this._as.getToken(), data ).map(res => res.json());
 	}
 
-	public register ( data: {[key:string]:any} ) : Observable<any>
+	public update ( data: {[key:string]:any} ) : Observable<any>
 	{
-		return this.http.post(this._dsUrl,data);
+		return this.http.put(this._dsUrl + '/api/user/update/' + this._as.getToken(), data)
+		.map( (response:any) => {
+			return response.json()
+		});
 	} 
 
 	public saveAvantar ( img: string ) : Observable<any>

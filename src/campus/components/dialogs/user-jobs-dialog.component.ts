@@ -178,9 +178,7 @@ export class UserJobsDialogComponent
             this._step++;
             this.firstMenu = false;
             this.secondMenu = true;
-
-            console.log(this._form.find('user_details_job').value.value)
-            
+       
             if ( this._step == 1 ) {
                 let job : any = this._form.find('user_details_job').value || 'Médico';
 
@@ -193,12 +191,25 @@ export class UserJobsDialogComponent
                 });
             }
         } else {
-            debugger
             aux = this._form_group.getRawValue();
+            let especializations = [];
+            let colleges = [];
+            for (let especialization of aux.user_details_especialization) {
+                especializations.push(especialization.value);
+            };
+            for (let college of aux.user_details_college) {
+                colleges.push(college.value);
+            };
             data = {
-                'user_details_job': aux.user_details_job,
-                'user_details_especialization': aux.user_details_especialization,
-                'user_details_college': aux.user_details_college
+                'first_name': aux.oauth_user_first_name,
+                'last_name': aux.oauth_user_last_name,
+                'phone': aux.oauth_user_phone,
+                'details': [
+                            {key: 'job', value: aux.user_details_job.value},
+                            {key: 'especialization', value: especializations},
+                            {key: 'college', value: colleges},
+                            {key: 'prefix', value: aux.user_details_prefix}
+                        ],
             }
             this.send(data);
             this.dialogRef.close();
@@ -207,11 +218,11 @@ export class UserJobsDialogComponent
 
     private send (data: {[key:string]:any}) : void 
     {
-        this._us.register(data)
+        this._us.update(data)
         .subscribe( (response: any ) =>
         { 
-            debugger
-            console.log(data) 
+            console.log(response) 
+            console.log(data)
         });
     }
 
