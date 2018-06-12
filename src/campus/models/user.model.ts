@@ -37,6 +37,8 @@ export class User extends Model
         let details: Array<any> = new Array();
         let aux: any;
 
+        inter.oauth_user_details = inter.oauth_user_details ? inter.oauth_user_details : new Array();
+
         inter.oauth_user_details.map( (det:any) =>
         {
             aux = {};
