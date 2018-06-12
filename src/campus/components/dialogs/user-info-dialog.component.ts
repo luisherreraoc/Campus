@@ -91,7 +91,7 @@ export class UserInfoDialog
 
     private send (data: {[key:string]:any}) : void 
     {
-        this._us.register(data)
+        this._us.update(data)
         .subscribe( (response: any ) =>
         { 
             console.log(data) 
