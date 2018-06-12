@@ -65,7 +65,8 @@ export class AcountComponent
 	public ngOnDestroy () : void 
     { 
         this._subscriptions.forEach( sub => sub.unsubscribe() );
-        this._subscriptions.length = 0; 
+        this._subscriptions.length = 0;
+        this._loader.dismiss('acount'); 
     }
 
     private subscriptions ( observable: Observable<any> ) : Subscription
@@ -73,6 +74,8 @@ export class AcountComponent
     	return observable
     	.switchMap( ( user:any, i:number ) => 
     	{
+    		if ( user.oauth_user_id === undefined )
+    			this._as.logout();
     		this._ids = {'user': user.oauth_user_id }; 
     		return this._fs.forms.map( forms => forms.find( form => form.name === "user" ));
     	})
@@ -83,7 +86,9 @@ export class AcountComponent
             	this._form = form;
             	this._loader.dismiss('acount');
             }
-        });
+        },
+        (error) => {},
+        () => this._loader.dismiss('acount'));
     }
 
     private openFirstDialog() : void
