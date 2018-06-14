@@ -37,13 +37,46 @@ export class User extends Model
         let details: Array<any> = new Array();
         let aux: any;
 
+        // Array en la que almacenar las keys de user_details que son de un select tipo múltiple
+        let user_details_multiple_value: Array<string> = new Array();
+        let aux_multiple: Array<string> = new Array();
+
         inter.oauth_user_details = inter.oauth_user_details ? inter.oauth_user_details : new Array();
+
+        // Rellenamos la array de control con los nombres de las keys repetidas en el listado de details de usuario
+        inter.oauth_user_details.map( (det:any) =>
+        {
+            if ( aux_multiple.indexOf(det.user_details_key) < 0 ) 
+            {
+                aux_multiple.push(det.user_details_key)
+            }
+            else
+            {
+                user_details_multiple_value.push(det.user_details_key);
+            }
+        });
 
         inter.oauth_user_details.map( (det:any) =>
         {
             aux = {};
             aux[det.user_details_key] = det.user_details_value;
             details.push(aux);
+
+            // Chapuzilla para adptar la estructura que nos pasa Albert a la que ha de tener el model 
+            // paa que la actualización de datos en el MkForm sea corecta.
+            if ( user_details_multiple_value.indexOf(det.user_details_key) < 0 && det.user_details_key != 'especialization' && det.user_details_key != 'college' )
+            {
+                inter['user_details_' + det.user_details_key] = det.user_details_value;
+            }
+            else
+            {
+                if ( !Array.isArray(inter['user_details_' + det.user_details_key]) ) 
+                {
+                    inter['user_details_' + det.user_details_key] = new Array();
+                }
+                inter['user_details_' + det.user_details_key].push(det.user_details_value);
+            }
+
         });
 
         inter.oauth_user_details = details;
