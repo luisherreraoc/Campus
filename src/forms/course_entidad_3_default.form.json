@@ -1,0 +1,78 @@
+[
+      {
+        "key": "nombre", 
+        "type": "text",
+        "label": "FORM_NOMBRE",
+        "required": true,
+        "order": 1
+      },
+      {
+        "key": "apellido1", 
+        "type": "text",
+        "label": "FORM_APELLIDO",
+        "required": true,
+        "order": 2
+      },
+      {
+        "key": "apellido2", 
+        "type": "text",
+        "label": "FORM_APELLIDO"
+      },
+      {
+        "key": "dni_nie", 
+        "type": "text",
+        "label": "DNI", 
+        "required": true,
+        "order": 3
+      },
+      {
+        "key": "direccion",
+        "type": "text",
+        "label": "Dirección",
+        "required": true,
+        "order": 4
+      },
+      {
+        "key": "pais_nombre",
+        "type": "text",
+        "label": "País",
+        "disabled": true,
+        "order": 5
+      },
+      {
+        "key": "mail", 
+        "type": "email",
+        "label": "FORM_EMAIL",
+        "required": true,
+        "disabled":true,
+        "order": 6 
+      },
+      {
+        "key": "mail2", 
+        "type": "email",
+        "label": "Email adicional",
+        "order": 7
+      },
+      {
+        "key": "telefono",
+        "type": "text",
+        "label": "Teléfono",
+        "order": 8
+      },
+      {
+        "key": "licencia",
+        "type": "hidden"
+      },
+      {
+        "key": "pais",
+        "type": "hidden"
+      },
+      {
+        "key": "pais_id",
+        "type": "hidden"
+      },
+      {
+        "key": "id",
+        "type": "hidden"
+      }    
+]

@@ -25,6 +25,7 @@ export class CourseCardComponent
 		debugger
 		this._code = c.license ? c.license.code : null;
 		this._state = c.license ? c.license.status : null;
+		this._entidad_id = c.certifying_entity ? c.certifying_entity.ce_id : null;
 	}
 
 	private _suite: string;
@@ -36,6 +37,8 @@ export class CourseCardComponent
 	private	_code: string;
 	private _state: string;
 	private _ids: any;
+	private _entidad_id : any;
+	private _form : string;
 
 	public constructor ( 
 		private logger: Logger, 
@@ -49,16 +52,22 @@ export class CourseCardComponent
 		this._ids = {'user' : '154'};
 	}
 
+	ngOnInit () {
+		this._form = "course_entidad_" + this._entidad_id + "_default";
+	}
+
 	private go () : void 
 	{
-		if (this._state === 'no iniciado')
+		if (this._state === 'untouched')
 		{
 			let dialogRef = this._dialog.open(UserInfoDialog, {
 				id: 'user-info-dialog',
 				data: {
 					_ids: this._ids,
-					_vcr: this._vcr
-				}
+					_vcr: this._vcr,
+					_form: this._form,
+					_code: this._code
+				},
 			});
 		} else {
 			window.open(environment.ssoRedirectUrl + this._code);
