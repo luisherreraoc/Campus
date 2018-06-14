@@ -184,7 +184,9 @@ export class UserJobsDialogComponent
 
                 this._fs.getFormQuestions('user').map( (q:any) => {
                     if(q.key == 'user_details_especialization') {
-                        q.options = especialidad[job.value];
+                        
+                        debugger
+                        q.options = especialidad[ job.value ? job.value : job ];
 
                         this._question = q;
                     }
@@ -192,6 +194,7 @@ export class UserJobsDialogComponent
             }
         } else {
             aux = this._form_group.getRawValue();
+            debugger
             let especializations = [];
             let colleges = [];
             for (let especialization of aux.user_details_especialization) {
