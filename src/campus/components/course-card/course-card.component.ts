@@ -8,6 +8,7 @@ import { environment }													from '../../../environments/environment';
 import { MatDialog } 													from '@angular/material';
 
 import { UserInfoDialog } from '../dialogs/user-info-dialog.component';
+import { UserService } from '../../services/user.service';
 
 @Component({
 	selector: 'course-card',
@@ -38,14 +39,17 @@ export class CourseCardComponent
 	private _state: string;
 	private _ids: any;
 	private _entidad_id : any;
+	
 	private _form : string;
+	private _user_previous_info: any;
 
 	public constructor ( 
 		private logger: Logger, 
 		private window: Window,
 		private _fs: MkFormService,
 		private _dialog: MatDialog,
-		private _vcr: ViewContainerRef ) 
+		private _vcr: ViewContainerRef,
+		private _us: UserService ) 
 	{ 
 		logger.log('COURSE CARD COMPONENT'); 
 		this._suite = environment.suiteUrl;
@@ -53,6 +57,11 @@ export class CourseCardComponent
 	}
 
 	ngOnInit () {
+		this._us.getUserData(this._code)
+		.subscribe( test => {
+			this._user_previous_info = test;
+		})
+
 		this._form = "course_entidad_" + this._entidad_id + "_default";
 	}
 
@@ -66,7 +75,9 @@ export class CourseCardComponent
 					_ids: this._ids,
 					_vcr: this._vcr,
 					_form: this._form,
-					_code: this._code
+					_code: this._code,
+					_id: this._entidad_id,
+					_values: this._user_previous_info
 				},
 			});
 		} else {

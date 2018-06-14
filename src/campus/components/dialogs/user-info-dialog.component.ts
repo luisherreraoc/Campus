@@ -47,7 +47,7 @@ export class UserInfoDialog
 		this._subscriptions = [
             this.subscribeQuestionForm()
         ];
-	}
+    }
 
 	public ngOnDestroy () : void 
     { 
@@ -66,7 +66,9 @@ export class UserInfoDialog
             if (form) 
             { 
                 this._form = form; 
-                this._form_group = this._form.formGroup;                
+                this._form_group = this._form.formGroup;
+
+                this._form_group.patchValue(this.data._values);            
             }
         });
     }
@@ -101,15 +103,19 @@ export class UserInfoDialog
 				},
 			});
         };
-
     }
 
     private send (data: {[key:string]:any}) : void 
     {
-        this._us.update(data)
+
+        let route = '';
+
+        this.data._id === 1 || this.data._id === 2 ? route = 'alcala' : route = 'defaultHandler';
+
+        this._us.updateBeforeCourse(data, route, this.data._code)
         .subscribe( (response: any ) =>
         { 
-            if (response.code === 200) {
+            if (response.code === 900) {
                 this.dialogRef.close();
                 this.dialogRef.afterClosed()
                 .subscribe( x => {
