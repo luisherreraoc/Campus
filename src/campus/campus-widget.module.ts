@@ -32,6 +32,7 @@ import { DraggableDirective } 									from './directives/draggable.directive';
 import { UserJobsDialogComponent } from './components/dialogs/user-jobs-dialog.component';
 import { UserInfoDialog } from './components/dialogs/user-info-dialog.component';
 import { FormErrorDialog } from './components/dialogs/form-error-dialog.component';
+import { LogOutComponent } from './components/log-out/log-out.component';
 
 /**
  *	Widget module for common components and directives
@@ -64,7 +65,9 @@ import { FormErrorDialog } from './components/dialogs/form-error-dialog.componen
 		PasswordChangeComponent,
 		AvatarComponent, 
 		CropperComponent, 
-		DraggableDirective ],
+		DraggableDirective,
+		LogOutComponent
+	],
 	exports: 		[ CampusComponent ]
 })
 export class CampusWidgetModule
