@@ -179,7 +179,6 @@ export class RegistroComponent
                 this._form = form; 
                 this._form_group = this._form.formGroup;
                 this._form_group.reset();
-                
             }
         });
     }
@@ -195,8 +194,6 @@ export class RegistroComponent
             this._step++;
             this._showIngresar = this._step >= 1 && this._step < len ? false : true;
             this._butonLabel = this._step === len ? 'REGISTRARSE' : 'SIGUIENTE';
-
-            console.log(this._form.find('registro_job').value)
 
             if ( this._step == 2 )
             {
