@@ -11,11 +11,13 @@ import { Logger, MkFormService, MkForm } from 'mk';
 import { UserService } from '../../services/user.service';
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { FormErrorDialog } from './form-error-dialog.component';
 
 
 @Component({
     selector: 'user-info-dialog',
-    templateUrl: 'user-info-dialog.component.html'
+    templateUrl: 'user-info-dialog.component.html',
+    styleUrls: ['user-info-dialog.component.css']
 })
 export class UserInfoDialog 
 {
@@ -45,7 +47,7 @@ export class UserInfoDialog
 		this._subscriptions = [
             this.subscribeQuestionForm()
         ];
-	}
+    }
 
 	public ngOnDestroy () : void 
     { 
@@ -58,13 +60,15 @@ export class UserInfoDialog
     private subscribeQuestionForm () : Subscription
     {
         return this._fs.forms
-        .map( forms => forms.find( form => form.name === "course" ) )
+        .map( forms => forms.find( form => form.name === this.data._form ) )
         .subscribe( form =>
         {
             if (form) 
             { 
                 this._form = form; 
-                this._form_group = this._form.formGroup;                
+                this._form_group = this._form.formGroup;
+
+                this._form_group.patchValue(this.data._values);            
             }
         });
     }
@@ -76,25 +80,57 @@ export class UserInfoDialog
 
         aux = this._form_group.getRawValue();
         data = {
-            'user_first_name': aux.user_first_name,
-            'user_last_name': aux.user_last_name,
-            'user_dni': aux.user_dni,
-            'user_address': aux.user_address,
-            'user_country': aux.user_country,
-            'user_email': aux.user_email,
-            'user_telefono': aux.user_telefono
-        }
-        this.send(data);
-        this.dialogRef.close();
-        
+            'nombre': aux.nombre,
+            'apellido1': aux.apellido1,
+            'apellido2': aux.apellido2,
+            'dni_nie': aux.dni_nie,
+            'direccion': aux.direccion,
+            'pais_nombre': aux.pais_nombre,
+            'mail': aux.mail,
+            'mail2': aux.mail2,
+            'telefono': aux.telefono,
+            'file1': aux.file1,
+            'file': aux.file
+        };
+
+        if (this._form_group.status === 'VALID') {
+            this.send(data);
+        } else {
+            let dialogRef = this._dialog.open(FormErrorDialog, {
+				id: 'form-error-dialog',
+				data: {
+                    message: 'Por favor, revise los campos introducidos'
+				},
+			});
+        };
     }
 
     private send (data: {[key:string]:any}) : void 
     {
-        this._us.update(data)
+
+        let route = '';
+
+        this.data._id === 1 || this.data._id === 2 ? route = 'alcala' : route = 'defaultHandler';
+
+        this._us.updateBeforeCourse(data, route, this.data._code)
         .subscribe( (response: any ) =>
         { 
-            console.log(data) 
+            if (response.code === 900) {
+                this.dialogRef.close();
+                this.dialogRef.afterClosed()
+                .subscribe( x => {
+                    window.open(environment.ssoRedirectUrl + this.data._code);         
+                });
+            } else {
+                let dialogRef = this._dialog.open(FormErrorDialog, {
+                    id: 'form-error-dialog',
+                    data: {
+                        message: 'Ha habido un error, por favor, vuelva a intentarlo'
+                    },
+                });
+            };
+            console.log(response)
+            console.log(data)
         });
     }
 

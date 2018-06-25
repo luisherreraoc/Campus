@@ -74,8 +74,9 @@ export class AcountComponent
     	return observable
     	.switchMap( ( user:any, i:number ) => 
     	{
-    		if ( user.oauth_user_id === undefined )
+    		if ( user.oauth_user_id === undefined ) {
     			this._as.logout();
+			}
     		this._ids = {'user': user.oauth_user_id }; 
     		return this._fs.forms.map( forms => forms.find( form => form.name === "user" ));
     	})

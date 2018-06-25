@@ -44,6 +44,7 @@ export class CoursesService extends DataService<Producto>
 		this.loader.show('courses');
 
 		return this.http.get(this._prodUrl + user_id, data)
+		// return this.http.get(this._prodUrl)
 		.subscribe( (resp: any) =>
 		{
 			let datos: any = resp.json();

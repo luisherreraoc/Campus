@@ -107,6 +107,7 @@
             { "value": "Consejo Médico de la Provincia de Santiago del Estero ", "text": "Consejo Médico de la Provincia de Santiago del Estero " },
             { "value": "Sociedad Argentina de Diabetes", "text": "Sociedad Argentina de Diabetes" }
         ],
-        "bind":"collage"
+        "bind":"collage",
+        "scrollbar": true
     }
 ]
