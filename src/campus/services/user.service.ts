@@ -77,4 +77,22 @@ export class UserService extends DataService<User>
 		let data: any = { 'avatar': img, 'user_id': this._as.getToken() }
 		return this.http.post(this._dsUrl + '/api/user/avatar', data);
 	}
+
+	public getUserData ( productLicense : string ) : Observable<any> 
+	{
+		return this.http.get(this._dsUrl + '/form/get?licencia=' + productLicense + '&user_id=' + this._as.getToken())
+		.map( (response: any) => {
+			return response.json();
+		});
+	}
+
+	public updateBeforeCourse ( data: {[key:string]:any}, route: string, productLicense : string ) : Observable<any> 
+	{
+		data.user_id = this._as.getToken();
+		data.licencia = productLicense;
+		return this.http.post(this._dsUrl + '/form/set/' + route, data)
+		.map( (response: any) => {
+			return response.json();
+		});
+	}
 }

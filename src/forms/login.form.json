@@ -17,7 +17,6 @@
 	    "order": 2,
 	    "maxlength": "80",
 	    "type": "password",
-	    "checker": true,
 		"toggler": true
     }
 	

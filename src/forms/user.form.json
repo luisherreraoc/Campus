@@ -56,7 +56,7 @@
             { "value": "Médico", "text": "Médico" },
             { "value": "Licenciado de la salud", "text": "Licenciado de la salud" },
             { "value": "Enfermero", "text": "Enfermero" }
-        ]
+        ]        
     },
     {
         "key": "user_details_especialization",
@@ -74,7 +74,7 @@
             { "value": "Gastroenterología", "text": "Gastroenterología" },
             { "value": "Generalista", "text": "Generalista" },
             { "value": "Anestesiologia", "text": "Anestesiologia" }
-        ]
+        ]        
     },
     {
         "key": "user_details_college",
@@ -107,6 +107,7 @@
             { "value": "Consejo Médico de la Provincia de Santiago del Estero ", "text": "Consejo Médico de la Provincia de Santiago del Estero " },
             { "value": "Sociedad Argentina de Diabetes", "text": "Sociedad Argentina de Diabetes" }
         ],
-        "bind":"collage"
+        "bind":"collage",
+        "scrollbar": true        
     }
 ]

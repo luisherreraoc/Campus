@@ -45,4 +45,9 @@
 			background-color: $color-certificaciones;
 		}
 	}
+
+	.wrapper {
+		display: flex;
+		justify-content: space-between;
+	}
 }
