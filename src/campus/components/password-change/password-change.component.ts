@@ -15,7 +15,8 @@ import { Logger, MkFormService, MkForm, Loader }								from 'mk';
 })
 export class PasswordChangeComponent
 {
-	private _form: MkForm;
+    private _form: MkForm;
+    private _form_group;
 	private _subscriptions: Array<Subscription>;
 	
     private _showResponse: boolean;
@@ -53,6 +54,7 @@ export class PasswordChangeComponent
             if (form) 
             { 
                 this._form = form;
+                this._form_group = this._form.formGroup
             }
         });
     }
