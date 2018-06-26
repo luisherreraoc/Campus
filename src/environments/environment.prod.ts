@@ -1,11 +1,11 @@
 export const environment = {
-  production: false,
+  production: true,
   
-  domain: 'http://localhost:4200',
-  apiUrl: './mocks',
-  dsUrl: 'http://ds-test.oceano.com',
+  domain: 'https://campus.oceanomedicina.com',
+  apiUrl: 'https://api.oceano.com',
+  dsUrl: 'https://ds.oceano.com',
   ssoUrl: 'https://sso.oceano.com',
-  suiteUrl: 'http://suite.oceano.com/',
+  suiteUrl: 'https://suite.oceano.com',
   
   pathPublic: 'public',
   pathLogin: 'login',
@@ -15,14 +15,20 @@ export const environment = {
   pathCampus: 'campus',
   pathAcount: 'mi-cuenta',
   pathCourses: 'mis-cursos',
-  pathCertificates: 'mis-certificados',
+  pathCertificates: 'mis-certificaciones',
+  pathCertificateRequest: 'pedir-certificacion',
+  pathPasswordChange: 'cambiar-contrasena',
 
-  ssoLoginUrl: 'http://sso-test.oceano.com/sso/login',
+  ssoLoginUrl: 'https://sso.oceano.com/sso/login',
   ssoRedirectUrl: 'https://sso.oceano.com/sso/redirect?licencia_id=',
 
-  recoveryMail: 'recovery-mail.json',
-  newPassword: 'recovery-mail.json',
-  getConsumerProducts: './mocks/list-products.json',
+  apiPasswordChange: '/api/user/change_password/',
 
-  icon_key: '/assets/img/icon-key'
+  recoveryMail: '/api/user/forgot_password',
+  
+  newPassword: '/api/user/forgot_password/change',
+  getConsumerProducts: 'https://ds.oceano.com/api/product/stamp_user?stamp_id=4&user_id=',
+  // getConsumerProducts: './mocks/list-products.json',
+
+  icon_key: '/assets/img/icon-key.png'
 };
