@@ -144,8 +144,8 @@ export class UserJobsDialogComponent
 		this._subscriptions = [
             this.subscribeQuestionForm()
         ];
-	}
-
+    }
+ 
 	public ngOnDestroy () : void 
     { 
         this._subscriptions.forEach( sub => {
@@ -178,7 +178,7 @@ export class UserJobsDialogComponent
             this._step++;
             this.firstMenu = false;
             this.secondMenu = true;
-       
+    
             if ( this._step == 1 ) {
                 let job : any = this._form.find('user_details_job').value || 'Médico';
 
@@ -223,9 +223,40 @@ export class UserJobsDialogComponent
     {
         this._us.update(data)
         .subscribe( (response: any ) =>
-        { 
-            console.log(response) 
-            console.log(data)
+        {
+            let user : any = this._us.data.find((user : any) => {
+                return user.oauth_user_id == this.data.ids.user
+            })
+
+            let aux = this._form_group.getRawValue();
+            
+            let especializations = [];
+            let colleges = [];
+            for (let especialization of aux.user_details_especialization) {
+                especializations.push(especialization.value);
+            };
+            for (let college of aux.user_details_college) {
+                colleges.push(college.value);
+            };
+
+            let user_details = [
+                {key: 'job', value: aux.user_details_job.value},
+                {key: 'especialization', value: especializations},
+                {key: 'college', value: colleges},
+                {key: 'prefix', value: aux.user_details_prefix}
+            ];
+
+            user.oauth_user_first_name = aux.oauth_user_first_name;
+            user.oauth_user_last_name = aux.oauth_user_last_name;
+            user.oauth_user_phone = aux.oath_user_phone;
+            user.oauth_user_details = user_details;
+            user.user_details_job = aux.user_details_job.value;
+            user.user_details_especialization = especializations
+            user.user_details_college = colleges;
+            user.user_details_prefix = aux.user_details_prefix;
+           
+            // console.log(response) 
+            // console.log(data)
         });
     }
 

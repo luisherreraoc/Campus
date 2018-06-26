@@ -1,6 +1,6 @@
 <div class="first-form-container" *ngIf="firstMenu">
     <div class="select-job">
-        <mk-form name="user" ids="data.ids" [only]="_steps[_step]"></mk-form>
+        <mk-form name="user" [ids]="data.ids" [only]="_steps[_step]"></mk-form>
     </div>
     <div class="button-container">
         <button mkStepvalidate [form]="_form_group" [filter]="_steps[_step]" _ngcontent-c3="" class="btn" (onClicked)="next()" >ACEPTAR</button>
@@ -14,7 +14,7 @@
         </ng-container>
     </div>
     <div class="select-college">
-        <mk-form name="user" ids="data.ids" [only]="_only"></mk-form>
+        <mk-form name="user" [ids]="data.ids" [only]="_only"></mk-form>
         <div class="button-container">
             <button _ngcontent-c3="" class="btn" (click)="next()">ACEPTAR</button>
         </div>

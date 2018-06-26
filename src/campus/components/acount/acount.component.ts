@@ -66,7 +66,7 @@ export class AcountComponent
     { 
         this._subscriptions.forEach( sub => sub.unsubscribe() );
         this._subscriptions.length = 0;
-        this._loader.dismiss('acount'); 
+		this._loader.dismiss('acount'); 
     }
 
     private subscriptions ( observable: Observable<any> ) : Subscription
@@ -91,8 +91,8 @@ export class AcountComponent
         },
         (error) => {},
         () => this._loader.dismiss('acount'));
-    }
-
+	}
+	
     private openFirstDialog() : void
     {
     	let dialogRef = this._dialog.open(UserJobsDialogComponent, {
@@ -104,4 +104,5 @@ export class AcountComponent
 				ref: this._vcr
 			}
 		});
-	}}
+	}
+}
