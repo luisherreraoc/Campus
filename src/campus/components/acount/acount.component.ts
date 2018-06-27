@@ -31,7 +31,9 @@ export class AcountComponent
 
 	private _ids: any;
 
-    private _pass_change: string;
+	private _pass_change: string;
+
+	// private showMe: boolean;
 
 	public constructor ( 
 		private logger: Logger, 
@@ -50,7 +52,7 @@ export class AcountComponent
 	 	this._ids = null;
 
 	 	this._pass_change = environment.pathPasswordChange;
-	 	this._form = null;
+		this._form = null;
 	}
 
 	public ngOnInit () : void
@@ -85,9 +87,8 @@ export class AcountComponent
         	if (form) 
             { 	
             	this._form = form;
-            	this._loader.dismiss('acount');
-            	debugger
-            }
+				this._loader.dismiss('acount');
+			}
         },
         (error) => {},
         () => this._loader.dismiss('acount'));
@@ -101,7 +102,8 @@ export class AcountComponent
 			viewContainerRef: this._vcr,
       		data: { 
 				ids: this._ids, 
-				ref: this._vcr
+				ref: this._vcr,
+				// showMe: this.showMe
 			}
 		});
 	}

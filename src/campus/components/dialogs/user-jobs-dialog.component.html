@@ -1,22 +1,19 @@
-<div class="first-form-container" *ngIf="firstMenu">
-    <div class="select-job">
-        <mk-form name="user" [ids]="data.ids" [only]="_steps[_step]"></mk-form>
+<div class="wrapper" [hidden]="showMe" >
+
+    <div class="form-container">
+        <div class="select-step">
+            <mk-form name="user" [ids]="data.ids" [only]="_steps[_step]"></mk-form>
+        </div>
+
+        <ng-container *ngIf="_step == 1">
+            <div class="select-especialization">
+                <mk-form-select-list-multiple [question]="_question" form="user"></mk-form-select-list-multiple>
+            </div>
+        </ng-container>
     </div>
+    
     <div class="button-container">
         <button mkStepvalidate [form]="_form_group" [filter]="_steps[_step]" _ngcontent-c3="" class="btn" (onClicked)="next()" >ACEPTAR</button>
     </div>
-</div>
 
-<div class="second-form-container" *ngIf="secondMenu">
-    <div class="select-especialization">
-        <ng-container *ngIf="_step == 1">
-            <mk-form-select-list-multiple [question]="_question" form="user"></mk-form-select-list-multiple>
-        </ng-container>
-    </div>
-    <div class="select-college">
-        <mk-form name="user" [ids]="data.ids" [only]="_only"></mk-form>
-        <div class="button-container">
-            <button _ngcontent-c3="" class="btn" (click)="next()">ACEPTAR</button>
-        </div>
-    </div>
 </div>
