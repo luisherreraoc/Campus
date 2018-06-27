@@ -1,4 +1,4 @@
-<div class="first-form-container" *ngIf="firstMenu">
+<div class="first-form-container" [hidden]="showMe" *ngIf="firstMenu">
     <div class="select-job">
         <mk-form name="user" [ids]="data.ids" [only]="_steps[_step]"></mk-form>
     </div>
