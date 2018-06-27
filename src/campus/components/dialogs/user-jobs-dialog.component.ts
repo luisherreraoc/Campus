@@ -125,17 +125,13 @@ export class UserJobsDialogComponent
         private _dialog: MatDialog 
     ) 
     {
-        this.firstMenu = true;
-        this.secondMenu = false;
         this.showMe = true;
         
         this._step = 0;
         this._steps = [
             new Array("user_details_job"),
-            new Array("user_details_especialization")
+            new Array("user_details_college")
         ];
-
-        this._only = ['user_details_college'];
 
         this._form_group = new FormGroup({});
         this._subscriptions = new Array();        
@@ -146,7 +142,7 @@ export class UserJobsDialogComponent
 		this._subscriptions = [
             this.subscribeQuestionForm()
         ];
-        setTimeout(()=> {this.showMe = false}, 1250)
+        setTimeout(()=> {this.showMe = false}, 1200)
     }
  
 	public ngOnDestroy () : void 
@@ -165,7 +161,6 @@ export class UserJobsDialogComponent
         {
             if (form) 
             {
-                // this.data.showMe = true; 
                 this._form = form; 
                 this._form_group = this._form.formGroup;
             }
@@ -180,8 +175,6 @@ export class UserJobsDialogComponent
 
         if ( this._step < len ) {
             this._step++;
-            this.firstMenu = false;
-            this.secondMenu = true;
     
             if ( this._step == 1 ) {
                 let job : any = this._form.find('user_details_job').value || 'Médico';
