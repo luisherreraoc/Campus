@@ -61,6 +61,7 @@ export class AcountComponent
 		let obs: Observable<any> = source ? Observable.of(source) : this._us.get(this._as.getToken());
 
 		this._loader.show('acount');
+
 		this._subscriptions = [	this.subscriptions(obs) ];
 	}	
 
@@ -102,8 +103,7 @@ export class AcountComponent
 			viewContainerRef: this._vcr,
       		data: { 
 				ids: this._ids, 
-				ref: this._vcr,
-				// showMe: this.showMe
+				ref: this._vcr
 			}
 		});
 	}
