@@ -10,8 +10,8 @@
 </ng-container>
 
 <ng-container *ngIf="_change">	
-	<mk-form name="passchange"></mk-form>
+	<mk-form (onEnter)="falseClick()" name="passchange"></mk-form>
 </ng-container>
 
-<button class="btn" (click)="onClick()">{{_btn}}</button>
+<button #button class="btn" (click)="onClick()">{{_btn}}</button>
 

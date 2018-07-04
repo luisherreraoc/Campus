@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter }                         					from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, ElementRef }                         					from '@angular/core';
 
 import { Logger, MkFormService, MkForm }														from 'mk';
 import { Router, ActivatedRoute } 																from '@angular/router';
@@ -20,6 +20,7 @@ import { CertificatesService } from '../../services/certificates.service';
 })
 export class CertificateRequestComponent
 {
+	@ViewChild('button') private _button: ElementRef;	
 	@Output ('close') _close: EventEmitter<null> = new EventEmitter<null>()
 
 	private _form: MkForm;
@@ -36,6 +37,12 @@ export class CertificateRequestComponent
 			this.subscribeQuestionForm()
 		];
 	}
+
+	private falseClick() {
+        let clickMe = this._button.nativeElement;
+
+        clickMe.click();
+    }
 
 	private close () : void
 	{

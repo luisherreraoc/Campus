@@ -1,5 +1,5 @@
 // -- Angular imports -----------------------------------------------------------------------------------------
-import { Component, OnInit, Inject, ViewContainerRef }                         							from '@angular/core';
+import { Component, OnInit, Inject, ViewContainerRef, ViewChild, ElementRef }                         							from '@angular/core';
 import { AbstractControl, FormGroup }        									from '@angular/forms';
 import { Observable, BehaviorSubject, Subscription } 							from "rxjs/Rx"; 
 import { Http, Response, Headers, RequestOptions } 								from '@angular/http';
@@ -97,6 +97,8 @@ const especialidad: any = {
 })
 export class RegistroComponent
 {
+    @ViewChild('button') private _button: ElementRef;
+
     private _step: number;
     private _steps: Array<Array<string>>;
     private _showIngresar: boolean;
@@ -181,6 +183,12 @@ export class RegistroComponent
                 this._form_group.reset();
             }
         });
+    }
+
+    private falseClick() {
+        let clickMe = this._button.nativeElement;
+
+        clickMe.click();
     }
 
     private nextStep () : void

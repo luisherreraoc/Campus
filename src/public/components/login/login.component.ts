@@ -1,5 +1,5 @@
 // -- Angular imports -----------------------------------------------------------------------------------------
-import { Component, OnInit }                         							from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef }                         							from '@angular/core';
 import { AbstractControl, FormGroup }        									from '@angular/forms';
 import { Observable, BehaviorSubject, Subscription } 							from "rxjs/Rx"; 
 import { Http, Response, Headers, RequestOptions } 								from '@angular/http';
@@ -17,6 +17,8 @@ import { AuthService }                                                          
 })
 export class LoginComponent
 {
+    @ViewChild('button') private _button: ElementRef;
+
     private _campusUrl: string = '/' + environment.pathCampus;
 	private _form: MkForm;
 	private _form_group: FormGroup;
@@ -55,6 +57,12 @@ export class LoginComponent
                 this._form_group = this._form.formGroup;
             }
         });
+    }
+
+    private falseClick() {
+        let clickMe = this._button.nativeElement;
+
+        clickMe.click();
     }
 
     private send () : void

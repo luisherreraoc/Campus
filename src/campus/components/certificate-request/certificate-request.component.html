@@ -1,4 +1,4 @@
 <mat-icon (click)="close()">close</mat-icon>
 <h1>SOLICITAR CERTIFICADO</h1>
-<mk-form name="certificate-request"></mk-form>
-<button class="btn" (click)="send()">SOLICITAR</button>
+<mk-form (onEnter)="falseClick()" name="certificate-request"></mk-form>
+<button #button class="btn" (click)="send()">SOLICITAR</button>

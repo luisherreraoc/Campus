@@ -1,5 +1,5 @@
 // -- Angular imports -----------------------------------------------------------------------------------------
-import { Component, OnInit, Inject, Input, Output, EventEmitter }                from '@angular/core';
+import { Component, OnInit, Inject, Input, Output, EventEmitter, ViewChild, ElementRef }                from '@angular/core';
 import { AbstractControl, FormGroup }                                            from '@angular/forms';
 import { Observable, BehaviorSubject, Subscription }                             from "rxjs/Rx"; 
 import { Http, Response, Headers, RequestOptions } 								 from '@angular/http';
@@ -24,6 +24,8 @@ export class ResponseComponent
     @Input('callback') _callback: any;
 
     @Output('onBtnClick') _onBtnClick: EventEmitter<any> = new EventEmitter();
+
+    @ViewChild('button') private _button: ElementRef;
 
     private _form: MkForm;
     private _form_group: FormGroup;
@@ -65,6 +67,12 @@ export class ResponseComponent
                 this._form_group.reset();
             }
         });
+    }
+
+    private falseClick() {
+        let clickMe = this._button.nativeElement;
+
+        clickMe.click();
     }
 
     private onClick () : void
