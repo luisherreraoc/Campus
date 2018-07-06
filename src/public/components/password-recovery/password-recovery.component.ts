@@ -30,6 +30,7 @@ export class PasswordRecoveryComponent
             ];
         }
     }
+    @ViewChild('button') private _button: ElementRef;
 
     private _subscriptions: Array<any>;
 
@@ -86,6 +87,12 @@ export class PasswordRecoveryComponent
     { 
         this._subscriptions.forEach( sub => sub.unsubscribe());
         this._subscriptions.length = 0;
+    }
+
+    private falseClick() {
+        let clickMe = this._button.nativeElement;
+
+        clickMe.click();
     }
 
     private send ( ) : void

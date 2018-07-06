@@ -1,52 +1,21 @@
-/* .first-form-container {
-    background-color: white;
-    box-shadow:  6px 6px 12px rgba(0,0,0,.5);
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.select-job {
-    display: flex;
-    justify-content: center;
-}
-
-.button-container {
-    text-align: center;
-} */
-
-.first-form-container, 
-.select-especialization,
-.select-college {
+.wrapper {
     background-color: white;
     box-shadow:  6px 6px 12px rgba(0,0,0,.5);
 }
 
-.first-form-container {
-    width: 700px;
+.form-container {
     margin-left: auto;
     margin-right: auto;
-}
-
-.select-job {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;  
+    flex-direction: row-reverse;
 }
 
 .button-container {
     text-align: center;
 }
 
-.second-form-container {
-    display: flex;
-    justify-content: space-around;    
-}
-
-.select-especialization,
-.select-college {
-    width: 500px;
-}
-
+.select-step,
 .select-especialization {
-    margin-right: 25px;
+    margin: auto 25px;
 }

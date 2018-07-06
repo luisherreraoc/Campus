@@ -1,4 +1,4 @@
-import { Component, Inject, ViewContainerRef } from '@angular/core';
+import { Component, Inject, ViewContainerRef, ViewChild, ElementRef } from '@angular/core';
 import { Observable, BehaviorSubject, Subscription } from "rxjs/Rx";
 import { AbstractControl, FormGroup } from '@angular/forms';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
@@ -95,9 +95,11 @@ const especialidad: any = {
 })
 export class UserJobsDialogComponent 
 {
+    @ViewChild('button') private _button: ElementRef;
 
     private firstMenu: boolean;
     private secondMenu: boolean;
+    private showMe: boolean;
 
     private _step: number;
     private _steps: Array<Array<string>>;
@@ -124,26 +126,24 @@ export class UserJobsDialogComponent
         private _dialog: MatDialog 
     ) 
     {
-        this.firstMenu = true;
-        this.secondMenu = false;
+        this.showMe = true;
         
         this._step = 0;
         this._steps = [
             new Array("user_details_job"),
-            new Array("user_details_especialization")
+            new Array("user_details_college")
         ];
-
-        this._only = ['user_details_college'];
 
         this._form_group = new FormGroup({});
         this._subscriptions = new Array();        
     }
-
+    
     public ngOnInit ()
 	{
 		this._subscriptions = [
             this.subscribeQuestionForm()
         ];
+        setTimeout(()=> {this.showMe = false}, 1200)
     }
  
 	public ngOnDestroy () : void 
@@ -161,11 +161,17 @@ export class UserJobsDialogComponent
         .subscribe( form =>
         {
             if (form) 
-            { 
+            {
                 this._form = form; 
-                this._form_group = this._form.formGroup;                
+                this._form_group = this._form.formGroup;
             }
         });
+    }
+
+    private falseClick() {
+        let clickMe = this._button.nativeElement;
+
+        clickMe.click();
     }
 
     private next () : void
@@ -176,8 +182,6 @@ export class UserJobsDialogComponent
 
         if ( this._step < len ) {
             this._step++;
-            this.firstMenu = false;
-            this.secondMenu = true;
     
             if ( this._step == 1 ) {
                 let job : any = this._form.find('user_details_job').value || 'Médico';
@@ -185,7 +189,6 @@ export class UserJobsDialogComponent
                 this._fs.getFormQuestions('user').map( (q:any) => {
                     if(q.key == 'user_details_especialization') {
                         
-                        debugger
                         q.options = especialidad[ job.value ? job.value : job ];
 
                         this._question = q;
@@ -194,7 +197,7 @@ export class UserJobsDialogComponent
             }
         } else {
             aux = this._form_group.getRawValue();
-            debugger
+            
             let especializations = [];
             let colleges = [];
             for (let especialization of aux.user_details_especialization) {
