@@ -23,7 +23,6 @@ export class CourseCardComponent
 		this._title = c.name;
 		this._img = this._suite + '/' + c.multimidia.default_image;
 		this._redirect = c.url_access;
-		debugger
 		this._code = c.license ? c.license.code : null;
 		this._state = c.license ? c.license.status : null;
 		this._entidad_id = c.certifying_entity ? c.certifying_entity.ce_id : null;

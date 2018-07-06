@@ -1,4 +1,4 @@
-import { Component, Inject, ViewContainerRef } from '@angular/core';
+import { Component, Inject, ViewContainerRef, ViewChild, ElementRef } from '@angular/core';
 import { Observable, BehaviorSubject, Subscription } from "rxjs/Rx";
 
 import { environment } from '../../../environments/environment';
@@ -22,6 +22,8 @@ import { Loader } from 'mk';
 })
 export class AcountComponent
 {
+	@ViewChild('button') private _button: ElementRef;
+
 	private _form: MkForm;
 	private _subscriptions: Array<Subscription>;
 
@@ -61,6 +63,7 @@ export class AcountComponent
 		let obs: Observable<any> = source ? Observable.of(source) : this._us.get(this._as.getToken());
 
 		this._loader.show('acount');
+
 		this._subscriptions = [	this.subscriptions(obs) ];
 	}	
 
@@ -93,6 +96,12 @@ export class AcountComponent
         (error) => {},
         () => this._loader.dismiss('acount'));
 	}
+
+	private falseClick() {
+        let clickMe = this._button.nativeElement;
+
+        clickMe.click();
+    }
 	
     private openFirstDialog() : void
     {
@@ -102,8 +111,7 @@ export class AcountComponent
 			viewContainerRef: this._vcr,
       		data: { 
 				ids: this._ids, 
-				ref: this._vcr,
-				// showMe: this.showMe
+				ref: this._vcr
 			}
 		});
 	}

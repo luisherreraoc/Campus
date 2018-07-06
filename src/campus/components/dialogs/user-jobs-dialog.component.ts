@@ -1,4 +1,4 @@
-import { Component, Inject, ViewContainerRef } from '@angular/core';
+import { Component, Inject, ViewContainerRef, ViewChild, ElementRef } from '@angular/core';
 import { Observable, BehaviorSubject, Subscription } from "rxjs/Rx";
 import { AbstractControl, FormGroup } from '@angular/forms';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
@@ -95,6 +95,7 @@ const especialidad: any = {
 })
 export class UserJobsDialogComponent 
 {
+    @ViewChild('button') private _button: ElementRef;
 
     private firstMenu: boolean;
     private secondMenu: boolean;
@@ -165,6 +166,12 @@ export class UserJobsDialogComponent
                 this._form_group = this._form.formGroup;
             }
         });
+    }
+
+    private falseClick() {
+        let clickMe = this._button.nativeElement;
+
+        clickMe.click();
     }
 
     private next () : void

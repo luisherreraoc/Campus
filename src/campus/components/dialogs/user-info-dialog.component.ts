@@ -1,4 +1,4 @@
-import { Component, Inject, ViewContainerRef } from '@angular/core';
+import { Component, Inject, ViewContainerRef, ViewChild, ElementRef } from '@angular/core';
 import { Observable, BehaviorSubject, Subscription } from "rxjs/Rx";
 import { AbstractControl, FormGroup } from '@angular/forms';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
@@ -21,6 +21,7 @@ import { FormErrorDialog } from './form-error-dialog.component';
 })
 export class UserInfoDialog 
 {
+    @ViewChild('button') private _button: ElementRef;
 
     private _form: MkForm;
     private _form_group: FormGroup;
@@ -71,6 +72,12 @@ export class UserInfoDialog
                 this._form_group.patchValue(this.data._values);            
             }
         });
+    }
+
+    private falseClick() {
+        let clickMe = this._button.nativeElement;
+
+        clickMe.click();
     }
 
     private next () : void

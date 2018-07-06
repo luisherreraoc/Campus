@@ -1,4 +1,4 @@
-import { Component, Inject, ViewContainerRef }                         	from '@angular/core';
+import { Component, Inject, ViewContainerRef, ViewChild, ElementRef }                         	from '@angular/core';
 import { Observable, BehaviorSubject, Subscription } 					from "rxjs/Rx";
 
 import { Router }                                                       from '@angular/router';
@@ -15,6 +15,7 @@ import { Logger, MkFormService, MkForm, Loader }								from 'mk';
 })
 export class PasswordChangeComponent
 {
+    @ViewChild('button') private _button: ElementRef;
     private _form: MkForm;
     private _form_group;
 	private _subscriptions: Array<Subscription>;
@@ -57,6 +58,12 @@ export class PasswordChangeComponent
                 this._form_group = this._form.formGroup
             }
         });
+    }
+
+    private falseClick() {
+        let clickMe = this._button.nativeElement;
+
+        clickMe.click();
     }
 
     private send () : void

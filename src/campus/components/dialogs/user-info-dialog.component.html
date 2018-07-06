@@ -1,8 +1,8 @@
 <div class='wrapper'>
     <div class='form-container'> 
-        <mk-form [name]="data._form"></mk-form>
+        <mk-form (onEnter)="falseClick()" [name]="data._form"></mk-form>
     </div>
     <div class="button-container">
-        <button _ngcontent-c3="" class="btn" (click)="next()" >ACEPTAR</button>
+        <button #button _ngcontent-c3="" class="btn" (click)="next()" >ACEPTAR</button>
     </div>
 </div>

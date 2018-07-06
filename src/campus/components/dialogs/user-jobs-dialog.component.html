@@ -2,7 +2,7 @@
 
     <div class="form-container">
         <div class="select-step">
-            <mk-form name="user" [ids]="data.ids" [only]="_steps[_step]"></mk-form>
+            <mk-form (onEnter)="falseClick()" name="user" [ids]="data.ids" [only]="_steps[_step]"></mk-form>
         </div>
 
         <ng-container *ngIf="_step == 1">
@@ -13,7 +13,7 @@
     </div>
     
     <div class="button-container">
-        <button mkStepvalidate [form]="_form_group" [filter]="_steps[_step]" _ngcontent-c3="" class="btn" (onClicked)="next()" >ACEPTAR</button>
+        <button #button mkStepvalidate [form]="_form_group" [filter]="_steps[_step]" _ngcontent-c3="" class="btn" (onClicked)="next()" >ACEPTAR</button>
     </div>
 
 </div>

@@ -53,7 +53,7 @@ export class AvatarComponent
 		
 		if ( !source ) 
 		{
-			this._us.get(this._as.getToken()).first().takeUntil(Observable.of(this.ngOnDestroy))
+			this._us.get(this._as.getToken())
 			.subscribe( user => 
 			{
 				this.updateSrc(user); 
