@@ -225,7 +225,7 @@ export class RegistroComponent
                 'first_name': aux.registro_first_name,
                 'last_name': aux.registro_last_name,
                 'email': aux.registro_email,
-                'password': aux.registro_password,
+                'password': aux.registro_password1,
                 'role': 2,
                 'details': [
                     { 'job': aux.registro_job },
