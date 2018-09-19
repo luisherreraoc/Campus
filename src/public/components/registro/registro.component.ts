@@ -11,9 +11,11 @@ import { Logger, MkFormService, MkForm, Loader }								from 'mk';
 
 import { RegistroService }                                                      from '../../services/registro.service';
 
-import { RegistroDialogComponent } from '../registro-dialog/registro-dialog.component'
+import { RegistroDialogComponent }                                              from '../registro-dialog/registro-dialog.component'
 
-const redirect_url: string = 'localhost:4200/public/login';
+import { environment }                                                          from './../../../environments/environment';
+
+const redirect_url: string = environment.domain + '/public/login';
 
 const especialidad: any = {
     "Médico": [

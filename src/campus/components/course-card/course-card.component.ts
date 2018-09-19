@@ -10,6 +10,8 @@ import { MatDialog } 													from '@angular/material';
 import { UserInfoDialog } from '../dialogs/user-info-dialog.component';
 import { UserService } from '../../services/user.service';
 
+import { AuthService } from '../../../shared/services/auth.service';
+
 @Component({
 	selector: 'course-card',
 	templateUrl: './course-card.component.html',
@@ -48,7 +50,8 @@ export class CourseCardComponent
 		private _fs: MkFormService,
 		private _dialog: MatDialog,
 		private _vcr: ViewContainerRef,
-		private _us: UserService ) 
+		private _us: UserService,
+		private _as: AuthService ) 
 	{ 
 		logger.log('COURSE CARD COMPONENT'); 
 		this._suite = environment.suiteUrl;
@@ -80,7 +83,8 @@ export class CourseCardComponent
 				},
 			});
 		} else {
-			window.open(environment.ssoRedirectUrl + this._code);
+			let tkn: any = this._as.getToken();
+			window.open(environment.ssoRedirectUrl + this._code + '&access_token=' + tkn);
 		}
 	}
 }
