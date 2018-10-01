@@ -12,12 +12,23 @@ export class CertificatesComponent
 	private _subscriptions: Array<any>;
 	private _certificates: Array<any>;
     private _showRequest: boolean;
+    private _sent: boolean;
+    private _response_obj: {title:string,text:string,img:string,btn:string,callback:any};
 
 	public constructor ( private logger: Logger, private loader: Loader, private _cs: CoursesService ) 
 	{ 
 		logger.log('CERTIFICATES COMPONENT'); 
 		this._subscriptions = new Array();
         this._showRequest = false;
+        this._sent = false;
+
+        this._response_obj = {
+            title: '',
+            text: '',
+            img: '',
+            btn: '',
+            callback: null
+        };
 	}
 
 	public ngOnInit () : void
@@ -48,8 +59,25 @@ export class CertificatesComponent
         this._showRequest = true;
     }    
 
-    private closeRequest () : void 
+    private closeRequest() : void {
+        this._showRequest = false;
+    }
+
+    private requestCompleted () : void 
     {
         this._showRequest = false;
+        this._sent = true;
+
+        this._response_obj = {
+            title: '',
+            text: 'Su certificado ha sido solicitado correctamente',
+            img: '',
+            btn: 'VOLVER',
+            callback: this.goBack
+        }
+    }
+
+    private goBack() : void {
+        this._sent = false;
     }
 }

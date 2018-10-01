@@ -4,4 +4,6 @@
 
 </ng-container>
 
-<certificate-request *ngIf="_showRequest" (close)="closeRequest()"></certificate-request>
+<certificate-request *ngIf="_showRequest" (submit)="requestCompleted()" (close)="closeRequest()"></certificate-request>
+
+<cam-response *ngIf="_sent" [title]="_response_obj.title" [text]="_response_obj.text" [btn]="_response_obj.btn" [img]="_response_obj.img" [callback]="_response_obj.callback.bind(this)"></cam-response>
