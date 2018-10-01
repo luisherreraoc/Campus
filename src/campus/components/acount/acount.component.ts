@@ -15,6 +15,7 @@ import { UserService } from '../../services/user.service';
 import { User } from '../../models/user.model';
 
 import { Loader } from 'mk';
+import { Router } from '@angular/router';
 
 @Component({
 	templateUrl: './acount.component.html',
@@ -35,6 +36,9 @@ export class AcountComponent
 
 	private _pass_change: string;
 
+	private _response_obj: {title:string,text:string,img:string,btn:string,callback:any};
+	private _sent: boolean;
+
 	// private showMe: boolean;
 
 	public constructor ( 
@@ -44,7 +48,8 @@ export class AcountComponent
 		private _vcr: ViewContainerRef, 
 		private _as: AuthService,
 		private _us: UserService,
-		private _loader: Loader ) 
+		private _loader: Loader,
+		private _router: Router ) 
 	{ 
 		logger.log('ACOUNT COMPONENT'); 
 
@@ -55,6 +60,15 @@ export class AcountComponent
 
 	 	this._pass_change = environment.pathPasswordChange;
 		this._form = null;
+
+		this._response_obj = {
+            title: '',
+            text: '',
+            img: '',
+            btn: '',
+            callback: null
+		};
+		this._sent = false;
 	}
 
 	public ngOnInit () : void
@@ -113,6 +127,31 @@ export class AcountComponent
 				ids: this._ids, 
 				ref: this._vcr
 			}
+		})
+		.afterClosed().subscribe( result => {
+			if (result.sent) {
+				this._sent = true;
+				this._response_obj = {
+					title: '',
+					text: 'Sus datos se han actualizado correctamente',
+					img: '',
+					btn: 'VOLVER',
+					callback: this.goToAccount
+				}
+			} else if (result.error) {
+				this._sent = true;
+				this._response_obj = {
+					title: '',
+					text: 'Ha habido un error a la hora de actualizar sus datos. Por favor, vuelva a intentarlo',
+					img: '',
+					btn: 'VOLVER',
+					callback: this.goToAccount
+				}
+			}
 		});
+	}
+
+	private goToAccount () : void {
+		this._sent = false;
 	}
 }

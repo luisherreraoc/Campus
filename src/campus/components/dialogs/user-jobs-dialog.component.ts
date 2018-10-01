@@ -1,4 +1,4 @@
-import { Component, Inject, ViewContainerRef, ViewChild, ElementRef } from '@angular/core';
+import { Component, Inject, ViewContainerRef, ViewChild, ElementRef, Output } from '@angular/core';
 import { Observable, BehaviorSubject, Subscription } from "rxjs/Rx";
 import { AbstractControl, FormGroup } from '@angular/forms';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
@@ -100,6 +100,8 @@ export class UserJobsDialogComponent
     private firstMenu: boolean;
     private secondMenu: boolean;
     private showMe: boolean;
+    private showDialog: boolean;
+    private showText: boolean;
 
     private _step: number;
     private _steps: Array<Array<string>>;
@@ -123,10 +125,12 @@ export class UserJobsDialogComponent
         private _http: Http, 
         private _router: Router, 
         private _us: UserService,
-        private _dialog: MatDialog 
+        private _dialog: MatDialog
     ) 
     {
         this.showMe = true;
+        this.showDialog = true;
+        this.showText = false;
         
         this._step = 0;
         this._steps = [
@@ -135,7 +139,7 @@ export class UserJobsDialogComponent
         ];
 
         this._form_group = new FormGroup({});
-        this._subscriptions = new Array();        
+        this._subscriptions = new Array();
     }
     
     public ngOnInit ()
@@ -218,12 +222,13 @@ export class UserJobsDialogComponent
                         ],
             }
             this.send(data);
-            this.dialogRef.close();
         }
     }
 
     private send (data: {[key:string]:any}) : void 
     {
+        this.showDialog = false;
+        this.showText = true;
         this._us.update(data)
         .subscribe( (response: any ) =>
         {
@@ -257,10 +262,14 @@ export class UserJobsDialogComponent
             user.user_details_especialization = especializations
             user.user_details_college = colleges;
             user.user_details_prefix = aux.user_details_prefix;
-           
-            // console.log(response) 
-            // console.log(data)
-        });
+        },
+        ( error : any ) => {
+            this.dialogRef.close({error : true});
+        },
+        () => {
+            this.dialogRef.close({sent: true});
+        }
+        );
     }
 
 }
