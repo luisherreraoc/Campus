@@ -79,6 +79,19 @@ export class LoginComponent
     	{
             if ( response['ok'] )
             {
+                let aux: any = {
+                    access_token: response['access_token'],
+                    refresh_token: response['refresh_token'],
+                    _token: response['_token'],
+                    expires_in: response['expires_in'],
+                    product_id: 0
+                };
+                
+                this._as.setSession(aux).first().subscribe((response: Response) =>
+                {
+                    debugger
+                });
+
                 this._router.navigateByUrl(url);
             }
             else

@@ -65,4 +65,9 @@ export class AuthService
     {
         this._redirectUrl = null;
     }
+
+    public setSession (data: any): Observable<Response> 
+    {
+        return this._http.post( environment.ssoUrl + '/sso/set', data );
+    }
 }
