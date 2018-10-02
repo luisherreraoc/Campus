@@ -1,7 +1,17 @@
 @import '~scss/abstracts/variables';
 
+
+
 :host ::ng-deep
 {
+	.ng2-carouselamos-container {
+		height: 400px;
+	}
+
+	i {
+		color: $color-cursos;
+	}
+
 	button 
 	{
 		color: white;

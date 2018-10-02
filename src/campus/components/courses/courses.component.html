@@ -1,5 +1,29 @@
-<ng-container *ngFor="let course of _courses">
+<div
+  ng2-carouselamos
+  [width]="450"
+  [items]="_courses"
+  [$item]="itemTemplate"
+  [$prev]="prevTemplate"
+  [$next]="nextTemplate"
+></div>
 
-	<course-card [course]="course"></course-card>
+<ng-template #prevTemplate>
+	<i class="material-icons">
+		arrow_back_ios
+	</i>
+</ng-template>
 
-</ng-container>
+<ng-template #nextTemplate>
+	<i class="material-icons">
+		arrow_forward_ios
+	</i>
+</ng-template>
+
+<ng-template let-item let-i="index" #itemTemplate>
+	<ng-container>
+
+	<course-card [course]="item"></course-card>
+	
+	</ng-container>
+</ng-template>
+
