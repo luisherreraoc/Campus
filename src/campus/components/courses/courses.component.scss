@@ -1,14 +1,22 @@
 @import '~scss/abstracts/variables';
 
-:host ::ng-deep
-{
-	.fake {
-		display: none;
-	}
-	
-	button 
-	{
-		color: white;
-		background-color: $color-cursos;
-	}
+.carousel__flow {
+  display: flex;
+  flex-direction: row;
+  .carousel__flow__button {
+	margin: auto 0px;
+	color: $color-cursos;
+  }
+  .carousel__flow__content {
+  display: none;
+    button {
+      color: white;
+	  background-color: $color-cursos;
+    }
+  }
+}
+
+.carousel__legend {
+  text-align: center;
+  padding: 20px;
 }

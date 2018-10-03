@@ -1,9 +1,14 @@
-<div class="left">	
-	<img src="{{_img}}">
+<div class="card animated zoomIn">
+	<div class="card__photo">	
+		<img class="card__photo__img" src="{{_img}}">
+	</div>
+
+	<div class="card__text">
+		<h1>{{_title}}</h1>
+		<button class="btn" (click)="go()">INGRESAR</button>
+		<p>Descargar manual de uso de plataforma</p>
+	</div>	
 </div>
 
-<div class="right">
-	<h1>{{_title}}</h1>
-	<button class="btn" (click)="go()">INGRESAR</button>
-	<p>Descargar manual de uso de plataforma</p>
-</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+

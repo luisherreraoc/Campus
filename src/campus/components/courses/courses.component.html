@@ -1,11 +1,27 @@
-<div class="fake" #curso *ngFor="let course of _courses">
+<div class="carousel">
+	<div class="carousel__flow">
+		<div class=carousel__flow__button>
+			<i class="material-icons"
+			(click)="changeSlide(-1)">
+				arrow_back_ios
+			</i>
+		</div>
 
-	<course-card class="animated zoomIn" [course]="course"></course-card>
+		<div class="carousel__flow__content" #curso *ngFor="let course of _courses">
+			<course-card [course]="course"></course-card>
+		</div>
 
+		<div class="carousel__flow__button">
+			<i class="material-icons"
+			(click)="changeSlide(1)">
+				arrow_forward_ios
+			</i>
+		</div>	
+	</div>
+
+	<div class="carousel__legend">
+		<h3>Página {{ index }} de {{ _courses.length }}</h3>		
+	</div>	
 </div>
+	
 
-<button (click)="changeSlide(-1)">atrás</button>
-<button (click)="changeSlide(1)">adelante</button>
-<p>{{ index }} de {{ _courses.length }}</p>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">

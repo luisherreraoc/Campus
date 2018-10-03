@@ -1,7 +1,8 @@
-import { Component, ViewChildren, ElementRef, ViewChild, QueryList, Renderer2 }                         							from '@angular/core';
+import { Component, ViewChildren, ElementRef, ViewChild, 
+	QueryList, Renderer2 }                    							from '@angular/core';
 import { Observable, BehaviorSubject, Subscription } 					from "rxjs/Rx"; 
 
-import { Logger, Loader }														from 'mk';
+import { Logger, Loader }												from 'mk';
 
 import { CoursesService }												from '../../services/courses.service';			
 
@@ -40,7 +41,7 @@ export class CoursesComponent
 	public ngAfterViewInit () : void {
 		setTimeout(()=>{
 			this.renderer.setStyle(this._curso._results[0].nativeElement, 'display', 'block');
-			this.loader.dismiss('test')
+			this.loader.dismiss('test');
 		}, 2000)
 	}
 
