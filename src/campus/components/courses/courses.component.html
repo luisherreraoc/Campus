@@ -1,5 +1,11 @@
-<ng-container *ngFor="let course of _courses">
+<div class="fake" #curso *ngFor="let course of _courses">
 
-	<course-card [course]="course"></course-card>
+	<course-card class="animated zoomIn" [course]="course"></course-card>
 
-</ng-container>
+</div>
+
+<button (click)="changeSlide(-1)">atrás</button>
+<button (click)="changeSlide(1)">adelante</button>
+<p>{{ index }} de {{ _courses.length }}</p>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">

@@ -1,4 +1,4 @@
-import { Component }                         							from '@angular/core';
+import { Component, ViewChildren, ElementRef, ViewChild, QueryList, Renderer2 }                         							from '@angular/core';
 import { Observable, BehaviorSubject, Subscription } 					from "rxjs/Rx"; 
 
 import { Logger, Loader }														from 'mk';
@@ -11,17 +11,22 @@ import { CoursesService }												from '../../services/courses.service';
 })
 export class CoursesComponent
 {
+	@ViewChildren('curso') private _curso : any;
 	private _subscriptions: Array<any>;
 	private _courses: Array<any>;
+	private index : any;
 
-	public constructor ( private logger: Logger, private _cs: CoursesService, private loader: Loader ) 
+	public constructor ( private logger: Logger, private _cs: CoursesService, private loader: Loader, private renderer: Renderer2 ) 
 	{ 
 		logger.log('COURSES COMPONENT'); 
 		this._subscriptions = new Array();
+		this.index = 1;
 	}
 
 	public ngOnInit () : void
 	{
+		this.loader.show('test');
+
 		this._subscriptions = [
             this.subscribeCourses()
         ];
@@ -30,6 +35,28 @@ export class CoursesComponent
         {
         	this._cs.load();
 		}
+	}
+
+	public ngAfterViewInit () : void {
+		setTimeout(()=>{
+			this.renderer.setStyle(this._curso._results[0].nativeElement, 'display', 'block');
+			this.loader.dismiss('test')
+		}, 2000)
+	}
+
+	public changeSlide (n) : void {
+		this.showMe(this.index += n);
+	};
+
+	public showMe (n) : void {
+		let slides = this._curso._results;
+
+		if (n > slides.length) {this.index = 1}    
+		if (n < 1) {this.index = slides.length}
+		for (let i = 0; i < slides.length; i++) {
+			this.renderer.setStyle(slides[i].nativeElement, 'display', 'none');
+		}
+		this.renderer.setStyle(slides[this.index-1].nativeElement, 'display', 'block');
 	}
 	
 	public ngOnDestroy () : void 
