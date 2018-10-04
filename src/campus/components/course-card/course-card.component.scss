@@ -1,34 +1,27 @@
-:host
-{
-	width: 70%;
-	height: 200px;
-
-	display: inline-block;
-
-	.left
-	{
-		max-width: 95%;
-		margin: auto;
-    	border-radius: 15px;
-    	overflow: hidden;
-
-    	img
-    	{
-    		max-width: 100%;
-    	}
+.card {
+	width: 25vmin;
+	height: 37vmin;
+	margin: 15px;
+	border-radius: 15px;
+	overflow: hidden;
+	.card__image {
+		width: 100%;
 	}
-
-	.right
-	{
-		max-width: 80%;
-		margin: auto;
-		padding: 0px 10px;
-
-    	.btn-registration
-    	{
-    		width: 120px;
-    		height: 50px;
-    		font-size: 1.7em;
-    	}
+	.card__text {
+		padding: 10px;
+		text-align: center;
+		.card__text__title {
+			height: 10vmin;
+			margin: 2vmin 0px;
+		}
+		h3 {
+			font-size: 1.7vmin;
+		}
+		p {
+			font-size: 1.2vmin;
+		}
+		button {
+			border-radius: 15px;
+		}
 	}
 }

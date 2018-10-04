@@ -1,9 +1,11 @@
-<div class="left">	
-	<img src="{{_img}}">
-</div>
+<div class="card">
+	<img class="card__image" src="{{_img}}">
 
-<div class="right">
-	<h1>{{_title}}</h1>
-	<button class="btn" (click)="go()">INGRESAR</button>
-	<p>Descargar manual de uso de plataforma</p>
+	<div class="card__text">
+		<div class="card__text__title">
+			<h3>{{_title}}</h3>			
+		</div>
+		<button class="btn" (click)="go()">INGRESAR</button>
+		<p>Descargar manual de uso de plataforma</p>
+	</div>	
 </div>
