@@ -1,6 +1,6 @@
 <div class="carousel">
 	<div class="carousel__flow">
-		<div class=carousel__flow__button>
+		<div class=carousel__flow__button *ngIf="showCarousel">
 			<i class="material-icons"
 			(click)="changeSlide(-1)">
 				arrow_back_ios
@@ -11,7 +11,7 @@
 			<course-card [course]="course"></course-card>
 		</div>
 
-		<div class="carousel__flow__button">
+		<div class="carousel__flow__button" *ngIf="showCarousel">
 			<i class="material-icons"
 			(click)="changeSlide(1)">
 				arrow_forward_ios
@@ -19,7 +19,7 @@
 		</div>	
 	</div>
 
-	<div class="carousel__legend">
+	<div class="carousel__legend" *ngIf="showCarousel">
 		<h3>Página {{ index }} de {{ _courses.length }}</h3>		
 	</div>	
 </div>

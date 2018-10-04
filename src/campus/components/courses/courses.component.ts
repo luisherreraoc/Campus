@@ -16,12 +16,14 @@ export class CoursesComponent
 	private _subscriptions: Array<any>;
 	private _courses: Array<any>;
 	private index : any;
+	private showCarousel : boolean;
 
 	public constructor ( private logger: Logger, private _cs: CoursesService, private loader: Loader, private renderer: Renderer2 ) 
 	{ 
 		logger.log('COURSES COMPONENT'); 
 		this._subscriptions = new Array();
 		this.index = 1;
+		this.showCarousel = false;
 	}
 
 	public ngOnInit () : void
@@ -41,6 +43,7 @@ export class CoursesComponent
 	public ngAfterViewInit () : void {
 		setTimeout(()=>{
 			this.renderer.setStyle(this._curso._results[0].nativeElement, 'display', 'block');
+			this.showCarousel = true;
 			this.loader.dismiss('test');
 		}, 2000)
 	}
