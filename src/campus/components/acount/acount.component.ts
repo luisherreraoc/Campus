@@ -43,7 +43,7 @@ export class AcountComponent
 	private _sent: boolean;
 
 	private _user : any;
-	private julome : Array<any>;
+	private espDetails : Array<any>;
 	// private showMe: boolean;
 
 	public constructor ( 
@@ -76,7 +76,7 @@ export class AcountComponent
 		};
 		this._sent = false;
 
-		this.julome = [];
+		this.espDetails = [];
 	}
 
 	public ngOnInit () : void
@@ -87,10 +87,6 @@ export class AcountComponent
 		this._loader.show('acount');
 
 		this._subscriptions = [	this.subscriptions(obs), this.getUserDetails(obs) ];
-	}
-
-	public ngOnChanges (changes: SimpleChanges) : void {
-		console.log('something happened')
 	}
 
 	public ngOnDestroy () : void 
@@ -133,24 +129,24 @@ export class AcountComponent
 
 				let user_details = this._user.data.oauth_user_details;
 
-				let pitart = [];
+				let arr = [];
 
-				for (let seak in user_details) {
-					if(user_details[seak].user_details_key !== 'prefix')
+				for (let detail in user_details) {
+					if(user_details[detail].user_details_key !== 'prefix')
 					{
-						pitart.push(user_details[seak].user_details_value);
+						arr.push(user_details[detail].user_details_value);
 					}
 				}
 
-				let renato = '';
+				let strg = '';
 
-				for (let i=0; i < pitart.length; i++) {
-					if (i !== pitart.length -1 ) {
-						renato = pitart[i] + ' - ';
+				for (let i=0; i < arr.length; i++) {
+					if (i !== arr.length -1 ) {
+						strg = arr[i] + ' - ';
 					} else {
-						renato = pitart[i]
+						strg = arr[i]
 					}
-					this.julome.push(renato);
+					this.espDetails.push(strg);
 				}
 			})
 		})
@@ -161,7 +157,11 @@ export class AcountComponent
         let clickMe = this._button.nativeElement;
 
         clickMe.click();
-    }
+	}
+	
+	private testing() {
+		console.log('what`s up? a key is up')
+	}
 	
     private openFirstDialog() : void
     {

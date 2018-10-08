@@ -1,13 +1,13 @@
 <h1>MI CUENTA</h1>
 
-<mk-form (onEnter)="falseClick()" *ngIf="_ids" name="user" [only]="_onl1" [ids]="_ids"></mk-form>
-<mk-form (onEnter)="falseClick()" *ngIf="_ids" name="user" [only]="_onl3" [ids]="_ids"></mk-form>
-<mk-form (onEnter)="falseClick()" *ngIf="_ids" name="user" cols="2" [only]="_onl2" [ids]="_ids"></mk-form>
+<mk-form (onChange)="testing()" (onEnter)="falseClick()" *ngIf="_ids" name="user" [only]="_onl1" [ids]="_ids"></mk-form>
+<mk-form *ngIf="_ids" name="user" [only]="_onl3" [ids]="_ids"></mk-form>
+<mk-form *ngIf="_ids" name="user" cols="2" [only]="_onl2" [ids]="_ids"></mk-form>
 
 <p class="interes">Especializaciones de interés</p>
 <div class="field-espec">
-    <div *ngFor="let seak of julome">
-        <p>{{ seak }}</p>
+    <div *ngFor="let detail of espDetails">
+        <p>{{ detail }}</p>
     </div>
 </div>
 <div class="button-container">
