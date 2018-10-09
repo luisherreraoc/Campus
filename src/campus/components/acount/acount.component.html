@@ -4,24 +4,39 @@
 <mk-form (onEnter)="falseClick()" *ngIf="_ids" name="user" [only]="_onl3" [ids]="_ids"></mk-form>
 <mk-form (onEnter)="falseClick()" *ngIf="_ids" name="user" cols="2" [only]="_onl2" [ids]="_ids"></mk-form>
 
-<p class="interes">Especializaciones de interés</p>
-<div class="field-espec">
-    <div *ngFor="let detail of espDetails">
-        <p>{{ detail }}</p>
+<div class="intereses">
+    <p class="intereses__header">Especializaciones de interés</p>
+
+    <div class="intereses__field">
+        <div *ngFor="let detail of espDetails">
+            <p class="intereses__field__text">{{ detail }}</p>
+        </div>
     </div>
 </div>
-<div class="button-container">
-    <button _ngcontent-c3="" 
-    class="btn field__button" 
-    (click)="openFirstDialog()">
+
+
+<div class="dialog-button" (click)="openFirstDialog()">
     ACTUALIZAR
+</div>
+
+<div class="password-button">
+    <img src="{{_key}}"/>
+    <a routerLink="/campus/{{_pass_change}}" routerLinkActive="active"
+       class="password-button__text">
+        Cambiar contraseña
+    </a>
+</div>
+
+
+<div class="submit">
+    <button class="submit__button" #button (click)="send()" 
+            [disabled]="inactive">
+        ACEPTAR
     </button>    
 </div>
 
-<span><img src="{{_key}}"/></span><a routerLink="/campus/{{_pass_change}}" routerLinkActive="active">Cambiar contraseña</a>
 
-<div>
-    <button class="button__submit" #button (click)="send()" [disabled]="julome">ACEPTAR</button>
-</div>
-
-<cam-response *ngIf="_sent" [title]="_response_obj.title" [text]="_response_obj.text" [btn]="_response_obj.btn" [img]="_response_obj.img" [callback]="_response_obj.callback.bind(this)"></cam-response>
+<cam-response *ngIf="_sent" [title]="_response_obj.title" [text]="_response_obj.text" 
+              [btn]="_response_obj.btn" [img]="_response_obj.img" 
+              [callback]="_response_obj.callback.bind(this)">
+</cam-response>

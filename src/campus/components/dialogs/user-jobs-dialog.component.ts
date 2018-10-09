@@ -235,7 +235,6 @@ export class UserJobsDialogComponent
             let user : any = this._us.data.find((user : any) => {
                 return user.oauth_user_id == this.data.ids.user
             })
-            console.log(user)
 
             let aux = this._form_group.getRawValue();
             

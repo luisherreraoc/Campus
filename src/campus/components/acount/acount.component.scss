@@ -2,87 +2,91 @@
 
 :host ::ng-deep
 {
-	div[cols="col-6"]:first-child
-	{
-		width: 20%;
-	}
+  div[cols="col-6"]:first-child {
+	width: 20%;
+  }
 
-	div[cols="col-6"]:last-child
-	{
-		width: 78%;
-	}
+  div[cols="col-6"]:last-child {
+	width: 78%;
+  }
 
-	.interes {
-		font-size: 2.13rem;
-		font-weight: 300;
-	}
+  h1	{
+	color: $color-cuenta;
+  }
 
-	.field-espec {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		max-width: 540px;
-		border-bottom: 1px solid grey;
-		p {
-			display: flex;
-			flex-wrap: wrap;
-			padding: 0.5vmin;
-			font-size: 14px;
-		}
-	}
+  .intereses__header {
+	font-size: 2.13rem;
+	font-weight: 300;
+  }
 
-	.button-container {
-		max-width: 540px;
-		display: flex;
-		justify-content: flex-end;
+  .intereses__field {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	max-width: 540px;
+	border-bottom: 1px solid grey;
+	.intereses__field__text {
+      display: flex;
+	  flex-wrap: wrap;
+	  padding: 0.5vmin;
+	  font-size: 14px;
 	}
+  }
 
-	a
-	{
-		font-weight: bold;
-	}
+  .dialog-button {
+	max-width: 540px;
+	display: flex;
+	justify-content: flex-end;
+	color: $color-cuenta;
+	font-size: 13px;
+	padding-top: 10px;
+  }
 
-	button
-	{
-		color: white;
-		background-color: $color-cuenta;
-		height: 25px;
+  .password-button {
+	padding: 20px 0px 40px;
+	.password-button__text {
+	  font-size: 13px;
+	  padding-left: 11px;
+	  font-style: italic;
+	  color: gray;
 	}
+  }
 
-	h1
-	{
-		color: $color-cuenta;
-	}
+  .submit__button {
+	background-color: white;
+	color: #23B55E;
+	padding: 10px;
+	border-radius: 30px;
+	border: 1px solid #23B55E;
+	width: 170px;
+	font-size: 13px;
+  }
 
-	.button__submit {
-		background-color: white;
-		color: $color-cuenta;
-	}
-
-	.button__submit_active {
-		background-color: $color-cuenta;
-		color: white;
-	}
+  .submit__button_active {
+	background-color: #23B55E;
+	color: white;
+  }
 
 }
+
 ::ng-deep {
-	.custom-dialog {
-		.mat-dialog-container {
-			background-color: transparent;
-			box-shadow: none; 
-		}
-
-		.form-group li:last-child {
-			border-bottom: none;
-		}
-
-		.form-group li:first-child {
-			border-top: none;
-		}
-
-		.form-group {
-			border-top: none;
-			border-bottom: none;
-		}
+  .custom-dialog {
+	.mat-dialog-container {
+	  background-color: transparent;
+	  box-shadow: none; 
 	}
+
+	.form-group li:last-child {
+	  border-bottom: none;
+	}
+
+	.form-group li:first-child {
+	  border-top: none;
+	}
+
+	.form-group {
+	  border-top: none;
+	  border-bottom: none;
+	}
+  }
 }

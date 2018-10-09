@@ -45,7 +45,7 @@ export class AcountComponent
 	private _user : any;
 	private espDetails : Array<any>;
 
-	private julome : boolean;
+	private inactive : boolean;
 
 	// private showMe: boolean;
 
@@ -82,7 +82,7 @@ export class AcountComponent
 
 		this.espDetails = [];
 
-		this.julome = true;
+		this.inactive = true;
 
 	}
 
@@ -124,15 +124,15 @@ export class AcountComponent
 				let groupControls = this._form_group.controls;
 				let controls:Array<string> = Object.keys(groupControls);
 
-				for (let seak in controls) {
-					groupControls[controls[seak]].valueChanges
+				for (let cont in controls) {
+					groupControls[controls[cont]].valueChanges
 					.debounceTime(500)
 					.distinctUntilChanged()
 					.take(1)
 					.subscribe(
 						sub => {
-							if (this.julome) {
-								this.testing(sub)
+							if (this.inactive) {
+								this.changeState(sub)
 							}	
 					})
 				}					
@@ -183,8 +183,8 @@ export class AcountComponent
         clickMe.click();
 	}
 	
-	private testing(sub) {
-		this.julome = false;
+	private changeState(sub) {
+		this.inactive = false;
 		this._renderer.addClass(this._button.nativeElement, 'button__submit_active')
 	}
 	
@@ -227,46 +227,47 @@ export class AcountComponent
 	}
 
 	private send () : void {
-		console.log('send function')
-		// let aux = this._form_group.getRawValue();
+		this._loader.show('updating');
+		let aux = this._form_group.getRawValue();
             
-		// let data = {
-		// 	'first_name': aux.oauth_user_first_name,
-		// 	'last_name': aux.oauth_user_last_name,
-		// 	'phone': aux.oauth_user_phone
-		// }
-		// this._us.update(data)
-        // .subscribe( (response: any ) =>
-        // {
-        //     let user : any = this._us.data.find((user : any) => {
-        //         return user.oauth_user_id == this._ids.user
-        //     })
+		let data = {
+			'first_name': aux.oauth_user_first_name,
+			'last_name': aux.oauth_user_last_name,
+			'phone': aux.oauth_user_phone
+		}
+		this._us.update(data)
+        .subscribe( (response: any ) =>
+        {
+            let user : any = this._us.data.find((user : any) => {
+                return user.oauth_user_id == this._ids.user
+            })
             
-        //     user.oauth_user_first_name = aux.oauth_user_first_name;
-        //     user.oauth_user_last_name = aux.oauth_user_last_name;
-        //     user.oauth_user_phone = aux.oath_user_phone;
-        //     user.user_details_prefix = aux.user_details_prefix;
-		// },
-		// ( error : any ) => {
-		// 	this._sent = true;
-		// 	this._response_obj = {
-		// 		title: '',
-		// 		text: 'Ha habido un error a la hora de actualizar sus datos. Por favor, vuelva a intentarlo',
-		// 		img: '',
-		// 		btn: 'VOLVER',
-		// 		callback: this.goToAccount
-		// 	}
-        // },
-        // () => {
-		// 	this._sent = true;
-		// 	this._response_obj = {
-		// 		title: '',
-		// 		text: 'Sus datos se han actualizado correctamente',
-		// 		img: '',
-		// 		btn: 'VOLVER',
-		// 		callback: this.goToAccount
-		// 	}
-        // }
-        // );
+            user.oauth_user_first_name = aux.oauth_user_first_name;
+            user.oauth_user_last_name = aux.oauth_user_last_name;
+            user.oauth_user_phone = aux.oath_user_phone;
+            user.user_details_prefix = aux.user_details_prefix;
+		},
+		( error : any ) => {
+			this._sent = true;
+			this._response_obj = {
+				title: '',
+				text: 'Ha habido un error a la hora de actualizar sus datos. Por favor, vuelva a intentarlo',
+				img: '',
+				btn: 'VOLVER',
+				callback: this.goToAccount
+			}
+        },
+        () => {
+			this._sent = true;
+			this._response_obj = {
+				title: '',
+				text: 'Sus datos se han actualizado correctamente',
+				img: '',
+				btn: 'VOLVER',
+				callback: this.goToAccount
+			};
+			this._loader.dismiss('updating')
+        }
+        );
 	}
 }
