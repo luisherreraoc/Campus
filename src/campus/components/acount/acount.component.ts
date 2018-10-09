@@ -120,22 +120,7 @@ export class AcountComponent
             { 	
 				this._form = form;
 				this._form_group = this._form.formGroup;
-				
-				let groupControls = this._form_group.controls;
-				let controls:Array<string> = Object.keys(groupControls);
-
-				for (let cont in controls) {
-					groupControls[controls[cont]].valueChanges
-					.debounceTime(500)
-					.distinctUntilChanged()
-					.take(1)
-					.subscribe(
-						sub => {
-							if (this.inactive) {
-								this.changeState(sub)
-							}	
-					})
-				}					
+				this.getFieldChange(this._form_group.controls);
 
 				this._loader.dismiss('acount');
 			}
@@ -176,19 +161,29 @@ export class AcountComponent
 		})
 	}
 
+	private getFieldChange (groupControls) {
+		let controls:Array<string> = Object.keys(groupControls);
 
-	private falseClick() {
-        let clickMe = this._button.nativeElement;
-
-        clickMe.click();
+		for (let cont in controls) {
+			groupControls[controls[cont]].valueChanges
+			.debounceTime(500)
+			.distinctUntilChanged()
+			.take(1)
+			.subscribe(
+				sub => {
+					if (this.inactive) {
+						this.changeState(sub)
+					}	
+			})
+		}		
 	}
-	
+
 	private changeState(sub) {
 		this.inactive = false;
-		this._renderer.addClass(this._button.nativeElement, 'button__submit_active')
+		this._renderer.addClass(this._button.nativeElement, 'submit__button_active')
 	}
-	
-    private openFirstDialog() : void
+
+	private openFirstDialog() : void
     {
     	let dialogRef = this._dialog.open(UserJobsDialogComponent, {
     		id: 'user-jobs-dialog',
@@ -269,5 +264,11 @@ export class AcountComponent
 			this._loader.dismiss('updating')
         }
         );
+	}
+
+	private falseClick() {
+        let clickMe = this._button.nativeElement;
+
+        clickMe.click();
 	}
 }
