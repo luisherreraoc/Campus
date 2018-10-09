@@ -54,6 +54,16 @@
 		color: $color-cuenta;
 	}
 
+	.button__submit {
+		background-color: white;
+		color: $color-cuenta;
+	}
+
+	.button__submit_active {
+		background-color: $color-cuenta;
+		color: white;
+	}
+
 }
 ::ng-deep {
 	.custom-dialog {

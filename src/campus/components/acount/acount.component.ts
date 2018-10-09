@@ -1,4 +1,4 @@
-import { Component, Inject, ViewContainerRef, ViewChild, ElementRef, SimpleChange, SimpleChanges } from '@angular/core';
+import { Component, Inject, ViewContainerRef, ViewChild, ElementRef, SimpleChange, SimpleChanges, Renderer2 } from '@angular/core';
 import { Observable, BehaviorSubject, Subscription } from "rxjs/Rx";
 
 import { environment } from '../../../environments/environment';
@@ -44,6 +44,9 @@ export class AcountComponent
 
 	private _user : any;
 	private espDetails : Array<any>;
+
+	private julome : boolean;
+
 	// private showMe: boolean;
 
 	public constructor ( 
@@ -54,7 +57,8 @@ export class AcountComponent
 		private _as: AuthService,
 		private _us: UserService,
 		private _loader: Loader,
-		private _router: Router ) 
+		private _router: Router,
+		private _renderer: Renderer2 ) 
 	{ 
 		logger.log('ACOUNT COMPONENT'); 
 
@@ -77,6 +81,9 @@ export class AcountComponent
 		this._sent = false;
 
 		this.espDetails = [];
+
+		this.julome = true;
+
 	}
 
 	public ngOnInit () : void
@@ -113,6 +120,23 @@ export class AcountComponent
             { 	
 				this._form = form;
 				this._form_group = this._form.formGroup;
+				
+				let groupControls = this._form_group.controls;
+				let controls:Array<string> = Object.keys(groupControls);
+
+				for (let seak in controls) {
+					groupControls[controls[seak]].valueChanges
+					.debounceTime(500)
+					.distinctUntilChanged()
+					.take(1)
+					.subscribe(
+						sub => {
+							if (this.julome) {
+								this.testing(sub)
+							}	
+					})
+				}					
+
 				this._loader.dismiss('acount');
 			}
         },
@@ -159,8 +183,9 @@ export class AcountComponent
         clickMe.click();
 	}
 	
-	private testing() {
-		console.log('what`s up? a key is up')
+	private testing(sub) {
+		this.julome = false;
+		this._renderer.addClass(this._button.nativeElement, 'button__submit_active')
 	}
 	
     private openFirstDialog() : void
@@ -202,45 +227,46 @@ export class AcountComponent
 	}
 
 	private send () : void {
-		let aux = this._form_group.getRawValue();
+		console.log('send function')
+		// let aux = this._form_group.getRawValue();
             
-		let data = {
-			'first_name': aux.oauth_user_first_name,
-			'last_name': aux.oauth_user_last_name,
-			'phone': aux.oauth_user_phone
-		}
-		this._us.update(data)
-        .subscribe( (response: any ) =>
-        {
-            let user : any = this._us.data.find((user : any) => {
-                return user.oauth_user_id == this._ids.user
-            })
+		// let data = {
+		// 	'first_name': aux.oauth_user_first_name,
+		// 	'last_name': aux.oauth_user_last_name,
+		// 	'phone': aux.oauth_user_phone
+		// }
+		// this._us.update(data)
+        // .subscribe( (response: any ) =>
+        // {
+        //     let user : any = this._us.data.find((user : any) => {
+        //         return user.oauth_user_id == this._ids.user
+        //     })
             
-            user.oauth_user_first_name = aux.oauth_user_first_name;
-            user.oauth_user_last_name = aux.oauth_user_last_name;
-            user.oauth_user_phone = aux.oath_user_phone;
-            user.user_details_prefix = aux.user_details_prefix;
-		},
-		( error : any ) => {
-			this._sent = true;
-			this._response_obj = {
-				title: '',
-				text: 'Ha habido un error a la hora de actualizar sus datos. Por favor, vuelva a intentarlo',
-				img: '',
-				btn: 'VOLVER',
-				callback: this.goToAccount
-			}
-        },
-        () => {
-			this._sent = true;
-			this._response_obj = {
-				title: '',
-				text: 'Sus datos se han actualizado correctamente',
-				img: '',
-				btn: 'VOLVER',
-				callback: this.goToAccount
-			}
-        }
-        );
+        //     user.oauth_user_first_name = aux.oauth_user_first_name;
+        //     user.oauth_user_last_name = aux.oauth_user_last_name;
+        //     user.oauth_user_phone = aux.oath_user_phone;
+        //     user.user_details_prefix = aux.user_details_prefix;
+		// },
+		// ( error : any ) => {
+		// 	this._sent = true;
+		// 	this._response_obj = {
+		// 		title: '',
+		// 		text: 'Ha habido un error a la hora de actualizar sus datos. Por favor, vuelva a intentarlo',
+		// 		img: '',
+		// 		btn: 'VOLVER',
+		// 		callback: this.goToAccount
+		// 	}
+        // },
+        // () => {
+		// 	this._sent = true;
+		// 	this._response_obj = {
+		// 		title: '',
+		// 		text: 'Sus datos se han actualizado correctamente',
+		// 		img: '',
+		// 		btn: 'VOLVER',
+		// 		callback: this.goToAccount
+		// 	}
+        // }
+        // );
 	}
 }
