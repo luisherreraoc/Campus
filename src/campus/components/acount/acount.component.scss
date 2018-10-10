@@ -26,10 +26,10 @@
 	max-width: 540px;
 	border-bottom: 1px solid grey;
 	.intereses__field__text {
-      display: flex;
+    display: flex;
 	  flex-wrap: wrap;
 	  padding: 0.5vmin;
-	  font-size: 14px;
+		font-size: 2rem;
 	}
   }
 
@@ -39,6 +39,7 @@
 	justify-content: flex-end;
 	color: $color-cuenta;
 	font-size: 13px;
+	font-weight: 500;
 	padding-top: 10px;
   }
 
