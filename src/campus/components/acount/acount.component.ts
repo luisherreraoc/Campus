@@ -46,6 +46,8 @@ export class AcountComponent
 
 	private currentUser : Object;
 
+	private accountDetails : Object;
+
 	private inactive : boolean;
 
 	// private showMe: boolean;
@@ -98,13 +100,8 @@ export class AcountComponent
 		
 		this._loader.show('acount');
 
-		this._subscriptions = [	this.subscriptions(obs), this.subscribeUser() ];
+		this._subscriptions = [ this.subscribeUser(), this.subscriptions(obs) ];
 
-	}
-
-	private extend(obj, src) {
-		Object.keys(src).forEach((key) => { obj[key] = src[key]; });
-		return obj;
 	}
 
 	private subscribeUser () : Subscription
@@ -116,6 +113,17 @@ export class AcountComponent
 			if ( user )
 			{
 				this.currentUser = user;
+				this.accountDetails = {
+					'oauth_user_first_name' : user.oauth_user_first_name,
+					'oauth_user_last_name' : user.oauth_user_last_name,
+					'user_details_prefix' : user.user_details_prefix,
+					'oauth_user_phone' : user.oauth_user_phone,
+					'oauth_user_dni' : user.oauth_user_dni,
+					'oauth_user_email' : user.oauth_user_email,
+					'user_details_job' : user.user_details_job,
+					'user_details_especialization' : user.user_details_especialization,
+					'user_details_college' : user.user_details_college
+				}
 			}
 		});
 	}
@@ -154,25 +162,42 @@ export class AcountComponent
 	}
 
 	private getFieldChange (groupControls) {
-		let controls:Array<string> = Object.keys(groupControls);
+
+		let controls : Array<string> = Object.keys(groupControls);
+
+		let currentDetails : Array<string> = Object.values(this.accountDetails);
+
+		let arr = []
 
 		for (let cont in controls) {
 			groupControls[controls[cont]].valueChanges
-			.debounceTime(500)
+			.debounceTime(1000)
 			.distinctUntilChanged()
-			.take(1)
 			.subscribe(
 				sub => {
-					if (this.inactive) {
-						this.changeState(sub)
-					}	
+					if (!currentDetails.includes(sub)) {
+						arr.push(sub)
+					} else if (currentDetails.includes(sub)) {
+						arr.splice(arr.indexOf(sub))
+					}
+
+					if (arr.includes(sub)) {
+						this.activateButton();
+					} else {
+						this.disableButton();
+					}
 			})
 		}		
 	}
 
-	private changeState(sub) {
+	private activateButton() {
 		this.inactive = false;
 		this._renderer.addClass(this._button.nativeElement, 'submit__button_active')
+	}
+
+	private disableButton() {
+		this.inactive = true;
+		this._renderer.removeClass(this._button.nativeElement, 'submit__button_active')
 	}
 
 	private openFirstDialog() : void
@@ -211,6 +236,8 @@ export class AcountComponent
 
 	private goToAccount () : void {
 		this._sent = false;
+		this.inactive = true;
+		this._renderer.removeClass(this._button.nativeElement, 'submit__button_active')
 	}
 
 	private send () : void {
