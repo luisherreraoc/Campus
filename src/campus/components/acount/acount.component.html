@@ -8,9 +8,11 @@
     <p class="intereses__header">Especializaciones de interés</p>
 
     <div class="intereses__field">
-        <div *ngFor="let detail of espDetails">
-            <p class="intereses__field__text">{{ detail }}</p>
-        </div>
+        <p class="intereses__field__text">
+            {{ currentUser.user_details_job }} - 
+            {{ currentUser.user_details_especialization[0] }} - 
+            {{ currentUser.user_details_college[0] }}
+        </p>
     </div>
 </div>
 

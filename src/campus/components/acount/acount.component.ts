@@ -43,7 +43,8 @@ export class AcountComponent
 	private _sent: boolean;
 
 	private _user : any;
-	private espDetails : Array<any>;
+
+	private currentUser : Object;
 
 	private inactive : boolean;
 
@@ -80,7 +81,11 @@ export class AcountComponent
 		};
 		this._sent = false;
 
-		this.espDetails = [];
+		this.currentUser = {
+			'user_details_job' : '',
+			'user_details_especialization' : '',
+			'user_details_college' : ''
+		}
 
 		this.inactive = true;
 
@@ -93,7 +98,26 @@ export class AcountComponent
 		
 		this._loader.show('acount');
 
-		this._subscriptions = [	this.subscriptions(obs), this.getUserDetails(obs) ];
+		this._subscriptions = [	this.subscriptions(obs), this.subscribeUser() ];
+
+	}
+
+	private extend(obj, src) {
+		Object.keys(src).forEach((key) => { obj[key] = src[key]; });
+		return obj;
+	}
+
+	private subscribeUser () : Subscription
+	{
+		return this._us.users
+		.map( users => users.find(user => user['token'] === this._as.getToken()) )
+		.subscribe( (user:any) =>
+		{
+			if ( user )
+			{
+				this.currentUser = user;
+			}
+		});
 	}
 
 	public ngOnDestroy () : void 
@@ -127,38 +151,6 @@ export class AcountComponent
         },
         (error) => {},
         () => this._loader.dismiss('acount'));
-	}
-
-	private getUserDetails (obs : Observable<any>) : Subscription {
-		
-		return obs.subscribe( user => {
-			this._us.getById(user.oauth_user_id)
-			.subscribe((user :any) => {
-				this._user = JSON.parse(user._body);
-
-				let user_details = this._user.data.oauth_user_details;
-
-				let arr = [];
-
-				for (let detail in user_details) {
-					if(user_details[detail].user_details_key !== 'prefix')
-					{
-						arr.push(user_details[detail].user_details_value);
-					}
-				}
-
-				let strg = '';
-
-				for (let i=0; i < arr.length; i++) {
-					if (i !== arr.length -1 ) {
-						strg = arr[i] + ' - ';
-					} else {
-						strg = arr[i]
-					}
-					this.espDetails.push(strg);
-				}
-			})
-		})
 	}
 
 	private getFieldChange (groupControls) {
