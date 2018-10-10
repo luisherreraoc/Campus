@@ -30,7 +30,7 @@ export class AvatarComponent
 
 	private _subscriptions: Array<Subscription>;
 
-	public _julome : String;
+	public _currentUser : Object;
 
 	public constructor ( 
 		private _logger: Logger, 
@@ -41,6 +41,7 @@ export class AvatarComponent
 		private _as: AuthService ) 
 	{ 
 		_logger.log('Avatar Component');
+		this._currentUser = {'oauth_user_first_name': ''}
 	}
 
 	public ngOnInit () : void
@@ -61,12 +62,6 @@ export class AvatarComponent
 				this.updateSrc(user); 
 			});
 		}
-
-		this._us.get(this._as.getToken())
-		.subscribe( (user : any) => 
-		{
-			this._julome = user.oauth_user_first_name;
-		});
 	}
 
 	public ngOnDestroy () : void 
@@ -118,6 +113,7 @@ export class AvatarComponent
 			if ( user )
 			{
 				this.updateSrc(user);
+				this._currentUser = user;
 			}
 		});
 	}
