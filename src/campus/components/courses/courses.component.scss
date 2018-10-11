@@ -1,27 +1,21 @@
 @import '~scss/abstracts/variables';
 
-.carousel {
-  width: 44vmin;
-  overflow: hidden;
-  .carousel__flow {
-    display: flex;
-    flex-direction: row;
-    transition: transform 1.2s, -webkit-transform 1.2s;
-    .carousel__flow__button {
-	    margin: auto 0px;
-	    color: $color-cursos;
-    }
-    .carousel__flow__content {
-      padding: 0px 10px;
-      button {
-        color: white;
-  	    background-color: $color-cursos;
+.courses_wrapper {
+  display: flex;
+}
+  .courses_wrapper__button {
+    margin: auto 0px;
+  }
+
+  .courses_wrapper__carousel {
+    width: 44vmin;
+    overflow: hidden;
+    .courses_wrapper__carousel__flow {
+      display: flex;
+      flex-direction: row;
+      transition: transform 1.2s, -webkit-transform 1.2s;
+      .courses_wrapper__carousel__flow__content {
+        padding: 0px 10px;
       }
     }
   }
-}
-
-.carousel__legend {
-  text-align: center;
-  padding: 20px;
-}

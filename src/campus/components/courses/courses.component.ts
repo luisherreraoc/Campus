@@ -16,16 +16,12 @@ export class CoursesComponent
 	@ViewChild('carousel') private _carousel : any;
 	private _subscriptions: Array<any>;
 	private _courses: Array<any>;
-	private index : any;
-	private showCarousel : boolean;
-	private amount : any;
+	public amount : any;
 
 	public constructor ( private logger: Logger, private _cs: CoursesService, private loader: Loader, private renderer: Renderer2 ) 
 	{ 
 		logger.log('COURSES COMPONENT'); 
 		this._subscriptions = new Array();
-		this.index = 1;
-		this.showCarousel = false;
 		this.amount = 0;
 	}
 

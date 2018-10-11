@@ -1,23 +1,26 @@
-<div class="carousel">
-	<div class=carousel__flow__button>
+<div class="courses_wrapper">
+	<div class="courses_wrapper__button">
 		<i class="material-icons"
-		(click)="minusSlide()">
+			(click)="minusSlide()">
 			arrow_back_ios
 		</i>
-	</div>	
+	</div>
 
-		<div #carousel class="carousel__flow" [style.transform]="'translateX('+amount+'px)'">
-			<div class="carousel__flow__content" #curso *ngFor="let course of _courses">
+	<div class="courses_wrapper__carousel">
+		<div #courses_wrapper__carousel class="courses_wrapper__carousel__flow" [style.transform]="'translateX('+amount+'px)'">
+			<div class="courses_wrapper__carousel__flow__content" #curso *ngFor="let course of _courses">
 				<course-card [course]="course"></course-card>
 			</div>
-		</div>		
+		</div>
+	</div>
 
-	<div class="carousel__flow__button">
+	<div class="courses_wrapper__button">
 		<i class="material-icons"
-		(click)="plusSlide()">
+			(click)="plusSlide()">
 			arrow_forward_ios
 		</i>
-	</div>
+	</div>	
 </div>
+
 	
 
