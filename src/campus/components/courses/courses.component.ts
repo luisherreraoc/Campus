@@ -13,10 +13,12 @@ import { CoursesService }												from '../../services/courses.service';
 export class CoursesComponent
 {
 	@ViewChildren('curso') private _curso : any;
+	@ViewChild('carousel') private _carousel : any;
 	private _subscriptions: Array<any>;
 	private _courses: Array<any>;
 	private index : any;
 	private showCarousel : boolean;
+	private amount : any;
 
 	public constructor ( private logger: Logger, private _cs: CoursesService, private loader: Loader, private renderer: Renderer2 ) 
 	{ 
@@ -24,12 +26,11 @@ export class CoursesComponent
 		this._subscriptions = new Array();
 		this.index = 1;
 		this.showCarousel = false;
+		this.amount = 0;
 	}
 
 	public ngOnInit () : void
 	{
-		this.loader.show('test');
-
 		this._subscriptions = [
             this.subscribeCourses()
         ];
@@ -40,29 +41,23 @@ export class CoursesComponent
 		}
 	}
 
-	public ngAfterViewInit () : void {
-		setTimeout(()=>{
-			this.renderer.setStyle(this._curso._results[0].nativeElement, 'display', 'block');
-			this.showCarousel = true;
-			this.loader.dismiss('test');
-		}, 2000)
-	}
+	public plusSlide () : void {
+		let cardWidth = this._curso._results[0].nativeElement.clientWidth;
+		let totalCards = this._curso._results.length;
+		let totalWidth = cardWidth * (totalCards - 2)
 
-	public changeSlide (n) : void {
-		this.showMe(this.index += n);
+		if (this.amount > -totalWidth){
+			this.amount -= cardWidth
+		}
 	};
 
-	public showMe (n) : void {
-		let slides = this._curso._results;
-
-		if (n > slides.length) {this.index = 1}    
-		if (n < 1) {this.index = slides.length}
-		for (let i = 0; i < slides.length; i++) {
-			this.renderer.setStyle(slides[i].nativeElement, 'display', 'none');
+	public minusSlide () : void {
+		let cardWidth = this._curso._results[0].nativeElement.clientWidth;
+		if (this.amount < 0) {
+			this.amount += cardWidth
 		}
-		this.renderer.setStyle(slides[this.index-1].nativeElement, 'display', 'block');
-	}
-	
+	};
+
 	public ngOnDestroy () : void 
     { 
         this._subscriptions.forEach( sub => sub.unsubscribe());

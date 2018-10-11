@@ -1,17 +1,22 @@
 @import '~scss/abstracts/variables';
 
-.carousel__flow {
-  display: flex;
-  flex-direction: row;
-  .carousel__flow__button {
-	margin: auto 0px;
-	color: $color-cursos;
-  }
-  .carousel__flow__content {
-  display: none;
-    button {
-      color: white;
-	  background-color: $color-cursos;
+.carousel {
+  width: 44vmin;
+  overflow: hidden;
+  .carousel__flow {
+    display: flex;
+    flex-direction: row;
+    transition: transform 1.2s, -webkit-transform 1.2s;
+    .carousel__flow__button {
+	    margin: auto 0px;
+	    color: $color-cursos;
+    }
+    .carousel__flow__content {
+      padding: 0px 10px;
+      button {
+        color: white;
+  	    background-color: $color-cursos;
+      }
     }
   }
 }

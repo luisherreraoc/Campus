@@ -1,27 +1,23 @@
 <div class="carousel">
-	<div class="carousel__flow">
-		<div class=carousel__flow__button *ngIf="showCarousel">
-			<i class="material-icons"
-			(click)="changeSlide(-1)">
-				arrow_back_ios
-			</i>
-		</div>
-
-		<div class="carousel__flow__content" #curso *ngFor="let course of _courses">
-			<course-card [course]="course"></course-card>
-		</div>
-
-		<div class="carousel__flow__button" *ngIf="showCarousel">
-			<i class="material-icons"
-			(click)="changeSlide(1)">
-				arrow_forward_ios
-			</i>
-		</div>	
-	</div>
-
-	<div class="carousel__legend" *ngIf="showCarousel">
-		<h3>Página {{ index }} de {{ _courses.length }}</h3>		
+	<div class=carousel__flow__button>
+		<i class="material-icons"
+		(click)="minusSlide()">
+			arrow_back_ios
+		</i>
 	</div>	
+
+		<div #carousel class="carousel__flow" [style.transform]="'translateX('+amount+'px)'">
+			<div class="carousel__flow__content" #curso *ngFor="let course of _courses">
+				<course-card [course]="course"></course-card>
+			</div>
+		</div>		
+
+	<div class="carousel__flow__button">
+		<i class="material-icons"
+		(click)="plusSlide()">
+			arrow_forward_ios
+		</i>
+	</div>
 </div>
 	
 

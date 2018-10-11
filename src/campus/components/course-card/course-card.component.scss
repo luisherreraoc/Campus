@@ -1,20 +1,20 @@
 .card {
-  width: 50vmin;
+  width: 20vmin;
   text-align: center;
-  border: transparent;
+	border: 1px solid rgb(190,190,190);
+	border-radius: 15px;
+	overflow: hidden;
   .card__photo {
-	width: 40vmin;
-	padding: 10px;
+	width: 20vmin;
 	margin: 0px auto;
-	.card__photo__img {
-	  width: 100%;
-	  border-radius: 15px;
-	}
+  	.card__photo__img {
+	    width: 100%;
+	  }
   }
   .card__text {
-	padding: 15px 25px 0px;
-	h1 {
-	  font-size: 3vmin;
-	}
+	padding: 10px 15px 0px;
+	  h1 {
+	    font-size: 1.5vmin;
+	  }
   }
 }
