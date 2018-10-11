@@ -50,8 +50,6 @@ export class AcountComponent
 
 	private inactive : boolean;
 
-	// private showMe: boolean;
-
 	public constructor ( 
 		private logger: Logger, 
 		private _fs: MkFormService, 
@@ -116,10 +114,11 @@ export class AcountComponent
 				this.accountDetails = {
 					'oauth_user_first_name' : user.oauth_user_first_name,
 					'oauth_user_last_name' : user.oauth_user_last_name,
-					'user_details_prefix' : user.user_details_prefix,
-					'oauth_user_phone' : user.oauth_user_phone,
 					'oauth_user_dni' : user.oauth_user_dni,
 					'oauth_user_email' : user.oauth_user_email,
+					'user_details_prefix' : user.user_details_prefix,
+					'oauth_user_phone' : user.oauth_user_phone,
+					'oauth_user_password' : '',
 					'user_details_job' : user.user_details_job,
 					'user_details_especialization' : user.user_details_especialization,
 					'user_details_college' : user.user_details_college
@@ -165,29 +164,40 @@ export class AcountComponent
 
 		let controls : Array<string> = Object.keys(groupControls);
 
-		let currentDetails : Array<string> = Object.values(this.accountDetails);
+		let initDetails : Array<string> = Object.values(this.accountDetails);
 
 		let arr = []
 
-		for (let cont in controls) {
+		for (let cont in controls) {			
 			groupControls[controls[cont]].valueChanges
 			.debounceTime(1000)
 			.distinctUntilChanged()
-			.subscribe(
-				sub => {
-					if (!currentDetails.includes(sub)) {
-						arr.push(sub)
-					} else if (currentDetails.includes(sub)) {
-						arr.splice(arr.indexOf(sub))
-					}
+			.subscribe( sub => {
+				let currentDetails = [];
+				for (let control in groupControls) {
+					let value = groupControls[control].value;
+					currentDetails.push(value)
+				}
 
-					if (arr.includes(sub)) {
-						this.activateButton();
-					} else {
-						this.disableButton();
-					}
-			})
-		}		
+				if (!this.arraysEqual(currentDetails, initDetails)) {
+					this.activateButton();
+				} else {
+					this.disableButton();
+				}
+			});
+		};
+	}
+
+	private arraysEqual(arr1, arr2) {
+		if(arr1.length !== arr2.length)
+			return false;
+
+		for(var i = arr1.length; i--;) {
+			if(arr1[i] !== arr2[i])
+			return false;
+		}
+	
+		return true;
 	}
 
 	private activateButton() {
