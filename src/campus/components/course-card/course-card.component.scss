@@ -1,3 +1,5 @@
+@import '~scss/abstracts/variables';
+
 .card {
   width: 20vmin;
   text-align: center;
@@ -12,9 +14,26 @@
 	  }
   }
   .card__text {
-	padding: 10px 15px 0px;
-	  h1 {
-	    font-size: 1.5vmin;
-	  }
+	padding: 1vmin 1.5vmin 0vmin;
+	  .card__text__title {
+			height: 12vmin;
+			display: flex;
+			align-items: center;
+			h2 {
+				font-size: 1.5vmin;
+			}
+		}
+		button {
+			padding: 1vmin;
+      border-radius: 20px;
+    	font-size: 1.2vmin;
+			width: 13vmin;
+			background-color: $color-cursos;
+			color: white;
+		}
+		p {
+			margin: 1.5vmin;
+			font-size: 1vmin;
+		}
   }
 }
