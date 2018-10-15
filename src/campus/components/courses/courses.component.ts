@@ -19,6 +19,7 @@ export class CoursesComponent
 	public amount : any;
 	private _first : boolean;
 	private _last : boolean;
+	private _cardsPerShow : any;
 	private barWidth : any;
 	private singleWidth :any;
 
@@ -27,6 +28,7 @@ export class CoursesComponent
 		logger.log('COURSES COMPONENT'); 
 		this._subscriptions = new Array();
 		this.amount = 0;
+		this._cardsPerShow = 2;
 		this.barWidth = 0;
 	}
 
@@ -44,10 +46,16 @@ export class CoursesComponent
 		this._first = true;
 	}
 
+	public ngOnDestroy () : void 
+    { 
+        this._subscriptions.forEach( sub => sub.unsubscribe());
+        this._subscriptions.length = 0;
+    }
+
 	public plusSlide () : void {
 		let cardWidth = this._curso._results[0].nativeElement.clientWidth;
 		let totalCards = this._curso._results.length;
-		let totalWidth = cardWidth * (totalCards - 2)
+		let totalWidth = cardWidth * (totalCards - this._cardsPerShow);
 
 		if (this.amount > -totalWidth) {
 			this.amount -= cardWidth;
@@ -62,6 +70,7 @@ export class CoursesComponent
 
 	public minusSlide () : void {
 		let cardWidth = this._curso._results[0].nativeElement.clientWidth;
+
 		if (this.amount < 0) {
 			this.amount += cardWidth;
 			this.barWidth -= this.singleWidth
@@ -73,19 +82,13 @@ export class CoursesComponent
 		} 
 	};
 
-	public ngOnDestroy () : void 
-    { 
-        this._subscriptions.forEach( sub => sub.unsubscribe());
-        this._subscriptions.length = 0;
-    }
-
     private subscribeCourses () : Subscription
     {
     	return this._cs.courses.subscribe( courses => {
 			this._courses = courses;
 
 			this.singleWidth = ( 100 / (this._courses.length) );
-			this.barWidth =  this.singleWidth * 2;
+			this.barWidth =  this.singleWidth * this._cardsPerShow;
 		});
     }
 }
