@@ -1,4 +1,5 @@
-<div class="card">
+<div class="card"
+	 [ngClass]="{ inactive : _inactive === true }">
 	<div class="card__photo">	
 		<img class="card__photo__img" src="{{_img}}">
 	</div>

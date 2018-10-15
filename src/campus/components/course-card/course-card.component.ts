@@ -46,6 +46,8 @@ export class CourseCardComponent
 
 	private _buttonMessage : any;
 
+	private _inactive : boolean;
+
 	public constructor ( 
 		private logger: Logger, 
 		private window: Window,
@@ -76,8 +78,10 @@ export class CourseCardComponent
 			this._buttonMessage = 'INGRESAR';
 		} else if (this._state === 'expired') {
 			this._buttonMessage = 'EXPIRADO';
+			this._inactive = true;
 		} else if (this._state === 'terminated') {
 			this._buttonMessage = 'FINALIZADO';
+			this._inactive = true;
 		} 
 	}
 
