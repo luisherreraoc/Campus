@@ -6,6 +6,7 @@
   .courses_wrapper__button {
     margin: auto 0px;
     color: $color-cursos;
+    cursor: pointer;
   }
 
   .courses_wrapper__button_inactive {
@@ -22,5 +23,16 @@
       .courses_wrapper__carousel__flow__content {
         padding: 0px 5px;
       }
+    }
+  }
+
+  .bar-container {
+    width: 46vmin;
+    height: 5px;
+    .bar {
+      height: 100%;
+      border-radius: 5px;
+      margin: 10px 25px;
+      background-color: $color-cursos;
     }
   }

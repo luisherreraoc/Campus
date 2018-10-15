@@ -19,12 +19,15 @@ export class CoursesComponent
 	public amount : any;
 	private _first : boolean;
 	private _last : boolean;
+	private barWidth : any;
+	private singleWidth :any;
 
 	public constructor ( private logger: Logger, private _cs: CoursesService, private loader: Loader, private renderer: Renderer2 ) 
 	{ 
 		logger.log('COURSES COMPONENT'); 
 		this._subscriptions = new Array();
 		this.amount = 0;
+		this.barWidth = 0;
 	}
 
 	public ngOnInit () : void
@@ -48,6 +51,7 @@ export class CoursesComponent
 
 		if (this.amount > -totalWidth) {
 			this.amount -= cardWidth;
+			this.barWidth += this.singleWidth;
 			this._first = false;
 		}
 
@@ -60,6 +64,7 @@ export class CoursesComponent
 		let cardWidth = this._curso._results[0].nativeElement.clientWidth;
 		if (this.amount < 0) {
 			this.amount += cardWidth;
+			this.barWidth -= this.singleWidth
 			this._last = false;
 		}
 
@@ -76,6 +81,11 @@ export class CoursesComponent
 
     private subscribeCourses () : Subscription
     {
-    	return this._cs.courses.subscribe( courses => this._courses = courses);
+    	return this._cs.courses.subscribe( courses => {
+			this._courses = courses;
+
+			this.singleWidth = ( 100 / (this._courses.length) );
+			this.barWidth =  this.singleWidth * 2;
+		});
     }
 }
