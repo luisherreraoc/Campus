@@ -1,14 +1,16 @@
 <div class="courses_wrapper">
 	<div class="courses_wrapper__button">
 		<i class="material-icons"
-			(click)="minusSlide()">
+		   (click)="minusSlide()">
 			arrow_back_ios
 		</i>
 	</div>
 
 	<div class="courses_wrapper__carousel">
-		<div #courses_wrapper__carousel class="courses_wrapper__carousel__flow" [style.transform]="'translateX('+amount+'px)'">
-			<div class="courses_wrapper__carousel__flow__content" #curso *ngFor="let course of _courses">
+		<div #courses_wrapper__carousel class="courses_wrapper__carousel__flow" 
+			 [style.transform]="'translateX('+amount+'px)'">
+			<div class="courses_wrapper__carousel__flow__content" #curso 
+				 *ngFor="let course of _courses">
 				<course-card [course]="course"></course-card>
 			</div>
 		</div>
@@ -16,7 +18,7 @@
 
 	<div class="courses_wrapper__button">
 		<i class="material-icons"
-			(click)="plusSlide()">
+		   (click)="plusSlide()">
 			arrow_forward_ios
 		</i>
 	</div>	

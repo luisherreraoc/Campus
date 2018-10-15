@@ -44,6 +44,8 @@ export class CourseCardComponent
 	private _form : string;
 	private _user_previous_info: any;
 
+	private _buttonMessage : any;
+
 	public constructor ( 
 		private logger: Logger, 
 		private window: Window,
@@ -65,6 +67,18 @@ export class CourseCardComponent
 		})
 
 		this._form = "course_entidad_" + this._entidad_id + "_default";
+	
+		if (this._state === 'untouched') {
+			this._buttonMessage = 'ACTIVAR';
+		} else if (this._state === 'pending') {
+			this._buttonMessage = 'INICIAR';
+		} else if (this._state === 'active') {
+			this._buttonMessage = 'INGRESAR';
+		} else if (this._state === 'expired') {
+			this._buttonMessage = 'EXPIRADO';
+		} else if (this._state === 'terminated') {
+			this._buttonMessage = 'FINALIZADO';
+		} 
 	}
 
 	private go () : void 

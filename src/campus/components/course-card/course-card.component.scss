@@ -1,26 +1,27 @@
 @import '~scss/abstracts/variables';
 
 .card {
-  width: 20vmin;
+  width: 22vmin;
   text-align: center;
 	border: 1px solid rgb(190,190,190);
 	border-radius: 15px;
 	overflow: hidden;
   .card__photo {
-	width: 20vmin;
-	margin: 0px auto;
-  	.card__photo__img {
-	    width: 100%;
-	  }
+  	display: flex;
+	  justify-content: center;
+		width: 21vmin;
+		.card__photo__img {
+			height: 18vmin;
+		}
   }
   .card__text {
-	padding: 1vmin 1.5vmin 0vmin;
+	padding: 0vmin 1vmin;
 	  .card__text__title {
-			height: 12vmin;
+			height: 10vmin;
 			display: flex;
 			align-items: center;
 			h2 {
-				font-size: 1.5vmin;
+				font-size: 1.3vmin;
 			}
 		}
 		button {
@@ -34,6 +35,21 @@
 		p {
 			margin: 1.5vmin;
 			font-size: 1vmin;
+		}
+		.activate {
+			background-color: $color-cursos
+		}
+		.initiate {
+			background-color: rgb(231, 184, 31);
+		}
+		.enter {
+			background-color: rgb(53, 206, 99);
+		}
+		.expired {
+			background-color: rgb(180, 30, 13);
+		}
+		.terminated {
+			background-color: rgb(128, 13, 5);
 		}
   }
 }

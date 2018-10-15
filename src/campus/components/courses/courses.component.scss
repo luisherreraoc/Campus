@@ -9,14 +9,14 @@
   }
 
   .courses_wrapper__carousel {
-    width: 44vmin;
+    width: 46vmin;
     overflow: hidden;
     .courses_wrapper__carousel__flow {
       display: flex;
       flex-direction: row;
       transition: transform 1.2s, -webkit-transform 1.2s;
       .courses_wrapper__carousel__flow__content {
-        padding: 0px 10px;
+        padding: 0px 5px;
       }
     }
   }

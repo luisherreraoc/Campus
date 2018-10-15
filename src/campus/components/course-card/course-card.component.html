@@ -8,7 +8,14 @@
 			<h2>{{_title}}</h2>			
 		</div>
 
-		<button class="btn" (click)="go()">INGRESAR</button>
+		<button class="btn" (click)="go()"
+				[ngClass]="{activate : _state === 'untouched',
+							initiate : _state === 'pending',
+							enter : _state === 'active',
+							expired : _state === 'expired',
+							terminated : _state === 'terminated'}">
+			{{ _buttonMessage }}
+		</button>
 		<p>Descargar manual de uso de plataforma</p>
 	</div>	
 </div>
