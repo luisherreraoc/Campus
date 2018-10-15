@@ -17,6 +17,8 @@ export class CoursesComponent
 	private _subscriptions: Array<any>;
 	private _courses: Array<any>;
 	public amount : any;
+	private _first : boolean;
+	private _last : boolean;
 
 	public constructor ( private logger: Logger, private _cs: CoursesService, private loader: Loader, private renderer: Renderer2 ) 
 	{ 
@@ -34,7 +36,9 @@ export class CoursesComponent
         if ( this._cs.subject.getValue().length <= 0 )
         {
         	this._cs.load();
-		}
+		};
+
+		this._first = true;
 	}
 
 	public plusSlide () : void {
@@ -42,16 +46,26 @@ export class CoursesComponent
 		let totalCards = this._curso._results.length;
 		let totalWidth = cardWidth * (totalCards - 2)
 
-		if (this.amount > -totalWidth){
-			this.amount -= cardWidth
+		if (this.amount > -totalWidth) {
+			this.amount -= cardWidth;
+			this._first = false;
+		}
+
+		if (this.amount === -totalWidth) {
+			this._last = true;
 		}
 	};
 
 	public minusSlide () : void {
 		let cardWidth = this._curso._results[0].nativeElement.clientWidth;
 		if (this.amount < 0) {
-			this.amount += cardWidth
+			this.amount += cardWidth;
+			this._last = false;
 		}
+
+		if (this.amount === 0) {
+			this._first = true;
+		} 
 	};
 
 	public ngOnDestroy () : void 

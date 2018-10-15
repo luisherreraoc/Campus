@@ -1,5 +1,6 @@
 <div class="courses_wrapper">
-	<div class="courses_wrapper__button">
+	<div class="courses_wrapper__button"
+		 [ngClass]="{ courses_wrapper__button_inactive : _first === true }">
 		<i class="material-icons"
 		   (click)="minusSlide()">
 			arrow_back_ios
@@ -16,7 +17,8 @@
 		</div>
 	</div>
 
-	<div class="courses_wrapper__button">
+	<div class="courses_wrapper__button"
+	     [ngClass]="{ courses_wrapper__button_inactive : _last === true }">
 		<i class="material-icons"
 		   (click)="plusSlide()">
 			arrow_forward_ios

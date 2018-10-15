@@ -8,6 +8,10 @@
     color: $color-cursos;
   }
 
+  .courses_wrapper__button_inactive {
+    color: gray;
+  }
+
   .courses_wrapper__carousel {
     width: 46vmin;
     overflow: hidden;
