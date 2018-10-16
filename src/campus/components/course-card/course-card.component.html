@@ -1,12 +1,12 @@
 <div class="card"
 	 [ngClass]="{ inactive : _inactive === true }">
-	<div class="card__photo">	
+	<div class="card__photo">
 		<img class="card__photo__img" src="{{_img}}">
 	</div>
 
 	<div class="card__text">
 		<div class="card__text__title">
-			<h2>{{_title}}</h2>			
+			<h2>{{_title}}</h2>
 		</div>
 
 		<button class="btn" (click)="go()"
@@ -18,18 +18,24 @@
 			{{ _buttonMessage }}
 		</button>
 
-		<div class="card__text__button">
+		<div class="card__text__button"
+			 [popover]="estadoLicencia">
 			<i class="material-icons">
 				list_alt
 			</i>
 			<p>Ver estado de la licencia</p>
 		</div>
 
+		<popover-content #estadoLicencia
+						 [animation]="true">
+			<p class="card__text__popover">Estado licencia: {{ _state }}</p>
+		</popover-content>
+
 		<div class="card__text__button">
 			<i class="material-icons">
 				save_alt
 			</i>
-			<p>Descargar manual de uso de plataforma</p>			
+			<p>Descargar manual de uso de plataforma</p>
 		</div>
-	</div>	
+	</div>
 </div>

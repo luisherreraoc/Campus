@@ -89,8 +89,6 @@ export class CoursesComponent
 
 			this.singleWidth = ( 100 / (this._courses.length) );
 			this.barWidth =  this.singleWidth * this._cardsPerShow;
-
-			console.log(this._courses)
 		});
     }
 }

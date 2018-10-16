@@ -21,7 +21,6 @@ export class CourseCardComponent
 {
 	@Input('course') set course ( c: any )
 	{
-		this.renato = c;
 		this._id = c.id;
 		this._title = c.name;
 		this._img = this._suite + '/' + c.multimidia.default_image;
@@ -33,7 +32,6 @@ export class CourseCardComponent
 
 	private _suite: string;
 
-	private renato : any;
 	private _id: number|string;
 	private _title: string;
 	private _img: string;
@@ -86,7 +84,6 @@ export class CourseCardComponent
 			this._inactive = true;
 		} 
 
-		console.log(this.renato)
 	}
 
 	private go () : void 

@@ -27,6 +27,7 @@ import { SharedModule }											from '../shared/shared.module';
 
 import { DraggableDirective } 									from './directives/draggable.directive';
 
+import { PopoverModule } 										from 'ngx-popover'
 
 // --- Dialogs --------------------------------------------------------------------------
 import { UserJobsDialogComponent } from './components/dialogs/user-jobs-dialog.component';
@@ -48,7 +49,9 @@ import { LogOutComponent } from './components/log-out/log-out.component';
     	
     	ReactiveFormsModule,
 
-		SharedModule
+		SharedModule,
+
+		PopoverModule
 	],
 	entryComponents:[ UserJobsDialogComponent, CropperComponent, UserInfoDialog, FormErrorDialog ],
 	declarations: 	[ 
