@@ -1,0 +1,46 @@
+@import '~scss/abstracts/variables';
+
+.select {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 5vmin;
+
+  .select__header {
+    padding-bottom: 2vmin;
+  }
+
+  .select__text {
+    padding-top: 1vmin;
+    text-align: justify;
+  }
+
+  .select__text_strong {
+    font-weight: 600;
+  }
+
+  .select__button {
+    width: 30vmin;
+    padding: 1.5vmin;
+    border-radius: 25px;
+    margin: 10px auto;
+    color: white;
+    font-size: 1.2vmin;
+    font-weight: 400;
+  }
+
+  .select__button_activar {
+    background-color: $color-cursos;
+  }
+
+  .select__button_ceder {
+    background-color: rgb(240, 151, 18);
+  }
+}

@@ -1,4 +1,4 @@
-import { Component, Input, ViewContainerRef }                         					from '@angular/core';
+import { Component, Input, ViewContainerRef, Output, EventEmitter }                         					from '@angular/core';
 
 import { Logger, MkFormService, MkForm }								from 'mk';
 
@@ -21,6 +21,7 @@ export class CourseCardComponent
 {
 	@Input('course') set course ( c: any )
 	{
+		this._currentCourse = c;
 		this._id = c.id;
 		this._title = c.name;
 		this._img = this._suite + '/' + c.multimidia.default_image;
@@ -29,9 +30,11 @@ export class CourseCardComponent
 		this._state = c.license ? c.license.status : null;
 		this._entidad_id = c.certifying_entity ? c.certifying_entity.ce_id : null;
 	}
+	@Output() iniciar = new EventEmitter<any>();
 
 	private _suite: string;
 
+	private _currentCourse : any;
 	private _id: number|string;
 	private _title: string;
 	private _img: string;
@@ -64,8 +67,8 @@ export class CourseCardComponent
 
 	ngOnInit () {
 		this._us.getUserData(this._code)
-		.subscribe( test => {
-			this._user_previous_info = test;
+		.subscribe( info => {
+			this._user_previous_info = info;
 		})
 
 		this._form = "course_entidad_" + this._entidad_id + "_default";
@@ -90,17 +93,18 @@ export class CourseCardComponent
 	{
 		if (this._state === 'untouched')
 		{
-			let dialogRef = this._dialog.open(UserInfoDialog, {
-				id: 'user-info-dialog',
-				data: {
-					_ids: this._ids,
-					_vcr: this._vcr,
-					_form: this._form,
-					_code: this._code,
-					_id: this._entidad_id,
-					_values: this._user_previous_info
-				},
-			});
+			this.iniciar.emit(this._currentCourse);
+			// let dialogRef = this._dialog.open(UserInfoDialog, {
+			// 	id: 'user-info-dialog',
+			// 	data: {
+			// 		_ids: this._ids,
+			// 		_vcr: this._vcr,
+			// 		_form: this._form,
+			// 		_code: this._code,
+			// 		_id: this._entidad_id,
+			// 		_values: this._user_previous_info
+			// 	},
+			// });
 		} else {
 			let tkn: any = this._as.getToken();
 			window.open(environment.ssoRedirectUrl + this._code + '&access_token=' + tkn);

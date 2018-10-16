@@ -29,6 +29,8 @@ import { DraggableDirective } 									from './directives/draggable.directive';
 
 import { PopoverModule } 										from 'ngx-popover'
 
+import { CourseActivacionComponent }							from './components/course-activacion/course-activacion.component';
+
 // --- Dialogs --------------------------------------------------------------------------
 import { UserJobsDialogComponent } from './components/dialogs/user-jobs-dialog.component';
 import { UserInfoDialog } from './components/dialogs/user-info-dialog.component';
@@ -69,7 +71,8 @@ import { LogOutComponent } from './components/log-out/log-out.component';
 		AvatarComponent, 
 		CropperComponent, 
 		DraggableDirective,
-		LogOutComponent
+		LogOutComponent,
+		CourseActivacionComponent
 	],
 	exports: 		[ CampusComponent ]
 })

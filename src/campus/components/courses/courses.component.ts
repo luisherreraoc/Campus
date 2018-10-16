@@ -21,7 +21,9 @@ export class CoursesComponent
 	private _last : boolean;
 	private _cardsPerShow : any;
 	private barWidth : any;
-	private singleWidth :any;
+	private singleWidth : any;
+	private showInicio : boolean;
+	private _currentCourse : any;
 
 	public constructor ( private logger: Logger, private _cs: CoursesService, private loader: Loader, private renderer: Renderer2 ) 
 	{ 
@@ -30,6 +32,7 @@ export class CoursesComponent
 		this.amount = 0;
 		this._cardsPerShow = 2;
 		this.barWidth = 0;
+		this.showInicio = false;
 	}
 
 	public ngOnInit () : void
@@ -90,5 +93,14 @@ export class CoursesComponent
 			this.singleWidth = ( 100 / (this._courses.length) );
 			this.barWidth =  this.singleWidth * this._cardsPerShow;
 		});
-    }
+	}
+	
+	private onInicio(init) {
+		this.showInicio = true;
+		this._currentCourse = init;
+	}
+
+	private onClose(action) {
+		action ? this.showInicio = false : this.showInicio = true;
+	}
 }
