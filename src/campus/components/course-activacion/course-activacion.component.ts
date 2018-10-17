@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 
 import { environment } from '../../../environments/environment';
 
-import { Logger, MkFormService, MkForm } from 'mk';      
+import { Loader, Logger, MkFormService, MkForm } from 'mk';      
 
 import { UserService } from '../../services/user.service';
 
@@ -51,6 +51,7 @@ export class CourseActivacionComponent
     private _form_ced_group: FormGroup;
     private _subscriptions: Array<any>;
 
+    private _activar : boolean;
     private _ceder : boolean;
     private _cederSuccess : boolean;
 
@@ -58,12 +59,14 @@ export class CourseActivacionComponent
         private _fs: MkFormService, 
         private _http: Http, 
         private _router: Router, 
-        private _us: UserService
+        private _us: UserService,
+        private _loader : Loader
     ) 
     {
         this._form_act_group = new FormGroup({});
         this._form_ced_group = new FormGroup({});
         this._subscriptions = new Array();
+        this._activar = false;
         this._ceder = false;
         this._cederSuccess = false;
     }
@@ -72,24 +75,26 @@ export class CourseActivacionComponent
 	{
         this._us.getUserData(this._code)
 		.subscribe( info => {
-			this._user_previous_info = info;
+            this._user_previous_info = info;
+        },
+        (err) => {},
+        () => {
+            this._subscriptions.push(this.subscribeQuestionFormActivar());
+            this._loader.dismiss('form-activar')
         })
 
         this._form_activar = "course_entidad_" + this._entidad_id + "_default";
         
-		this._subscriptions = [
-            this.subscribeQuestionFormActivar(),
-            this.subscribeQuestionFormCeder()
-        ];
+		this._subscriptions.push(this.subscribeQuestionFormCeder());
     }
 
-	// public ngOnDestroy () : void 
-    // { 
-    //     this._subscriptions.forEach( sub => {
-    //         sub.unsubscribe()
-    //     });
-    //     this._subscriptions.length = 0;
-    // }
+	public ngOnDestroy () : void 
+    { 
+        this._subscriptions.forEach( sub => {
+            sub.unsubscribe()
+        });
+        this._subscriptions.length = 0;
+    }
 
     private subscribeQuestionFormActivar () : Subscription
     {
@@ -167,13 +172,28 @@ export class CourseActivacionComponent
     //         console.log(data)
     //     });
     // }
-    private send (ans) {
-        this.close.emit(ans)
+
+    private activar() {
+        this._activar = true;
+        this._loader.show('form-activar')
     }
 
     private cederLicencia () {
-        //do form submit stuff
-        this._ceder = false;
-        this._cederSuccess = true;
+        let aux : any;
+        let data : any;
+
+        aux = this._form_ced_group.getRawValue();
+        data = { 'mail' : aux.email };
+
+        if (this._form_ced_group.status === 'VALID') {
+            console.log(data);
+            //llamada al back con la info del usuario
+            this._ceder = false;
+            this._cederSuccess = true;
+        }
+    }
+
+    private back (ans) {
+        this.close.emit(ans);
     }
 }

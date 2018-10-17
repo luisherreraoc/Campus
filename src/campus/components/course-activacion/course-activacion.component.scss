@@ -50,6 +50,23 @@
   }
 }
 
+.activar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5vmin;
+
+  .activar__header {
+    font-size: 1.7vmin;
+    color: $color-cursos;
+    padding-bottom: 4vmin;
+  }
+
+  .activar__form {
+    padding-bottom: 10vmin;
+  }
+}
+
 .ceder {
   display: flex;
   flex-direction: column;
@@ -80,6 +97,7 @@
 
     i {
       margin: auto;
+      padding-bottom: 2vmin;
       color: $color-cursos;
       font-size: 2vmin;
     }
@@ -112,7 +130,7 @@
   }
 }
 
-.ceder__button {
+.submit__button {
   width: 20vmin;
   border-radius: 35px;
   padding: 1.2vmin;
@@ -122,6 +140,6 @@
   color: white;
 }
 
-.ceder__button_ok {
+.submit__button_ok {
   margin: 0px auto;
 }

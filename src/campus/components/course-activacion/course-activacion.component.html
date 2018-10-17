@@ -1,5 +1,5 @@
 <div class="wrapper">
-    <div class="select" *ngIf="!_ceder && !_cederSuccess">
+    <div class="select" *ngIf="!_activar && !_ceder && !_cederSuccess">
         <h2 class="select__header">Solicitud de datos personales para la certificación</h2>
 
         <div class="select__text select__text_strong">
@@ -17,13 +17,25 @@
         </div>
 
         <div class="select__button select__button_activar"
-            (click)="send(true)">
+            (click)="activar()">
             EL PROGRAMA ES PARA MÍ
         </div>
 
         <div class="select__button select__button_ceder"
             (click)="_ceder = true">
             EL PROGRAMA NO ES PARA MÍ
+        </div>
+    </div>
+
+    <div class="activar" *ngIf="_activar">
+        <h2 class="activar__header">
+            {{ _title }}
+        </h2>
+
+        <mk-form class="activar__form" [name]="_form_activar" cols="2"></mk-form>
+
+        <div class="submit__button" (click)="back(true)">
+            SIGUIENTE
         </div>
     </div>
 
@@ -41,7 +53,7 @@
             <h3>{{ _title }}</h3>
         </div>
 
-        <div class="ceder__button" (click)="cederLicencia()">
+        <div class="submit__button" (click)="cederLicencia()">
             ENVIAR
         </div>
     </div>
@@ -51,7 +63,7 @@
             check_circle_outline
         </i>
         <p class="ceder__ok__text">La licencia se envió correctamente</p>
-        <div class="ceder__button ceder__button_ok" (click)="send(true)">
+        <div class="submit__button submit__button_ok" (click)="back(true)">
             VOLVER A MIS CURSOS
         </div>
     </div>

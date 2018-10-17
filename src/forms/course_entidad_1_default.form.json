@@ -2,27 +2,21 @@
       {
          "key": "nombre", 
          "type": "text",
-         "label": "FORM_NOMBRE",
+         "label": "Nombre",
          "required": true,
          "order": 1
       },
       {
          "key": "apellido1",  
          "type": "text",
-         "label": "FORM_APELLIDO",
+         "label": "Primer apellido",
          "required": true,
          "order": 2
       },
       {
-         "key": "apellido2", 
-         "type": "text",
-         "label": "FORM_APELLIDO",
-         "order": 3
-      },
-      {
          "key": "dni_nie", 
          "type": "text",
-         "label": "DNI", 
+         "label": "Documento identificativo", 
          "required": true,
          "order": 4
       },
@@ -43,7 +37,7 @@
       {
          "key": "mail", 
          "type": "email",
-         "label": "FORM_EMAIL",
+         "label": "Email",
          "required": true,
          "disabled":true,
          "order": 7 
