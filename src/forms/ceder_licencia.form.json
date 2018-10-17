@@ -1,0 +1,11 @@
+[	
+    {
+	    "key": "email",
+	    "label": "E-mail",
+	    "value": "",
+	    "required": true,
+	    "order": 2,
+	    "maxlength": "80",
+	    "type": "email"
+    }	
+]

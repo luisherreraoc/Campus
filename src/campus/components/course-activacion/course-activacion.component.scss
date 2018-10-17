@@ -1,12 +1,15 @@
 @import '~scss/abstracts/variables';
 
-.select {
+.wrapper {
   position: absolute;
   top: 0px;
   bottom: 0px;
   left: 0px;
   right: 0px;
   background-color: white;
+}
+
+.select {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -20,6 +23,7 @@
   .select__text {
     padding-top: 1vmin;
     text-align: justify;
+    font-size: 1.2vmin;
   }
 
   .select__text_strong {
@@ -38,9 +42,86 @@
 
   .select__button_activar {
     background-color: $color-cursos;
+    margin-top: 12vmin;
   }
 
   .select__button_ceder {
     background-color: rgb(240, 151, 18);
   }
+}
+
+.ceder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5vmin;
+
+  .ceder__header {
+    font-size: 2.3vmin;
+    padding-bottom: 2vmin;
+  }
+
+  .ceder__text {
+    font-size: 1.2vmin;
+    padding-bottom: 3vmin;
+  }
+
+  .ceder__form {
+    width: 75%;
+  }
+
+  .ceder__producto {
+    display: flex;
+    border: 0.1vmin solid $color-cursos;
+    border-radius: 30px;
+    padding: 1.5vmin;
+    margin-top: 3vmin;
+    margin-bottom: 10vmin;
+
+    i {
+      margin: auto;
+      color: $color-cursos;
+      font-size: 2vmin;
+    }
+
+    h3 {
+      padding-left: 2vmin;
+      font-size: 1.5vmin;
+    }
+  }
+}
+
+.ceder__ok {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 5vmin;
+  width: 100%;
+
+  i {
+    color: gray;
+    font-size: 10vmin;
+    filter: opacity(0.5);
+  }
+
+  .ceder__ok__text {
+    padding-bottom: 15vmin;
+    font-size: 1.5vmin;
+    color: gray;
+  }
+}
+
+.ceder__button {
+  width: 20vmin;
+  border-radius: 35px;
+  padding: 1.2vmin;
+  background-color: rgb(53, 206, 99);
+  text-align: center;
+  font-size: 1.2vmin;
+  color: white;
+}
+
+.ceder__button_ok {
+  margin: 0px auto;
 }

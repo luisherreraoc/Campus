@@ -42,12 +42,17 @@ export class CourseActivacionComponent
 	private _ids: any;
 	private _entidad_id : any;
 
-    private _form_name : any;
+    private _form_activar : any;
     private _user_previous_info : any;
 
-    private _form: MkForm;
-    private _form_group: FormGroup;
-    private _subscriptions: Array<any>
+    private _form_act: MkForm;
+    private _form_act_group: FormGroup;
+    private _form_ced: MkForm;
+    private _form_ced_group: FormGroup;
+    private _subscriptions: Array<any>;
+
+    private _ceder : boolean;
+    private _cederSuccess : boolean;
 
     constructor( 
         private _fs: MkFormService, 
@@ -56,8 +61,11 @@ export class CourseActivacionComponent
         private _us: UserService
     ) 
     {
-        this._form_group = new FormGroup({});
-        this._subscriptions = new Array();        
+        this._form_act_group = new FormGroup({});
+        this._form_ced_group = new FormGroup({});
+        this._subscriptions = new Array();
+        this._ceder = false;
+        this._cederSuccess = false;
     }
 
     public ngOnInit ()
@@ -67,10 +75,11 @@ export class CourseActivacionComponent
 			this._user_previous_info = info;
         })
 
-        this._form_name = "course_entidad_" + this._entidad_id + "_default";
+        this._form_activar = "course_entidad_" + this._entidad_id + "_default";
         
 		this._subscriptions = [
-            this.subscribeQuestionForm()
+            this.subscribeQuestionFormActivar(),
+            this.subscribeQuestionFormCeder()
         ];
     }
 
@@ -82,18 +91,32 @@ export class CourseActivacionComponent
     //     this._subscriptions.length = 0;
     // }
 
-    private subscribeQuestionForm () : Subscription
+    private subscribeQuestionFormActivar () : Subscription
     {
         return this._fs.forms
-        .map( forms => forms.find( form => form.name === this._form_name ) )
+        .map( forms => forms.find( form => form.name === this._form_activar ) )
         .subscribe( form =>
         {
             if (form) 
             { 
-                this._form = form; 
-                this._form_group = this._form.formGroup;
+                this._form_act = form; 
+                this._form_act_group = this._form_act.formGroup;
 
-                this._form_group.patchValue(this._user_previous_info);            
+                this._form_act_group.patchValue(this._user_previous_info);            
+            }
+        });
+    }
+
+    private subscribeQuestionFormCeder () : Subscription
+    {
+        return this._fs.forms
+        .map( forms => forms.find( form => form.name === 'ceder_licencia' ) )
+        .subscribe( form =>
+        {
+            if (form) 
+            { 
+                this._form_ced = form; 
+                this._form_ced_group = this._form_ced.formGroup;
             }
         });
     }
@@ -148,4 +171,9 @@ export class CourseActivacionComponent
         this.close.emit(ans)
     }
 
+    private cederLicencia () {
+        //do form submit stuff
+        this._ceder = false;
+        this._cederSuccess = true;
+    }
 }
