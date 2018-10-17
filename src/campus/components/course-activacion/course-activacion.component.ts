@@ -18,7 +18,7 @@ import { UserService } from '../../services/user.service';
 export class CourseActivacionComponent 
 {
 
-    // @ViewChild('button') private _button: ElementRef;
+    @ViewChild('button') private _button: ElementRef;
     @Output() close = new EventEmitter<boolean>();
     @Input('course') set course ( c: any )
 	{
@@ -135,6 +135,12 @@ export class CourseActivacionComponent
         });
     }
 
+    private falseClick() {
+        let clickMe = this._button.nativeElement;
+
+        clickMe.click();
+    }
+
     private back (ans) {
         this.close.emit(ans);
     }
@@ -177,22 +183,25 @@ export class CourseActivacionComponent
             'file': aux.file
         };
 
-        if (this._form_act_group.status === 'VALID') {
-            let route = '';
+        console.log(data);
+        this.back(true);
 
-            this._id === 1 || this._id === 2 ? route = 'alcala' : route = 'defaultHandler';
+        // if (this._form_act_group.status === 'VALID') {
+        //     let route = '';
 
-            this._us.updateBeforeCourse(data, route, this._code)
-            .subscribe( (response: any ) =>
-            { 
-                console.log(response)
-                console.log(data)
-            },
-            (err) => {},
-            () => {
-                this.back(true);
-            });
-        }
+        //     this._id === 1 || this._id === 2 ? route = 'alcala' : route = 'defaultHandler';
+
+        //     this._us.updateBeforeCourse(data, route, this._code)
+        //     .subscribe( (response: any ) =>
+        //     { 
+        //         console.log(response)
+        //         console.log(data)
+        //     },
+        //     (err) => {},
+        //     () => {
+        //         this.back(true);
+        //     });
+        // }
     }
 
     private cederLicencia () {
@@ -210,9 +219,3 @@ export class CourseActivacionComponent
         }
     }
 }
-
-    // private falseClick() {
-    //     let clickMe = this._button.nativeElement;
-
-    //     clickMe.click();
-    // }

@@ -32,9 +32,9 @@
             {{ _title }}
         </h2>
 
-        <mk-form class="activar__form" [name]="_form_activar" cols="2" [only]="_steps[_step]"></mk-form>
+        <mk-form (onEnter)="falseClick()" class="activar__form" [name]="_form_activar" cols="2" [only]="_steps[_step]"></mk-form>
 
-        <div class="submit__button" (click)="nextStep()">
+        <div #button class="submit__button" (click)="nextStep()">
             SIGUIENTE
         </div>
     </div>
@@ -44,7 +44,7 @@
 
         <p class="ceder__text">Inserte la dirección de correo electrónico de la persona a la que desea ceder el programa</p>
 
-        <mk-form class="ceder__form" name="ceder_licencia"></mk-form>
+        <mk-form (onEnter)="falseClick()" class="ceder__form" name="ceder_licencia"></mk-form>
 
         <div class="ceder__producto">
             <i class="material-icons">
@@ -53,7 +53,7 @@
             <h3>{{ _title }}</h3>
         </div>
 
-        <div class="submit__button" (click)="cederLicencia()">
+        <div #button class="submit__button" (click)="cederLicencia()">
             ENVIAR
         </div>
     </div>
@@ -63,7 +63,7 @@
             check_circle_outline
         </i>
         <p class="ceder__ok__text">La licencia se envió correctamente</p>
-        <div class="submit__button submit__button_ok" (click)="back(true)">
+        <div #button class="submit__button submit__button_ok" (click)="back(true)">
             VOLVER A MIS CURSOS
         </div>
     </div>
