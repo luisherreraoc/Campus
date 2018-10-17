@@ -55,6 +55,9 @@ export class CourseActivacionComponent
     private _ceder : boolean;
     private _cederSuccess : boolean;
 
+    private _step : number;
+    private _steps : Array<Array<string>>;
+
     constructor( 
         private _fs: MkFormService, 
         private _http: Http, 
@@ -69,6 +72,12 @@ export class CourseActivacionComponent
         this._activar = false;
         this._ceder = false;
         this._cederSuccess = false;
+
+        this._step = 0;
+        this._steps = [
+            new Array("nombre", "apellido1", "dni_nie", "direccion", "pais_nombre", "mail", "mail2", "telefono"),
+            new Array("file1", "file")
+        ]
     }
 
     public ngOnInit ()
@@ -126,56 +135,64 @@ export class CourseActivacionComponent
         });
     }
 
-    // private falseClick() {
-    //     let clickMe = this._button.nativeElement;
+    private back (ans) {
+        this.close.emit(ans);
+    }
 
-    //     clickMe.click();
-    // }
-
-    // private next () : void
-    // {
-    //     let aux: any;
-    //     let data: any;
-
-    //     aux = this._form_group.getRawValue();
-    //     data = {
-    //         'nombre': aux.nombre,
-    //         'apellido1': aux.apellido1,
-    //         'apellido2': aux.apellido2,
-    //         'dni_nie': aux.dni_nie,
-    //         'direccion': aux.direccion,
-    //         'pais_nombre': aux.pais_nombre,
-    //         'mail': aux.mail,
-    //         'mail2': aux.mail2,
-    //         'telefono': aux.telefono,
-    //         'file1': aux.file1,
-    //         'file': aux.file
-    //     };
-
-    //     if (this._form_group.status === 'VALID') {
-    //         this.send(data);
-    //     }
-    // }
-
-    // private send (data: {[key:string]:any}) : void 
-    // {
-
-    //     let route = '';
-
-    //     this._id === 1 || this._id === 2 ? route = 'alcala' : route = 'defaultHandler';
-
-    //     this._us.updateBeforeCourse(data, route, this._code)
-    //     .subscribe( (response: any ) =>
-    //     { 
-
-    //         console.log(response)
-    //         console.log(data)
-    //     });
-    // }
-
-    private activar() {
+    private activar () {
         this._activar = true;
         this._loader.show('form-activar')
+    }
+
+    private nextStep () {
+        let len : number = this._steps.length - 1;
+
+        if (this._entidad_id != 1 && this._entidad_id != 2) {
+            this.activarCurso();
+        } else {
+            if (this._step === 0) {
+                this._step++;
+            } else {
+                this.activarCurso();
+            }            
+        }
+    }
+
+    private activarCurso() {
+        let aux: any;
+        let data: any;
+
+        aux = this._form_act_group.getRawValue();
+        data = {
+            'nombre': aux.nombre,
+            'apellido1': aux.apellido1,
+            'apellido2': aux.apellido2,
+            'dni_nie': aux.dni_nie,
+            'direccion': aux.direccion,
+            'pais_nombre': aux.pais_nombre,
+            'mail': aux.mail,
+            'mail2': aux.mail2,
+            'telefono': aux.telefono,
+            'file1': aux.file1,
+            'file': aux.file
+        };
+
+        if (this._form_act_group.status === 'VALID') {
+            let route = '';
+
+            this._id === 1 || this._id === 2 ? route = 'alcala' : route = 'defaultHandler';
+
+            this._us.updateBeforeCourse(data, route, this._code)
+            .subscribe( (response: any ) =>
+            { 
+                console.log(response)
+                console.log(data)
+            },
+            (err) => {},
+            () => {
+                this.back(true);
+            });
+        }
     }
 
     private cederLicencia () {
@@ -192,8 +209,10 @@ export class CourseActivacionComponent
             this._cederSuccess = true;
         }
     }
-
-    private back (ans) {
-        this.close.emit(ans);
-    }
 }
+
+    // private falseClick() {
+    //     let clickMe = this._button.nativeElement;
+
+    //     clickMe.click();
+    // }

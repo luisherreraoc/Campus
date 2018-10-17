@@ -9,7 +9,7 @@
       {
         "key": "apellido1", 
         "type": "text",
-        "label": "Primer apellido",
+        "label": "Apellido",
         "required": true,
         "order": 2
       },

@@ -32,9 +32,9 @@
             {{ _title }}
         </h2>
 
-        <mk-form class="activar__form" [name]="_form_activar" cols="2"></mk-form>
+        <mk-form class="activar__form" [name]="_form_activar" cols="2" [only]="_steps[_step]"></mk-form>
 
-        <div class="submit__button" (click)="back(true)">
+        <div class="submit__button" (click)="nextStep()">
             SIGUIENTE
         </div>
     </div>
