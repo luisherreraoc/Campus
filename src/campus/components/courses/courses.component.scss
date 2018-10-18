@@ -30,22 +30,14 @@
       }
     }
 
-    .courses_progress {
-      width: 53vmax;
-      height: 5px;
-      .courses_progress__bar {
-        height: 100%;
-        border-radius: 15px;
-        margin: 10px 25px;
-        background-color: $color-cursos;
-      }
-    }
-
-    .iniciar {
-      position: absolute;
-      top: 0px;
-      bottom: 0px;
-      left: 0px;
-      right: 0px;
-      background-color: white;
-    }
+.courses_progress {
+  width: 56vmax;
+  height: 0.6vmin;
+  .courses_progress__bar {
+    height: 100%;
+    border-radius: 25px;
+    margin-top: 2vmin ;
+    background: linear-gradient(to right, lighten($color-cursos, 10), darken($color-cursos, 10));
+    transition: width 1.5s;
+  }
+}

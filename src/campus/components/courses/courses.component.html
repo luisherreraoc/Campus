@@ -27,12 +27,12 @@
 			</i>
 		</div>	
 	</div>
-
-	<div class="courses_progress">
-		<div class="courses_progress__bar"
-			[style.width]="''+barWidth+'%'"></div>
-	</div>	
 </div>
+
+<div class="courses_progress">
+	<div class="courses_progress__bar"
+		[style.width]="''+barWidth+'%'"></div>
+</div>	
 
 <course-activacion [course]="_currentCourse" *ngIf="showInicio" (close)="onClose($event)"></course-activacion>
 	
