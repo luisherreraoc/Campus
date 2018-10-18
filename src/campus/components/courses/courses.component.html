@@ -1,4 +1,4 @@
-<div #carousel class="courses">
+<div class="courses">
 	<div class="courses_wrapper">
 		<div class="courses_wrapper__button"
 			[ngClass]="{ courses_wrapper__button_inactive : _first === true }">
@@ -8,7 +8,7 @@
 			</i>
 		</div>
 
-		<div class="courses_wrapper__carousel">
+		<div #carousel class="courses_wrapper__carousel">
 			<div class="courses_wrapper__carousel__flow" 
 				[style.transform]="'translateX('+amount+'px)'">
 				<div class="courses_wrapper__carousel__flow__content" #curso 

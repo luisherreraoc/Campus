@@ -57,39 +57,46 @@ export class CoursesComponent
 	public plusSlide () : void {
 		let cardWidth = this._curso._results[0].nativeElement.clientWidth;
 		let totalCards = this._curso._results.length;
-		let containerWidht = this._carousel.nativeElement.clientWidth;
-		this._cardsPerShow = containerWidht / cardWidth;
+		let containerWidth = this._carousel.nativeElement.clientWidth;
+
+		this._cardsPerShow = containerWidth / cardWidth;
+		
 		let totalWidth = cardWidth * (totalCards - this._cardsPerShow);
 
 		this.singleWidth = ( 100 / (this._courses.length) );
 
-		if (this.barWidth === 0) {
+		if ( this.barWidth === 0 ) {
 			this.barWidth =  this.singleWidth * this._cardsPerShow;	
 		}
 		
-
-		if (this.amount > -totalWidth) {
+		if ( cardWidth < totalWidth + this.amount ) {
 			this.amount -= cardWidth;
 			this.barWidth += this.singleWidth;
 			this._first = false;
-		} else {
+		} else if ( totalWidth > -this.amount ) {
+			let resto = totalWidth + this.amount;
+			this.amount -= resto;
+		} 
+		
+		if ( totalWidth === -this.amount ) {
 			this._last = true;
 		}
-
 	};
 
 	public minusSlide () : void {
 		let cardWidth = this._curso._results[0].nativeElement.clientWidth;
 
-		if (this.amount < 0) {
+		if (-this.amount >= cardWidth) {
 			this.amount += cardWidth;
 			this.barWidth -= this.singleWidth
 			this._last = false;
+		} else {
+			this.amount = 0;
 		}
 
 		if (this.amount === 0) {
 			this._first = true;
-		} 
+		}
 	};
 
     private subscribeCourses () : Subscription
