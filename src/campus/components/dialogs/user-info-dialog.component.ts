@@ -136,8 +136,6 @@ export class UserInfoDialog
                     },
                 });
             };
-            console.log(response)
-            console.log(data)
         });
     }
 
