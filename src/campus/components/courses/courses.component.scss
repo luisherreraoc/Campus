@@ -2,6 +2,12 @@
 .courses {
   width: 56vmax;
 }
+  .courses__header {
+    color: $color-cursos;
+    font-size: 3vmin;
+    padding-bottom: 5vmin;
+    padding-left: 2vmin;
+  }
 
   .courses_wrapper {
     display: flex;
