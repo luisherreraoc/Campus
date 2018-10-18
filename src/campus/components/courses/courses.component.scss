@@ -1,4 +1,7 @@
 @import '~scss/abstracts/variables';
+.courses {
+  width: 56vmax;
+}
 
 .courses_wrapper {
   display: flex;
@@ -14,7 +17,7 @@
   }
 
   .courses_wrapper__carousel {
-    width: 46vmin;
+    width: 100%;
     overflow: hidden;
     .courses_wrapper__carousel__flow {
       display: flex;
@@ -27,7 +30,7 @@
   }
 
   .courses_progress {
-    width: 46vmin;
+    width: 52vmax;
     height: 5px;
     .courses_progress__bar {
       height: 100%;

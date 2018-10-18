@@ -30,7 +30,6 @@ export class CoursesComponent
 		logger.log('COURSES COMPONENT'); 
 		this._subscriptions = new Array();
 		this.amount = 0;
-		this._cardsPerShow = 2;
 		this.barWidth = 0;
 		this.showInicio = false;
 	}
@@ -58,17 +57,25 @@ export class CoursesComponent
 	public plusSlide () : void {
 		let cardWidth = this._curso._results[0].nativeElement.clientWidth;
 		let totalCards = this._curso._results.length;
+		let containerWidht = this._carousel.nativeElement.clientWidth;
+		this._cardsPerShow = containerWidht / cardWidth;
 		let totalWidth = cardWidth * (totalCards - this._cardsPerShow);
+
+		this.singleWidth = ( 100 / (this._courses.length) );
+
+		if (this.barWidth === 0) {
+			this.barWidth =  this.singleWidth * this._cardsPerShow;	
+		}
+		
 
 		if (this.amount > -totalWidth) {
 			this.amount -= cardWidth;
 			this.barWidth += this.singleWidth;
 			this._first = false;
-		}
-
-		if (this.amount === -totalWidth) {
+		} else {
 			this._last = true;
 		}
+
 	};
 
 	public minusSlide () : void {
@@ -89,9 +96,6 @@ export class CoursesComponent
     {
     	return this._cs.courses.subscribe( courses => {
 			this._courses = courses;
-
-			this.singleWidth = ( 100 / (this._courses.length) );
-			this.barWidth =  this.singleWidth * this._cardsPerShow;
 		});
 	}
 	
