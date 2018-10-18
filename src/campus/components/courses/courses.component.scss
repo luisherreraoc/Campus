@@ -1,47 +1,51 @@
 @import '~scss/abstracts/variables';
-.courses_wrapper {
-  display: flex;
+.courses {
+  width: 56vmax;
 }
-  .courses_wrapper__button {
-    margin: auto 0px;
-    color: $color-cursos;
-    cursor: pointer;
+
+  .courses_wrapper {
+    display: flex;
   }
 
-  .courses_wrapper__button_inactive {
-    color: gray;
-  }
+    .courses_wrapper__button {
+      margin: auto 0px;
+      color: $color-cursos;
+      cursor: pointer;
+    }
 
-  .courses_wrapper__carousel {
-    width: 56vmax;
-    overflow: hidden;
-    .courses_wrapper__carousel__flow {
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      transition: transform 1.2s, -webkit-transform 1.2s;
-      .courses_wrapper__carousel__flow__content {
-        padding: 0px 5px;
+    .courses_wrapper__button_inactive {
+      color: gray;
+    }
+
+    .courses_wrapper__carousel {
+      overflow: hidden;
+      .courses_wrapper__carousel__flow {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        transition: transform 1.2s, -webkit-transform 1.2s;
+        .courses_wrapper__carousel__flow__content {
+          padding: 0px 5px;
+        }
       }
     }
-  }
 
-  .courses_progress {
-    width: 56vmax;
-    height: 5px;
-    .courses_progress__bar {
-      height: 100%;
-      border-radius: 15px;
-      margin: 10px 25px;
-      background-color: $color-cursos;
+    .courses_progress {
+      width: 53vmax;
+      height: 5px;
+      .courses_progress__bar {
+        height: 100%;
+        border-radius: 15px;
+        margin: 10px 25px;
+        background-color: $color-cursos;
+      }
     }
-  }
 
-  .iniciar {
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    background-color: white;
-  }
+    .iniciar {
+      position: absolute;
+      top: 0px;
+      bottom: 0px;
+      left: 0px;
+      right: 0px;
+      background-color: white;
+    }

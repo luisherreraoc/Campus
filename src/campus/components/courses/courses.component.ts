@@ -80,7 +80,10 @@ export class CoursesComponent
 		
 		if ( totalWidth === -this.amount ) {
 			this._last = true;
+			this.barWidth = 100;
 		}
+
+		console.log('barra current plus ' + this.barWidth);
 	};
 
 	public minusSlide () : void {
@@ -97,6 +100,8 @@ export class CoursesComponent
 		if (this.amount === 0) {
 			this._first = true;
 		}
+
+		console.log('barra current minus ' + this.barWidth);
 	};
 
     private subscribeCourses () : Subscription
