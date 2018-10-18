@@ -46,8 +46,19 @@
 		}
 	}
 
-	.wrapper {
+	.container-left-heading {
 		display: flex;
-		justify-content: space-between;
+		flex-direction: column;
+		text-align: center;
+		font-size: 2.5vmin;
+		margin-top: 8vmax;
+
+		.avatar {
+			padding-bottom: 5vmax;
+		}
+
+		.heading-link {
+			padding-bottom: 3vmax;
+		}
 	}
 }

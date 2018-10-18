@@ -1,14 +1,15 @@
 <div class="user">
+	<div class="user__avatar">
+		<div class="user__avatar__img">
+			<img #img src="/assets/img/icon-user.png"/>
+		</div>
 
-	<div class="avatar">
-		<img #img src="/assets/img/icon-user.png"/>
-		<p class="avatar__username">Hola, {{ _currentUser.oauth_user_first_name }}</p>
-  	</div>
+		<div #button class="user__avatar__button">
+			<img src="/assets/img/icon-pen.png"/>
+		</div>
+	</div>
 
-  	<div #button class="button">
-    	<img src="/assets/img/icon-pen.png"/>
-  	</div>
-
+	<p class="user__username">Hola, {{ _currentUser.oauth_user_first_name }}</p>	
 </div>
 
 <input #input id="custom-input" type="file" (load)="_logger.log('WWWW')">    
