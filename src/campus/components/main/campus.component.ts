@@ -70,6 +70,7 @@ export class CampusComponent
   		.map(() => this._route)
   		.subscribe((event) => {
 			this._outer_class = this.getSegment();
+			this.activeClass(this._outer_class);
   		});
 	}
 
