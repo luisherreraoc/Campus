@@ -22,10 +22,8 @@ export class CourseCardComponent
 	@Input('course') set course ( c: any )
 	{
 		this._currentCourse = c;
-		this._id = c.id;
 		this._title = c.name;
 		this._img = this._suite + '/' + c.multimidia.default_image;
-		this._redirect = c.url_access;
 		this._code = c.license ? c.license.code : null;
 		this._state = c.license ? c.license.status : null;
 		this._entidad_id = c.certifying_entity ? c.certifying_entity.ce_id : null;
@@ -35,10 +33,8 @@ export class CourseCardComponent
 	private _suite: string;
 
 	private _currentCourse : any;
-	private _id: number|string;
 	private _title: string;
 	private _img: string;
-	private _redirect: string;
 	private	_code: string;
 	private _state: string;
 	private _ids: any;
@@ -55,8 +51,6 @@ export class CourseCardComponent
 		private logger: Logger, 
 		private window: Window,
 		private _fs: MkFormService,
-		private _dialog: MatDialog,
-		private _vcr: ViewContainerRef,
 		private _us: UserService,
 		private _as: AuthService ) 
 	{ 
@@ -94,17 +88,6 @@ export class CourseCardComponent
 		if (this._state === 'untouched')
 		{
 			this.iniciar.emit(this._currentCourse);
-			// let dialogRef = this._dialog.open(UserInfoDialog, {
-			// 	id: 'user-info-dialog',
-			// 	data: {
-			// 		_ids: this._ids,
-			// 		_vcr: this._vcr,
-			// 		_form: this._form,
-			// 		_code: this._code,
-			// 		_id: this._entidad_id,
-			// 		_values: this._user_previous_info
-			// 	},
-			// });
 		} else {
 			let tkn: any = this._as.getToken();
 			window.open(environment.ssoRedirectUrl + this._code + '&access_token=' + tkn);

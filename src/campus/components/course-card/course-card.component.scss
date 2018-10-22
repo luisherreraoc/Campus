@@ -24,13 +24,14 @@
 				font-size: 1.3vmin;
 			}
 		}
-		button {
+		.card__text__submit {
 			padding: 1vmin;
       border-radius: 20px;
     	font-size: 1.2vmin;
 			width: 13vmin;
 			background-color: $color-cursos;
 			color: white;
+			border-color: transparent;
 		}
 		.card__text__button {
 			display: flex;
@@ -76,13 +77,4 @@
 
 .inactive {
 	filter: opacity(0.3);
-}
-
-.iniciar {
-	position: absolute;
-	top: 0px;
-	bottom: 0px;
-	left: 0px;
-	right: 0px;
-	background-color: white;
 }
