@@ -1,4 +1,5 @@
 @import '~scss/abstracts/variables';
+
 .courses {
   width: 56vmax;
 }
@@ -9,41 +10,44 @@
     padding-left: 2vmin;
   }
 
-  .courses_wrapper {
+  .courses__wrapper {
     display: flex;
   }
 
-    .courses_wrapper__button {
+    .courses__wrapper__button {
       margin: auto 0px;
       color: $color-cursos;
       cursor: pointer;
     }
 
-    .courses_wrapper__button_inactive {
+    .courses__wrapper__button_inactive {
       color: gray;
     }
 
-    .courses_wrapper__carousel {
+    .courses__wrapper__carousel {
       overflow: hidden;
-      .courses_wrapper__carousel__flow {
+
+      .courses__wrapper__carousel__flow {
         width: 100%;
         display: flex;
         flex-direction: row;
         transition: transform 1.2s, -webkit-transform 1.2s;
-        .courses_wrapper__carousel__flow__content {
+
+        .courses__wrapper__carousel__flow__content {
           padding: 0px 5px;
         }
       }
     }
 
-.courses_progress {
-  width: 56vmax;
-  height: 0.6vmin;
-  .courses_progress__bar {
-    height: 100%;
-    border-radius: 25px;
-    margin-top: 2vmin ;
-    background: linear-gradient(to right, lighten($color-cursos, 10), darken($color-cursos, 10));
-    transition: width 1.5s;
+  .courses_progress {
+    width: 56vmax;
+    height: 0.6vmin;
+
+    .courses_progress__bar {
+      height: 100%;
+      border-radius: 25px;
+      margin-top: 2vmin ;
+      background: linear-gradient(to right, lighten($color-cursos, 10), darken($color-cursos, 10));
+      transition: width 1.5s;
+    }
   }
-}

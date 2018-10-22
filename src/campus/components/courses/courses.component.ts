@@ -52,32 +52,56 @@ export class CoursesComponent
     { 
         this._subscriptions.forEach( sub => sub.unsubscribe());
         this._subscriptions.length = 0;
-    }
-
+	}
+	
+	private subscribeCourses () : Subscription
+    {
+    	return this._cs.courses.subscribe( courses => {
+			this._courses = courses;
+		});
+	}
+	
 	public plusSlide () : void {
+		// tamaño de una sola card y del div con todas
 		let cardWidth = this._curso._results[0].nativeElement.clientWidth;
-		let totalCards = this._curso._results.length;
 		let containerWidth = this._carousel.nativeElement.clientWidth;
 
+		// total de cards en pantalla
 		this._cardsPerShow = containerWidth / cardWidth;
-		
+
+		let totalCards = this._curso._results.length;
+
+		// valor máximo q se aplicará a translateX
 		let totalWidth = cardWidth * (totalCards - this._cardsPerShow);
 
+		// % de la barra de progreso para una card respecto al total
 		this.singleWidth = ( 100 / (this._courses.length) );
 
+		// width de la barra de progeso al iniciarse el carousel
 		if ( this.barWidth === 0 ) {
 			this.barWidth =  this.singleWidth * this._cardsPerShow;	
 		}
 		
+		// el valor de this.amount es negativo
+
+		/* al dismunir el valor el carousel se esconde por la izquierda
+		y vemos las cards q están por la derecha */
+
+		// en cada click aumentamos el % de la barra de progreso
 		if ( cardWidth < totalWidth + this.amount ) {
 			this.amount -= cardWidth;
 			this.barWidth += this.singleWidth;
+			// cuando la cardWidth es mayor al valor de translate, se está en la primera card
 			this._first = false;
+		/* cuando el cardWith es mayor al valor de referencia pero this.amount es inferior
+			al valor de totalWidth... */
 		} else if ( totalWidth > -this.amount ) {
+			// calculamos el valor restante para q this.amount sea igual a totalWidth
 			let resto = totalWidth + this.amount;
 			this.amount -= resto;
 		} 
 		
+		// desactivar el botón de plus al llegar al final del carousel, marcar progreso al máx
 		if ( totalWidth === -this.amount ) {
 			this._last = true;
 			this.barWidth = 100;
@@ -100,13 +124,8 @@ export class CoursesComponent
 		}
 	};
 
-    private subscribeCourses () : Subscription
-    {
-    	return this._cs.courses.subscribe( courses => {
-			this._courses = courses;
-		});
-	}
-	
+	// ABRIR-CERRAR EL COMPONENTE DE ACTIVACION DE CURSO 
+
 	private onInicio(init) {
 		this.showInicio = true;
 		this._currentCourse = init;

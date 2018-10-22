@@ -2,30 +2,30 @@
 	<h1 class="courses__header">
 		MIS CURSOS
 	</h1>
-	<div class="courses_wrapper">
-		<div class="courses_wrapper__button"
-			[ngClass]="{ courses_wrapper__button_inactive : _first === true }">
+	<div class="courses__wrapper">
+		<div class="courses__wrapper__button"
+			 [ngClass]="{ courses__wrapper__button_inactive : _first === true }">
 			<i class="material-icons"
-			(click)="minusSlide()">
+			   (click)="minusSlide()">
 				arrow_back_ios
 			</i>
 		</div>
 
-		<div class="courses_wrapper__carousel">
-			<div #carousel class="courses_wrapper__carousel__flow" 
-				[style.transform]="'translateX('+amount+'px)'">
-				<div class="courses_wrapper__carousel__flow__content" #curso 
-					*ngFor="let course of _courses">
+		<div class="courses__wrapper__carousel">
+			<div #carousel class="courses__wrapper__carousel__flow" 
+				 [style.transform]="'translateX('+amount+'px)'">
+				<div class="courses__wrapper__carousel__flow__content" #curso 
+					 *ngFor="let course of _courses">
 					<course-card [course]="course"
 								 (iniciar)="onInicio($event)"></course-card>
 				</div>
 			</div>
 		</div>
 
-		<div class="courses_wrapper__button"
-			[ngClass]="{ courses_wrapper__button_inactive : _last === true }">
+		<div class="courses__wrapper__button"
+			 [ngClass]="{ courses__wrapper__button_inactive : _last === true }">
 			<i class="material-icons"
-			(click)="plusSlide()">
+			   (click)="plusSlide()">
 				arrow_forward_ios
 			</i>
 		</div>	
@@ -34,7 +34,7 @@
 
 <div class="courses_progress">
 	<div class="courses_progress__bar"
-		[style.width]="''+barWidth+'%'"></div>
+		 [style.width]="''+barWidth+'%'"></div>
 </div>	
 
 <course-activacion [course]="_currentCourse" *ngIf="showInicio" (close)="onClose($event)"></course-activacion>
