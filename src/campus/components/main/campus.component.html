@@ -11,9 +11,15 @@
       		<section class="container-left-heading">
 				<user-avatar class="avatar"></user-avatar>
 
-        		<a class="heading-link" routerLink="/{{_acount}}" routerLinkActive="active">MI CUENTA</a>
-        		<a class="heading-link" routerLink="/{{_courses}}" routerLinkActive="active">MIS CURSOS</a>
-          		<a class="heading-link" routerLink="/{{_certificates}}" routerLinkActive="active">CERTIFICACIONES</a>
+				<a class="heading_link" 
+				   [ngClass]="{ heading_link_active : _cuenta === true }"
+				   routerLink="/{{_acount}}" routerLinkActive="active">MI CUENTA</a>
+				<a class="heading_link" 
+				   [ngClass]="{ heading_link_active : _cursos === true }"
+				   routerLink="/{{_courses}}" routerLinkActive="active">MIS CURSOS</a>
+				<a class="heading_link" 
+				   [ngClass]="{ heading_link_active : _certificados === true }"
+				   routerLink="/{{_certificates}}" routerLinkActive="active">CERTIFICACIONES</a>
 			</section>
 
 		</section>

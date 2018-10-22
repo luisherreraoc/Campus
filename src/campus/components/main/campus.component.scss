@@ -54,11 +54,17 @@
 		margin-top: 8vmax;
 
 		.avatar {
-			padding-bottom: 5vmax;
+			padding-bottom: 3vmax;
 		}
 
-		.heading-link {
-			padding-bottom: 3vmax;
+		.heading_link {
+			padding-top: 3vmax;
+			padding-bottom: 1vmax;
+		}
+
+		.heading_link_active {
+			border-bottom: 0.2vmin solid;
+			border-image: linear-gradient(to right, transparent 40%, white 40%, white 60%, transparent 40%) 3;
 		}
 	}
 }
