@@ -41,6 +41,7 @@ export class CampusComponent
 	public ngOnInit () : void
 	{
 		this._outer_class = this.getSegment();
+		this.activeClass(this._outer_class);
 		this._subscriptions = [	
 			this.subscribeRouterEvents()
 		];
@@ -69,7 +70,6 @@ export class CampusComponent
   		.map(() => this._route)
   		.subscribe((event) => {
 			this._outer_class = this.getSegment();
-			this.activeClass(this._outer_class);
   		});
 	}
 
