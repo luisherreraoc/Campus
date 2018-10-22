@@ -192,16 +192,13 @@ export class CourseActivacionComponent
         //     this._id === 1 || this._id === 2 ? route = 'alcala' : route = 'defaultHandler';
 
         //     this._us.updateBeforeCourse(data, route, this._code)
-        //     .subscribe( (response: any ) =>
-        //     { 
-        //         console.log(response)
-        //         console.log(data)
-        //     },
-        //     (err) => {},
-        //     () => {
-        //         this.back(true);
+        //     .subscribe( (response: any ) => { 
+        //         if (response.code === 900) { 
+        //             this.back(true); 
+        //             window.open(environment.ssoRedirectUrl + this._code)
+        //         }
         //     });
-        // }
+        // };
     }
 
     private cederLicencia () {
