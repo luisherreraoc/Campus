@@ -24,10 +24,7 @@ export class CourseActivacionComponent
 	{
 		this._id = c.id;
 		this._title = c.name;
-		this._img = this._suite + '/' + c.multimidia.default_image;
-		this._redirect = c.url_access;
 		this._code = c.license ? c.license.code : null;
-		this._state = c.license ? c.license.status : null;
 		this._entidad_id = c.certifying_entity ? c.certifying_entity.ce_id : null;
 	}
 
@@ -35,10 +32,7 @@ export class CourseActivacionComponent
 
 	private _id: number|string;
 	private _title: string;
-	private _img: string;
-	private _redirect: string;
 	private	_code: string;
-	private _state: string;
 	private _ids: any;
 	private _entidad_id : any;
 
@@ -68,7 +62,9 @@ export class CourseActivacionComponent
     {
         this._form_act_group = new FormGroup({});
         this._form_ced_group = new FormGroup({});
+
         this._subscriptions = new Array();
+        
         this._activar = false;
         this._ceder = false;
         this._cederSuccess = false;
@@ -105,6 +101,8 @@ export class CourseActivacionComponent
         this._subscriptions.length = 0;
     }
 
+    // ACTIVAR CURSO
+
     private subscribeQuestionFormActivar () : Subscription
     {
         return this._fs.forms
@@ -119,30 +117,6 @@ export class CourseActivacionComponent
                 this._form_act_group.patchValue(this._user_previous_info);            
             }
         });
-    }
-
-    private subscribeQuestionFormCeder () : Subscription
-    {
-        return this._fs.forms
-        .map( forms => forms.find( form => form.name === 'ceder_licencia' ) )
-        .subscribe( form =>
-        {
-            if (form) 
-            { 
-                this._form_ced = form; 
-                this._form_ced_group = this._form_ced.formGroup;
-            }
-        });
-    }
-
-    private falseClick() {
-        let clickMe = this._button.nativeElement;
-
-        clickMe.click();
-    }
-
-    private back (ans) {
-        this.close.emit(ans);
     }
 
     private activar () {
@@ -163,7 +137,7 @@ export class CourseActivacionComponent
             }            
         }
     }
-
+    
     private activarCurso() {
         let aux: any;
         let data: any;
@@ -199,6 +173,22 @@ export class CourseActivacionComponent
         //         }
         //     });
         // };
+    }    
+
+    // CEDER CURSO
+
+    private subscribeQuestionFormCeder () : Subscription
+    {
+        return this._fs.forms
+        .map( forms => forms.find( form => form.name === 'ceder_licencia' ) )
+        .subscribe( form =>
+        {
+            if (form) 
+            { 
+                this._form_ced = form; 
+                this._form_ced_group = this._form_ced.formGroup;
+            }
+        });
     }
 
     private cederLicencia () {
@@ -214,5 +204,19 @@ export class CourseActivacionComponent
             this._ceder = false;
             this._cederSuccess = true;
         }
+    }
+
+    // ACTIVAR CLICK EN ENTER
+
+    private falseClick() {
+        let clickMe = this._button.nativeElement;
+
+        clickMe.click();
+    }
+
+    // CERRAR ESTE COMPONENTE
+
+    private back (ans) {
+        this.close.emit(ans);
     }
 }

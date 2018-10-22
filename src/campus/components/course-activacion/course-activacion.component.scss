@@ -11,9 +11,6 @@
 }
 
 .select {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   text-align: center;
   padding: 5vmin;
 
@@ -43,18 +40,18 @@
 
   .select__button_activar {
     background-color: $color-cursos;
-    margin-top: 12vmin;
+    margin-top: 10vmin;
   }
 
   .select__button_ceder {
     background-color: rgb(240, 151, 18);
+    margin-top: 3vmin;
   }
 }
 
 .activar {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   padding: 5vmin;
 
   .activar__header {
@@ -64,7 +61,7 @@
   }
 
   .activar__form {
-    padding-bottom: 10vmin;
+    padding-bottom: 7vmin;
   }
 }
 
@@ -90,6 +87,7 @@
 
   .ceder__producto {
     display: flex;
+    width: fit-content;
     border: 0.1vmin solid $color-cursos;
     border-radius: 30px;
     padding: 1.5vmin;
@@ -97,7 +95,6 @@
     margin-bottom: 10vmin;
 
     i {
-      margin: auto;
       color: $color-cursos;
       font-size: 2vmin;
     }
@@ -121,10 +118,11 @@
     color: gray;
     font-size: 10vmin;
     filter: opacity(0.5);
+    padding: 3vmax;
   }
 
   .ceder__ok__text {
-    padding-bottom: 15vmin;
+    padding-bottom: 10vmax;
     font-size: 1.5vmin;
     color: gray;
   }
