@@ -107,22 +107,16 @@
 }
 
 .ceder__ok {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   text-align: center;
   padding: 5vmin;
   width: 100%;
 
-  i {
-    color: gray;
-    font-size: 10vmin;
-    filter: opacity(0.5);
-    padding: 3vmax;
+  .ceder__ok__img {
+    padding-bottom: 3vmax;
   }
 
   .ceder__ok__text {
-    padding-bottom: 10vmax;
+    padding-bottom: 5vmax;
     font-size: 1.5vmin;
     color: gray;
   }
