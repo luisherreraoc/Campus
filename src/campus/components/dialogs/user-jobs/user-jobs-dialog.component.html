@@ -1,20 +1,22 @@
 <div class="wrapper" [hidden]="showMe">
 
-    <div class="dialog__cont" *ngIf="showDialog">
-        <div class="form-container">
-            <div class="select-step">
+    <div class="dialog" *ngIf="showDialog">
+        <div class="dialog__form">
+            <div class="dialog__form__select">
                 <mk-form (onEnter)="falseClick()" name="user" [ids]="data.ids" [only]="_steps[_step]"></mk-form>
             </div>
 
             <ng-container *ngIf="_step == 1">
-                <div class="select-especialization">
+                <div class="dialog__form__select">
                     <mk-form-select-list-multiple [question]="_question" form="user"></mk-form-select-list-multiple>
                 </div>
             </ng-container>
         </div>
         
-        <div class="button-container">
-            <button #button mkStepvalidate [form]="_form_group" [filter]="_steps[_step]" _ngcontent-c3="" class="btn" (onClicked)="next()" >ACEPTAR</button>
+        <div #button class="dialog__button" 
+             mkStepvalidate [form]="_form_group" [filter]="_steps[_step]" 
+             _ngcontent-c3="" (onClicked)="next()">
+            ACEPTAR
         </div>        
     </div>
 

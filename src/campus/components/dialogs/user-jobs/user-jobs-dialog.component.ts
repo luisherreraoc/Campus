@@ -89,7 +89,7 @@ const especialidad: any = {
 @Component({
     selector: 'user-jobs-dialog',
     templateUrl: 'user-jobs-dialog.component.html',
-    styleUrls: ['user-jobs-dialog.component.css']
+    styleUrls: ['user-jobs-dialog.component.scss']
 })
 export class UserJobsDialogComponent 
 {
