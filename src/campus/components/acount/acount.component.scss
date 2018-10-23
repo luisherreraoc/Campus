@@ -12,7 +12,14 @@
 
   h1	{
 	color: $color-cuenta;
-  }
+	}
+
+	@media (max-width: 1199.98px) and (min-width: 767.98px) {
+		.mail-wrapper {
+			max-width: 54rem;
+		}		
+	}
+
 
   .intereses__header {
 	font-size: 2.13rem;
@@ -42,6 +49,9 @@
 	font-size: 13px;
 	font-weight: 500;
 	padding-top: 10px;
+	p {
+		cursor: pointer;		
+	 }
   }
 
   .password-button {
@@ -62,6 +72,7 @@
 	border: 1px solid #23B55E;
 	width: 170px;
 	font-size: 13px;
+	cursor: pointer;
   }
 
   .submit__button_active {

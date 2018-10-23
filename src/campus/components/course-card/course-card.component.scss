@@ -32,10 +32,12 @@
 			background-color: $color-cursos;
 			color: white;
 			border-color: transparent;
+			cursor: pointer;
 		}
 		.card__text__button {
 			display: flex;
 			margin: 1.5vmin;
+			cursor: pointer;
 			i {
 				border: 0.1vmin solid rgb(53, 206, 99);
 				border-radius: 20px;
