@@ -16,28 +16,29 @@
   padding: 5vmax;
 
   .response__img {
-	margin-bottom: 2vmax;
+	  margin-bottom: 2vmax;
   }
 
   .response__title {
-	color: black;
-	font-size: 3vmin;
-	margin-bottom: 2vmax;
+	  color: black;
+	  font-size: 3vmin;
+	  margin-bottom: 2vmax;
   }
 
   .response__msg {
-	font-size: 2vmin;
-	margin-bottom: 2vmax;
+	  font-size: 2vmin;
+	  margin-bottom: 2vmax;
   }
 
   .response__btn {
-	width: fit-content;
-	padding: 1vmax;
-	border-radius: 30px;
-	border: transparent;
+	  width: fit-content;
+	  padding: 1vmax 3vmax;
+	  border-radius: 30px;
+	  border: transparent;
     font-size: 1.2vmin;
-	font-weight: 500;
-	color: white;
-	background-color: $color-cuenta;
+	  font-weight: 500;
+	  color: white;
+    background-color: $color-cuenta;
+    cursor: pointer;
   }
 }
