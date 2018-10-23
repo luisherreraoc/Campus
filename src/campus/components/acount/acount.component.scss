@@ -22,64 +22,58 @@
 
 
   .intereses__header {
-	font-size: 2.13rem;
-	font-weight: 300;
+	  font-size: 2.13rem;
+	  font-weight: 300;
   }
 
   .intereses__field {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	max-width: 540px;
-	border-bottom: 1px solid grey;
-	.intereses__field__text {
-    display: flex;
-	  flex-wrap: wrap;
-	  padding: 0.5vmin;
-		font-size: 2rem;
-		color: #515151;
-	}
+    width: 100%;
+	  border-bottom: 1px solid grey;
+	  .intereses__field__text {
+	    padding: 0.5vmin;
+		  font-size: 2rem;
+		  color: #515151;
+	  }
   }
 
   .dialog-button {
-	max-width: 540px;
-	display: flex;
-	justify-content: flex-end;
-	color: $color-cuenta;
-	font-size: 13px;
-	font-weight: 500;
-	padding-top: 10px;
-	p {
-		cursor: pointer;		
-	 }
+  	width: 100%;
+	  display: flex;
+	  justify-content: flex-end;
+	  color: $color-cuenta;
+	  font-size: 13px;
+	  font-weight: 500;
+	  padding-top: 10px;
+	  p {
+		  cursor: pointer;		
+	  }
   }
 
   .password-button {
-	padding: 20px 0px 40px;
-	.password-button__text {
-	  font-size: 13px;
-	  padding-left: 11px;
-	  font-style: italic;
-	  color: gray;
-	}
+	  padding: 20px 0px 40px;
+	  .password-button__text {
+	    font-size: 13px;
+	    padding-left: 11px;
+	    font-style: italic;
+	    color: gray;
+	  }
   }
 
   .submit__button {
-	background-color: white;
-	color: #23B55E;
-	padding: 10px;
-	border-radius: 30px;
-	border: 1px solid #23B55E;
-	width: 170px;
-	font-size: 13px;
-	cursor: pointer;
+	  background-color: white;
+	  color: #23B55E;
+	  padding: 10px;
+	  border-radius: 30px;
+	  border: 1px solid #23B55E;
+	  width: 170px;
+	  font-size: 13px;
+	  cursor: pointer;
   }
 
   .submit__button_active {
-	background-color: #23B55E;
-	color: white;
+	  background-color: #23B55E;
+	  color: white;
   }
-
 }
 
 ::ng-deep {
