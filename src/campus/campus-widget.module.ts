@@ -32,9 +32,8 @@ import { PopoverModule } 										from 'ngx-popover'
 import { CourseActivacionComponent }							from './components/course-activacion/course-activacion.component';
 
 // --- Dialogs --------------------------------------------------------------------------
-import { UserJobsDialogComponent } from './components/dialogs/user-jobs-dialog.component';
-import { UserInfoDialog } from './components/dialogs/user-info-dialog.component';
-import { FormErrorDialog } from './components/dialogs/form-error-dialog.component';
+import { UserJobsDialogComponent } from './components/dialogs/user-jobs/user-jobs-dialog.component';
+import { FormErrorDialog } from './components/dialogs/form-error/form-error-dialog.component';
 import { LogOutComponent } from './components/log-out/log-out.component';
 
 /**
@@ -55,7 +54,7 @@ import { LogOutComponent } from './components/log-out/log-out.component';
 
 		PopoverModule
 	],
-	entryComponents:[ UserJobsDialogComponent, CropperComponent, UserInfoDialog, FormErrorDialog ],
+	entryComponents:[ UserJobsDialogComponent, CropperComponent, FormErrorDialog ],
 	declarations: 	[ 
 		CampusComponent, 
 		AcountComponent, 
@@ -65,7 +64,6 @@ import { LogOutComponent } from './components/log-out/log-out.component';
 		CertificateCardComponent, 
 		CertificateRequestComponent, 
 		UserJobsDialogComponent, 
-		UserInfoDialog,
 		FormErrorDialog,
 		PasswordChangeComponent,
 		AvatarComponent, 

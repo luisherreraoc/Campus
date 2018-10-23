@@ -10,6 +10,9 @@ import { Loader, Logger, MkFormService, MkForm } from 'mk';
 
 import { UserService } from '../../services/user.service';
 
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { FormErrorDialog } from '../dialogs/form-error/form-error-dialog.component';
+
 @Component({
     selector: 'course-activacion',
     templateUrl: 'course-activacion.component.html',
@@ -52,12 +55,13 @@ export class CourseActivacionComponent
     private _step : number;
     private _steps : Array<Array<string>>;
 
-    constructor( 
+    constructor(
         private _fs: MkFormService, 
         private _http: Http, 
         private _router: Router, 
         private _us: UserService,
-        private _loader : Loader
+        private _loader : Loader,
+        private _dialog : MatDialog
     ) 
     {
         this._form_act_group = new FormGroup({});
@@ -130,11 +134,13 @@ export class CourseActivacionComponent
         if (this._entidad_id != 1 && this._entidad_id != 2) {
             this.activarCurso();
         } else {
-            if (this._step === 0) {
+            if (this._step === 0 && this._form_act_group.status === 'VALID') {
                 this._step++;
+            } else if (this._step === 0 && this._form_act_group.status != 'VALID') {
+                this.formHasError('Por favor, revise los campos introducidos');
             } else {
                 this.activarCurso();
-            }            
+            }
         }
     }
     
@@ -157,23 +163,36 @@ export class CourseActivacionComponent
             'file': aux.file
         };
 
-        console.log(data);
-        this.back(true);
+        // console.log(data);
+        // this.back(true);
 
-        // if (this._form_act_group.status === 'VALID') {
-        //     let route = '';
+        if (this._form_act_group.status === 'VALID') {
+            let route = '';
 
-        //     this._id === 1 || this._id === 2 ? route = 'alcala' : route = 'defaultHandler';
+            this._id === 1 || this._id === 2 ? route = 'alcala' : route = 'defaultHandler';
 
-        //     this._us.updateBeforeCourse(data, route, this._code)
-        //     .subscribe( (response: any ) => { 
-        //         if (response.code === 900) { 
-        //             this.back(true); 
-        //             window.open(environment.ssoRedirectUrl + this._code)
-        //         }
-        //     });
-        // };
-    }    
+            this._us.updateBeforeCourse(data, route, this._code)
+            .subscribe( (response: any ) => { 
+                if (response.code === 900) { 
+                    this.back(true); 
+                    window.open(environment.ssoRedirectUrl + this._code)
+                } else {
+                    this.formHasError('Ha habido un error, por favor, vuelva a intentarlo');
+                };
+            });
+        } else {
+            this.formHasError('Por favor, revise los campos introducidos');
+        };
+    }
+
+    private formHasError(ms) {
+        let dialogRef = this._dialog.open(FormErrorDialog, {
+            id: 'form-error-dialog',
+            data: {
+                message: ms
+            }
+        });
+    }
 
     // CEDER CURSO
 
@@ -203,6 +222,8 @@ export class CourseActivacionComponent
             //llamada al back con la info del usuario
             this._ceder = false;
             this._cederSuccess = true;
+        } else {
+            this.formHasError('Por favor, introduzca una dirección de e-mail válida')
         }
     }
 
@@ -220,3 +241,36 @@ export class CourseActivacionComponent
         this.close.emit(ans);
     }
 }
+
+
+
+// LLAMADA DEL UPDATEBEFORECOURSE CUANDO ERA DIALOG
+
+/*
+private send (data: {[key:string]:any}) : void 
+{
+
+    let route = '';
+
+    this.data._id === 1 || this.data._id === 2 ? route = 'alcala' : route = 'defaultHandler';
+
+    this._us.updateBeforeCourse(data, route, this.data._code)
+    .subscribe( (response: any ) =>
+    { 
+        if (response.code === 900) {
+            this.dialogRef.close();
+            this.dialogRef.afterClosed()
+            .subscribe( x => {
+                window.open(environment.ssoRedirectUrl + this.data._code);         
+            });
+        } else {
+            let dialogRef = this._dialog.open(FormErrorDialog, {
+                id: 'form-error-dialog',
+                data: {
+                    message: 'Ha habido un error, por favor, vuelva a intentarlo'
+                },
+            });
+        };
+    });
+}
+*/

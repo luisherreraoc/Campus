@@ -7,7 +7,6 @@ import { Producto, ProductoInterface }				    				from '../../models/producto.mo
 import { environment }													from '../../../environments/environment';
 import { MatDialog } 													from '@angular/material';
 
-import { UserInfoDialog } from '../dialogs/user-info-dialog.component';
 import { UserService } from '../../services/user.service';
 
 import { AuthService } from '../../../shared/services/auth.service';
