@@ -13,19 +13,25 @@
   justify-content: center;
   align-items: center;
   margin: auto;
+  padding: 5vmax;
 
-  .response-title {
+  .response__img {
+	margin-bottom: 2vmax;
+  }
+
+  .response__title {
 	color: black;
 	font-size: 3vmin;
+	margin-bottom: 2vmax;
   }
 
   .response__msg {
 	font-size: 2vmin;
+	margin-bottom: 2vmax;
   }
 
   .response__btn {
-	width: 10vmax;
-	margin-top: 3vmax;
+	width: fit-content;
 	padding: 1vmax;
 	border-radius: 30px;
 	border: transparent;
