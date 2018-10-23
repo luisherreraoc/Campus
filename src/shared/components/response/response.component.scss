@@ -1,14 +1,37 @@
-:host ::ng-deep
-{
-	position: absolute;
-	top: 0px;
-	bottom: 0px;
-	left: 0px;
-	right: 0px;
-	background-color: white;
+@import '~scss/abstracts/variables';
 
-	.response-title
-	{
-		color: black;
-	}
+.response {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background-color: white;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+
+  .response-title {
+	color: black;
+	font-size: 3vmin;
+  }
+
+  .response__msg {
+	font-size: 2vmin;
+  }
+
+  .response__btn {
+	width: 10vmax;
+	margin-top: 3vmax;
+	padding: 1vmax;
+	border-radius: 30px;
+	border: transparent;
+    font-size: 1.2vmin;
+	font-weight: 500;
+	color: white;
+	background-color: $color-cuenta;
+  }
 }
