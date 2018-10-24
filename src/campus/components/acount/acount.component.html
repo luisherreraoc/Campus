@@ -6,3 +6,5 @@
 <span><img src="{{_key}}"/></span><a routerLink="/campus/{{_pass_change}}" routerLinkActive="active">Cambiar contraseña</a>
 
 <button #button _ngcontent-c3="" class="btn" (click)="openFirstDialog()">ACTUALIZAR</button>
+
+<cam-response *ngIf="_sent" [title]="_response_obj.title" [text]="_response_obj.text" [btn]="_response_obj.btn" [img]="_response_obj.img" [callback]="_response_obj.callback.bind(this)"></cam-response>

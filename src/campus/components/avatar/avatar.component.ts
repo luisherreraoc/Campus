@@ -30,6 +30,8 @@ export class AvatarComponent
 
 	private _subscriptions: Array<Subscription>;
 
+	public _julome : String;
+
 	public constructor ( 
 		private _logger: Logger, 
 		private _loader: Loader, 
@@ -59,6 +61,12 @@ export class AvatarComponent
 				this.updateSrc(user); 
 			});
 		}
+
+		this._us.get(this._as.getToken())
+		.subscribe( (user : any) => 
+		{
+			this._julome = user.oauth_user_first_name;
+		});
 	}
 
 	public ngOnDestroy () : void 

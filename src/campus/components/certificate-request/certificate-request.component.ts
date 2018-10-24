@@ -22,6 +22,7 @@ export class CertificateRequestComponent
 {
 	@ViewChild('button') private _button: ElementRef;	
 	@Output ('close') _close: EventEmitter<null> = new EventEmitter<null>()
+	@Output ('submit') _submit: EventEmitter<null> = new EventEmitter<null>()
 
 	private _form: MkForm;
 	private _subscriptions: Array<Subscription>;
@@ -54,7 +55,7 @@ export class CertificateRequestComponent
 		let data: any = this._fs.getFormData('certificate-request').formGroup.getRawValue();
 		this.logger.log(data);
 		this._cfs.register(data);
-		this.close();
+		this._submit.emit();
 	}
 
 	 private subscribeQuestionForm () : Subscription
