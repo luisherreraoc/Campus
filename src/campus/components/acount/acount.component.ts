@@ -1,4 +1,4 @@
-import { Component, Inject, ViewContainerRef, ViewChild, ElementRef } from '@angular/core';
+import { Component, Inject, ViewContainerRef, ViewChild, ElementRef, SimpleChange, SimpleChanges, Renderer2 } from '@angular/core';
 import { Observable, BehaviorSubject, Subscription } from "rxjs/Rx";
 
 import { environment } from '../../../environments/environment';
@@ -16,6 +16,7 @@ import { User } from '../../models/user.model';
 
 import { Loader } from 'mk';
 import { Router } from '@angular/router';
+import { FormGroup } from '@angular/forms';
 
 @Component({
 	templateUrl: './acount.component.html',
@@ -26,10 +27,12 @@ export class AcountComponent
 	@ViewChild('button') private _button: ElementRef;
 
 	private _form: MkForm;
+	private _form_group: FormGroup;
 	private _subscriptions: Array<Subscription>;
 
 	private _onl1: Array<string>;
 	private _onl2: Array<string>;
+	private _onl3: Array<string>;
 	private _key: string;
 
 	private _ids: any;
@@ -39,7 +42,13 @@ export class AcountComponent
 	private _response_obj: {title:string,text:string,img:string,btn:string,callback:any};
 	private _sent: boolean;
 
-	// private showMe: boolean;
+	private _user : any;
+
+	private currentUser : Object;
+
+	private accountDetails : Object;
+
+	private inactive : boolean;
 
 	public constructor ( 
 		private logger: Logger, 
@@ -49,12 +58,14 @@ export class AcountComponent
 		private _as: AuthService,
 		private _us: UserService,
 		private _loader: Loader,
-		private _router: Router ) 
+		private _router: Router,
+		private _renderer: Renderer2 ) 
 	{ 
 		logger.log('ACOUNT COMPONENT'); 
 
 		this._onl1 = ['oauth_user_first_name', 'oauth_user_last_name'];
 		this._onl2 = ['user_details_prefix', 'oauth_user_phone'];
+		this._onl3 = ['oauth_user_dni', 'oauth_user_email'];
 	 	this._key = environment.icon_key;
 	 	this._ids = null;
 
@@ -69,25 +80,60 @@ export class AcountComponent
             callback: null
 		};
 		this._sent = false;
+
+		this.currentUser = {
+			'user_details_job' : '',
+			'user_details_especialization' : '',
+			'user_details_college' : ''
+		}
+
+		this.inactive = true;
+
 	}
 
 	public ngOnInit () : void
 	{
 		let source: User = this._us.users.getValue().find( (usr:User) => usr['token'] === this._as.getToken() );
 		let obs: Observable<any> = source ? Observable.of(source) : this._us.get(this._as.getToken());
-
+		
 		this._loader.show('acount');
 
-		this._subscriptions = [	this.subscriptions(obs) ];
-	}	
+		this._subscriptions = [ this.subscribeUser(), this.subscriptions(obs) ];
+
+	}
+
+	private subscribeUser () : Subscription
+	{
+		return this._us.users
+		.map( users => users.find(user => user['token'] === this._as.getToken()) )
+		.subscribe( (user:any) =>
+		{
+			if ( user )
+			{
+				this.currentUser = user;
+				this.accountDetails = {
+					'oauth_user_first_name' : user.oauth_user_first_name,
+					'oauth_user_last_name' : user.oauth_user_last_name,
+					'oauth_user_dni' : user.oauth_user_dni,
+					'oauth_user_email' : user.oauth_user_email,
+					'user_details_prefix' : user.user_details_prefix,
+					'oauth_user_phone' : user.oauth_user_phone,
+					'oauth_user_password' : '',
+					'user_details_job' : user.user_details_job,
+					'user_details_especialization' : user.user_details_especialization,
+					'user_details_college' : user.user_details_college
+				}
+			}
+		});
+	}
 
 	public ngOnDestroy () : void 
     { 
         this._subscriptions.forEach( sub => sub.unsubscribe() );
         this._subscriptions.length = 0;
 		this._loader.dismiss('acount'); 
-    }
-
+	}
+	
     private subscriptions ( observable: Observable<any> ) : Subscription
     {
     	return observable
@@ -96,14 +142,17 @@ export class AcountComponent
     		if ( user.oauth_user_id === undefined ) {
     			this._as.logout();
 			}
-    		this._ids = {'user': user.oauth_user_id }; 
+			this._ids = {'user': user.oauth_user_id }; 
     		return this._fs.forms.map( forms => forms.find( form => form.name === "user" ));
     	})
     	.subscribe( form =>
         {
         	if (form) 
             { 	
-            	this._form = form;
+				this._form = form;
+				this._form_group = this._form.formGroup;
+				this.getFieldChange(this._form_group.controls);
+
 				this._loader.dismiss('acount');
 			}
         },
@@ -111,13 +160,57 @@ export class AcountComponent
         () => this._loader.dismiss('acount'));
 	}
 
-	private falseClick() {
-        let clickMe = this._button.nativeElement;
+	private getFieldChange (groupControls) {
 
-        clickMe.click();
-    }
+		let controls : Array<string> = Object.keys(groupControls);
+
+		let initDetails : Array<string> = Object.values(this.accountDetails);
+
+		let arr = []
+
+		for (let cont in controls) {			
+			groupControls[controls[cont]].valueChanges
+			.debounceTime(1000)
+			.distinctUntilChanged()
+			.subscribe( sub => {
+				let currentDetails = [];
+				for (let control in groupControls) {
+					let value = groupControls[control].value;
+					currentDetails.push(value)
+				}
+
+				if (!this.arraysEqual(currentDetails, initDetails)) {
+					this.activateButton();
+				} else {
+					this.disableButton();
+				}
+			});
+		};
+	}
+
+	private arraysEqual(arr1, arr2) {
+		if(arr1.length !== arr2.length)
+			return false;
+
+		for(var i = arr1.length; i--;) {
+			if(arr1[i] !== arr2[i])
+			return false;
+		}
 	
-    private openFirstDialog() : void
+		return true;
+	}
+
+	private activateButton() {
+		this.inactive = false;
+		this._renderer.addClass(this._button.nativeElement, 'submit__button_active')
+	}
+
+	private disableButton() {
+		this.inactive = true;
+		this._renderer.removeClass(this._button.nativeElement, 'submit__button_active')
+	}
+
+	private openFirstDialog() : void
     {
     	let dialogRef = this._dialog.open(UserJobsDialogComponent, {
     		id: 'user-jobs-dialog',
@@ -153,5 +246,58 @@ export class AcountComponent
 
 	private goToAccount () : void {
 		this._sent = false;
+		this.inactive = true;
+		this._renderer.removeClass(this._button.nativeElement, 'submit__button_active')
+	}
+
+	private send () : void {
+		this._loader.show('updating');
+		let aux = this._form_group.getRawValue();
+            
+		let data = {
+			'first_name': aux.oauth_user_first_name,
+			'last_name': aux.oauth_user_last_name,
+			'phone': aux.oauth_user_phone
+		}
+		this._us.update(data)
+        .subscribe( (response: any ) =>
+        {
+            let user : any = this._us.data.find((user : any) => {
+                return user.oauth_user_id == this._ids.user
+            })
+            
+            user.oauth_user_first_name = aux.oauth_user_first_name;
+            user.oauth_user_last_name = aux.oauth_user_last_name;
+            user.oauth_user_phone = aux.oath_user_phone;
+            user.user_details_prefix = aux.user_details_prefix;
+		},
+		( error : any ) => {
+			this._sent = true;
+			this._response_obj = {
+				title: '',
+				text: 'Ha habido un error a la hora de actualizar sus datos. Por favor, vuelva a intentarlo',
+				img: '',
+				btn: 'VOLVER',
+				callback: this.goToAccount
+			}
+        },
+        () => {
+			this._sent = true;
+			this._response_obj = {
+				title: '',
+				text: 'Sus datos se han actualizado correctamente',
+				img: '',
+				btn: 'VOLVER',
+				callback: this.goToAccount
+			};
+			this._loader.dismiss('updating')
+        }
+        );
+	}
+
+	private falseClick() {
+        let clickMe = this._button.nativeElement;
+
+        clickMe.click();
 	}
 }

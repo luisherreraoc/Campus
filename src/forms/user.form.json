@@ -18,6 +18,24 @@
 	    "type": "text"
     },
     {
+	    "key": "oauth_user_dni",
+	    "label": "DNI",
+	    "value": "",
+	    "required": true,
+	    "order": 2,
+	    "maxlength": "80",
+	    "type": "text"
+    },
+    {
+	    "key": "oauth_user_email",
+	    "label": "E-mail",
+	    "value": "",
+	    "required": true,
+	    "order": 2,
+	    "maxlength": "80",
+	    "type": "email"
+    },
+    {
 	    "key": "user_details_prefix",
 	    "label": "Prefijo",
 	    "value": "",
