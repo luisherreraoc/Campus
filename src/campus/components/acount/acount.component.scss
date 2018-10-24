@@ -8,7 +8,11 @@
 
   div[cols="col-6"]:last-child {
 	width: 78%;
-  }
+	}
+	
+	.account {
+		padding: 5vmax;
+	}
 
   h1	{
 	color: $color-cuenta;
