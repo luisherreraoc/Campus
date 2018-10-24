@@ -67,12 +67,12 @@
 	  border: 1px solid #23B55E;
 	  width: 170px;
 	  font-size: 13px;
-	  cursor: pointer;
   }
 
   .submit__button_active {
 	  background-color: #23B55E;
-	  color: white;
+		color: white;
+		cursor: pointer;
   }
 }
 
