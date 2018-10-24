@@ -7,7 +7,7 @@ import { AuthService }													from '../../../shared/services/auth.service';
 @Component({
 	selector: 'log-out',
 	templateUrl: './log-out.component.html',
-	styleUrls: ['./log-out.component.css'],
+	styleUrls: ['./log-out.component.scss'],
 })
 export class LogOutComponent
 {

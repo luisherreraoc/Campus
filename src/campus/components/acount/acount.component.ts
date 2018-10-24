@@ -7,7 +7,7 @@ import { Logger, MkFormService, MkForm } from 'mk';
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
-import { UserJobsDialogComponent } from '../dialogs/user-jobs-dialog.component';
+import { UserJobsDialogComponent } from '../dialogs/user-jobs/user-jobs-dialog.component';
 
 import { AuthService } from '../../../shared/services/auth.service';
 import { UserService } from '../../services/user.service';

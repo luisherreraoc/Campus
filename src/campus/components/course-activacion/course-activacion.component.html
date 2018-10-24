@@ -1,0 +1,69 @@
+<div class="wrapper">
+    <div class="select" *ngIf="!_activar && !_ceder && !_cederSuccess">
+        <h2 class="select__header">Solicitud de datos personales para la certificación</h2>
+
+        <div class="select__text select__text_strong">
+            <p>
+                Para obtener la certificación asociada al programa formativo, es imprescindible que
+                los datos personales que proporciones a Océano Medicina sean correctos.
+            </p>    
+        </div>
+
+        <div class="select__text">
+            <p>
+                Si no es usted la persona que va a realizar el programa, debe ceder la licencia al 
+                usuario final, el cual deberá registrarse en el sistema con sus datos personales.
+            </p>    
+        </div>
+
+        <div class="select__button select__button_activar"
+            (click)="activar()">
+            EL PROGRAMA ES PARA MÍ
+        </div>
+
+        <div class="select__button select__button_ceder"
+            (click)="_ceder = true">
+            EL PROGRAMA NO ES PARA MÍ
+        </div>
+    </div>
+
+    <div class="activar" *ngIf="_activar">
+        <h2 class="activar__header">
+            {{ _title }}
+        </h2>
+
+        <mk-form (onEnter)="falseClick()" class="activar__form" [name]="_form_activar" cols="2" [only]="_steps[_step]"></mk-form>
+
+        <div #button class="submit__button" (click)="nextStep()">
+            SIGUIENTE
+        </div>
+    </div>
+
+    <div class="ceder" *ngIf="_ceder">
+        <h2 class="ceder__header">Ceder programa</h2>
+
+        <p class="ceder__text">Inserte la dirección de correo electrónico de la persona a la que desea ceder el programa</p>
+
+        <mk-form (onEnter)="falseClick()" class="ceder__form" name="ceder_licencia"></mk-form>
+
+        <div class="ceder__producto">
+            <i class="material-icons">
+                fiber_manual_record
+            </i>
+            <h3>{{ _title }}</h3>
+        </div>
+
+        <div #button class="submit__button" (click)="cederLicencia()">
+            ENVIAR
+        </div>
+    </div>
+
+    <div class="ceder__ok" *ngIf="_cederSuccess">
+        <img class="ceder__ok__img" src="assets/img/icon-confirm.png" >
+        <p class="ceder__ok__text">La licencia se envió correctamente</p>
+        <div #button class="submit__button submit__button_ok" (click)="back(true)">
+            VOLVER A MIS CURSOS
+        </div>
+    </div>
+</div>
+

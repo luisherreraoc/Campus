@@ -1,0 +1,137 @@
+@import '~scss/abstracts/variables';
+
+.wrapper {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background-color: white;
+  margin-top: 20vh;
+}
+
+.select {
+  text-align: center;
+  padding: 5vmin;
+
+  .select__header {
+    padding-bottom: 2vmin;
+  }
+
+  .select__text {
+    padding-top: 1vmin;
+    text-align: justify;
+    font-size: 1.2vmin;
+  }
+
+  .select__text_strong {
+    font-weight: 600;
+  }
+
+  .select__button {
+    width: 30vmin;
+    padding: 1.5vmin;
+    border-radius: 25px;
+    margin: 10px auto;
+    color: white;
+    font-size: 1.2vmin;
+    font-weight: 400;
+  }
+
+  .select__button_activar {
+    background-color: $color-cursos;
+    margin-top: 10vmin;
+  }
+
+  .select__button_ceder {
+    background-color: rgb(240, 151, 18);
+    margin-top: 3vmin;
+  }
+}
+
+.activar {
+  display: flex;
+  flex-direction: column;
+  padding: 5vmin;
+
+  .activar__header {
+    font-size: 1.7vmin;
+    color: $color-cursos;
+    padding-bottom: 4vmin;
+  }
+
+  .activar__form {
+    padding-bottom: 7vmin;
+  }
+}
+
+.ceder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5vmin;
+
+  .ceder__header {
+    font-size: 2.3vmin;
+    padding-bottom: 2vmin;
+  }
+
+  .ceder__text {
+    font-size: 1.2vmin;
+    padding-bottom: 3vmin;
+  }
+
+  .ceder__form {
+    width: 75%;
+  }
+
+  .ceder__producto {
+    display: flex;
+    width: fit-content;
+    border: 0.1vmin solid $color-cursos;
+    border-radius: 30px;
+    padding: 1.5vmin;
+    margin-top: 3vmin;
+    margin-bottom: 10vmin;
+
+    i {
+      color: $color-cursos;
+      font-size: 2vmin;
+    }
+
+    h3 {
+      padding-left: 2vmin;
+      font-size: 1.5vmin;
+    }
+  }
+}
+
+.ceder__ok {
+  text-align: center;
+  padding: 5vmin;
+  width: 100%;
+
+  .ceder__ok__img {
+    padding-bottom: 3vmax;
+  }
+
+  .ceder__ok__text {
+    padding-bottom: 5vmax;
+    font-size: 1.5vmin;
+    color: gray;
+  }
+}
+
+.submit__button {
+  width: 20vmin;
+  border-radius: 35px;
+  padding: 1.2vmin;
+  background-color: rgb(53, 206, 99);
+  text-align: center;
+  font-size: 1.2vmin;
+  color: white;
+}
+
+.submit__button_ok {
+  margin: 0px auto;
+}

@@ -4,11 +4,9 @@ import { AbstractControl, FormGroup } from '@angular/forms';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Router } from '@angular/router';
 
-import { environment } from '../../../environments/environment';
-
 import { Logger, MkFormService, MkForm } from 'mk';      
 
-import { UserService } from '../../services/user.service';
+import { UserService } from './../../../services/user.service';
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA}                 from '@angular/material';
 
@@ -91,7 +89,7 @@ const especialidad: any = {
 @Component({
     selector: 'user-jobs-dialog',
     templateUrl: 'user-jobs-dialog.component.html',
-    styleUrls: ['user-jobs-dialog.component.css']
+    styleUrls: ['user-jobs-dialog.component.scss']
 })
 export class UserJobsDialogComponent 
 {

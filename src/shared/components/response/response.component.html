@@ -1,17 +1,19 @@
+<div class="response">
+	<img class="response__img" src="{{_img}}"/>
 
-<img src="{{_img}}"/>
+	<h1 class="response__title">{{_title}}</h1>
 
-<h1 class="response-title">{{_title}}</h1>
+	<p class="response__msg">{{_text}}</p>
 
-<p>{{_text}}</p>
+	<ng-container *ngIf="_recovery">	
+		<input type="text" name="recovery" />
+	</ng-container>
 
-<ng-container *ngIf="_recovery">	
-	<input type="text" name="recovery" />
-</ng-container>
+	<ng-container *ngIf="_change">	
+		<mk-form (onEnter)="falseClick()" name="passchange"></mk-form>
+	</ng-container>
 
-<ng-container *ngIf="_change">	
-	<mk-form (onEnter)="falseClick()" name="passchange"></mk-form>
-</ng-container>
+	<button #button class="response__btn" (click)="onClick()">{{_btn}}</button>
+</div>
 
-<button #button class="btn" (click)="onClick()">{{_btn}}</button>
 

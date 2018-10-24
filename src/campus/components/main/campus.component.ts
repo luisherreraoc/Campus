@@ -20,6 +20,10 @@ export class CampusComponent
 
 	private _outer_class: string;
 
+	private _cuenta : boolean;
+	private _cursos : boolean;
+	private _certificados : boolean;
+
 	public constructor ( private _logger: Logger, private _router: Router, private _route: ActivatedRoute ) 
 	{ 
 		this._logger.log('CAMPUS COMPONENT'); 
@@ -28,11 +32,16 @@ export class CampusComponent
 		this._certificates = new Array(environment.pathCampus,environment.pathCertificates).join('/');
 		this._subscriptions = new Array();
 		this._outer_class = '';
+
+		this._cuenta = true;
+		this._cursos = false;
+		this._certificados = false;
 	}
 
 	public ngOnInit () : void
 	{
 		this._outer_class = this.getSegment();
+		this.activeClass(this._outer_class);
 		this._subscriptions = [	
 			this.subscribeRouterEvents()
 		];
@@ -61,6 +70,23 @@ export class CampusComponent
   		.map(() => this._route)
   		.subscribe((event) => {
 			this._outer_class = this.getSegment();
+			this.activeClass(this._outer_class);
   		});
+	}
+
+	private activeClass (cl) {
+		if ( cl === 'mi-cuenta') {
+			this._cuenta = true;
+			this._cursos = false;
+			this._certificados = false;
+		} else if ( cl === 'mis-cursos' ) {
+			this._cuenta = false;
+			this._cursos = true;
+			this._certificados = false;
+		} else if ( cl === 'mis-certificaciones' ) {
+			this._cuenta = false;
+			this._cursos = false;
+			this._certificados = true;
+		}
 	}
 }

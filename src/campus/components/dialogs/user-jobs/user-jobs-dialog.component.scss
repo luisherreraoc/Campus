@@ -1,0 +1,39 @@
+.wrapper {
+  background-color: white;
+  box-shadow:  6px 6px 12px rgba(0,0,0,.5);
+}
+
+.dialog {
+  display: flex;
+  flex-direction: column;
+
+  .dialog__form {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row-reverse;
+        
+    .dialog__form__select {
+        margin: auto 25px;
+    }
+  }
+
+  .dialog__button {
+    display: flex;
+    justify-content: center;
+    padding: 1vmax;
+    margin: 1vmax auto;
+    width: 10vmax;
+    font-size: 1.3vmin;
+    font-weight: 500;
+    background-color: rgb(53, 206, 99);
+    color: white;
+    border-radius: 30px;
+    cursor: pointer;
+  }
+}
+
+.submit__mes {
+  padding: 20px;
+}

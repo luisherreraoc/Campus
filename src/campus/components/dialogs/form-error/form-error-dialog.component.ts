@@ -4,7 +4,8 @@ import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
     selector: 'form-error-dialog',
-    templateUrl: 'form-error-dialog.component.html'
+    templateUrl: 'form-error-dialog.component.html',
+    styleUrls: ['form-error-dialog.component.scss']
 })
 export class FormErrorDialog 
 {

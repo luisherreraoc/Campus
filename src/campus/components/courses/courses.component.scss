@@ -1,10 +1,53 @@
 @import '~scss/abstracts/variables';
 
-:host ::ng-deep
-{
-	button 
-	{
-		color: white;
-		background-color: $color-cursos;
-	}
+.courses {
+  width: 56vmax;
 }
+  .courses__header {
+    color: $color-cursos;
+    font-size: 3vmin;
+    padding-bottom: 5vmin;
+    padding-left: 2vmin;
+  }
+
+  .courses__wrapper {
+    display: flex;
+  }
+
+    .courses__wrapper__button {
+      margin: auto 0px;
+      color: $color-cursos;
+      cursor: pointer;
+    }
+
+    .courses__wrapper__button_inactive {
+      color: gray;
+    }
+
+    .courses__wrapper__carousel {
+      overflow: hidden;
+
+      .courses__wrapper__carousel__flow {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        transition: transform 1.2s, -webkit-transform 1.2s;
+
+        .courses__wrapper__carousel__flow__content {
+          padding: 0px 5px;
+        }
+      }
+    }
+
+  .courses_progress {
+    width: 56vmax;
+    height: 0.6vmin;
+
+    .courses_progress__bar {
+      height: 100%;
+      border-radius: 25px;
+      margin-top: 2vmin ;
+      background: linear-gradient(to right, lighten($color-cursos, 10), darken($color-cursos, 10));
+      transition: width 1.5s;
+    }
+  }

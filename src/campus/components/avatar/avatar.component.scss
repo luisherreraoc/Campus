@@ -2,27 +2,26 @@
 
 :host ::ng-deep
 {
-	.user
+	.user {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	
+	.user__avatar
 	{
 		position: relative;
 		display: inline-flex;
 
-		.avatar
+		.user__avatar__img
 		{
 			width: 160px;
 		    height: 160px;
 		    border-radius: 50%;
 			overflow: hidden;
-			
-			.avatar__username {
-				position: absolute;
-				margin-top: -50px;
-				color: white;
-				font-size: 16px;
-			}
 		}
 
-		.button
+		.user__avatar__button
 		{
 			background-color: rgba(0, 0, 0, 0.2);
 		    border-radius: 50%;
@@ -31,7 +30,8 @@
 		    position: absolute;
 		    display: block;
 		    right: 0px;
-		    bottom: 0px;
+			bottom: 0px;
+			cursor: pointer;
 
 		    img
 		    {
@@ -42,6 +42,12 @@
 			    top: 8px;
 		    }
 		}
+	}
+
+	.user__username {
+		color: white;
+    	font-size: 1.7vmin;
+    	padding-top: 2.5vmin;
 	}
 
 	input#custom-input 

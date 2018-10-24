@@ -2,23 +2,29 @@
   	
   	<div class="row">
     
-    	<section class="container-left col-md-5 col-lg-6 col-xl-7">
+    	<section class="container-left col-md-5 col-lg-4 col-xl-4">
 			
 			<div class="wrapper">
-				<user-avatar></user-avatar>
-
 				<log-out></log-out>				
 			</div>
 
       		<section class="container-left-heading">
-        		<a routerLink="/{{_acount}}" routerLinkActive="active">MI CUENTA</a>
-        		<a routerLink="/{{_courses}}" routerLinkActive="active">MIS CURSOS</a>
-          		<a routerLink="/{{_certificates}}" routerLinkActive="active">CERTIFICACIONES</a>
+				<user-avatar class="avatar"></user-avatar>
+
+				<a class="heading_link" 
+				   [ngClass]="{ heading_link_active : _cuenta === true }"
+				   routerLink="/{{_acount}}" routerLinkActive="active">MI CUENTA</a>
+				<a class="heading_link" 
+				   [ngClass]="{ heading_link_active : _cursos === true }"
+				   routerLink="/{{_courses}}" routerLinkActive="active">MIS CURSOS</a>
+				<a class="heading_link" 
+				   [ngClass]="{ heading_link_active : _certificados === true }"
+				   routerLink="/{{_certificates}}" routerLinkActive="active">CERTIFICACIONES</a>
 			</section>
 
 		</section>
 
-      <section class="container-right col-md-7 col-lg-6 col-xl-5 d-flex align-items-center justify-content-center">
+      <section class="container-right col-md-7 col-lg-8 col-xl-8 d-flex align-items-center justify-content-center">
   
       		<router-outlet></router-outlet>
 
