@@ -125,7 +125,9 @@ export class CourseActivacionComponent
 
     private activar () {
         this._activar = true;
-        this._loader.show('form-activar')
+        if (this._user_previous_info === undefined) {
+            this._loader.show('form-activar')            
+        }
     }
 
     private nextStep () {
