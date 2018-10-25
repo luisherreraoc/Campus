@@ -80,23 +80,6 @@ export class CourseActivacionComponent
         ]
     }
 
-    public ngOnInit ()
-	{
-        this._us.getUserData(this._code)
-		.subscribe( info => {
-            this._user_previous_info = info;
-        },
-        (err) => {},
-        () => {
-            this._subscriptions.push(this.subscribeQuestionFormActivar());
-            this._loader.dismiss('form-activar')
-        })
-
-        this._form_activar = "course_entidad_" + this._entidad_id + "_default";
-        
-		this._subscriptions.push(this.subscribeQuestionFormCeder());
-    }
-
 	public ngOnDestroy () : void 
     { 
         this._subscriptions.forEach( sub => {
@@ -125,9 +108,19 @@ export class CourseActivacionComponent
 
     private activar () {
         this._activar = true;
-        if (this._user_previous_info === undefined) {
-            this._loader.show('form-activar')            
-        }
+        this._loader.show('form-activar');
+
+        this._form_activar = "course_entidad_" + this._entidad_id + "_default";
+
+        this._us.getUserData(this._code)
+		.subscribe( info => {
+            this._user_previous_info = info;
+        },
+        (err) => {},
+        () => {
+            this._subscriptions.push(this.subscribeQuestionFormActivar());
+            this._loader.dismiss('form-activar')
+        });
     }
 
     private nextStep () {
@@ -165,9 +158,6 @@ export class CourseActivacionComponent
             'file': aux.file
         };
 
-        // console.log(data);
-        // this.back(true);
-
         if (this._form_act_group.status === 'VALID') {
             let route = '';
 
@@ -197,6 +187,11 @@ export class CourseActivacionComponent
     }
 
     // CEDER CURSO
+
+    private ceder () {
+        this._ceder = true;
+		this._subscriptions.push(this.subscribeQuestionFormCeder());
+    }
 
     private subscribeQuestionFormCeder () : Subscription
     {
