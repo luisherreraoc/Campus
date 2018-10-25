@@ -257,7 +257,8 @@ export class AcountComponent
 		let data = {
 			'first_name': aux.oauth_user_first_name,
 			'last_name': aux.oauth_user_last_name,
-			'phone': aux.oauth_user_phone
+			'phone': aux.oauth_user_phone,
+			'details': [{key: 'prefix', value: aux.user_details_prefix}]
 		}
 		this._us.update(data)
         .subscribe( (response: any ) =>
@@ -279,7 +280,8 @@ export class AcountComponent
 				img: '',
 				btn: 'VOLVER',
 				callback: this.goToAccount
-			}
+			};
+			this._loader.dismiss('updating')
         },
         () => {
 			this._sent = true;
