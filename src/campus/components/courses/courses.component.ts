@@ -44,7 +44,7 @@ export class CoursesComponent
         {
 			setTimeout(()=>{
 				this._loader.show('courses');
-			}, 500);
+			}, 100);
 
         	this._cs.load();
 		};

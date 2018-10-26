@@ -41,7 +41,7 @@ export class CertificatesComponent
         {
             setTimeout(()=>{
                 this.loader.show('courses');
-            }, 500);
+            }, 100);
 
             this._cs.load();
         }
