@@ -96,9 +96,7 @@ export class AcountComponent
 		let source: User = this._us.users.getValue().find( (usr:User) => usr['token'] === this._as.getToken() );
 		let obs: Observable<any> = source ? Observable.of(source) : this._us.get(this._as.getToken());
 
-		if (source === undefined) {
-			console.log('hey, I`m undefined!')
-		}
+		this._loader.show('acount');
 
 		this._subscriptions = [ this.subscribeUser(), this.subscriptions(obs) ];
 
@@ -159,7 +157,9 @@ export class AcountComponent
 			}
         },
         (error) => {},
-        () => this._loader.dismiss('acount'));
+        () => {
+			this._loader.dismiss('acount')
+		});
 	}
 
 	private getFieldChange (groupControls) {

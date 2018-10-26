@@ -43,6 +43,7 @@ export class CoursesComponent
         if ( this._cs.subject.getValue().length <= 0 )
         {
 			setTimeout(()=>{
+				//este loader se borra en COURSES SERVICE
 				this._loader.show('courses');
 			}, 100);
 

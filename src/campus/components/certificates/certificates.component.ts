@@ -15,7 +15,7 @@ export class CertificatesComponent
     private _sent: boolean;
     private _response_obj: {title:string,text:string,img:string,btn:string,callback:any};
 
-	public constructor ( private logger: Logger, private loader: Loader, private _cs: CoursesService ) 
+	public constructor ( private logger: Logger, private _loader: Loader, private _cs: CoursesService ) 
 	{ 
         logger.log('CERTIFICATES COMPONENT');
         this._subscriptions = new Array();
@@ -40,7 +40,8 @@ export class CertificatesComponent
         if ( this._cs.subject.getValue().length <= 0 )
         {
             setTimeout(()=>{
-                this.loader.show('courses');
+                // este loader se borra en COURSES SERVICE
+                this._loader.show('courses');
             }, 100);
 
             this._cs.load();
