@@ -31,6 +31,8 @@
   }
 
   .intereses__field {
+		display: flex;
+		flex-wrap: wrap;
     width: 100%;
 	  border-bottom: 1px solid grey;
 	  .intereses__field__text {

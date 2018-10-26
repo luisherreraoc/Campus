@@ -10,15 +10,17 @@
 
         <div class="intereses__field">
             <p class="intereses__field__text">
-                {{ currentUser.user_details_job }} -
+                {{ currentUser.user_details_job }} 
             </p>
+            <p class="intereses__field__text">- </p>
             <p class="intereses__field__text"
                *ngFor="let esp of currentUser.user_details_especialization"> 
-                {{ esp }} -
+                {{ esp }} 
             </p>
+            <p class="intereses__field__text">- </p>
             <p class="intereses__field__text"
                *ngFor="let col of currentUser.user_details_college"> 
-                {{ col }} -
+                {{ col }} 
             </p>
         </div>
     </div>
