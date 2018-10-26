@@ -17,8 +17,8 @@ export class CertificateCardComponent
 {
 	@Input('certificate') set certificate ( c: any )
 	{
-		this._id = c.producto_id;
-		this._title = c.producto_nombre;
+		this._id = c.id;
+		this._title = c.name;
 		this._code = c.license.code;
 	}
 
@@ -41,7 +41,6 @@ export class CertificateCardComponent
 
 	public ngOnInit () : void
 	{
-
 	}
 
 	private go () : void

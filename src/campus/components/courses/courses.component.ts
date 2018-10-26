@@ -25,7 +25,7 @@ export class CoursesComponent
 	private showInicio : boolean;
 	private _currentCourse : any;
 
-	public constructor ( private logger: Logger, private _cs: CoursesService, private loader: Loader, private renderer: Renderer2 ) 
+	public constructor ( private logger: Logger, private _cs: CoursesService, private _loader: Loader, private renderer: Renderer2 ) 
 	{ 
 		logger.log('COURSES COMPONENT'); 
 		this._subscriptions = new Array();
@@ -42,6 +42,10 @@ export class CoursesComponent
 
         if ( this._cs.subject.getValue().length <= 0 )
         {
+			setTimeout(()=>{
+				this._loader.show('courses');
+			}, 500);
+
         	this._cs.load();
 		};
 
@@ -51,7 +55,7 @@ export class CoursesComponent
 	public ngOnDestroy () : void 
     { 
         this._subscriptions.forEach( sub => sub.unsubscribe());
-        this._subscriptions.length = 0;
+		this._subscriptions.length = 0;
 	}
 	
 	private subscribeCourses () : Subscription

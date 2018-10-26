@@ -17,8 +17,8 @@ export class CertificatesComponent
 
 	public constructor ( private logger: Logger, private loader: Loader, private _cs: CoursesService ) 
 	{ 
-		logger.log('CERTIFICATES COMPONENT'); 
-		this._subscriptions = new Array();
+        logger.log('CERTIFICATES COMPONENT');
+        this._subscriptions = new Array();
         this._showRequest = false;
         this._sent = false;
 
@@ -31,17 +31,21 @@ export class CertificatesComponent
         };
 	}
 
-	public ngOnInit () : void
+    public ngOnInit () : void
 	{
-		this._subscriptions = [
+        this._subscriptions = [
             this.subscribeCourses()
         ];
 
         if ( this._cs.subject.getValue().length <= 0 )
         {
+            setTimeout(()=>{
+                this.loader.show('courses');
+            }, 500);
+
             this._cs.load();
         }
-	}
+    }
 	
 	public ngOnDestroy () : void 
     { 
@@ -51,7 +55,9 @@ export class CertificatesComponent
 
     private subscribeCourses () : Subscription
     {
-        return this._cs.courses.subscribe( certificates => this._certificates = certificates );
+        return this._cs.courses.subscribe( certificates => {
+            this._certificates = certificates;
+        });
     }
 
     private showRequest ( code: string ) : void

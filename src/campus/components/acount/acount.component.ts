@@ -95,8 +95,10 @@ export class AcountComponent
 	{
 		let source: User = this._us.users.getValue().find( (usr:User) => usr['token'] === this._as.getToken() );
 		let obs: Observable<any> = source ? Observable.of(source) : this._us.get(this._as.getToken());
-		
-		this._loader.show('acount');
+
+		if (source === undefined) {
+			console.log('hey, I`m undefined!')
+		}
 
 		this._subscriptions = [ this.subscribeUser(), this.subscriptions(obs) ];
 

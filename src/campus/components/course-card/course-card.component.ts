@@ -69,7 +69,7 @@ export class CourseCardComponent
 		if (this._state === 'untouched') {
 			this._buttonMessage = 'ACTIVAR';
 		} else if (this._state === 'pending') {
-			this._buttonMessage = 'INICIAR';
+			this._buttonMessage = 'CEDIDO';
 		} else if (this._state === 'active') {
 			this._buttonMessage = 'INGRESAR';
 		} else if (this._state === 'expired') {
