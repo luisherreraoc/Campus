@@ -108,12 +108,13 @@ export class UserJobsDialogComponent
 
     private _form: MkForm;
     private _form_group: FormGroup;
-    private _subscriptions: Array<any>
     private _ids: any;
 
     private _question: any;
 
     private test: any;
+
+    private _subscription : any;
 
     constructor( 
         public dialogRef: MatDialogRef<UserJobsDialogComponent>, 
@@ -137,35 +138,29 @@ export class UserJobsDialogComponent
         ];
 
         this._form_group = new FormGroup({});
-        this._subscriptions = new Array();
     }
     
     public ngOnInit ()
 	{
-		this._subscriptions = [
-            this.subscribeQuestionForm()
-        ];
-        setTimeout(()=> {this.showMe = false}, 1200)
+        setTimeout(()=> {this.showMe = true}, 100);
+        this._subscription = this.subscribeQuestionForm();
     }
  
 	public ngOnDestroy () : void 
     { 
-        this._subscriptions.forEach( sub => {
-            sub.unsubscribe()
-        });
-        this._subscriptions.length = 0;
+        this._subscription.unsubscribe()
     }
 
     private subscribeQuestionForm () : Subscription
     {
         return this._fs.forms
-        .map( forms => forms.find( form => form.name === "user" ) )
-        .subscribe( form =>
-        {
+        .map( forms => forms.find( form => form.name === "jobs" ) )
+        .subscribe( (form : any ) => {
             if (form) 
             {
                 this._form = form; 
                 this._form_group = this._form.formGroup;
+                this.showMe = false;
             }
         });
     }
@@ -188,7 +183,7 @@ export class UserJobsDialogComponent
             if ( this._step == 1 ) {
                 let job : any = this._form.find('user_details_job').value || 'Médico';
 
-                this._fs.getFormQuestions('user').map( (q:any) => {
+                this._fs.getFormQuestions('jobs').map( (q:any) => {
                     if(q.key == 'user_details_especialization') {
                         
                         q.options = especialidad[ job.value ? job.value : job ];
@@ -209,14 +204,10 @@ export class UserJobsDialogComponent
                 colleges.push(college.value);
             };
             data = {
-                'first_name': aux.oauth_user_first_name,
-                'last_name': aux.oauth_user_last_name,
-                'phone': aux.oauth_user_phone,
                 'details': [
                             {key: 'job', value: aux.user_details_job.value},
                             {key: 'especialization', value: especializations},
-                            {key: 'college', value: colleges},
-                            {key: 'prefix', value: aux.user_details_prefix}
+                            {key: 'college', value: colleges}
                         ],
             }
             this.send(data);
@@ -248,18 +239,14 @@ export class UserJobsDialogComponent
             let user_details = [
                 {key: 'job', value: aux.user_details_job.value},
                 {key: 'especialization', value: especializations},
-                {key: 'college', value: colleges},
-                {key: 'prefix', value: aux.user_details_prefix}
+                {key: 'college', value: colleges}
             ];
 
-            user.oauth_user_first_name = aux.oauth_user_first_name;
-            user.oauth_user_last_name = aux.oauth_user_last_name;
-            user.oauth_user_phone = aux.oath_user_phone;
+
             user.oauth_user_details = user_details;
             user.user_details_job = aux.user_details_job.value;
             user.user_details_especialization = especializations
             user.user_details_college = colleges;
-            user.user_details_prefix = aux.user_details_prefix;
         },
         ( error : any ) => {
             this.dialogRef.close({error : true});
