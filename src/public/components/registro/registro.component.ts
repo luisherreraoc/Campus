@@ -138,7 +138,7 @@ export class RegistroComponent
             new Array("registro_job"),
             new Array("registro_especialization"),
             new Array("registro_college"),
-            new Array("registro_first_name", "registro_email", "registro_password", "registro_especializacion_2", "registro_college_2")
+            new Array("registro_first_name", "registro_email", "registro_password", "registro_job_2", "registro_especialization_2", "registro_college_2")
         ];
         this._showIngresar = true;
         this._butonLabel = 'SIGUIENTE';
@@ -198,6 +198,7 @@ export class RegistroComponent
         let aux: any;
         let data: any;
         let len: number = this._steps.length - 1;
+        console.log(this._fs)
 
         if ( this._step < len ) 
         {
@@ -212,6 +213,21 @@ export class RegistroComponent
                 this._fs.getFormQuestions('registro').map( (q:any) =>
                 {
                     if(q.key == 'registro_especialization')
+                    {
+                        q.options = especialidad[job.value];
+
+                        this._question = q;
+                    }
+                });
+            }
+
+            if ( this._step == 4 )
+            {
+                let job:any = this._form.find('registro_job').value || 'Médico';
+
+                this._fs.getFormQuestions('registro').map( (q:any) =>
+                {
+                    if(q.key == 'registro_especialization_2')
                     {
                         q.options = especialidad[job.value];
 
