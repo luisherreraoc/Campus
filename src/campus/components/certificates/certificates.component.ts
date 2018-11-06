@@ -14,6 +14,7 @@ export class CertificatesComponent
     private _showRequest: boolean;
     private _sent: boolean;
     private _response_obj: {title:string,text:string,img:string,btn:string,callback:any};
+    private _code : any;
 
 	public constructor ( private logger: Logger, private _loader: Loader, private _cs: CoursesService ) 
 	{ 
@@ -64,6 +65,8 @@ export class CertificatesComponent
     private showRequest ( code: string ) : void
     {
         this._showRequest = true;
+        this._code = code;
+        this._loader.show('form-request');
     }    
 
     private closeRequest() : void {
