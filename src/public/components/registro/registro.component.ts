@@ -198,7 +198,6 @@ export class RegistroComponent
         let aux: any;
         let data: any;
         let len: number = this._steps.length - 1;
-        console.log(this._fs)
 
         if ( this._step < len ) 
         {
