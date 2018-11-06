@@ -54,8 +54,13 @@
     }
 
   .courses_progress {
-    width: 56vmax;
+    margin: auto;
+    width: 42vmax;
     height: 0.6vmin;
+    
+    @media all and (min-width: 54em) {
+      width: 52vmax;
+    }
 
     .courses_progress__bar {
       height: 100%;
