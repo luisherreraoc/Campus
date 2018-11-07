@@ -1,5 +1,10 @@
 @import '~scss/abstracts/variables';
 
+.cert-container {
+	// overflow: auto;
+	height: 75vh;
+}
+
 :host ::ng-deep
 {
 	button 
