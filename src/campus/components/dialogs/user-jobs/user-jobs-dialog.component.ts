@@ -196,18 +196,15 @@ export class UserJobsDialogComponent
             aux = this._form_group.getRawValue();
             
             let especializations = [];
-            let colleges = [];
             for (let especialization of aux.user_details_especialization) {
                 especializations.push(especialization.value);
             };
-            for (let college of aux.user_details_college) {
-                colleges.push(college.value);
-            };
+
             data = {
                 'details': [
                             {key: 'job', value: aux.user_details_job.value},
                             {key: 'especialization', value: especializations},
-                            {key: 'college', value: colleges}
+                            {key: 'college', value: aux.user_details_college.value}
                         ],
             }
             this.send(data);
@@ -228,25 +225,14 @@ export class UserJobsDialogComponent
             let aux = this._form_group.getRawValue();
             
             let especializations = [];
-            let colleges = [];
             for (let especialization of aux.user_details_especialization) {
                 especializations.push(especialization.value);
             };
-            for (let college of aux.user_details_college) {
-                colleges.push(college.value);
-            };
 
-            let user_details = [
-                {key: 'job', value: aux.user_details_job.value},
-                {key: 'especialization', value: especializations},
-                {key: 'college', value: colleges}
-            ];
-
-
-            user.oauth_user_details = user_details;
+            user.oauth_user_details = data;
             user.user_details_job = aux.user_details_job.value;
             user.user_details_especialization = especializations
-            user.user_details_college = colleges;
+            user.user_details_college = aux.user_details_college.value;
         },
         ( error : any ) => {
             this.dialogRef.close({error : true});

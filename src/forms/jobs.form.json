@@ -37,7 +37,7 @@
         "value": "",
         "required": true,
         "order": 7,
-        "type": "select-list-multiple",
+        "type": "select-list",
         "maxlength": "120",
         "options" : [
             { "value": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito I", "text": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito I" },
