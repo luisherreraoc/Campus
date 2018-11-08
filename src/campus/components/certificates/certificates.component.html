@@ -4,7 +4,8 @@
 	</h1>
 
 	<div class="certificates__wrapper">
-		<div class="certificates__wrapper__button">
+		<div class="certificates__wrapper__button"
+			 [ngClass]="{ certificates__wrapper__button_inactive : _first === true }">
 			<i class="material-icons"
 			   (click)="minusSlide()">
 				arrow_back_ios
@@ -12,16 +13,18 @@
 		</div>
 
 		<div class="certificates__wrapper__carousel">
-			<div class="certificates__wrapper__carousel__flow">
+			<div #carousel class="certificates__wrapper__carousel__flow"
+				 [style.transform]="'translateX('+amount+'px)'">
 				<div class="certificates__wrapper__carousel__flow__content" #certificado
 					*ngFor="let certificate of _certificates">
 						<certificate-card [certificate]="certificate" 
-										(request)="showRequest($event)"></certificate-card>
+										  (request)="showRequest($event)"></certificate-card>
 				</div>
 			</div>
 		</div>
 
-		<div class="certificates__wrapper__button">
+		<div class="certificates__wrapper__button"
+			 [ngClass]="{ certificates__wrapper__button_inactive : _last === true }">
 			<i class="material-icons"
 			   (click)="plusSlide()">
 				arrow_forward_ios
@@ -30,8 +33,10 @@
 	</div>
 </div>
 
-
-
+<div class="certificates_progress">
+	<div class="certificates_progress__bar"
+		 [style.width]="''+barWidth+'%'"></div>
+</div>
 
 <certificate-request *ngIf="_showRequest" (submit)="requestCompleted()" (close)="closeRequest()" [code]="_code"></certificate-request>
 

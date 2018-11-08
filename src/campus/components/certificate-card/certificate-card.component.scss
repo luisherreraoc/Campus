@@ -6,7 +6,7 @@
   align-items: center;
   width: 100%;
   min-height: 28vmin;
-  border: 1px solid gray;
+  border: 1px solid rgb(190,190,190);
   border-radius: 25px;
   overflow: hidden;
 
@@ -33,7 +33,6 @@
  	    @media all and (min-width: 32em) {
 		  font-size: 1.2vw;
 	    }
-
 	    @media all and (min-width: 84em) {
 		  font-size: 0.9vw;
 			}
@@ -53,7 +52,7 @@
 		p {
 	  	margin: 0px;
 		}
-		@media all and (min-width: 62em) {
+		@media all and (min-width: 93em) {
 			font-size: 1.2vmin;
 		}
   }

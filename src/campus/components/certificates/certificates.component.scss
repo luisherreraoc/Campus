@@ -52,3 +52,21 @@
 		  }
 		}
 	  }
+
+	.certificates_progress {
+	  margin: auto;
+	  width: 42vmax;
+	  height: 0.6vmin;
+		
+	  @media all and (min-width: 54em) {
+	    width: 52vmax;
+	  }
+	
+	  .certificates_progress__bar {
+		height: 100%;
+		border-radius: 25px;
+		margin-top: 2vmin ;
+		background: linear-gradient(to right, lighten($color-certificaciones, 10), darken($color-certificaciones, 10));
+		transition: width 1.5s;
+	  }
+	}

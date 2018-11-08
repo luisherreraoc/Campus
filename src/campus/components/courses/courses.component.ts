@@ -25,7 +25,11 @@ export class CoursesComponent
 	private showInicio : boolean;
 	private _currentCourse : any;
 
-	public constructor ( private logger: Logger, private _cs: CoursesService, private _loader: Loader, private renderer: Renderer2 ) 
+	public constructor ( 
+		private logger: Logger, 
+		private _cs: CoursesService, 
+		private _loader: Loader, 
+		private renderer: Renderer2 ) 
 	{ 
 		logger.log('COURSES COMPONENT'); 
 		this._subscriptions = new Array();
