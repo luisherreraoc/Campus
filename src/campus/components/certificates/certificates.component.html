@@ -1,8 +1,36 @@
-<div class="cert-container">
-	<ng-container *ngFor="let certificate of _certificates">
-		<certificate-card [certificate]="certificate" (request)="showRequest($event)"></certificate-card>
-	</ng-container>	
+<div class="certificates">
+	<h1 class="certificates__header">
+		MIS CERTIFICACIONES
+	</h1>
+
+	<div class="certificates__wrapper">
+		<div class="certificates__wrapper__button">
+			<i class="material-icons"
+			   (click)="minusSlide()">
+				arrow_back_ios
+			</i>
+		</div>
+
+		<div class="certificates__wrapper__carousel">
+			<div class="certificates__wrapper__carousel__flow">
+				<div class="certificates__wrapper__carousel__flow__content" #certificado
+					*ngFor="let certificate of _certificates">
+						<certificate-card [certificate]="certificate" 
+										(request)="showRequest($event)"></certificate-card>
+				</div>
+			</div>
+		</div>
+
+		<div class="certificates__wrapper__button">
+			<i class="material-icons"
+			   (click)="plusSlide()">
+				arrow_forward_ios
+			</i>
+		</div>
+	</div>
 </div>
+
+
 
 
 <certificate-request *ngIf="_showRequest" (submit)="requestCompleted()" (close)="closeRequest()" [code]="_code"></certificate-request>

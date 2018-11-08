@@ -4,41 +4,57 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 20vw;
-  min-height: 28vh;
+  width: 100%;
+  min-height: 28vmin;
   border: 1px solid gray;
   border-radius: 25px;
   overflow: hidden;
 
   .cert-card__photo {
-	img {
-	  width: 21vw;
-	}
+		.cert-card__photo__img {
+			height: 13vmax;
+			@media all and (min-width: 54em) {
+			  height: 11vmax;
+			}
+			@media all and (min-width: 84em) {
+			  height: 9vmax;
+			}
+		}
   }
 
   .cert-card__title {
-	display: flex;
+		display: flex;
     align-items: center;
-	padding-top: 1vh;
-    min-height: 7vh;
-	text-align: center;
-	h1 {
-	  font-size: 1vmax;
-	}
+		padding: 0vmin 1vmin;
+    min-height: 8vmax;
+		text-align: center;
+		h2 {
+	    font-size: 2.1vw;
+ 	    @media all and (min-width: 32em) {
+		  font-size: 1.2vw;
+	    }
+
+	    @media all and (min-width: 84em) {
+		  font-size: 0.9vw;
+			}
+		}
   }
 
   .cert-card__button {
-	padding: 1vmin;
-	border-radius: 20px;
-	font-size: 1.2vmin;
-	width: fit-content;
-	background-color: $color-certificaciones;
-	color: white;
-	border-color: transparent;
-	cursor: pointer;
-
-	p {
-	  margin: 0px;
-	}
+		padding: 1vmin;
+		margin-bottom: 2vh;
+		border-radius: 20px;
+		font-size: 1vmin;
+		width: fit-content;
+		background-color: $color-certificaciones;
+		color: white;
+		border-color: transparent;
+		cursor: pointer;
+		p {
+	  	margin: 0px;
+		}
+		@media all and (min-width: 62em) {
+			font-size: 1.2vmin;
+		}
   }
 }

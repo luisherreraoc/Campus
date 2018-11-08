@@ -3,105 +3,108 @@
 .card {
   width: 100%;
   text-align: center;
-	border: 1px solid rgb(190,190,190);
-	border-radius: 15px;
-	overflow: hidden;
+  border: 1px solid rgb(190,190,190);
+  border-radius: 15px;
+  overflow: hidden;
   .card__photo {
   	display: flex;
-	  justify-content: center;
-		width: 100%;
-		.card__photo__img {
-			height: 10vmax;
-		}
+    justify-content: center;
+  	width: 100%;
+	.card__photo__img {
+      height: 10vmax;
+	}
   }
   .card__text {
 	padding: 0vmin 1vmin;
-	  .card__text__title {
-			min-height: 9vmax;
-			display: flex;
-			align-items: center;
-			h2 {
-				font-size: 2.1vw;
+	
+	.card__text__title {
+	  min-height: 9vmax;
+	  display: flex;
+	  align-items: center;
+	  h2 {
+	    font-size: 2.1vw;
+ 	    @media all and (min-width: 32em) {
+		  font-size: 1.2vw;
+	    }
 
-				@media all and (min-width: 32em) {
-				font-size: 1.2vw;
-				}
+	    @media all and (min-width: 78em) {
+		  font-size: 0.9vw;
+	    }
+	  }
+	}
+	  
+	.card__text__submit {
+	  padding: 1vmin;
+	  border-radius: 20px;
+	  font-size: 1.7vmin;
+	  width: 15vmin;
+	  background-color: $color-cursos;
+	  color: white;
+	  border-color: transparent;
+	  cursor: pointer;
+	  @media all and (min-width: 42em) {
+	    padding: 0.7vmin;
+		font-size: 1.2vmin;
+		width: 13vmin;
+	  }
+	}
+	  
+	.card__text__button {
+	  display: flex;
+	  margin: 1vmin 0.5vmin;
+	  cursor: pointer;
+	  i {
+		border: 0.3vmin solid rgb(53, 206, 99);
+		border-radius: 20px;
+		padding: 0.3vmin;
+		font-size: 3vmin;
+		height: 4.4vmin;
+		color: rgb(53, 206, 99);
+		@media all and (min-width: 42em) {
+		  border-width: 0.1vmin;
+		  font-size: 1.5vmin;
+		  height: 2.4vmin;
+		}
+	  }		
+	  p {
+		margin: 0.2vmin auto;
+		font-size: 1.7vmin;
+		text-align: left;
+		max-width: 65%;
+		@media all and (min-width: 42em) {
+		  font-size: 1vmin;
+		}
+	  }
+	}
 
-				@media all and (min-width: 78em) {
-					font-size: 0.9vw;
-				}
-			}
-		}
-		.card__text__submit {
-			padding: 1vmin;
-			border-radius: 20px;
-			font-size: 1.7vmin;
-			width: 15vmin;
-			background-color: $color-cursos;
-			color: white;
-			border-color: transparent;
-			cursor: pointer;
+	.card__text__popover {
+	  font-size: 1.2vmin;
+	  font-weight: 500;
+	  margin: 10px;
+	}
 
-			@media all and (min-width: 42em) {
-				padding: 0.7vmin;
-				font-size: 1.2vmin;
-				width: 13vmin;
-			}
-		}
-		.card__text__button {
-			display: flex;
-			margin: 1vmin 0.5vmin;
-			cursor: pointer;
-			i {
-				border: 0.3vmin solid rgb(53, 206, 99);
-				border-radius: 20px;
-				padding: 0.3vmin;
-				font-size: 3vmin;
-				height: 4.4vmin;
-				color: rgb(53, 206, 99);
-
-				@media all and (min-width: 42em) {
-					border-width: 0.1vmin;
-					font-size: 1.5vmin;
-					height: 2.4vmin;
-				}
-			}		
-			p {
-				margin: 0.2vmin auto;
-				font-size: 1.7vmin;
-				text-align: left;
-				max-width: 65%;
-
-				@media all and (min-width: 42em) {
-					font-size: 1vmin;
-				}
-			}
-		}
-
-		.card__text__popover {
-			font-size: 1.2vmin;
-			font-weight: 500;
-			margin: 10px;
-		}
-
-		.activate {
-			background-color: $color-cursos
-		}
-		.initiate {
-			background-color: rgb(231, 184, 31);
-		}
-		.enter {
-			background-color: rgb(53, 206, 99);
-		}
-		.expired {
-			background-color: rgb(180, 30, 13);
-		}
-		.terminated {
-			background-color: rgb(128, 13, 5);
-		}
+	.activate {
+	  background-color: $color-cursos
+	}
+	
+	.initiate {
+	  background-color: rgb(231, 184, 31);
+	}
+	
+	.enter {
+	  background-color: rgb(53, 206, 99);
+	}
+	
+	.expired {
+	  background-color: rgb(180, 30, 13);
+	}
+	
+	.terminated {
+	  background-color: rgb(128, 13, 5);
+	}
   }
 }
 
 .inactive {
-	filter: opacity(0.3);
+  filter: opacity(0.3);
 }
