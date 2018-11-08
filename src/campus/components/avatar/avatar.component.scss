@@ -15,18 +15,21 @@
 
 		.user__avatar__img
 		{
-			width: 160px;
-		    height: 160px;
+			width: 18vmin;
+		    height: 18vmin;
 		    border-radius: 50%;
 			overflow: hidden;
+			img {
+				width: 100%;
+			}
 		}
 
 		.user__avatar__button
 		{
 			background-color: rgba(0, 0, 0, 0.2);
 		    border-radius: 50%;
-		    width: 40px;
-		    height: 40px;
+		    width: 6vmin;
+		    height: 6vmin;
 		    position: absolute;
 		    display: block;
 		    right: 0px;
@@ -36,7 +39,7 @@
 		    img
 		    {
 		    	margin: 0px auto;
-			    width: 20px;
+			    width: 50%;
 			    display: inherit;
 			    position: relative;
 			    top: 8px;
@@ -46,7 +49,7 @@
 
 	.user__username {
 		color: white;
-    	font-size: 1.7vmin;
+    	font-size: 2.5vmin;
     	padding-top: 2.5vmin;
 	}
 
