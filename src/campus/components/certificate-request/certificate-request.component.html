@@ -1,4 +1,14 @@
-<mat-icon (click)="close()">close</mat-icon>
-<h1>SOLICITAR CERTIFICADO</h1>
-<mk-form (onEnter)="falseClick()" name="certificate-request"></mk-form>
-<button #button class="btn" (click)="send()">SOLICITAR</button>
+<div class="request">
+    <div class="request__header">
+        <mat-icon (click)="close()">close</mat-icon>
+        <h1>SOLICITAR CERTIFICADO</h1>    
+    </div>
+
+    <div class="request__form">
+        <mk-form (onEnter)="falseClick()" name="certificate-request"></mk-form>
+    </div>
+
+    <div class="request__button">
+        <p (click)="send()">SOLICITAR CERTIFICADO</p>    
+    </div>    
+</div>
