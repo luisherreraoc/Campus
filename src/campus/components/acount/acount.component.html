@@ -1,9 +1,12 @@
 <div class="account">
     <h1>MI CUENTA</h1>
 
-    <mk-form (onEnter)="falseClick()" *ngIf="_ids" name="user" [only]="_onl1" [ids]="_ids"></mk-form>
-    <mk-form (onEnter)="falseClick()" *ngIf="_ids" name="user" [only]="_onl3" [ids]="_ids"></mk-form>
-    <mk-form (onEnter)="falseClick()" *ngIf="_ids" name="user" cols="2" [only]="_onl2" [ids]="_ids"></mk-form>
+    <div class="forms_container">
+        <mk-form (onEnter)="falseClick()" *ngIf="_ids" name="user" [only]="_onl1" [ids]="_ids"></mk-form>
+        <mk-form (onEnter)="falseClick()" *ngIf="_ids" name="user" [only]="_onl3" [ids]="_ids"></mk-form>
+        <mk-form (onEnter)="falseClick()" *ngIf="_ids" name="user" cols="2" [only]="_onl2" [ids]="_ids"></mk-form>        
+    </div>
+
 
     <div class="intereses">
         <p class="intereses__header">Especializaciones de interés</p>
