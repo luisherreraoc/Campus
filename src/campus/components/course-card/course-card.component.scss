@@ -12,7 +12,13 @@
     justify-content: center;
   	width: 100%;
 		.card__photo__img {
-      height: 10vmax;
+			height: 13vmax;
+			@media all and (min-width: 54em) {
+			  height: 11vmax;
+			}
+			@media all and (min-width: 84em) {
+			  height: 9vmax;
+			}
 		}
 	}
 	
