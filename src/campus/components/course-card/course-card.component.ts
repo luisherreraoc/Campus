@@ -26,6 +26,7 @@ export class CourseCardComponent
 		this._code = c.license ? c.license.code : null;
 		this._state = c.license ? c.license.status : null;
 		this._entidad_id = c.certifying_entity ? c.certifying_entity.ce_id : null;
+		this._expiryDate = c.license ? c.license.deadline : null;
 	}
 	@Output() iniciar = new EventEmitter<any>();
 
@@ -38,6 +39,7 @@ export class CourseCardComponent
 	private _state: string;
 	private _ids: any;
 	private _entidad_id : any;
+	private _expiryDate : any;
 	
 	private _form : string;
 	private _user_previous_info: any;
