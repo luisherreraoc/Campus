@@ -72,7 +72,7 @@
             { "value": "Licenciado de la salud", "text": "Licenciado de la salud" },
             { "value": "Enfermero", "text": "Enfermero" }
         ],
-        "bind":"job"
+        "bind": "job"
     },
     {
         "key": "registro_especialization",
@@ -83,7 +83,8 @@
         "type": "select-list-multiple",
         "maxlength": "120",
         "options" : [],
-        "scrollbar": true
+        "scrollbar": true,
+        "bind": "especialization"
     },
     {
         "key": "registro_college",
@@ -116,7 +117,8 @@
             { "value": "Consejo Médico de la Provincia de Santiago del Estero ", "text": "Consejo Médico de la Provincia de Santiago del Estero " },
             { "value": "Sociedad Argentina de Diabetes", "text": "Sociedad Argentina de Diabetes" }
         ],
-        "scrollbar": true
+        "scrollbar": true,
+        "bind": "college"
     },
     {
         "key": "registro_accepted_terms",
@@ -151,7 +153,8 @@
         "type": "select",
         "maxlength": "120",
         "options" : [],
-        "multiple":true
+        "multiple":true,
+        "bind": "especialization"
     },
     {
         "key": "registro_college_2",
@@ -183,6 +186,7 @@
             { "value": "Colegio de Médicos de la Provincia de Santa Fe ", "text": "Colegio de Médicos de la Provincia de Santa Fe " },
             { "value": "Consejo Médico de la Provincia de Santiago del Estero ", "text": "Consejo Médico de la Provincia de Santiago del Estero " },
             { "value": "Sociedad Argentina de Diabetes", "text": "Sociedad Argentina de Diabetes" }
-        ]
+        ],
+        "bind": "college"
     }
 ]
