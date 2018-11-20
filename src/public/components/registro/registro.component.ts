@@ -220,6 +220,18 @@ export class RegistroComponent
                 });
             }
 
+            if ( this._step == 3 ) {
+
+                this._fs.getFormQuestions('registro').map( (q:any) =>
+                {
+                    if(q.key == 'registro_college')
+                    {
+
+                        q.value = 'Sin colegio';
+                    }
+                });
+            } 
+
             if ( this._step == 4 )
             {
                 let job:any = this._form.find('registro_job').value || 'Médico';
@@ -231,6 +243,11 @@ export class RegistroComponent
                         q.options = especialidad[job.value];
 
                         this._question = q;
+                    }
+
+                    if(q.key == 'registro_college_2') 
+                    {
+                        q.value = this._form.find('registro_college').value.value;
                     }
                 });
             }
