@@ -1,34 +1,59 @@
-:host
-{
-	width: 70%;
-	height: 200px;
+@import '~scss/abstracts/variables';
 
-	display: inline-block;
+.cert-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 28vmin;
+  border: 1px solid rgb(190,190,190);
+  border-radius: 25px;
+  overflow: hidden;
 
-	.left
-	{
-		max-width: 30%;
-    	float: left;
+  .cert-card__photo {
+		.cert-card__photo__img {
+			height: 13vmax;
+			@media all and (min-width: 54em) {
+			  height: 11vmax;
+			}
+			@media all and (min-width: 84em) {
+			  height: 9vmax;
+			}
+		}
+  }
 
-    	border-radius: 15px;
-    	overflow: hidden;
+  .cert-card__title {
+		display: flex;
+    align-items: center;
+		padding: 0vmin 1vmin;
+    min-height: 8vmax;
+		text-align: center;
+		h2 {
+	    font-size: 2.1vw;
+ 	    @media all and (min-width: 32em) {
+		  font-size: 1.2vw;
+	    }
+	    @media all and (min-width: 84em) {
+		  font-size: 0.9vw;
+			}
+		}
+  }
 
-    	img
-    	{
-    		max-width: 100%;
-    	}
-	}
-
-	.right
-	{
-		max-width: 60%;
-    	float: right;
-
-    	.btn-registration
-    	{
-    		width: 120px;
-    		height: 50px;
-    		font-size: 1.7em;
-    	}
-	}
+  .cert-card__button {
+		padding: 1vmin;
+		margin-bottom: 2vh;
+		border-radius: 20px;
+		font-size: 0.8vmax;
+		width: fit-content;
+		background-color: $color-certificaciones;
+		color: white;
+		border-color: transparent;
+		cursor: pointer;
+		p {
+	  	margin: 0px;
+		}
+		@media all and (min-width: 93em) {
+			font-size: 1.2vmin;
+		}
+  }
 }

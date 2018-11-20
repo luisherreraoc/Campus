@@ -1,8 +1,17 @@
 [
 	
 	{
-	    "key": "username",
-	    "label": "Nombre y Appellido",
+	    "key": "nombre",
+	    "label": "Nombre",
+	    "value": "",
+	    "required": true,
+	    "order": 1,
+	    "maxlength": "200",
+	    "type": "text"
+	},
+	{
+	    "key": "apellido1",
+	    "label": "Apellido",
 	    "value": "",
 	    "required": true,
 	    "order": 1,
@@ -10,13 +19,40 @@
 	    "type": "text"
     },
     {
-	    "key": "email",
+	    "key": "mail",
 	    "label": "E-mail",
 	    "value": "",
 	    "required": true,
 	    "order": 2,
 	    "maxlength": "80",
 	    "type": "email"
+	},
+	{
+	    "key": "dni_nie",
+	    "label": "DNI",
+	    "value": "",
+	    "required": true,
+	    "order": 3,
+	    "maxlength": "200",
+	    "type": "text"
+	},
+	{
+	    "key": "telefono",
+	    "label": "Teléfono",
+	    "value": "",
+	    "required": true,
+	    "order": 4,
+	    "maxlength": "200",
+	    "type": "text"
+	},
+	{
+	    "key": "pais",
+	    "label": "País",
+	    "value": "",
+	    "required": true,
+	    "order": 5,
+	    "maxlength": "200",
+	    "type": "text"
     }
 	
 ]

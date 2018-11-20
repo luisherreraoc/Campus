@@ -1,7 +1,10 @@
-import { Component, Input, Output, EventEmitter, ViewChild, ElementRef }                         					from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, 
+	ElementRef }			                         					from '@angular/core';
 
-import { Logger, MkFormService, MkForm }														from 'mk';
-import { Router, ActivatedRoute } 																from '@angular/router';
+import { Loader, Logger, MkFormService, MkForm }						from 'mk';
+import { Router, ActivatedRoute } 										from '@angular/router';
+
+import { UserService } 													from '../../services/user.service';
 
 import { Observable, BehaviorSubject, Subscription } 					from "rxjs/Rx";
 
@@ -10,7 +13,7 @@ import { Producto, ProductoInterface }				    				from '../../models/producto.mo
 import { Http }															from '@angular/http';
 
 import { environment }													from '../../../environments/environment';
-import { CertificatesService } from '../../services/certificates.service';
+import { CertificatesService } 											from '../../services/certificates.service';
 		
 
 @Component({
@@ -24,19 +27,42 @@ export class CertificateRequestComponent
 	@Output ('close') _close: EventEmitter<null> = new EventEmitter<null>()
 	@Output ('submit') _submit: EventEmitter<null> = new EventEmitter<null>()
 
+	@Input('code') set code ( c : any ) {
+		this.userCode = c;
+	}
+
 	private _form: MkForm;
 	private _subscriptions: Array<Subscription>;
+	private userCode : any;
+	private _userInfo : any;
 
-	public constructor ( private logger: Logger, private _route: ActivatedRoute, private _fs: MkFormService, private _http: Http, private _cfs: CertificatesService ) 
+	public constructor ( 
+		private loader: Loader, 
+		private logger: Logger, 
+		private _route: ActivatedRoute, 
+		private _fs: MkFormService, 
+		private _http: Http, 
+		private _cfs: CertificatesService,
+		private _us: UserService 
+	)
+
 	{ 
 		logger.log('CERTIFICATE REQUEST COMPONENT');
 	}
 
 	public ngOnInit () : void
 	{
-		this._subscriptions = [	
-			this.subscribeQuestionForm()
-		];
+		this._us.getUserData(this.userCode)
+		.subscribe( info => {
+			this._userInfo = info;
+		},
+		(err) => {},
+		() => {
+			this._subscriptions = [	
+				this.subscribeQuestionForm()
+			];
+			this.loader.dismiss('form-request');
+		});
 	}
 
 	private falseClick() {
@@ -66,7 +92,8 @@ export class CertificateRequestComponent
         {
             if (form) 
             { 
-                this._form = form;
+				this._form = form;
+				this._form.formGroup.patchValue(this._userInfo);
             }
         });
     }

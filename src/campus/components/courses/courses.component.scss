@@ -1,7 +1,12 @@
 @import '~scss/abstracts/variables';
 
 .courses {
-  width: 56vmax;
+  margin: auto;
+  width: 42vmax;
+  
+  @media all and (min-width: 54em) {
+    width: 52vmax;
+  }
 }
   .courses__header {
     color: $color-cursos;
@@ -34,14 +39,28 @@
         transition: transform 1.2s, -webkit-transform 1.2s;
 
         .courses__wrapper__carousel__flow__content {
+          width: 50%;
           padding: 0px 5px;
+          
+          @media all and (min-width: 54em) {
+            width: 33.3%
+          }
+
+          @media all and (min-width: 84em) {
+            width: 25%;
+          }
         }
       }
     }
 
   .courses_progress {
-    width: 56vmax;
+    margin: auto;
+    width: 42vmax;
     height: 0.6vmin;
+    
+    @media all and (min-width: 54em) {
+      width: 52vmax;
+    }
 
     .courses_progress__bar {
       height: 100%;

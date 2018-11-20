@@ -1,82 +1,113 @@
 @import '~scss/abstracts/variables';
 
 .card {
-  width: 22vmin;
+  width: 100%;
   text-align: center;
-	border: 1px solid rgb(190,190,190);
-	border-radius: 15px;
-	overflow: hidden;
-  .card__photo {
+  border: 1px solid rgb(190,190,190);
+  border-radius: 15px;
+  overflow: hidden;
+	
+	.card__photo {
   	display: flex;
-	  justify-content: center;
-		width: 21vmin;
+    justify-content: center;
+  	width: 100%;
 		.card__photo__img {
-			height: 18vmin;
+			height: 13vmax;
+			@media all and (min-width: 54em) {
+			  height: 11vmax;
+			}
+			@media all and (min-width: 84em) {
+			  height: 9vmax;
+			}
 		}
-  }
+	}
+	
   .card__text {
 	padding: 0vmin 1vmin;
-	  .card__text__title {
-			height: 10vmin;
-			display: flex;
-			align-items: center;
-			h2 {
-				font-size: 1.3vmin;
-			}
-		}
+	
+		.card__text__title {
+	  	min-height: 9vh;
+	  	display: flex;
+	  	align-items: center;
+	  	h2 {
+				font-size: 2.1vw;
+				padding: 0.5vh 0px;
+ 	  	  @media all and (min-width: 32em) {
+		  		font-size: 1.2vw;
+	    	}
+	    	@media all and (min-width: 78em) {
+				  font-size: 0.9vw;
+	    	}
+	  	}
+		}	
+	  
 		.card__text__submit {
-			padding: 1vmin;
-      border-radius: 20px;
-    	font-size: 1.2vmin;
-			width: 13vmin;
-			background-color: $color-cursos;
-			color: white;
-			border-color: transparent;
-			cursor: pointer;
+	  	padding: 1vmin;
+	  	border-radius: 20px;
+	  	font-size: 1.7vmin;
+	  	width: 15vmin;
+	  	background-color: $color-cursos;
+	  	color: white;
+	  	border-color: transparent;
+	  	cursor: pointer;
+	  	@media all and (min-width: 42em) {
+	  	  padding: 0.7vmin;
+				font-size: 1.2vmin;
+				width: 13vmin;
+	  	}
 		}
+	  
 		.card__text__button {
-			display: flex;
-			margin: 1.5vmin;
-			cursor: pointer;
-			i {
-				border: 0.1vmin solid rgb(53, 206, 99);
-				border-radius: 20px;
-				padding: 0.3vmin;
-				font-size: 1.5vmin;
-				height: 2.4vmin;
+	  	display: flex;
+	  	margin: 1vmin 0.5vmin;
+	  	cursor: pointer;
+	  	i {
+				border: 0.1vh solid rgb(53, 206, 99);
+				border-radius: 35px;
+				padding: 0.1vh;
+				font-size: 2vh;
+				height: 4.4vmin;
 				color: rgb(53, 206, 99);
-			}
-			p {
-				padding-left: 1.5vmin;
-				padding-top: 0.3vmin;
-				font-size: 1vmin;
-			}
+			  @media all and (min-width: 42em) {
+					height: 2.4vmin;
+				}
+	  	}		
+	  	p {
+				margin: 0.2vmin auto;
+				font-size: 1.2vh;
+				text-align: left;
+				max-width: 65%;
+	  	}
 		}
 
 		.card__text__popover {
-			font-size: 1.2vmin;
-			font-weight: 500;
-			margin: 10px;
+		  font-size: 1.2vmin;
+		  font-weight: 500;
+		  margin: 10px;
 		}
 
 		.activate {
-			background-color: $color-cursos
+		  background-color: $color-cursos
 		}
+	
 		.initiate {
-			background-color: rgb(231, 184, 31);
+		  background-color: rgb(231, 184, 31);
 		}
+	
 		.enter {
-			background-color: rgb(53, 206, 99);
+		  background-color: rgb(53, 206, 99);
 		}
+	
 		.expired {
-			background-color: rgb(180, 30, 13);
+		  background-color: rgb(180, 30, 13);
 		}
+	
 		.terminated {
-			background-color: rgb(128, 13, 5);
+		  background-color: rgb(128, 13, 5);
 		}
   }
 }
 
 .inactive {
-	filter: opacity(0.3);
+  filter: opacity(0.3);
 }

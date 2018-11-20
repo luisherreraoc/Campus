@@ -8,30 +8,41 @@
 
   div[cols="col-6"]:last-child {
 	width: 78%;
-  }
+	}
+	
+	.account {
+		padding: 5vh 7vw;
+	}
 
   h1	{
 	color: $color-cuenta;
 	}
 
-	@media (max-width: 1199.98px) and (min-width: 767.98px) {
-		.mail-wrapper {
-			max-width: 54rem;
-		}		
+	.forms_container {
+		label {
+			font-size: 2vh;
+		}
+		input {
+			font-size: 3vh;
+		}
+
+		@media (min-width: 767.98px) and (max-width: 1199.98px) {
+			.mail-wrapper {
+				max-width: 54rem;
+			}		
+		}
 	}
 
-
   .intereses__header {
-	  font-size: 2.13rem;
+	  font-size: 2vh;
 	  font-weight: 300;
   }
 
   .intereses__field {
-    width: 100%;
 	  border-bottom: 1px solid grey;
 	  .intereses__field__text {
 	    padding: 0.5vmin;
-		  font-size: 2rem;
+		  font-size: 2.3vh;
 		  color: #515151;
 	  }
   }

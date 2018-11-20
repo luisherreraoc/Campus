@@ -28,7 +28,14 @@
 
 		<popover-content #estadoLicencia
 						 [animation]="true">
-			<p class="card__text__popover">Estado licencia: {{ _state }}</p>
+			<div *ngIf="_state !== expired">
+				<p class="card__text__popover">Válido hasta: {{ _expiryDate }}</p>				
+			</div>
+
+			<div *ngIf="_state == expired">
+				<p class="card__text__popover">La licencia ha caducado</p>				
+			</div>
+
 		</popover-content>
 
 		<div class="card__text__button">

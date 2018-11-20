@@ -47,6 +47,7 @@ export class AcountComponent
 	private currentUser : Object;
 
 	private accountDetails : Object;
+	private initDetails : Array<string>;
 
 	private inactive : boolean;
 
@@ -95,7 +96,7 @@ export class AcountComponent
 	{
 		let source: User = this._us.users.getValue().find( (usr:User) => usr['token'] === this._as.getToken() );
 		let obs: Observable<any> = source ? Observable.of(source) : this._us.get(this._as.getToken());
-		
+
 		this._loader.show('acount');
 
 		this._subscriptions = [ this.subscribeUser(), this.subscriptions(obs) ];
@@ -118,11 +119,9 @@ export class AcountComponent
 					'oauth_user_email' : user.oauth_user_email,
 					'user_details_prefix' : user.user_details_prefix,
 					'oauth_user_phone' : user.oauth_user_phone,
-					'oauth_user_password' : '',
-					'user_details_job' : user.user_details_job,
-					'user_details_especialization' : user.user_details_especialization,
-					'user_details_college' : user.user_details_college
-				}
+					'oauth_user_password' : ''
+				};
+				this.initDetails = Object.values(this.accountDetails);
 			}
 		});
 	}
@@ -157,16 +156,22 @@ export class AcountComponent
 			}
         },
         (error) => {},
-        () => this._loader.dismiss('acount'));
+        () => {
+			this._loader.dismiss('acount')
+		});
 	}
 
 	private getFieldChange (groupControls) {
 
 		let controls : Array<string> = Object.keys(groupControls);
 
-		let initDetails : Array<string> = Object.values(this.accountDetails);
+		for (let det in this.initDetails) {
+			if (this.initDetails[det] === undefined) {
+				this.initDetails[det] = '';
+			}
+		};
 
-		let arr = []
+		let arr = [];
 
 		for (let cont in controls) {			
 			groupControls[controls[cont]].valueChanges
@@ -177,9 +182,9 @@ export class AcountComponent
 				for (let control in groupControls) {
 					let value = groupControls[control].value;
 					currentDetails.push(value)
-				}
+				};
 
-				if (!this.arraysEqual(currentDetails, initDetails)) {
+				if (!this.arraysEqual(currentDetails, this.initDetails)) {
 					this.activateButton();
 				} else {
 					this.disableButton();
@@ -257,8 +262,24 @@ export class AcountComponent
 		let data = {
 			'first_name': aux.oauth_user_first_name,
 			'last_name': aux.oauth_user_last_name,
-			'phone': aux.oauth_user_phone
-		}
+			'dni' : aux.oauth_user_dni,
+			'email' : aux.oauth_user_email,
+			'phone': aux.oauth_user_phone,
+			'details': [{key: 'prefix', value: aux.user_details_prefix}]
+		};
+
+		let updatedDetails = {
+			'oauth_user_first_name' : aux.oauth_user_first_name,
+			'oauth_user_last_name' : aux.oauth_user_last_name,
+			'oauth_user_dni' : aux.oauth_user_dni,
+			'oauth_user_email' : aux.oauth_user_email,
+			'user_details_prefix' : aux.user_details_prefix,
+			'oauth_user_phone' : aux.oauth_user_phone,
+			'oauth_user_password' : ''
+		};
+
+		this.initDetails = Object.values(updatedDetails);
+
 		this._us.update(data)
         .subscribe( (response: any ) =>
         {
@@ -267,7 +288,9 @@ export class AcountComponent
             })
             
             user.oauth_user_first_name = aux.oauth_user_first_name;
-            user.oauth_user_last_name = aux.oauth_user_last_name;
+			user.oauth_user_last_name = aux.oauth_user_last_name;
+			user.oauth_user_dni = aux.oauth_user_dni;
+			user.oauth_user_email = aux.oauth_user_email;
             user.oauth_user_phone = aux.oath_user_phone;
             user.user_details_prefix = aux.user_details_prefix;
 		},
@@ -279,7 +302,8 @@ export class AcountComponent
 				img: '',
 				btn: 'VOLVER',
 				callback: this.goToAccount
-			}
+			};
+			this._loader.dismiss('updating')
         },
         () => {
 			this._sent = true;

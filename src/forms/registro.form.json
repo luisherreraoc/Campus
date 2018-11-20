@@ -10,7 +10,7 @@
     },
     {
         "key": "registro_first_name",
-        "label": "Nombre de usuario",
+        "label": "Nombre",
         "value": "",
         "required": true,
         "order": 2,
@@ -19,7 +19,7 @@
     },
     {
         "key": "registro_last_name",
-        "label": "Apellidos de usuario",
+        "label": "Apellido",
         "value": "",
         "required": true,
         "order": 2,
@@ -61,7 +61,7 @@
     },
     {
         "key": "registro_job",
-        "label": "Seleciona tu profesión",
+        "label": "Selecciona tu profesión",
         "value": "",
         "required": true,
         "order": 5,
@@ -71,35 +71,29 @@
             { "value": "Médico", "text": "Médico" },
             { "value": "Licenciado de la salud", "text": "Licenciado de la salud" },
             { "value": "Enfermero", "text": "Enfermero" }
-        ]
+        ],
+        "bind":"job"
     },
     {
         "key": "registro_especialization",
-        "label": "Seleciona tu espacialización/es",
+        "label": "Selecciona tu especialización/es",
         "value": "",
         "required": true,
         "order": 6,
         "type": "select-list-multiple",
         "maxlength": "120",
-        "options" : [
-            { "value": "Anestesiología", "text": "Anestesiología" },
-            { "value": "Cardiología", "text": "Cardiología" },
-            { "value": "Cirugía", "text": "Cirugía" },
-            { "value": "Emergentología", "text": "Emergentología" },
-            { "value": "Gastroenterología", "text": "Gastroenterología" },
-            { "value": "Generalista", "text": "Generalista" },
-            { "value": "Anestesiologia", "text": "Anestesiologia" }
-        ],
+        "options" : [],
         "scrollbar": true
     },
     {
         "key": "registro_college",
-        "label": "Seleciona si pertenece a algún Colegio de médicos o Sociedad",
+        "label": "Selecciona si pertenece a algún Colegio de Médicos o Sociedad",
         "value": "",
         "order": 7,
-        "type": "select-list-multiple",
+        "type": "select-list",
         "maxlength": "120",
         "options" : [
+            { "value": "Sin colegio", "text": "Sin colegio" },
             { "value": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito I", "text": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito I" },
             { "value": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito II", "text": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito II" },
             { "value": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito III", "text": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito III" },
@@ -122,7 +116,6 @@
             { "value": "Consejo Médico de la Provincia de Santiago del Estero ", "text": "Consejo Médico de la Provincia de Santiago del Estero " },
             { "value": "Sociedad Argentina de Diabetes", "text": "Sociedad Argentina de Diabetes" }
         ],
-        "bind":"collage",
         "scrollbar": true
     },
     {
@@ -134,32 +127,41 @@
         "maxlength": "80",
         "type": "checkbox"
     },
-     {
-        "key": "registro_especialization_2",
-        "label": "Seleciona tu espacialización/es",
+    {
+        "key": "registro_job_2",
+        "label": "Selecciona tu profesión",
         "value": "",
         "required": true,
-        "order": 6,
-        "type": "select",
-        "maxlength": "120",
-       "options" : [
-            { "value": "Anestesiología", "text": "Anestesiología" },
-            { "value": "Cardiología", "text": "Cardiología" },
-            { "value": "Cirugía", "text": "Cirugía" },
-            { "value": "Emergentología", "text": "Emergentología" },
-            { "value": "Gatroenterología", "text": "Gatroenterología" },
-            { "value": "Generalista", "text": "Generalista" },
-            { "value": "Anestesiologia", "text": "Anestesiologia" }
-        ]
-    },
-    {
-        "key": "registro_college_2",
-        "label": "Seleciona si pertenece a algún Colegio de médicos o Sociedad",
-        "value": "",
-        "order": 7,
+        "order": 9,
         "type": "select",
         "maxlength": "120",
         "options" : [
+            { "value": "Médico", "text": "Médico" },
+            { "value": "Licenciado de la salud", "text": "Licenciado de la salud" },
+            { "value": "Enfermero", "text": "Enfermero" }
+        ],
+        "bind": "job"
+    },
+    {
+        "key": "registro_especialization_2",
+        "label": "Selecciona tu especialización/es",
+        "value": "",
+        "required": true,
+        "order": 10,
+        "type": "select",
+        "maxlength": "120",
+        "options" : [],
+        "multiple":true
+    },
+    {
+        "key": "registro_college_2",
+        "label": "Selecciona si pertenece a algún Colegio de Médicos o Sociedad",
+        "value": "",
+        "order": 11,
+        "type": "select",
+        "maxlength": "120",
+        "options" : [
+            { "value": "Sin colegio", "text":"Sin colegio" },
             { "value": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito I", "text": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito I" },
             { "value": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito II", "text": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito II" },
             { "value": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito III", "text": "El Colegio de Medicos de la Provincia de Buenos Aires - Distrito III" },
@@ -181,8 +183,6 @@
             { "value": "Colegio de Médicos de la Provincia de Santa Fe ", "text": "Colegio de Médicos de la Provincia de Santa Fe " },
             { "value": "Consejo Médico de la Provincia de Santiago del Estero ", "text": "Consejo Médico de la Provincia de Santiago del Estero " },
             { "value": "Sociedad Argentina de Diabetes", "text": "Sociedad Argentina de Diabetes" }
-        ],
-        "multiple": true,
-        "bind":"collage"
+        ]
     }
 ]

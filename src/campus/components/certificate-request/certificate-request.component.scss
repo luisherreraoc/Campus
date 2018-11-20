@@ -1,16 +1,53 @@
 @import '~scss/abstracts/variables';
 
-:host ::ng-deep
-{
-	position: absolute;
-	background-color: white;
-	top: 0px;
-	left: 0px;
-	right: 0px;
-	bottom: 0px;
+:host ::ng-deep {
+  position: absolute;
+  background-color: white;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
 
-	h1
-	{
+  .request {
+    margin: 10vh 10vw;
+
+	.request__header {
+	  display: flex;
+	  flex-direction: row-reverse;
+	  justify-content: space-between;
+	  padding-bottom: 3vh;
+      h1 {
 		color: $color-certificaciones;
+		font-size: 2.5vw;
+		@media all and (min-width: 62em) {
+		  font-size: 1.8vw;
+		}
+	  }
 	}
+
+	.request__form {
+		padding-bottom: 3vh;
+		label {
+			font-size: 2vh;
+		}
+		input {
+			font-size: 3vh;
+		}
+	}
+
+	.request__button {
+	  padding: 1.3vmin;
+	  margin-bottom: 2vh;
+	  border-radius: 35px;
+	  font-size: 1vw;
+	  width: fit-content;
+	  background-color: #23B55E;
+	  color: white;
+	  border-color: transparent;
+	  cursor: pointer;
+	  p {
+		margin: 0px;
+	  }
+	}
+  }
 }

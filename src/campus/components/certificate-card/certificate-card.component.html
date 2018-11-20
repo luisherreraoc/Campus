@@ -1,9 +1,14 @@
-<div class="left">	
-	<img src="{{_img}}">
-</div>
+<div class="cert-card">
+	<div class="cert-card__photo">
+		<img class="cert-card__photo__img" src="{{ _img }}">
+	</div>
 
-<div class="right">
-	<h1>{{_title}}</h1>
-	<button class="btn" (click)="go()">SOLICITAR CERTIFICADO</button>
-	<span>Compartir</span><span><img src="/assets/img/icon-share.svg"/></span><span>in</span><span>f</span>
+	<div class="cert-card__title">
+		<h2>{{ _title }}</h2>
+	</div>
+
+	<div class="cert-card__button"
+		 (click)="go()">
+		<p>SOLICITAR CERTIFICADO</p>
+	</div>
 </div>

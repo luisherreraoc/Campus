@@ -1,42 +1,52 @@
-<h1>MI CUENTA</h1>
+<div class="account">
+    <h1>MI CUENTA</h1>
 
-<mk-form (onEnter)="falseClick()" *ngIf="_ids" name="user" [only]="_onl1" [ids]="_ids"></mk-form>
-<mk-form (onEnter)="falseClick()" *ngIf="_ids" name="user" [only]="_onl3" [ids]="_ids"></mk-form>
-<mk-form (onEnter)="falseClick()" *ngIf="_ids" name="user" cols="2" [only]="_onl2" [ids]="_ids"></mk-form>
+    <div class="forms_container">
+        <mk-form (onEnter)="falseClick()" *ngIf="_ids" name="user" [only]="_onl1" [ids]="_ids"></mk-form>
+        <mk-form (onEnter)="falseClick()" *ngIf="_ids" name="user" [only]="_onl3" [ids]="_ids"></mk-form>
+        <mk-form (onEnter)="falseClick()" *ngIf="_ids" name="user" cols="2" [only]="_onl2" [ids]="_ids"></mk-form>        
+    </div>
 
-<div class="intereses">
-    <p class="intereses__header">Especializaciones de interés</p>
 
-    <div class="intereses__field">
-        <p class="intereses__field__text">
-            {{ currentUser.user_details_job }} - 
-            {{ currentUser.user_details_especialization[0] }} - 
-            {{ currentUser.user_details_college[0] }}
-        </p>
+    <div class="intereses">
+        <p class="intereses__header">Especializaciones de interés</p>
+
+        <div class="intereses__field">
+            <p class="intereses__field__text">
+                <span>
+                    {{ currentUser.user_details_job }} 
+                </span>
+                <span>- </span>
+                <span
+                *ngFor="let esp of currentUser.user_details_especialization"> 
+                    {{ esp }}  -  
+                </span>
+                <span> 
+                    {{ currentUser.user_details_college }} 
+                </span>
+            </p>
+        </div>
+    </div>
+
+    <div class="dialog-button">
+        <p (click)="openFirstDialog()">ACTUALIZAR</p>
+    </div>
+
+    <div class="password-button">
+        <img src="{{_key}}"/>
+        <a routerLink="/campus/{{_pass_change}}" routerLinkActive="active"
+        class="password-button__text">
+            Cambiar contraseña
+        </a>
+    </div>
+
+    <div class="submit">
+        <button class="submit__button" #button (click)="send()" 
+                [disabled]="inactive">
+            ACEPTAR
+        </button>
     </div>
 </div>
-
-
-<div class="dialog-button">
-    <p (click)="openFirstDialog()">ACTUALIZAR</p>    
-</div>
-
-<div class="password-button">
-    <img src="{{_key}}"/>
-    <a routerLink="/campus/{{_pass_change}}" routerLinkActive="active"
-       class="password-button__text">
-        Cambiar contraseña
-    </a>
-</div>
-
-
-<div class="submit">
-    <button class="submit__button" #button (click)="send()" 
-            [disabled]="inactive">
-        ACEPTAR
-    </button>    
-</div>
-
 
 <cam-response *ngIf="_sent" [title]="_response_obj.title" [text]="_response_obj.text" 
               [btn]="_response_obj.btn" [img]="_response_obj.img" 

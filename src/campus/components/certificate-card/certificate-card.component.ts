@@ -17,8 +17,9 @@ export class CertificateCardComponent
 {
 	@Input('certificate') set certificate ( c: any )
 	{
-		this._id = c.producto_id;
-		this._title = c.producto_nombre;
+		this._id = c.id;
+		this._title = c.name;
+		this._img = this._suite + '/' + c.multimidia.default_image;
 		this._code = c.license.code;
 	}
 
@@ -36,12 +37,10 @@ export class CertificateCardComponent
 		logger.log('CERTIFICATE CARD COMPONENT');
 		this._suite = environment.suiteUrl;
 		//this._request = environment.pathCampus + '/' + environment.pathCertificateRequest;
-		this._img = '/assets/img/orla.png';
 	}
 
 	public ngOnInit () : void
 	{
-
 	}
 
 	private go () : void

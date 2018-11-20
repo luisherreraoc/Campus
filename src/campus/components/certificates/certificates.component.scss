@@ -1,10 +1,72 @@
 @import '~scss/abstracts/variables';
 
-:host ::ng-deep
-{
-	button 
-	{
-		color: white;
-		background-color: $color-certificaciones;
+.certificates {
+	margin: auto;
+	width: 42vmax;
+	
+	@media all and (min-width: 54em) {
+	  width: 52vmax;
 	}
-}
+  }
+	.certificates__header {
+	  color: $color-certificaciones;
+	  font-size: 3vmin;
+	  padding-bottom: 5vmin;
+	  padding-left: 2vmin;
+	}
+  
+	.certificates__wrapper {
+	  display: flex;
+	}
+  
+	  .certificates__wrapper__button {
+		margin: auto 0px;
+		color: $color-certificaciones;
+		cursor: pointer;
+	  }
+  
+	  .certificates__wrapper__button_inactive {
+		color: gray;
+	  }
+  
+	  .certificates__wrapper__carousel {
+		overflow: hidden;
+  
+		.certificates__wrapper__carousel__flow {
+		  width: 100%;
+		  display: flex;
+		  flex-direction: row;
+		  transition: transform 1.2s, -webkit-transform 1.2s;
+  
+		  .certificates__wrapper__carousel__flow__content {
+			width: 50%;
+			padding: 0px 5px;
+			
+			@media all and (min-width: 54em) {
+			  width: 33.3%
+			}
+  
+			@media all and (min-width: 84em) {
+			  width: 25%;
+			}
+		  }
+		}
+	  }
+
+	.certificates_progress {
+	  margin: auto;
+	  width: 42vmax;
+	  height: 0.6vmin;
+		
+	  @media all and (min-width: 54em) {
+	    width: 52vmax;
+	  }
+	
+	  .certificates_progress__bar {
+		height: 100%;
+		border-radius: 25px;
+		margin-top: 2vmin ;
+		background: linear-gradient(to right, lighten($color-certificaciones, 10), darken($color-certificaciones, 10));
+		transition: width 1.5s;
+	  }
+	}
