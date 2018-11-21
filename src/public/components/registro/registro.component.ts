@@ -138,7 +138,7 @@ export class RegistroComponent
             new Array("registro_job"),
             new Array("registro_especialization"),
             new Array("registro_college"),
-            new Array("registro_first_name", "registro_email", "registro_password", "registro_job_2", "registro_especialization_2", "registro_college_2")
+            new Array("registro_first_name", "registro_email", "registro_job_2", "registro_especialization_2", "registro_college_2")
         ];
         this._showIngresar = true;
         this._butonLabel = 'SIGUIENTE';
@@ -172,6 +172,23 @@ export class RegistroComponent
         this._subscriptions.length = 0;
     }
 
+    private onChanges () 
+    {
+        this._form_group.get('registro_job_2').valueChanges.subscribe((val) => {
+            this._fs.getFormQuestions('registro').map( (q:any) => {
+                if(q.key == 'registro_especialization_2') {
+                    q.options = especialidad[val];
+
+                    this._form_group.controls['registro_especialization_2'].setValue([]);
+
+                    let aux = this._steps[4].concat(new Array())
+
+                    this._steps[4] = aux;
+                };
+            });
+        });
+    }
+
     private subscribeQuestionForm () : Subscription
     {
         return this._fs.forms
@@ -183,6 +200,7 @@ export class RegistroComponent
                 this._form = form; 
                 this._form_group = this._form.formGroup;
                 this._form_group.reset();
+                this.onChanges();
             }
         });
     }
@@ -220,6 +238,18 @@ export class RegistroComponent
                 });
             }
 
+            if ( this._step == 3 ) {
+
+                this._fs.getFormQuestions('registro').map( (q:any) =>
+                {
+                    if(q.key == 'registro_college')
+                    {
+
+                        q.value = 'Sin colegio';
+                    }
+                });
+            } 
+
             if ( this._step == 4 )
             {
                 let job:any = this._form.find('registro_job').value || 'Médico';
@@ -229,8 +259,11 @@ export class RegistroComponent
                     if(q.key == 'registro_especialization_2')
                     {
                         q.options = especialidad[job.value];
+                    }
 
-                        this._question = q;
+                    if(q.key == 'registro_college_2') 
+                    {
+                        q.value = this._form.find('registro_college').value.value;
                     }
                 });
             }
