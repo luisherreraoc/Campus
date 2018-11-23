@@ -1,13 +1,13 @@
 // -- Angular imports -----------------------------------------------------------------------------------------
 import { Component, OnInit, Inject, ViewContainerRef, ViewChild, ElementRef }                         							from '@angular/core';
-import { AbstractControl, FormGroup }        									from '@angular/forms';
+import { AbstractControl, FormGroup, Validators }        									from '@angular/forms';
 import { Observable, BehaviorSubject, Subscription } 							from "rxjs/Rx"; 
 import { Http, Response, Headers, RequestOptions } 								from '@angular/http';
 import { Router } 																from '@angular/router';
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA}                               from '@angular/material';
 
-import { Logger, MkFormService, MkForm, Loader }								from 'mk';	
+import { Logger, MkFormService, MkForm, Loader, MkSelectValidator }								from 'mk';	
 
 import { RegistroService }                                                      from '../../services/registro.service';
 
@@ -176,15 +176,28 @@ export class RegistroComponent
     {
         this._form_group.get('registro_job_2').valueChanges.subscribe((val) => {
             this._fs.getFormQuestions('registro').map( (q:any) => {
+                let college_changed = this._form.find('registro_college');
+                let new_college = college_changed.value;
+        
+                let especialization_to_reset = this._form.find('registro_especialization_2');
+
                 if(q.key == 'registro_especialization_2') {
                     q.options = especialidad[val];
 
-                    this._form_group.controls['registro_especialization_2'].setValue([]);
+                    especialization_to_reset.setValue(null);
 
                     let aux = this._steps[4].concat(new Array())
 
                     this._steps[4] = aux;
                 };
+
+                if (q.key == 'registro_job_2') {
+                    q.value = val;
+                }
+
+                if (q.key == 'registro_college_2') {
+                    q.value = new_college;
+                }
             });
         });
     }
@@ -217,59 +230,61 @@ export class RegistroComponent
         let data: any;
         let len: number = this._steps.length - 1;
 
-        if ( this._step < len ) 
-        {
+        let control_job = this._form.find('registro_job');
+        let control_college = this._form.find('registro_college');
+
+        if ( this._step < len ) {
             this._step++;
             this._showIngresar = this._step >= 1 && this._step < len ? false : true;
             this._butonLabel = this._step === len ? 'REGISTRARSE' : 'SIGUIENTE';
 
-            if ( this._step == 2 )
-            {
+            if ( this._step == 2 ) {
                 let job:any = this._form.find('registro_job').value || 'Médico';
 
-                this._fs.getFormQuestions('registro').map( (q:any) =>
-                {
-                    if(q.key == 'registro_especialization')
-                    {
+                this._fs.getFormQuestions('registro').map( (q:any) => {
+                    if(q.key == 'registro_especialization') {
                         q.options = especialidad[job.value];
 
                         this._question = q;
-                    }
+                    };
                 });
-            }
+            };
 
             if ( this._step == 3 ) {
-
-                this._fs.getFormQuestions('registro').map( (q:any) =>
-                {
-                    if(q.key == 'registro_college')
-                    {
-
+                this._fs.getFormQuestions('registro').map( (q:any) => {
+                    if(q.key == 'registro_college') {
                         q.value = 'Sin colegio';
-                    }
+                    };
                 });
-            } 
+            };
 
-            if ( this._step == 4 )
-            {
-                let job:any = this._form.find('registro_job').value || 'Médico';
+            if ( this._step == 4 ) {
+                let job:any = control_job.value || 'Médico';
+                let college:any = control_college.value;
 
-                this._fs.getFormQuestions('registro').map( (q:any) =>
-                {
-                    if(q.key == 'registro_especialization_2')
-                    {
+                this._fs.getFormQuestions('registro').map( (q:any) => {
+                    // asignar options de especialidad y reset de validators
+                    if(q.key == 'registro_especialization_2') {
                         q.options = especialidad[job.value];
-                    }
 
-                    if(q.key == 'registro_college_2') 
-                    {
-                        q.value = this._form.find('registro_college').value.value;
-                    }
+                        let validar_esp = this._form.find('registro_especialization_2')
+
+                        validar_esp.setValidators(Validators.required)
+                        validar_esp.updateValueAndValidity()
+                    };
+
+                    // set value para evitar error en select text
+                    if(q.key == 'registro_job_2') {
+                        q.value = job.value
+                    };
+
+                    if(q.key == 'registro_college_2') {
+                        q.value = college.value
+                    };
                 });
-            }
-        }
-        else
-        {
+            };
+        } else {
+            console.log(this._form_group)
             aux = this._form_group.getRawValue();
             data = {
                 'first_name': aux.registro_first_name,
@@ -283,14 +298,11 @@ export class RegistroComponent
                     { 'college': aux.registro_college }
                 ],
                     'redirect': redirect_url
-            }
+            };
 
-            if (aux.registro_accepted_terms === true) 
-            {
+            if (aux.registro_accepted_terms === true) {
                 this.send(data);
-            } 
-            else 
-            {
+            } else {
                 let dialogRef = this._dialog.open(RegistroDialogComponent, {
                     id: 'registro-dialog',
                     viewContainerRef: this._vcr,
@@ -298,8 +310,8 @@ export class RegistroComponent
                         texto: 'acepte los términos y condiciones'
                     }
                 });    
-            }
-        }
+            };
+        };
     }
 
     private openTerms () : void
