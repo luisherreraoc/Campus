@@ -15,7 +15,9 @@
 	}
 
   h1	{
-	color: $color-cuenta;
+		color: $color-cuenta;
+		font-size: calc(1.1vw + 1.1vh + .7vmin);
+		padding-bottom: 2vh;
 	}
 
 	.forms_container {
@@ -52,18 +54,22 @@
 	  display: flex;
 	  justify-content: flex-end;
 	  color: $color-cuenta;
-	  font-size: 13px;
 	  font-weight: 500;
 	  padding-top: 10px;
 	  p {
-		  cursor: pointer;		
+			cursor: pointer;
+			font-size: calc(.7vw + .7vh + .3vmin);
 	  }
   }
 
   .password-button {
-	  padding: 20px 0px 40px;
+		padding: 20px 0px 40px;
+		img {
+			padding-bottom: 1vh;
+		}
+
 	  .password-button__text {
-	    font-size: 13px;
+	    font-size: calc(.6vw + .6vh + .3vmin);
 	    padding-left: 11px;
 	    font-style: italic;
 	    color: gray;
@@ -73,11 +79,11 @@
   .submit__button {
 	  background-color: white;
 	  color: #23B55E;
-	  padding: 10px;
+	  padding: 1vh;
 	  border-radius: 30px;
 	  border: 1px solid #23B55E;
-	  width: 170px;
-	  font-size: 13px;
+	  width: 14vw;
+	  font-size: calc(.7vw + .7vh + .3vmin);
   }
 
   .submit__button_active {

@@ -30,31 +30,28 @@
 	  	display: flex;
 	  	align-items: center;
 	  	h2 {
-				font-size: 2.1vw;
+				font-size: calc(.6vw + .6vh + .3vmin);;
 				padding: 0.5vh 0px;
- 	  	  @media all and (min-width: 32em) {
-		  		font-size: 1.2vw;
-	    	}
-	    	@media all and (min-width: 78em) {
-				  font-size: 0.9vw;
-	    	}
+
+				@media all and (min-width: 54em) {
+					font-size: calc(.5vw + .5vh + .2vmin);
+				}
+
+				@media all and (min-width: 84em) {
+					font-size: calc(.4vw + .4vh + .2vmin);
+				}
 	  	}
 		}	
 	  
 		.card__text__submit {
-	  	padding: 1vmin;
-	  	border-radius: 20px;
-	  	font-size: 1.7vmin;
-	  	width: 15vmin;
+	  	padding: 1vh;
+			border-radius: 30px;
+    	font-size: calc(.5vh + .5vw + .3vmin);
+	  	width: 95%;
 	  	background-color: $color-cursos;
 	  	color: white;
 	  	border-color: transparent;
 	  	cursor: pointer;
-	  	@media all and (min-width: 42em) {
-	  	  padding: 0.7vmin;
-				font-size: 1.2vmin;
-				width: 13vmin;
-	  	}
 		}
 	  
 		.card__text__button {
@@ -74,9 +71,16 @@
 	  	}		
 	  	p {
 				margin: 0.2vmin auto;
-				font-size: 1.2vh;
+				font-size: calc(.6vw + .6vh + .3vmin);
 				text-align: left;
 				max-width: 65%;
+				@media all and (min-width: 54em) {
+					font-size: calc(.5vw + .5vh + .3vmin);
+				}
+
+				@media all and (min-width: 84em) {
+					font-size: calc(.4vw + .4vh + .2vmin);
+				}
 	  	}
 		}
 

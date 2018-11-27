@@ -29,12 +29,12 @@
   }
 
   .select__button {
-    width: 30vmin;
-    padding: 1.5vmin;
-    border-radius: 25px;
+    width: 30vw;
+    padding: 2vh;
+    border-radius: 40px;
     margin: 10px auto;
     color: white;
-    font-size: 1.2vmin;
+    font-size: calc(.6vw + .6vh + .3vmin);
     font-weight: 400;
     cursor: pointer;
   }
@@ -124,12 +124,12 @@
 }
 
 .submit__button {
-  width: 20vmin;
+  width: 14vw;
   border-radius: 35px;
-  padding: 1.2vmin;
+  padding: 1vh;
   background-color: rgb(53, 206, 99);
   text-align: center;
-  font-size: 1.2vmin;
+  font-size: calc(.7vw + .7vh + .3vmin);
   color: white;
   cursor: pointer;
 }

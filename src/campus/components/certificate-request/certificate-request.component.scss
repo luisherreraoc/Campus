@@ -36,17 +36,18 @@
 	}
 
 	.request__button {
-	  padding: 1.3vmin;
+	  padding: 1.5vh;
 	  margin-bottom: 2vh;
 	  border-radius: 35px;
-	  font-size: 1vw;
-	  width: fit-content;
+	  font-size: calc(.6vh + .6vw + .3vmin);
+	  width: 25vw;
 	  background-color: #23B55E;
 	  color: white;
-	  border-color: transparent;
+		border-color: transparent;
+		text-align: center;
 	  cursor: pointer;
 	  p {
-		margin: 0px;
+			margin: 0px;
 	  }
 	}
   }
