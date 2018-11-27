@@ -1,6 +1,7 @@
 @import '~scss/abstracts/variables';
 
 .card {
+	position: relative;
   width: 100%;
   text-align: center;
   border: 1px solid rgb(190,190,190);
@@ -87,7 +88,11 @@
 		.card__text__popover {
 		  font-size: 1.2vmin;
 		  font-weight: 500;
-		  margin: 10px;
+			position: fixed;
+			background-color: white;
+			padding: 2vh;
+			border: 1px solid;
+			width: 15vw;
 		}
 
 		.activate {
@@ -114,4 +119,37 @@
 
 .inactive {
   filter: opacity(0.3);
+}
+
+.popover {
+	width: 15vw;
+	max-height: 15vh;
+	border: 1px solid;
+	position: absolute;
+	bottom: 5vh;
+	background-color: white;
+	z-index: 2;
+	padding: 0.5vh;
+	text-align: center;
+	i {
+		display: flex;
+		flex-direction: row-reverse;
+		font-size: 1.5vh;
+	}
+	.respuestas {
+		padding: 0.5vh;
+		p {
+			font-size: calc(.6vw + .6vh + .3vmin);
+		}		
+	}
+
+	@media all and (min-width: 84em) {
+		width: 12vw;
+
+		.respuestas {
+			p {
+				font-size: calc(.4vw + .4vh + .2vmin);
+			}
+		}
+	}
 }

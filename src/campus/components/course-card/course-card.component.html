@@ -19,24 +19,12 @@
 		</button>
 
 		<div class="card__text__button"
-			 [popover]="estadoLicencia">
+			 (click)="muestra()">
 			<i class="material-icons">
 				list_alt
 			</i>
 			<p>Ver estado de la licencia</p>
 		</div>
-
-		<popover-content #estadoLicencia
-						 [animation]="true">
-			<div *ngIf="_state !== expired">
-				<p class="card__text__popover">Válido hasta: {{ _expiryDate }}</p>				
-			</div>
-
-			<div *ngIf="_state == expired">
-				<p class="card__text__popover">La licencia ha caducado</p>				
-			</div>
-
-		</popover-content>
 
 		<div class="card__text__button">
 			<i class="material-icons">
@@ -45,4 +33,30 @@
 			<p>Descargar manual de uso de plataforma</p>
 		</div>
 	</div>
+</div>
+
+<div class="popover" *ngIf="show">
+	<i class="material-icons"
+	   (click)="muestra()">
+		close
+	</i>
+	<div class="respuestas">
+		<div *ngIf="_state === 'untouched'">
+			<p>La curso no se ha iniciado</p>
+		</div>
+		<div *ngIf="_state === 'pending'">
+			<p>La licencia se ha cedido</p>
+		</div>
+		<div *ngIf="_state === 'active'">
+			<p>Válido hasta: </p>
+			<p>{{ _expiryDate }}</p>
+		</div>
+		<div *ngIf="_state === 'expired'">
+			<p>Esta licencia ha expirado</p>
+		</div>
+		<div *ngIf="_state === 'terminated'">
+			<p>El curso ha sido finalizado</p>
+		</div>		
+	</div>
+
 </div>
