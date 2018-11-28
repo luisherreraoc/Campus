@@ -35,12 +35,13 @@
 	</div>
 </div>
 
-<div class="popover" *ngIf="show">
-	<i class="material-icons"
-	   (click)="muestra()">
+<div class="licencia_popover" *ngIf="show">
+	<i class="material-icons licencia_popover__close"
+	   (click)="muestra()"
+	   title="Cerrar">
 		close
 	</i>
-	<div class="respuestas">
+	<div class="licencia_popover__respuestas">
 		<div *ngIf="_state === 'untouched'">
 			<p>La curso no se ha iniciado</p>
 		</div>

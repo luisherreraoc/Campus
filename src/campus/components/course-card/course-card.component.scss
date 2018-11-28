@@ -64,10 +64,10 @@
 				border-radius: 35px;
 				padding: 0.1vh;
 				font-size: 2vh;
-				height: 4.4vmin;
+				height: 4.4vh;
 				color: rgb(53, 206, 99);
 			  @media all and (min-width: 42em) {
-					height: 2.4vmin;
+					height: 2.4vh;
 				}
 	  	}		
 	  	p {
@@ -121,35 +121,39 @@
   filter: opacity(0.3);
 }
 
-.popover {
-	width: 15vw;
-	max-height: 15vh;
-	border: 1px solid;
+.licencia_popover {
 	position: absolute;
-	bottom: 5vh;
-	background-color: white;
+	bottom: 5.5vh;
 	z-index: 2;
+	width: 48%;
+	max-height: 15vh;
 	padding: 0.5vh;
+	border: 1px solid;
+	background-color: white;
 	text-align: center;
-	i {
+	.licencia_popover__close {
 		display: flex;
 		flex-direction: row-reverse;
 		font-size: 1.5vh;
+		cursor: pointer;
 	}
-	.respuestas {
+	.licencia_popover__respuestas {
 		padding: 0.5vh;
 		p {
-			font-size: calc(.6vw + .6vh + .3vmin);
+			font-size: calc(.5vw + .5vh + .3vmin);
 		}		
 	}
 
-	@media all and (min-width: 84em) {
-		width: 12vw;
+	@media all and (min-width: 54em) {
+		width: 31%;
+	}
 
-		.respuestas {
+	@media all and (min-width: 84em) {
+		width: 24%;
+		.licencia_popover__respuestas {
 			p {
 				font-size: calc(.4vw + .4vh + .2vmin);
 			}
-		}
+		}		
 	}
 }
