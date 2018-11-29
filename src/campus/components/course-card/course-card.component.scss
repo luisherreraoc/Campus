@@ -1,6 +1,7 @@
 @import '~scss/abstracts/variables';
 
 .card {
+	position: relative;
   width: 100%;
   text-align: center;
   border: 1px solid rgb(190,190,190);
@@ -30,31 +31,28 @@
 	  	display: flex;
 	  	align-items: center;
 	  	h2 {
-				font-size: 2.1vw;
+				font-size: calc(.6vw + .6vh + .3vmin);;
 				padding: 0.5vh 0px;
- 	  	  @media all and (min-width: 32em) {
-		  		font-size: 1.2vw;
-	    	}
-	    	@media all and (min-width: 78em) {
-				  font-size: 0.9vw;
-	    	}
+
+				@media all and (min-width: 54em) {
+					font-size: calc(.5vw + .5vh + .2vmin);
+				}
+
+				@media all and (min-width: 84em) {
+					font-size: calc(.4vw + .4vh + .2vmin);
+				}
 	  	}
 		}	
 	  
 		.card__text__submit {
-	  	padding: 1vmin;
-	  	border-radius: 20px;
-	  	font-size: 1.7vmin;
-	  	width: 15vmin;
+	  	padding: 1vh;
+			border-radius: 30px;
+    	font-size: calc(.5vh + .5vw + .3vmin);
+	  	width: 95%;
 	  	background-color: $color-cursos;
 	  	color: white;
 	  	border-color: transparent;
 	  	cursor: pointer;
-	  	@media all and (min-width: 42em) {
-	  	  padding: 0.7vmin;
-				font-size: 1.2vmin;
-				width: 13vmin;
-	  	}
 		}
 	  
 		.card__text__button {
@@ -66,24 +64,35 @@
 				border-radius: 35px;
 				padding: 0.1vh;
 				font-size: 2vh;
-				height: 4.4vmin;
+				height: 4.4vh;
 				color: rgb(53, 206, 99);
 			  @media all and (min-width: 42em) {
-					height: 2.4vmin;
+					height: 2.4vh;
 				}
 	  	}		
 	  	p {
 				margin: 0.2vmin auto;
-				font-size: 1.2vh;
+				font-size: calc(.6vw + .6vh + .3vmin);
 				text-align: left;
 				max-width: 65%;
+				@media all and (min-width: 54em) {
+					font-size: calc(.5vw + .5vh + .3vmin);
+				}
+
+				@media all and (min-width: 84em) {
+					font-size: calc(.4vw + .4vh + .2vmin);
+				}
 	  	}
 		}
 
 		.card__text__popover {
 		  font-size: 1.2vmin;
 		  font-weight: 500;
-		  margin: 10px;
+			position: fixed;
+			background-color: white;
+			padding: 2vh;
+			border: 1px solid;
+			width: 15vw;
 		}
 
 		.activate {
@@ -110,4 +119,41 @@
 
 .inactive {
   filter: opacity(0.3);
+}
+
+.licencia_popover {
+	position: absolute;
+	bottom: 5.5vh;
+	z-index: 2;
+	width: 48%;
+	max-height: 15vh;
+	padding: 0.5vh;
+	border: 1px solid;
+	background-color: white;
+	text-align: center;
+	.licencia_popover__close {
+		display: flex;
+		flex-direction: row-reverse;
+		font-size: 1.5vh;
+		cursor: pointer;
+	}
+	.licencia_popover__respuestas {
+		padding: 0.5vh;
+		p {
+			font-size: calc(.5vw + .5vh + .3vmin);
+		}		
+	}
+
+	@media all and (min-width: 54em) {
+		width: 31%;
+	}
+
+	@media all and (min-width: 84em) {
+		width: 24%;
+		.licencia_popover__respuestas {
+			p {
+				font-size: calc(.4vw + .4vh + .2vmin);
+			}
+		}		
+	}
 }

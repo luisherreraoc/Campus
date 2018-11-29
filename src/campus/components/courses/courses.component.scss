@@ -10,7 +10,7 @@
 }
   .courses__header {
     color: $color-cursos;
-    font-size: 3vmin;
+		font-size: calc(1.1vw + 1.1vh + .7vmin);
     padding-bottom: 5vmin;
     padding-left: 2vmin;
   }

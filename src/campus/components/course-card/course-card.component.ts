@@ -48,6 +48,8 @@ export class CourseCardComponent
 
 	private _inactive : boolean;
 
+	public show : boolean;
+
 	public constructor ( 
 		private logger: Logger, 
 		private window: Window,
@@ -58,6 +60,7 @@ export class CourseCardComponent
 		logger.log('COURSE CARD COMPONENT'); 
 		this._suite = environment.suiteUrl;
 		this._ids = {'user' : '154'};
+		this.show = false;
 	}
 
 	ngOnInit () {
@@ -82,6 +85,10 @@ export class CourseCardComponent
 			this._inactive = true;
 		} 
 
+	}
+
+	private muestra () {
+		this.show = !this.show;
 	}
 
 	private go () : void 

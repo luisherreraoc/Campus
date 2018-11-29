@@ -10,7 +10,7 @@
   }
 	.certificates__header {
 	  color: $color-certificaciones;
-	  font-size: 3vmin;
+		font-size: calc(1.1vw + 1.1vh + .7vmin);
 	  padding-bottom: 5vmin;
 	  padding-left: 2vmin;
 	}
