@@ -1,0 +1,14 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 10vh 8vw;
+    border-radius: 35px;
+    box-shadow: grey 0px 0px 6px;
+    margin-top: 20vh;
+
+    @media all and (min-width: 768px) {
+        padding: 0px;
+        box-shadow: none;
+    }
+}

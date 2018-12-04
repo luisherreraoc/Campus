@@ -1,5 +1,7 @@
-<mk-form (onEnter)="falseClick()" name="login"></mk-form>
-<span><a routerLink="/public/recuperar"><strong>¿Olvidaste tu contraseña?</strong></a></span>
+<div class="wrapper">
+    <mk-form (onEnter)="falseClick()" name="login"></mk-form>
+    <span><a routerLink="/public/recuperar"><strong>¿Olvidaste tu contraseña?</strong></a></span>
 
-<button #button class="btn-registration" (click)="send()">INGRESAR</button>
-<button class="btn-registration white-btn"><a routerLink="/public/registro">REGISTRARSE</a></button>
+    <button #button class="btn-registration" (click)="send()">INGRESAR</button>
+    <button class="btn-registration white-btn"><a routerLink="/public/registro">REGISTRARSE</a></button>    
+</div>
