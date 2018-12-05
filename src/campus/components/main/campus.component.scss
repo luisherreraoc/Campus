@@ -35,14 +35,15 @@
   }  
   .container-left-heading {
   	display: inline;
-  	margin: 10vh auto 0;  
+  	margin: 0px;  
   	.navigation__menu {
   	  display: flex;
   	  justify-content: space-between;
-  	  width: 67%;
-  	  margin-top: 2vh;
+  	  width: 61%;
+  	  margin-top: 10px;
   	  @media all and (min-width: 48em) {
-  	  	width: 92%;
+		width: 92%;
+		margin-top: 2vh;
   	  	.avatar {
   	  		margin: 0px auto;
   	  	}

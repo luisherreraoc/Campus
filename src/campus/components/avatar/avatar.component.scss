@@ -14,17 +14,17 @@
   	position: relative;
   	display: inline-flex;
   	.user__avatar__img {
-  	  width: 20vw;
-  	  height: 11vh;
+  	  width: 18vmin;
+  	  height: 18vmin;
   	  border-radius: 50%;
   	  overflow: hidden;
   	  img {
   	  	width: 100%;
-  	  }
-  	  @media all and (min-width: 48em) {
-  	  	width: 20vmin;
-  	  	height: 20vmin;
-  	  }
+			}
+			@media all and (min-width: 48em) {
+				width: 21vmin;
+				height: 21vmin;
+			}
   	}
   	.user__avatar__button {
   	  background-color: rgba(0, 0, 0, 0.2);
