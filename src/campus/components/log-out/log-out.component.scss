@@ -1,12 +1,15 @@
 .wrapper {
   i {
-    font-size: 2vmin;
+    font-size: calc(1.5vw + 1.5vh + .5vmin);
     padding: 0.5vmax;
     color: white;
-    border: 0.15vmax solid white;
+    border: 2px solid white;
     border-radius: 31px;
     margin-top: 2vmax;
     margin-left: 1vmax;
     cursor: pointer;
+    @media all and (min-width: 48em) {
+      font-size: 20px;
+    }
   }
 }

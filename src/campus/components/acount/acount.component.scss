@@ -1,7 +1,6 @@
 @import '~scss/abstracts/variables';
 
-:host ::ng-deep
-{
+:host ::ng-deep {
   div[cols="col-6"]:first-child {
 	width: 20%;
   }
@@ -12,6 +11,10 @@
 	
 	.account {
 		padding: 5vh 7vw;
+		margin-top: 60vh;
+		@media all and (min-width: 48em) {
+			margin-top: 0px;
+		}
 	}
 
   h1	{

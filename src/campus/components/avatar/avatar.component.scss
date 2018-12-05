@@ -1,60 +1,63 @@
 @import '~scss/abstracts/variables';
 
-:host ::ng-deep
-{
-	.user {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
-	
-	.user__avatar
-	{
-		position: relative;
-		display: inline-flex;
-
-		.user__avatar__img
-		{
-			width: 18vmin;
-		    height: 18vmin;
-		    border-radius: 50%;
-			overflow: hidden;
-			img {
-				width: 100%;
-			}
-		}
-
-		.user__avatar__button
-		{
-			background-color: rgba(0, 0, 0, 0.2);
-		    border-radius: 50%;
-		    width: 6vmin;
-		    height: 6vmin;
-		    position: absolute;
-		    display: block;
-		    right: 0px;
-			bottom: 0px;
-			cursor: pointer;
-
-		    img
-		    {
-		    	margin: 0px auto;
-			    width: 50%;
-			    display: inherit;
-			    position: relative;
-			    top: 8px;
-		    }
-		}
-	}
-
-	.user__username {
-		color: white;
-    	font-size: 2.5vmin;
-    	padding-top: 2.5vmin;
-	}
-
-	input#custom-input 
-	{
-    	display: none;
-	}
+:host ::ng-deep {
+  .user {
+  	display: flex;
+  	flex-direction: column;
+  	align-items: center;
+  	@media all and (min-width: 48em) {
+  		margin-top: 15vh;
+  	}
+  }
+  
+  .user__avatar {
+  	position: relative;
+  	display: inline-flex;
+  	.user__avatar__img {
+  	  width: 20vw;
+  	  height: 11vh;
+  	  border-radius: 50%;
+  	  overflow: hidden;
+  	  img {
+  	  	width: 100%;
+  	  }
+  	  @media all and (min-width: 48em) {
+  	  	width: 20vmin;
+  	  	height: 20vmin;
+  	  }
+  	}
+  	.user__avatar__button {
+  	  background-color: rgba(0, 0, 0, 0.2);
+  	  border-radius: 50%;
+  	  width: 6vmin;
+  	  height: 6vmin;
+  	  position: absolute;
+  	  display: block;
+  	  right: 0px;
+  	  bottom: 0px;
+  	  cursor: pointer;
+  	  img {
+  	    margin: 0px auto;
+  	    width: 50%;
+  	    display: inherit;
+  	    position: relative;
+  	    top: 8px;
+  	  }
+  	}
+  }
+  .user__username {
+  	color: white;
+    font-size: 2rem;
+  	padding-top: 1vh;
+  	@media all and (min-width: 48em) {
+  	  font-size: calc(1vh + 1vw + .5vmin);
+  	  padding-top: 3vh;
+  	}
+  	@media all and (min-width: 78em) {
+  	  font-size: 2.5rem;
+  	}
+  }
+  input#custom-input {
+    display: none;
+  }
 }
