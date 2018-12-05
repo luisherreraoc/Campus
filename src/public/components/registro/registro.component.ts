@@ -1,5 +1,5 @@
 // -- Angular imports -----------------------------------------------------------------------------------------
-import { Component, OnInit, Inject, ViewContainerRef, ViewChild, ElementRef }                         							from '@angular/core';
+import { Component, OnInit, Inject, ViewContainerRef, ViewChild, ElementRef, Renderer2 }                         							from '@angular/core';
 import { AbstractControl, FormGroup, Validators }        									from '@angular/forms';
 import { Observable, BehaviorSubject, Subscription } 							from "rxjs/Rx"; 
 import { Http, Response, Headers, RequestOptions } 								from '@angular/http';
@@ -100,6 +100,7 @@ const especialidad: any = {
 export class RegistroComponent
 {
     @ViewChild('button') private _button: ElementRef;
+    @ViewChild('wrapper') private _wrapper: ElementRef;
 
     private _step: number;
     private _steps: Array<Array<string>>;
@@ -126,7 +127,8 @@ export class RegistroComponent
         private _rs: RegistroService,
         private _dialog: MatDialog,
         private _vcr: ViewContainerRef,
-        private _loader: Loader ) 
+        private _loader: Loader,
+        private renderer: Renderer2 ) 
 	{ 
 		_logger.log('REGISTRO COMPONENT'); 
 
@@ -238,7 +240,13 @@ export class RegistroComponent
             this._showIngresar = this._step >= 1 && this._step < len ? false : true;
             this._butonLabel = this._step === len ? 'REGISTRARSE' : 'SIGUIENTE';
 
+            if ( this._step == 1 ) {
+                this.renderer.addClass(this._wrapper.nativeElement, 'margin-small');
+            };
+
             if ( this._step == 2 ) {
+                this.renderer.removeClass(this._wrapper.nativeElement, 'margin-small');
+                this.renderer.addClass(this._wrapper.nativeElement, 'margin-medium');
                 let job:any = this._form.find('registro_job').value || 'Médico';
 
                 this._fs.getFormQuestions('registro').map( (q:any) => {
@@ -259,6 +267,8 @@ export class RegistroComponent
             };
 
             if ( this._step == 4 ) {
+                this.renderer.removeClass(this._wrapper.nativeElement, 'margin-medium');
+                this.renderer.addClass(this._wrapper.nativeElement, 'margin-big');
                 let job:any = control_job.value || 'Médico';
                 let college:any = control_college.value;
 
