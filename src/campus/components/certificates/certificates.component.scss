@@ -1,7 +1,7 @@
 @import '~scss/abstracts/variables';
 
 .certificates {
-	margin: auto;
+	margin-top: 10vh;
 	width: 42vmax;
 	
 	@media all and (min-width: 54em) {
@@ -10,9 +10,12 @@
   }
 	.certificates__header {
 	  color: $color-certificaciones;
-		font-size: calc(1.1vw + 1.1vh + .7vmin);
-	  padding-bottom: 5vmin;
-	  padding-left: 2vmin;
+		font-size: calc(1.7vw + 1.7vh + .7vmin);
+		padding-bottom: 2vh;
+		padding-left: 25px;
+		@media all and (min-width: 48em) {
+			font-size: calc(1.1vw + 1.1vh + .7vmin);
+		}
 	}
   
 	.certificates__wrapper {
@@ -39,10 +42,14 @@
 		  transition: transform 1.2s, -webkit-transform 1.2s;
   
 		  .certificates__wrapper__carousel__flow__content {
-			width: 50%;
+			width: 75%;
 			padding: 0px 5px;
 			
 			@media all and (min-width: 54em) {
+				width: 50%;
+			}
+			
+			@media all and (min-width: 62em) {
 			  width: 33.3%
 			}
   

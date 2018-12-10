@@ -11,12 +11,9 @@
 
   .cert-card__photo {
 		.cert-card__photo__img {
-			height: 13vmax;
+			height: 20vh;
 			@media all and (min-width: 54em) {
-			  height: 11vmax;
-			}
-			@media all and (min-width: 84em) {
-			  height: 9vmax;
+				height: 17vh;
 			}
 		}
   }
@@ -28,12 +25,13 @@
     min-height: 8vmax;
 		text-align: center;
 		h2 {
-			font-size: calc(.7vw + .5vh + .3vmin);;
-
+			font-size: calc(1vw + 1vh + .5vmin);
+			@media all and (min-width: 32em) {
+			  font-size: calc(.7vw + .7vh + .3vmin);;
+			}
 			@media all and (min-width: 54em) {
 				font-size: calc(.6vw + .4vh + .3vmin);
 			}
-
 			@media all and (min-width: 84em) {
 				font-size: calc(.5vw + .4vh + .3vmin);
 			}
@@ -41,7 +39,7 @@
   }
 
   .cert-card__button {
-		padding: 1vh;
+		padding: 2vh;
 		margin-bottom: 1vh;
 		border-radius: 35px;
 		width: 90%;
@@ -52,7 +50,18 @@
 		cursor: pointer;
 		p {
 			margin: 0px;
-			font-size: calc(.4vw + .4vh + .2vmin);
+			font-size: calc(.8vw + .8vh + .4vmin);
+		}
+		@media all and (min-width: 48em) {
+			padding: 1vh;
+			p {
+				font-size: calc(.6vw + .6vh + .3vmin);
+			}
+		}
+		@media all and (min-width: 62em) {
+			p {
+				font-size: calc(.4vw + .4vh + .2vmin);
+			}
 		}
   }
 }
