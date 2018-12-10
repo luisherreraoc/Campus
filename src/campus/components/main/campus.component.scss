@@ -75,7 +75,10 @@
   	}  
   	.heading_link_active {
   	  border-bottom: 0.4vh solid;
-  	  border-image: linear-gradient(to right, transparent 30%, white 30%, white 70%, transparent 30%) 3;
+	  border-image: linear-gradient(to right, transparent 30%, white 30%, white 70%, transparent 30%) 3;
+	  @media all and (min-width: 48em) {
+		border-image: linear-gradient(to right, transparent 40%, white 40%, white 60%, transparent 40%) 3;
+	  }
   	}
   }
 }

@@ -134,6 +134,7 @@ export class UserJobsDialogComponent
         this._step = 0;
         this._steps = [
             new Array("user_details_job"),
+            new Array("user_details_especialization"),
             new Array("user_details_college")
         ];
 
@@ -186,7 +187,7 @@ export class UserJobsDialogComponent
                 this._fs.getFormQuestions('jobs').map( (q:any) => {
                     if(q.key == 'user_details_especialization') {
                         
-                        q.options = especialidad[ job.value ? job.value : job ];
+                        q.options = especialidad[job.value];
 
                         this._question = q;
                     }

@@ -232,7 +232,7 @@ export class AcountComponent
 				this._response_obj = {
 					title: '',
 					text: 'Sus datos se han actualizado correctamente',
-					img: '',
+					img: '/assets/img/icon-confirm.png',
 					btn: 'VOLVER',
 					callback: this.goToAccount
 				}
@@ -310,7 +310,7 @@ export class AcountComponent
 			this._response_obj = {
 				title: '',
 				text: 'Sus datos se han actualizado correctamente',
-				img: '',
+				img: '/assets/img/icon-confirm.png',
 				btn: 'VOLVER',
 				callback: this.goToAccount
 			};
