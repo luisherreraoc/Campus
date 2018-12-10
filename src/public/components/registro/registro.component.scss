@@ -7,10 +7,10 @@
   }
 
   .form-wrapper {
-  	margin-top: 50vh;
-  	margin-bottom: 5vh;
+  	margin-top: 400px;
+  	margin-bottom: 40px;
   	background-color: white;
-  	padding: 5vh 8vw;
+  	padding: 5vh 6vw;
   	border-radius: 35px;
   	box-shadow: grey 0px 5px 10px;
   	@media all and (min-width: 768px) {
@@ -28,7 +28,7 @@
     bottom: 0px;
     background-color: white;
   	margin: 10px;
-  	height: 80vh;
+  	height: 85vh;
   	@media all and (min-width: 768px) {
   	  top: 0px;
   	  margin: 20px;
@@ -65,21 +65,21 @@
   }
 
   .margin-small {
-  	margin-top: 15vh;
+  	margin-top: 150px;
   	@media all and (min-width: 768px) {
   		margin-top: 0px;
   	}
   }
 
   .margin-medium {
-  	margin-top: 55vh;
+  	margin-top: 430px;
   	@media all and (min-width: 768px) {
   		margin-top: 0px;
   	}
   }
 
   .margin-big {
-  	margin-top: 70vh;
+  	margin-top: 570px;
   	@media all and (min-width: 768px) {
   		margin-top: 0px;
   	}
