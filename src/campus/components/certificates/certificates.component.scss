@@ -2,13 +2,13 @@
 
 .certificates {
 	margin-top: 15vh;
-	width: 46vmax;
+	width: 90vw;
 	@media all and (min-width: 48em) {
 		margin-top: 10vh;
-		width: 42vmax;	
+		width: 52vw;	
 	}
 	@media all and (min-width: 54em) {
-	  width: 52vmax;
+	  width: 57vw;
 	}
 }
 	.certificates__header {
@@ -62,12 +62,14 @@
 
 	.certificates_progress {
 	  margin: auto;
-	  width: 42vmax;
-	  height: 0.6vmin;
-		
-	  @media all and (min-width: 54em) {
-	    width: 52vmax;
-	  }
+	  width: 90vw;
+	  height: 6px;
+		@media all and (min-width: 48em) {
+	    width: 52vw;
+		}
+		@media all and (min-width: 54em) {
+			width: 57vw;
+		}
 	
 	  .certificates_progress__bar {
 		height: 100%;
