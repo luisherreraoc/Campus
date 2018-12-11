@@ -13,12 +13,9 @@
     justify-content: center;
   	width: 100%;
 		.card__photo__img {
-			height: 13vmax;
+			height: 20vh;
 			@media all and (min-width: 54em) {
-			  height: 11vmax;
-			}
-			@media all and (min-width: 84em) {
-			  height: 9vmax;
+				height: 17vh;
 			}
 		}
 	}
@@ -31,13 +28,17 @@
 	  	display: flex;
 	  	align-items: center;
 	  	h2 {
-				font-size: calc(.6vw + .6vh + .3vmin);;
+				font-size: calc(1vw + 1vh + .5vmin);;
 				padding: 0.5vh 0px;
-
-				@media all and (min-width: 54em) {
-					font-size: calc(.5vw + .5vh + .2vmin);
+				@media all and (min-width: 34em) {
+					font-size: calc(.8vw + .8vh + .4vmin);
 				}
-
+				@media all and (min-width: 48em) {
+					font-size: calc(.7vw + .7vh + .4vmin);
+				}
+				@media all and (min-width: 54em) {
+					font-size: calc(.6vw + .6vh + .3vmin);
+				}
 				@media all and (min-width: 84em) {
 					font-size: calc(.6vw + .4vh + .2vmin);
 				}
@@ -45,14 +46,26 @@
 		}	
 	  
 		.card__text__submit {
-	  	padding: 1vh;
+	  	padding: 1.3vh;
 			border-radius: 30px;
-    	font-size: calc(.5vh + .5vw + .3vmin);
+    	font-size: calc(1vh + 1vw + .5vmin);
 	  	width: 95%;
 	  	background-color: $color-cursos;
 	  	color: white;
 	  	border-color: transparent;
-	  	cursor: pointer;
+			cursor: pointer;
+			@media all and (min-width: 34em) {
+				padding: 1.2vh;
+				font-size: calc(.8vh + .8vw + .4vmin);
+			}
+			@media all and (min-width: 48em) {
+				padding: 1.2vh;
+				font-size: calc(.7vh + .7vw + .3vmin);
+			}
+			@media all and (min-width: 54em) {
+				padding: 1vh;
+				font-size: calc(.5vh + .5vw + .3vmin);
+			}
 		}
 	  
 		.card__text__button {
@@ -60,21 +73,34 @@
 	  	margin: 1vmin 0.5vmin;
 	  	cursor: pointer;
 	  	i {
+				margin-top: 1.1vh;
 				border: 0.1vh solid rgb(53, 206, 99);
 				border-radius: 35px;
-				padding: 0.1vh;
-				font-size: 2vh;
-				height: 4.4vh;
+				padding: 0.2vh;
+				font-size: 3vh;
+				height: 3.5vh;
 				color: rgb(53, 206, 99);
-			  @media all and (min-width: 42em) {
-					height: 2.4vh;
+				@media all and (min-width: 34em) {
+					padding: 0.1vh;
+					font-size: 2vh;
+					height: 2.5vh;
+				}
+				@media all and (min-width: 48em) {
+					margin-top: 0px;
 				}
 	  	}		
 	  	p {
-				margin: 0.2vmin auto;
-				font-size: calc(.6vw + .6vh + .3vmin);
-				text-align: left;
+				margin: 1vh auto;
+				font-size: calc(.8vw + .8vh + .5vmin);
+				text-align: center;
 				max-width: 75%;
+				@media all and (min-width: 34em) {
+					font-size: calc(.7vw + .7vh + .4vmin);
+				}
+				@media all and (min-width: 48em) {
+					margin: 0.2vh auto;
+					font-size: calc(.6vw + .6vh + .3vmin);
+				}
 				@media all and (min-width: 54em) {
 					font-size: calc(.5vw + .5vh + .3vmin);
 				}
@@ -125,12 +151,13 @@
 	position: absolute;
 	bottom: 5.5vh;
 	z-index: 2;
-	width: 48%;
+	width: 71%;
 	max-height: 15vh;
 	padding: 0.5vh;
 	border: 1px solid;
 	background-color: white;
 	text-align: center;
+
 	.licencia_popover__close {
 		display: flex;
 		flex-direction: row-reverse;
@@ -140,14 +167,18 @@
 	.licencia_popover__respuestas {
 		padding: 0.5vh;
 		p {
-			font-size: calc(.5vw + .5vh + .3vmin);
+			font-size: calc(1vw + 1vh + .5vmin);
+			@media all and (min-width: 48em) {
+				font-size: calc(.5vw + .5vh + .3vmin);
+			}
 		}		
 	}
-
 	@media all and (min-width: 54em) {
+		width: 48%;
+	}
+	@media all and (min-width: 70em) {
 		width: 31%;
 	}
-
 	@media all and (min-width: 84em) {
 		width: 24%;
 		.licencia_popover__respuestas {
