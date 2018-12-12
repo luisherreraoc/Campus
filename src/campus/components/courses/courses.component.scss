@@ -1,18 +1,24 @@
 @import '~scss/abstracts/variables';
 
 .courses {
-  margin: auto;
-  width: 42vmax;
-  
+  margin-top: 30vh;
+  width: 90vw;
+  @media all and (min-width: 48em) {
+    margin-top: 10vh;
+    width: 52vw;
+  }
   @media all and (min-width: 54em) {
-    width: 52vmax;
+    width: 57vw;
   }
 }
   .courses__header {
     color: $color-cursos;
-		font-size: calc(1.1vw + 1.1vh + .7vmin);
-    padding-bottom: 5vmin;
-    padding-left: 2vmin;
+		font-size: calc(1.7vw + 1.7vh + .7vmin);
+    padding-bottom: 2vh;
+    padding-left: 25px;
+    @media all and (min-width: 48em) {
+      font-size: calc(1.1vw + 1.1vh + .7vmin);
+    }
   }
 
   .courses__wrapper {
@@ -39,27 +45,30 @@
         transition: transform 1.2s, -webkit-transform 1.2s;
 
         .courses__wrapper__carousel__flow__content {
-          width: 50%;
-          padding: 0px 5px;
-          
-          @media all and (min-width: 54em) {
-            width: 33.3%
-          }
-
-          @media all and (min-width: 84em) {
-            width: 25%;
-          }
+          width: 75%;
+		  	  padding: 0px 5px;
+		  	  @media all and (min-width: 54em) {
+		  	  	width: 50%;
+		  	  }
+		  	  @media all and (min-width: 70em) {
+		  	    width: 33.3%
+		  	  }
+		  	  @media all and (min-width: 84em) {
+		  	    width: 25%;
+		  	  }
         }
       }
     }
 
   .courses_progress {
     margin: auto;
-    width: 42vmax;
-    height: 0.6vmin;
-    
+    width: 90vw;
+    height: 6px;
+    @media all and (min-width: 48em) {
+      width: 52vw;
+    }
     @media all and (min-width: 54em) {
-      width: 52vmax;
+      width: 57vw;
     }
 
     .courses_progress__bar {

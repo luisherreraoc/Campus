@@ -1,7 +1,6 @@
 @import '~scss/abstracts/variables';
 
-:host ::ng-deep
-{
+:host ::ng-deep {
   div[cols="col-6"]:first-child {
 	width: 20%;
   }
@@ -12,12 +11,19 @@
 	
 	.account {
 		padding: 5vh 7vw;
+		margin-top: 70vh;
+		@media all and (min-width: 48em) {
+			margin-top: 0px;
+		}
 	}
 
   h1	{
 		color: $color-cuenta;
-		font-size: calc(1.1vw + 1.1vh + .7vmin);
+		font-size: calc(2vw + 2vh + 1vmin);
 		padding-bottom: 2vh;
+		@media all and (min-width: 48em) {
+			font-size: calc(1.1vw + 1.1vh + .7vmin);
+		}
 	}
 
 	.forms_container {
@@ -58,7 +64,10 @@
 	  padding-top: 10px;
 	  p {
 			cursor: pointer;
-			font-size: calc(.7vw + .7vh + .3vmin);
+			font-size: calc(1.3vw + 1.3vh + .7vmin);
+			@media all and (min-width: 48em) {
+				font-size: calc(.7vw + .7vh + .3vmin);
+			}
 	  }
   }
 
@@ -69,10 +78,13 @@
 		}
 
 	  .password-button__text {
-	    font-size: calc(.6vw + .6vh + .3vmin);
+			font-size: calc(1.1vw + 1.1vh + .6vmin);
 	    padding-left: 11px;
 	    font-style: italic;
-	    color: gray;
+			color: gray;
+			@media all and (min-width: 48em) {
+				font-size: calc(.6vw + .6vh + .3vmin);
+			}
 	  }
   }
 
@@ -81,9 +93,13 @@
 	  color: #23B55E;
 	  padding: 1vh;
 	  border-radius: 30px;
-	  border: 1px solid #23B55E;
-	  width: 14vw;
-	  font-size: calc(.7vw + .7vh + .3vmin);
+		border: 1px solid #23B55E;
+		width: 35vw;
+		font-size: calc(1.5vw + 1.5vh + .7vmin);
+		@media all and (min-width: 48em) {
+	  	width: 14vw;
+			font-size: calc(.7vw + .7vh + .3vmin);
+		}
   }
 
   .submit__button_active {
@@ -95,22 +111,22 @@
 
 ::ng-deep {
   .custom-dialog {
-	.mat-dialog-container {
-	  background-color: transparent;
-	  box-shadow: none; 
-	}
+		.mat-dialog-container {
+		  background-color: transparent;
+		  box-shadow: none; 
+		}
 
-	.form-group li:last-child {
-	  border-bottom: none;
-	}
+		.form-group li:last-child {
+		  border-bottom: none;
+		}
 
-	.form-group li:first-child {
-	  border-top: none;
-	}
+		.form-group li:first-child {
+		  border-top: none;
+		}
 
-	.form-group {
-	  border-top: none;
-	  border-bottom: none;
-	}
+		.form-group {
+		  border-top: none;
+		  border-bottom: none;
+		}
   }
 }

@@ -15,21 +15,13 @@
     },
     {
         "key": "user_details_especialization",
-        "label": "Seleciona tu espacialización/es",
+        "label": "Seleciona tu especialización/es",
         "value": "",
         "required": true,
         "order": 6,
-        "type": "select-list",
+        "type": "select-list-multiple",
         "maxlength": "120",
-        "options" : [
-            { "value": "Anestesiología", "text": "Anestesiología" },
-            { "value": "Cardiología", "text": "Cardiología" },
-            { "value": "Cirugía", "text": "Cirugía" },
-            { "value": "Emergentología", "text": "Emergentología" },
-            { "value": "Gastroenterología", "text": "Gastroenterología" },
-            { "value": "Generalista", "text": "Generalista" },
-            { "value": "Anestesiologia", "text": "Anestesiologia" }
-        ]        
+        "options" : []        
     },
     {
         "key": "user_details_college",

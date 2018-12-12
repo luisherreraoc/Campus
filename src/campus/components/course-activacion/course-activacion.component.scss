@@ -7,7 +7,10 @@
   left: 0px;
   right: 0px;
   background-color: white;
-  margin-top: 20vh;
+  height: 100vh;
+  @media all and (min-width: 48em) {
+    margin-top: 20vh;
+  }
 }
 
 .select {
@@ -15,13 +18,33 @@
   padding: 5vmin;
 
   .select__header {
-    padding-bottom: 2vmin;
+    padding-bottom: 2vh;
+    font-size: calc(2vw + 2vh + 1vmin);
   }
 
   .select__text {
-    padding-top: 1vmin;
+    padding-top: 1vh;
     text-align: justify;
-    font-size: 1.2vmin;
+    font-size: calc(1vw + 1vh + .5vmin);
+  }
+
+  @media all and (min-width: 34em) {
+    .select__header {
+      font-size: calc(1.5vw + 1.5vh + .7vmin);
+    }
+
+    .select__text {
+      font-size: calc(.7vw + .7vh + .4vmin);
+    }
+  }
+  @media all and (min-width: 62em) {
+    .select__header {
+      font-size: calc(1.3vw + 1.3vh + .6vmin);
+    }
+
+    .select__text {
+      font-size: calc(.6vw + .6vh + .3vmin);
+    }
   }
 
   .select__text_strong {
@@ -29,19 +52,24 @@
   }
 
   .select__button {
-    width: 30vw;
+    width: 50vw;
     padding: 2vh;
     border-radius: 40px;
     margin: 10px auto;
     color: white;
-    font-size: calc(.6vw + .6vh + .3vmin);
+    font-size: calc(.8vw + .8vh + .4vmin);
     font-weight: 400;
     cursor: pointer;
+
+    @media all and (min-width: 43em) {
+      width: 35vw;
+      font-size: calc(.6vw + .6vh + .3vmin);
+    }
   }
 
   .select__button_activar {
     background-color: $color-cursos;
-    margin-top: 10vmin;
+    margin-top: 10vh;
   }
 
   .select__button_ceder {
@@ -56,9 +84,12 @@
   padding: 5vmin;
 
   .activar__header {
-    font-size: 1.7vmin;
+    font-size: calc(1.6vw + 1.6vh + .8vmin);
     color: $color-cursos;
-    padding-bottom: 4vmin;
+    padding-bottom: 2vh;
+    @media all and (min-width: 34em) {
+      font-size: calc(1.2vw + 1.2vh + .6vmin);
+    }
   }
 
   .activar__form {
@@ -73,13 +104,25 @@
   padding: 5vmin;
 
   .ceder__header {
-    font-size: 2.3vmin;
-    padding-bottom: 2vmin;
+    font-size: calc(1.8vw + 1.8vh + .9vmin);
+    padding-bottom: 2vh;
+    @media all and (min-width: 34em) {
+      font-size: calc(1.4vw + 1.4vh + .7vmin);
+    }
+    @media all and (min-width: 62em) {
+      font-size: calc(1.2vw + 1.2vh + .6vmin);
+    }
   }
 
   .ceder__text {
-    font-size: 1.2vmin;
-    padding-bottom: 3vmin;
+    font-size: calc(1.2vw + 1.2vh + .6vmin);
+    padding-bottom: 2vh;
+    @media all and (min-width: 34em) {
+      font-size: calc(1vw + 1vh + .5vmin);
+    }
+    @media all and (min-width: 62em) {
+      font-size: calc(0.8vw + 0.8vh + .4vmin);
+    }
   }
 
   .ceder__form {
@@ -89,20 +132,27 @@
   .ceder__producto {
     display: flex;
     width: fit-content;
-    border: 0.1vmin solid $color-cursos;
+    border: .2vh solid $color-cursos;
     border-radius: 30px;
-    padding: 1.5vmin;
-    margin-top: 3vmin;
-    margin-bottom: 10vmin;
+    padding: 1vh;
+    margin-top: 3vh;
+    margin-bottom: 5vh;
 
     i {
+      margin: auto;
       color: $color-cursos;
-      font-size: 2vmin;
+      font-size: 3vh;
     }
 
     h3 {
-      padding: 0 2vmin;
-      font-size: 1.5vmin;
+      padding: 0 2vh;
+      font-size: calc(1vw + 1vh + .5vmin);
+      @media all and (min-width: 48em) {
+        font-size: calc(.7vw + .7vh + .4vmin);
+      }
+      @media all and (min-width: 62em) {
+        font-size: calc(.6vw + .6vh + .3vmin);
+      }
     }
   }
 }
@@ -113,25 +163,35 @@
   width: 100%;
 
   .ceder__ok__img {
-    padding-bottom: 3vmax;
+    padding-bottom: 3vh;
   }
 
   .ceder__ok__text {
-    padding-bottom: 5vmax;
-    font-size: 1.5vmin;
+    font-size: calc(1.2vw + 1.2vh + .6vmin);
+    padding-bottom: 2vh;
     color: gray;
+    @media all and (min-width: 34em) {
+      font-size: calc(1vw + 1vh + .5vmin);
+    }
+    @media all and (min-width: 62em) {
+      font-size: calc(0.8vw + 0.8vh + .4vmin);
+    }
   }
 }
 
 .submit__button {
-  width: 14vw;
+  width: fit-content;
   border-radius: 35px;
-  padding: 1vh;
+  padding: 1.5vh 5vw;
   background-color: rgb(53, 206, 99);
   text-align: center;
-  font-size: calc(.7vw + .7vh + .3vmin);
+  font-size: calc(1vw + 1vh + .5vmin);
   color: white;
   cursor: pointer;
+  @media all and (min-width: 48em) {
+    padding: 1vh 5vw;
+    font-size: calc(.7vw + .7vh + .3vmin);
+  }
 }
 
 .submit__button_ok {

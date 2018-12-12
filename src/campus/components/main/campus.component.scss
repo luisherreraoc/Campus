@@ -1,70 +1,84 @@
 @import '~scss/abstracts/variables';
 
-:host ::ng-deep
-{
-	.container-left
-	{
-		background-image: none;
-	}
-
-	section 
-	{
-		-webkit-transition: background-color 300ms ease-in;
-    	-ms-transition: background-color 300ms ease-in;
-    	transition: background-color 300ms ease-in;
-	}
-
-	.mis-cursos
-	{
-		.container-left
-		{
-			background-color: $color-cursos;
-		}
-	}
-
-	.mi-cuenta
-	{
-		.container-left
-		{
-			background-color: $color-cuenta;
-		}
-	}
-
-	.cambiar-contrasena
-	{
-		.container-left
-		{
-			background-color: $color-cuenta;
-		}
-	}
-
-	.mis-certificaciones
-	{
-		.container-left
-		{
-			background-color: $color-certificaciones;
-		}
-	}
-
-	.container-left-heading {
-		display: flex;
-		flex-direction: column;
-		text-align: center;
-		font-size: 2.5vmin;
-		margin: 10vh auto 0;
-
-		.avatar {
-			padding-bottom: 3vmax;
-		}
-
-		.heading_link {
-			padding-top: 3vmax;
-			padding-bottom: 1vmax;
-		}
-
-		.heading_link_active {
-			border-bottom: 0.2vmin solid;
-			border-image: linear-gradient(to right, transparent 40%, white 40%, white 60%, transparent 40%) 3;
-		}
-	}
+:host ::ng-deep {
+  .container-left {
+  	background-image: none;
+  	height: 25vh;
+  	@media all and (min-width: 48em) {
+  	  height: 100vh;
+  	}
+  }  
+  section {
+  	-webkit-transition: background-color 300ms ease-in;
+  	-ms-transition: background-color 300ms ease-in;
+  	transition: background-color 300ms ease-in;
+  }  
+  .mis-cursos {
+  	.container-left {
+  	  background-color: $color-cursos;
+  	}
+  }  
+  .mi-cuenta{
+  	.container-left {
+  	  background-color: $color-cuenta;
+  	}
+  }  
+  .cambiar-contrasena {
+  	.container-left {
+  	  background-color: $color-cuenta;
+  	}
+  }  
+  .mis-certificaciones {
+  	.container-left	{
+  	  background-color: $color-certificaciones;
+  	}
+  }  
+  .container-left-heading {
+  	display: inline;
+  	margin: 0px;  
+  	.navigation__menu {
+  	  display: flex;
+  	  justify-content: space-between;
+  	  width: 61%;
+  	  margin-top: 10px;
+  	  @media all and (min-width: 48em) {
+		width: 92%;
+		margin-top: 2vh;
+  	  	.avatar {
+  	  		margin: 0px auto;
+  	  	}
+  	  }
+  	}  
+  	.navigation__sites {
+  	  display: flex;
+  	  justify-content: space-around;
+  	  font-size: 1.5rem;
+  	  a {
+  	  	padding-top: 0px;
+  	  }
+  	  @media all and (min-width: 48em) {
+  	  	flex-direction: column;
+  	  	text-align: center;
+  	  	font-size: calc(1.2vw + 1.2vh + .5vmin);
+  	  	padding-top:5vh;
+  	  	a {
+  	  		padding-top: 3.5vh;
+  	  	}
+  	  }
+  	  @media all and (min-width: 78em) {
+  	  	font-size: 3rem;
+  	  }
+  	}  
+  	.heading_link {
+  	  padding-top: 3vmax;
+  	  padding-bottom: 1vmax;
+  	}  
+  	.heading_link_active {
+  	  border-bottom: 0.4vh solid;
+	  border-image: linear-gradient(to right, transparent 30%, white 30%, white 70%, transparent 30%) 3;
+	  @media all and (min-width: 48em) {
+		border-image: linear-gradient(to right, transparent 40%, white 40%, white 60%, transparent 40%) 3;
+	  }
+  	}
+  }
 }

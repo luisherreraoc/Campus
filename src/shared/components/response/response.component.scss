@@ -7,13 +7,19 @@
   left: 0px;
   right: 0px;
   background-color: white;
+  margin-top: 0px;
+  height: 100vh;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-  padding: 5vmax;
+  .inner-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 75vh;
+    @media all and (min-width: 48em) {
+      height: 100vh;
+    }
+  }
 
   .response__img {
 	  margin-bottom: 2vmax;
@@ -26,8 +32,11 @@
   }
 
   .response__msg {
-	  font-size: 2vmin;
-	  margin-bottom: 2vmax;
+	  font-size: calc(1.3vw + 1.3vh + .6vmin);
+    margin-bottom: 2vh;
+    @media all and (min-width: 48em) {
+			font-size: calc(.7vw + .7vh + .3vmin);
+		}
   }
 
   .response__btn {
@@ -35,10 +44,12 @@
 	  padding: 1vmax 3vmax;
 	  border-radius: 30px;
 	  border: transparent;
-    font-size: 1.2vmin;
-	  font-weight: 500;
+		font-size: calc(1.5vw + 1.5vh + .7vmin);	  font-weight: 500;
 	  color: white;
     background-color: $color-cuenta;
     cursor: pointer;
+		@media all and (min-width: 48em) {
+			font-size: calc(.7vw + .7vh + .3vmin);
+		}
   }
 }

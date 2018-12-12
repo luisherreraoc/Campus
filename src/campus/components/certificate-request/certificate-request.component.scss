@@ -6,22 +6,23 @@
   top: 0px;
   left: 0px;
   right: 0px;
-  bottom: 0px;
+	bottom: 0px;
+	height: 100vh;
 
   .request {
-    margin: 10vh 10vw;
+		margin: 10vh 10vw;
 
 	.request__header {
 	  display: flex;
 	  flex-direction: row-reverse;
 	  justify-content: space-between;
 	  padding-bottom: 3vh;
-      h1 {
-		color: $color-certificaciones;
-		font-size: 2.5vw;
-		@media all and (min-width: 62em) {
-		  font-size: 1.8vw;
-		}
+    h1 {
+		  color: $color-certificaciones;
+			font-size: calc(1.7vw + 1.7vh + .7vmin);
+			@media all and (min-width: 48em) {
+				font-size: calc(1.1vw + 1.1vh + .7vmin);
+			}
 	  }
 	}
 
@@ -36,11 +37,11 @@
 	}
 
 	.request__button {
-	  padding: 1.5vh;
+	  padding: 2vh;
 	  margin-bottom: 2vh;
 	  border-radius: 35px;
-	  font-size: calc(.6vh + .6vw + .3vmin);
-	  width: 25vw;
+	  font-size: calc(1vh + 1vw + .5vmin);
+	  width: 50vw;
 	  background-color: #23B55E;
 	  color: white;
 		border-color: transparent;
@@ -48,7 +49,12 @@
 	  cursor: pointer;
 	  p {
 			margin: 0px;
-	  }
+		}
+		@media all and (min-width: 48em) {
+			padding: 1.5vh;
+			font-size: calc(.6vh + .6vw + .3vmin);
+			width: 25vw;
+		}
 	}
   }
 }

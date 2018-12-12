@@ -5,12 +5,6 @@
             <div class="dialog__form__select">
                 <mk-form (onEnter)="falseClick()" name="jobs" [ids]="data.ids" [only]="_steps[_step]"></mk-form>
             </div>
-
-            <ng-container *ngIf="_step == 1">
-                <div class="dialog__form__select">
-                    <mk-form-select-list-multiple [question]="_question" form="jobs"></mk-form-select-list-multiple>
-                </div>
-            </ng-container>
         </div>
         
         <div #button class="dialog__button" 
