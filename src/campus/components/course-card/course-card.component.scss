@@ -149,8 +149,11 @@
 	.licencia_popover__close {
 		display: flex;
 		flex-direction: row-reverse;
-		font-size: 1.5vh;
+		font-size: 3vh;
 		cursor: pointer;
+		@media all and (min-width: 54em) {
+			font-size: 1.5vh;
+		}
 	}
 	.licencia_popover__respuestas {
 		padding: 0.5vh;
