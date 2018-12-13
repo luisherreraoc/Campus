@@ -246,7 +246,6 @@ export class RegistroComponent
 
             if ( this._step == 2 ) {
                 this.renderer.removeClass(this._wrapper.nativeElement, 'margin-small');
-                this.renderer.addClass(this._wrapper.nativeElement, 'margin-medium');
                 let job:any = this._form.find('registro_job').value || 'Médico';
 
                 this._fs.getFormQuestions('registro').map( (q:any) => {
@@ -267,7 +266,6 @@ export class RegistroComponent
             };
 
             if ( this._step == 4 ) {
-                this.renderer.removeClass(this._wrapper.nativeElement, 'margin-medium');
                 this.renderer.addClass(this._wrapper.nativeElement, 'margin-big');
                 let job:any = control_job.value || 'Médico';
                 let college:any = control_college.value;
@@ -294,7 +292,6 @@ export class RegistroComponent
                 });
             };
         } else {
-            console.log(this._form_group)
             aux = this._form_group.getRawValue();
             data = {
                 'first_name': aux.registro_first_name,
