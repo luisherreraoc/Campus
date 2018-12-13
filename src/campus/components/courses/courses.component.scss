@@ -1,10 +1,9 @@
 @import '~scss/abstracts/variables';
 
 .courses {
-  margin-top: 30vh;
   width: 90vw;
   @media all and (min-width: 48em) {
-    margin-top: 10vh;
+    margin-top: 20vh;
     width: 52vw;
   }
   @media all and (min-width: 54em) {
