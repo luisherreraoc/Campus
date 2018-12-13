@@ -74,7 +74,7 @@
   	  padding-bottom: 1vmax;
   	}  
   	.heading_link_active {
-	  border-top: none;
+	  border-top: 0;
   	  border-bottom: 0.4vh solid;
 	  border-image: linear-gradient(to right, transparent 30%, white 30%, white 70%, transparent 30%) 3;
 	  @media all and (min-width: 48em) {
