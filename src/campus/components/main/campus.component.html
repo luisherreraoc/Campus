@@ -28,7 +28,10 @@
 
 		</section>
 
-      <section class="container-right col-md-7 col-lg-8 col-xl-8 d-flex align-items-center justify-content-center">
+	  <section class="container-right col-md-7 col-lg-8 col-xl-8 d-flex align-items-center justify-content-center"
+			   [ngClass]="{ container_right__cuenta : _cuenta === true,
+						    container_right__cursos : _cursos === true,
+						    container_right__certificados : _certificados === true }">
   
       		<router-outlet></router-outlet>
 

@@ -3,7 +3,7 @@
 :host ::ng-deep {
   .container-left {
   	background-image: none;
-  	height: 25vh;
+  	height: 26vh;
   	@media all and (min-width: 48em) {
   	  height: 100vh;
   	}
@@ -74,11 +74,28 @@
   	  padding-bottom: 1vmax;
   	}  
   	.heading_link_active {
+	  border-top: none;
   	  border-bottom: 0.4vh solid;
 	  border-image: linear-gradient(to right, transparent 30%, white 30%, white 70%, transparent 30%) 3;
 	  @media all and (min-width: 48em) {
 		border-image: linear-gradient(to right, transparent 40%, white 40%, white 60%, transparent 40%) 3;
 	  }
   	}
+  }
+
+  .container_right__cuenta {
+	margin-top: 235px;
+  }
+  .container_right__cursos {
+	margin-top: 95px;
+  }
+  .container_right__certificados {
+	margin-top: 55px;
+  }
+  @media all and (min-width: 48em) {
+	.container_right__cuenta, .container_right__cursos,
+	.container_right__certificados {
+	  margin-top: 0px;
+	}
   }
 }
