@@ -74,15 +74,15 @@
   	  padding-bottom: 1vmax;
   	}  
   	.heading_link_active:after {
-	  border-bottom: 0.3vh solid white;
-	  content: '';
-	  display: block;
-	  width: 50%;
-	  margin-left: auto;
-	  margin-right: auto;
-	  padding-top: 1vh;
-	  @media all and (min-width: 48em) {
-		width: 25%; 
+	    border-bottom: 0.3vh solid white;
+	    content: '';
+	    display: block;
+	    width: 50%;
+	    margin-left: auto;
+	    margin-right: auto;
+	    padding-top: 1vh;
+	    @media all and (min-width: 48em) {
+		  width: 25%; 
 	  }
 	//   border-top: 0;
   	//   border-bottom: 0.4vh solid;
@@ -94,18 +94,18 @@
   }
 
   .container_right__cuenta {
-	margin-top: 235px;
+	  margin-top: 235px;
   }
   .container_right__cursos {
-	margin-top: 95px;
+	  margin-top: 95px;
   }
   .container_right__certificados {
-	margin-top: 55px;
+	  margin-top: 55px;
   }
   @media all and (min-width: 48em) {
-	.container_right__cuenta, .container_right__cursos,
-	.container_right__certificados {
-	  margin-top: 0px;
-	}
+	  .container_right__cuenta, .container_right__cursos,
+	  .container_right__certificados {
+	    margin-top: 0px;
+	  }
   }
 }

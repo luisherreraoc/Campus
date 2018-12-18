@@ -1,7 +1,25 @@
-:host ::ng-deep
-{
-	.white-btn
-	{
+:host ::ng-deep {
+	.container-left {
+		height: 200px;
+		@media all and (min-width: 48em) {
+			height: 100vh;
+		}
+	}
+
+	.container-right {
+		margin-top: 60px;
+		@media all and (min-width: 48em) {
+			margin-top: 0px;
+		}
+	}
+
+	.navbar-brand {
+		img {
+			height: 8.5rem;
+		}
+	}
+
+	.white-btn {
 	    background-color: white;
 	    background-image: none;
 	    color: #55a8d2;
