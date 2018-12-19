@@ -94,18 +94,18 @@
   }
 
   .container_right__cuenta {
-	  margin-top: 235px;
+	margin-top: 235px;
   }
   .container_right__cursos {
-	  margin-top: 95px;
+	margin-top: 95px;
   }
   .container_right__certificados {
-	  margin-top: 55px;
+	margin-top: 95px;
   }
   @media all and (min-width: 48em) {
-	  .container_right__cuenta, .container_right__cursos,
-	  .container_right__certificados {
-	    margin-top: 0px;
-	  }
+	.container_right__cuenta, .container_right__cursos,
+	.container_right__certificados {
+	  margin-top: 0px;
+	}
   }
 }

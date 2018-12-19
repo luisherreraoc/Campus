@@ -6,7 +6,7 @@
   align-items: center;
   width: 100%;
   border: 1px solid rgb(190,190,190);
-  border-radius: 25px;
+  border-radius: 15px;
   overflow: hidden;
 
   .cert-card__photo {
@@ -20,7 +20,8 @@
 
   .cert-card__title {
 		display: flex;
-    align-items: center;
+		align-items: center;
+		margin: 2vh 0px;
 		padding: 0vmin 1vmin;
     min-height: 8vmax;
 		text-align: center;
@@ -40,7 +41,7 @@
 
   .cert-card__button {
 		padding: 2vh;
-		margin-bottom: 1vh;
+		margin: 4vh 0px;
 		border-radius: 35px;
 		width: 90%;
 		background-color: $color-certificaciones;

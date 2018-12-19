@@ -69,6 +69,12 @@
 
   .password-button {
 		padding: 20px 0px 40px;
+		display: flex;
+		justify-content: flex-end;
+		@media all and (min-width: 48em) {
+			justify-content: flex-start;
+		}
+
 		img {
 			padding-bottom: 1vh;
 		}
@@ -85,6 +91,8 @@
   }
 
   .submit__button {
+		display: flex;
+		justify-content: center;
 	  background-color: white;
 	  color: #23B55E;
 	  padding: 1vh;
@@ -93,6 +101,7 @@
 		width: 35vw;
 		font-size: calc(1.5vw + 1.5vh + .7vmin);
 		@media all and (min-width: 48em) {
+			justify-content: flex-start;
 	  	width: 14vw;
 			font-size: calc(.7vw + .7vh + .3vmin);
 		}
