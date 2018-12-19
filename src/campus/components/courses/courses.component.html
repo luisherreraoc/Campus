@@ -1,5 +1,6 @@
 <div class="courses">
-	<h1 class="courses__header">
+	<h1 class="courses__header"
+		*ngIf="_currentWindowWidth < 768">
 		MIS CURSOS
 	</h1>
 	<div class="courses__wrapper">
@@ -11,7 +12,7 @@
 			</i>
 		</div>
 
-		<div class="courses__wrapper__carousel">
+		<div class="courses__wrapper__carousel" (swipeleft)="plusSlide()" (swiperight)="minusSlide()">
 			<div #carousel class="courses__wrapper__carousel__flow" 
 				 [style.transform]="'translateX('+amount+'px)'">
 				<div class="courses__wrapper__carousel__flow__content" #curso 

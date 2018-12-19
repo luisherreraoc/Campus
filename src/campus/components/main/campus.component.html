@@ -9,7 +9,7 @@
 						<div class="navigation__menu">
 							<log-out></log-out>				
 					
-							<user-avatar class="avatar"></user-avatar>
+							<user-avatar *ngIf="_currentWindowWidth >= 768" class="avatar"></user-avatar>
 						</div>
 
 						<div class="navigation__sites">

@@ -1,4 +1,4 @@
-import { Component, Inject, ViewContainerRef, ViewChild, ElementRef, SimpleChange, SimpleChanges, Renderer2 } from '@angular/core';
+import { Component, Inject, ViewContainerRef, ViewChild, ElementRef, SimpleChange, SimpleChanges, Renderer2, HostListener } from '@angular/core';
 import { Observable, BehaviorSubject, Subscription } from "rxjs/Rx";
 
 import { environment } from '../../../environments/environment';
@@ -25,6 +25,9 @@ import { FormGroup } from '@angular/forms';
 export class AcountComponent
 {
 	@ViewChild('button') private _button: ElementRef;
+	@HostListener('window : resize') onresize() {
+		this._currentWindowWidth = window.innerWidth;
+	}
 
 	private _form: MkForm;
 	private _form_group: FormGroup;
@@ -50,6 +53,7 @@ export class AcountComponent
 	private initDetails : Array<string>;
 
 	private inactive : boolean;
+	private _currentWindowWidth: number;
 
 	public constructor ( 
 		private logger: Logger, 
@@ -94,6 +98,7 @@ export class AcountComponent
 
 	public ngOnInit () : void
 	{
+		this._currentWindowWidth = window.innerWidth;
 		let source: User = this._us.users.getValue().find( (usr:User) => usr['token'] === this._as.getToken() );
 		let obs: Observable<any> = source ? Observable.of(source) : this._us.get(this._as.getToken());
 

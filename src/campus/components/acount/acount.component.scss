@@ -54,10 +54,14 @@
   .dialog-button {
   	width: 100%;
 	  display: flex;
-	  justify-content: flex-end;
+	  justify-content: flex-start;
 	  color: $color-cuenta;
 	  font-weight: 500;
-	  padding-top: 10px;
+		padding-top: 10px;
+		@media all and (min-width: 48em) {
+			justify-content: flex-end;
+		}
+
 	  p {
 			cursor: pointer;
 			font-size: calc(1.3vw + 1.3vh + .7vmin);
@@ -69,11 +73,6 @@
 
   .password-button {
 		padding: 20px 0px 40px;
-		display: flex;
-		justify-content: flex-end;
-		@media all and (min-width: 48em) {
-			justify-content: flex-start;
-		}
 
 		img {
 			padding-bottom: 1vh;
