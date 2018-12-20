@@ -97,13 +97,22 @@
   }
 
   .container_right__cuenta {
-		margin-top: 55vh;
+		margin-top: 70vh;
+		@media all and (min-height: 480px) {
+			margin-top: 55vh;
+		}
 		@media all and (min-height: 600px) {
 			margin-top: 45vh;
 		}
   }
   .container_right__cards {
-	  margin-top: 15vh;
+		margin-top: 30vh;
+		@media all and (min-height: 500px) {
+			margin-top: 20vh;
+		}
+		@media all and (min-height: 600px) {
+			margin-top: 15vh;
+		}
   }
   
   @media all and (min-width: 48em) {
