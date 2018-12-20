@@ -3,11 +3,14 @@
 :host ::ng-deep {
   position: absolute;
   background-color: white;
-  top: 0px;
+  top: -100px;
   left: 0px;
   right: 0px;
 	bottom: 0px;
 	height: 100vh;
+	@media all and (min-width: 48em) {
+		top: 0px;
+	}
 
   .request {
 		margin: 10vh 10vw;
