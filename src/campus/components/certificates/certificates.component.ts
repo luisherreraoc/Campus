@@ -1,4 +1,4 @@
-import { Component, ViewChild, ViewChildren, Renderer2 }				from '@angular/core';
+import { Component, ViewChild, ViewChildren, Renderer2, HostListener }				from '@angular/core';
 import { Observable, BehaviorSubject, Subscription } 					from "rxjs/Rx"; 
 import { Logger, Loader }														from 'mk';
 import { CoursesService }												from '../../services/courses.service';
@@ -11,6 +11,9 @@ export class CertificatesComponent
 {
     @ViewChild('carousel') private _carousel : any;
     @ViewChildren('certificado') private _certificado : any;
+    @HostListener('window : resize') onresize() {
+        this._currentWindowWidth = window.innerWidth;
+    }
 	private _subscriptions: Array<any>;
     private _certificates: Array<any>;
     
@@ -25,6 +28,8 @@ export class CertificatesComponent
     private _sent: boolean;
     private _response_obj: {title:string,text:string,img:string,btn:string,callback:any};
     private _code : any;
+
+    private _currentWindowWidth: number;
 
 	public constructor ( 
         private logger: Logger, 
@@ -51,6 +56,7 @@ export class CertificatesComponent
 
     public ngOnInit () : void
 	{
+        this._currentWindowWidth = window.innerWidth;
         this._subscriptions = [
             this.subscribeCourses()
         ];

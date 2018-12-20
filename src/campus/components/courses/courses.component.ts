@@ -1,5 +1,5 @@
 import { Component, ViewChildren, ElementRef, ViewChild, 
-	QueryList, Renderer2 }                    							from '@angular/core';
+	QueryList, Renderer2, HostListener }                    							from '@angular/core';
 import { Observable, BehaviorSubject, Subscription } 					from "rxjs/Rx"; 
 
 import { Logger, Loader }												from 'mk';
@@ -14,6 +14,9 @@ export class CoursesComponent
 {
 	@ViewChildren('curso') private _curso : any;
 	@ViewChild('carousel') private _carousel : any;
+	@HostListener('window : resize') onresize() {
+		this._currentWindowWidth = window.innerWidth;
+	}
 	private _subscriptions: Array<any>;
 	private _courses: Array<any>;
 	public amount : any;
@@ -24,6 +27,8 @@ export class CoursesComponent
 	private singleWidth : any;
 	private showInicio : boolean;
 	private _currentCourse : any;
+
+	private _currentWindowWidth : number;
 
 	public constructor ( 
 		private logger: Logger, 
@@ -40,6 +45,7 @@ export class CoursesComponent
 
 	public ngOnInit () : void
 	{
+		this._currentWindowWidth = window.innerWidth;
 		this._subscriptions = [
             this.subscribeCourses()
         ];

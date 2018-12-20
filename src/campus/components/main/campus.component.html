@@ -8,8 +8,12 @@
 				<div class="navigation">
 						<div class="navigation__menu">
 							<log-out></log-out>				
-					
-							<user-avatar class="avatar"></user-avatar>
+
+							<img src="assets/img/logo.png" alt="Logotipo de la Oceano medicina"
+								 class="logo"
+								 *ngIf="_currentWindowWidth < 768">
+
+							<user-avatar *ngIf="_currentWindowWidth >= 768" class="avatar"></user-avatar>
 						</div>
 
 						<div class="navigation__sites">
@@ -30,8 +34,7 @@
 
 	  <section class="container-right col-md-7 col-lg-8 col-xl-8 d-flex align-items-center justify-content-center"
 			   [ngClass]="{ container_right__cuenta : _cuenta === true,
-						    container_right__cursos : _cursos === true,
-						    container_right__certificados : _certificados === true }">
+						    container_right__cards : _cursos || _certificados === true }">
   
       		<router-outlet></router-outlet>
 

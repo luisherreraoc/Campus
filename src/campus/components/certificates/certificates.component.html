@@ -1,5 +1,6 @@
 <div class="certificates">
-	<h1 class="certificates__header">
+	<h1 class="certificates__header"
+		*ngIf="_currentWindowWidth >= 768">
 		MIS CERTIFICACIONES
 	</h1>
 
@@ -12,7 +13,7 @@
 			</i>
 		</div>
 
-		<div class="certificates__wrapper__carousel">
+		<div class="certificates__wrapper__carousel" (swipeleft)="plusSlide()" (swiperight)="minusSlide()">
 			<div #carousel class="certificates__wrapper__carousel__flow"
 				 [style.transform]="'translateX('+amount+'px)'">
 				<div class="certificates__wrapper__carousel__flow__content" #certificado

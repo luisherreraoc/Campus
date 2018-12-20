@@ -1,14 +1,14 @@
 .wrapper {
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    padding: 7vh 6vw;
-    border-radius: 35px;
-    box-shadow: grey 0px 0px 6px;
-    margin-top: 28vh;
-
-    @media all and (min-width: 48em) {
-        padding: 0px;
-        box-shadow: none;
-    }
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 7vh 6vw;
+  @media all and (min-width: 48em) {
+    padding: 0px;
+  }
+}
+::ng-deep {
+  .pass-wrapper {
+    border-bottom: .1rem solid #8e8e8e;
+  }
 }

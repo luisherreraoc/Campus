@@ -1,4 +1,4 @@
-import { Component, ViewChild }                         							from '@angular/core';
+import { Component, ViewChild, HostListener }                         							from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } 						from '@angular/router';
 
 import { Observable, BehaviorSubject, Subscription } 					from "rxjs/Rx";
@@ -13,6 +13,9 @@ import { environment }													from '../../../environments/environment';
 })
 export class CampusComponent
 {
+	@HostListener('window : resize') onresize() {
+		this._currentWindowWidth = window.innerWidth;
+	}
 	private _subscriptions: Array<Subscription>;
 	private _courses: string;
 	private _certificates: string;
@@ -23,6 +26,8 @@ export class CampusComponent
 	private _cuenta : boolean;
 	private _cursos : boolean;
 	private _certificados : boolean;
+
+	private _currentWindowWidth: number;
 
 	public constructor ( private _logger: Logger, private _router: Router, private _route: ActivatedRoute ) 
 	{ 
@@ -40,6 +45,7 @@ export class CampusComponent
 
 	public ngOnInit () : void
 	{
+		this._currentWindowWidth = window.innerWidth;
 		this._outer_class = this.getSegment();
 		this.activeClass(this._outer_class);
 		this._subscriptions = [	
