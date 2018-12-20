@@ -97,18 +97,18 @@
   }
 
   .container_right__cuenta {
-	margin-top: 250px;
+		margin-top: 55vh;
+		@media all and (min-height: 600px) {
+			margin-top: 45vh;
+		}
   }
-  .container_right__cursos {
-	margin-top: 95px;
+  .container_right__cards {
+	  margin-top: 15vh;
   }
-  .container_right__certificados {
-	margin-top: 95px;
-  }
+  
   @media all and (min-width: 48em) {
-	.container_right__cuenta, .container_right__cursos,
-	.container_right__certificados {
-	  margin-top: 0px;
-	}
+	  .container_right__cuenta, .container_right__cards {
+	    margin-top: 0px;
+	  }
   }
 }

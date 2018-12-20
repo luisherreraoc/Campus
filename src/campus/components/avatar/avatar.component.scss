@@ -14,8 +14,8 @@
   	position: relative;
   	display: inline-flex;
   	.user__avatar__img {
-  	  width: 18vmin;
-  	  height: 18vmin;
+  	  width: 30vmin;
+  	  height: 30vmin;
   	  border-radius: 50%;
   	  overflow: hidden;
   	  img {
@@ -46,10 +46,11 @@
   	}
   }
   .user__username {
-  	color: white;
+  	color: $color-cuenta;
     font-size: 2rem;
   	padding-top: 1vh;
   	@media all and (min-width: 48em) {
+			color: white;
   	  font-size: calc(1vh + 1vw + .5vmin);
   	  padding-top: 3vh;
   	}
