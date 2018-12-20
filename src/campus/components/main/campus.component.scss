@@ -39,7 +39,7 @@
   	.navigation__menu {
   	  display: flex;
   	  justify-content: space-evenly;
-  	  width: 77%;
+  	  width: 83%;
 			margin: 20px 0px 30px;
 			.logo {
 				height: 8.5rem;
@@ -87,12 +87,6 @@
 	    @media all and (min-width: 48em) {
 		  width: 25%; 
 	  }
-	//   border-top: 0;
-  	//   border-bottom: 0.4vh solid;
-	//   border-image: linear-gradient(to right, transparent 30%, white 30%, white 70%, transparent 30%) 3;
-	//   @media all and (min-width: 48em) {
-	// 	border-image: linear-gradient(to right, transparent 40%, white 40%, white 60%, transparent 40%) 3;
-	//   }
   	}
   }
 
