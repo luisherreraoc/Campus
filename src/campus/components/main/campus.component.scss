@@ -3,7 +3,7 @@
 :host ::ng-deep {
   .container-left {
   	background-image: none;
-  	height: 26vh;
+  	height: 200px;
   	@media all and (min-width: 48em) {
   	  height: 100vh;
   	}
@@ -38,13 +38,16 @@
   	margin: 0px;  
   	.navigation__menu {
   	  display: flex;
-  	  justify-content: space-between;
-  	  width: 61%;
-  	  margin-top: 10px;
+  	  justify-content: space-evenly;
+  	  width: 77%;
+			margin: 20px 0px 30px;
+			.logo {
+				height: 8.5rem;
+			}
   	  @media all and (min-width: 48em) {
-		width: 92%;
-		margin-top: 2vh;
-  	  	.avatar {
+				width: 92%;
+				margin-top: 2vh;
+				.avatar {
   	  		margin: 0px auto;
   	  	}
   	  }
@@ -94,7 +97,7 @@
   }
 
   .container_right__cuenta {
-	margin-top: 235px;
+	margin-top: 250px;
   }
   .container_right__cursos {
 	margin-top: 95px;

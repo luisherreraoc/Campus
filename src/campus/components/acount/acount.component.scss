@@ -89,28 +89,32 @@
 	  }
   }
 
-  .submit__button {
-		display: flex;
-		justify-content: center;
-	  background-color: white;
-	  color: #23B55E;
-	  padding: 1vh;
-	  border-radius: 30px;
-		border: 1px solid #23B55E;
-		width: 35vw;
-		font-size: calc(1.5vw + 1.5vh + .7vmin);
+	.submit {
+		padding: 0px 20vw;
 		@media all and (min-width: 48em) {
-			justify-content: flex-start;
-	  	width: 14vw;
-			font-size: calc(.7vw + .7vh + .3vmin);
+			padding: 0px;
 		}
-  }
 
-  .submit__button_active {
-	  background-color: #23B55E;
-		color: white;
-		cursor: pointer;
-  }
+		.submit__button {
+			padding: 1vh;
+			width: 35vw;
+			border-radius: 30px;
+			border: 1px solid #23B55E;
+			background-color: white;
+			color: #23B55E;
+			font-size: calc(1.5vw + 1.5vh + .7vmin);
+			@media all and (min-width: 48em) {
+				width: 14vw;
+				font-size: calc(.7vw + .7vh + .3vmin);
+			}
+		}
+
+		.submit__button_active {
+			background-color: #23B55E;
+			color: white;
+			cursor: pointer;
+		}		
+	}
 }
 
 ::ng-deep {

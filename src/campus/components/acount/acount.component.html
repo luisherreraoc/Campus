@@ -1,6 +1,6 @@
 <div class="account">
     <user-avatar *ngIf="_currentWindowWidth < 768"></user-avatar>
-    <h1 *ngIf="_currentWindowWidth < 768">MI CUENTA</h1>
+    <h1 *ngIf="_currentWindowWidth >= 768">MI CUENTA</h1>
 
     <div class="forms_container">
         <mk-form (onEnter)="falseClick()" *ngIf="_ids" name="user" [only]="_onl1" [ids]="_ids"></mk-form>

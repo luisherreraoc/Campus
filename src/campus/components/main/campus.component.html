@@ -8,7 +8,11 @@
 				<div class="navigation">
 						<div class="navigation__menu">
 							<log-out></log-out>				
-					
+
+							<img src="assets/img/logo.png" alt="Logotipo de la Oceano medicina"
+								 class="logo"
+								 *ngIf="_currentWindowWidth < 768">
+
 							<user-avatar *ngIf="_currentWindowWidth >= 768" class="avatar"></user-avatar>
 						</div>
 
