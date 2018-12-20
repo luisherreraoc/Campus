@@ -2,13 +2,17 @@
 
 .response {
   position: absolute;
-  top: 0px;
+  top: -300px;
   bottom: 0px;
   left: 0px;
   right: 0px;
   background-color: white;
   margin-top: 0px;
   height: 100vh;
+
+  @media all and (min-width: 48em) {
+    top: 0px;
+  }
 
   .inner-wrapper {
     display: flex;
