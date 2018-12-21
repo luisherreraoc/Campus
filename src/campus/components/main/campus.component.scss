@@ -84,41 +84,51 @@
   	  padding-bottom: 1vmax;
   	}  
   	.heading_link_active:after {
-	    border-bottom: 0.3vh solid white;
-	    content: '';
-	    display: block;
-	    width: 50%;
-	    margin-left: auto;
-	    margin-right: auto;
-	    padding-top: 1vh;
-	    @media all and (min-width: 48em) {
-		  width: 25%; 
+	  border-bottom: 0.3vh solid white;
+	  content: '';
+	  display: block;
+	  width: 50%;
+	  margin-left: auto;
+	  margin-right: auto;
+	  padding-top: 1vh;
+	  @media all and (min-width: 48em) {
+	    width: 25%; 
 	  }
   	}
   }
 
   .container_right__cuenta {
-		margin-top: 70vh;
-		@media all and (min-height: 480px) {
-			margin-top: 55vh;
-		}
-		@media all and (min-height: 600px) {
-			margin-top: 45vh;
-		}
+	margin-top: 70vh;
+	@media all and (min-height: 480px) {
+	  margin-top: 55vh;
+	}
+	@media all and (min-height: 600px) {
+	  margin-top: 45vh;
+	}
   }
-  .container_right__cards {
-		margin-top: 30vh;
-		@media all and (min-height: 500px) {
-			margin-top: 15vh;
-		}
-		@media all and (min-height: 600px) {
-			margin-top: 10vh;
-		}
+  .container_right__cursos {
+	margin-top: 34vh;
+	@media all and (min-height: 500px) {
+	  margin-top: 16vh;
+	}
+	@media all and (min-height: 600px) {
+	  margin-top: 11vh;
+	}
+  }
+  .container_right__certificados {
+	margin-top: 22vh;
+	@media all and (min-height: 500px) {
+	  margin-top: 16vh;
+	}
+	@media all and (min-height: 600px) {
+	  margin-top: 11vh;
+	}
   }
   
   @media all and (min-width: 48em) {
-	  .container_right__cuenta, .container_right__cards {
-	    margin-top: 0px;
-	  }
+	.container_right__cuenta, .container_right__cursos,
+	.container_right__certificados {
+	  margin-top: 0px;
+	}
   }
 }
