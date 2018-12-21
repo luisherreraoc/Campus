@@ -3,7 +3,7 @@
 :host ::ng-deep {
   .container-left {
   	background-image: none;
-  	height: 200px;
+  	height: 180px;
   	@media all and (min-width: 48em) {
   	  height: 100vh;
   	}
@@ -37,18 +37,25 @@
   	display: inline;
   	margin: 0px;  
   	.navigation__menu {
-  	  display: flex;
-  	  justify-content: space-evenly;
-  	  width: 77%;
-			margin: 20px 0px 30px;
-			.logo {
-				height: 8.5rem;
-			}
+	  display: flex;
+	  flex-direction: row-reverse;
+  	  justify-content: space-between;
+	  margin: 20px 0px 30px;
+	  .logo {
+		margin-left: 30vw;
+		height: 6.8rem;
+	
+		@media all and (min-width: 32em) {
+		  margin-left: 38vw;
+		}
+	  }
+
   	  @media all and (min-width: 48em) {
-				width: 92%;
-				margin-top: 2vh;
-				.avatar {
-  	  		margin: 0px auto;
+		flex-direction: row;
+		width: 92%;
+		margin-top: 2vh;
+		.avatar {
+  	  	  margin: 0px auto;
   	  	}
   	  }
   	}  
@@ -77,47 +84,51 @@
   	  padding-bottom: 1vmax;
   	}  
   	.heading_link_active:after {
-	    border-bottom: 0.3vh solid white;
-	    content: '';
-	    display: block;
-	    width: 50%;
-	    margin-left: auto;
-	    margin-right: auto;
-	    padding-top: 1vh;
-	    @media all and (min-width: 48em) {
-		  width: 25%; 
+	  border-bottom: 0.3vh solid white;
+	  content: '';
+	  display: block;
+	  width: 50%;
+	  margin-left: auto;
+	  margin-right: auto;
+	  padding-top: 1vh;
+	  @media all and (min-width: 48em) {
+	    width: 25%; 
 	  }
-	//   border-top: 0;
-  	//   border-bottom: 0.4vh solid;
-	//   border-image: linear-gradient(to right, transparent 30%, white 30%, white 70%, transparent 30%) 3;
-	//   @media all and (min-width: 48em) {
-	// 	border-image: linear-gradient(to right, transparent 40%, white 40%, white 60%, transparent 40%) 3;
-	//   }
   	}
   }
 
   .container_right__cuenta {
-		margin-top: 70vh;
-		@media all and (min-height: 480px) {
-			margin-top: 55vh;
-		}
-		@media all and (min-height: 600px) {
-			margin-top: 45vh;
-		}
+	margin-top: 70vh;
+	@media all and (min-height: 480px) {
+	  margin-top: 55vh;
+	}
+	@media all and (min-height: 600px) {
+	  margin-top: 45vh;
+	}
   }
-  .container_right__cards {
-		margin-top: 30vh;
-		@media all and (min-height: 500px) {
-			margin-top: 20vh;
-		}
-		@media all and (min-height: 600px) {
-			margin-top: 15vh;
-		}
+  .container_right__cursos {
+	margin-top: 34vh;
+	@media all and (min-height: 500px) {
+	  margin-top: 16vh;
+	}
+	@media all and (min-height: 600px) {
+	  margin-top: 11vh;
+	}
+  }
+  .container_right__certificados {
+	margin-top: 22vh;
+	@media all and (min-height: 500px) {
+	  margin-top: 16vh;
+	}
+	@media all and (min-height: 600px) {
+	  margin-top: 11vh;
+	}
   }
   
   @media all and (min-width: 48em) {
-	  .container_right__cuenta, .container_right__cards {
-	    margin-top: 0px;
-	  }
+	.container_right__cuenta, .container_right__cursos,
+	.container_right__certificados {
+	  margin-top: 0px;
+	}
   }
 }
