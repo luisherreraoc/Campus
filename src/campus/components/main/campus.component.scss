@@ -3,7 +3,7 @@
 :host ::ng-deep {
   .container-left {
   	background-image: none;
-  	height: 200px;
+  	height: 180px;
   	@media all and (min-width: 48em) {
   	  height: 100vh;
   	}
@@ -37,18 +37,25 @@
   	display: inline;
   	margin: 0px;  
   	.navigation__menu {
-  	  display: flex;
-  	  justify-content: space-evenly;
-  	  width: 83%;
-			margin: 20px 0px 30px;
-			.logo {
-				height: 8.5rem;
-			}
+	  display: flex;
+	  flex-direction: row-reverse;
+  	  justify-content: space-between;
+	  margin: 20px 0px 30px;
+	  .logo {
+		margin-left: 30vw;
+		height: 6.8rem;
+	
+		@media all and (min-width: 32em) {
+		  margin-left: 38vw;
+		}
+	  }
+
   	  @media all and (min-width: 48em) {
-				width: 92%;
-				margin-top: 2vh;
-				.avatar {
-  	  		margin: 0px auto;
+		flex-direction: row;
+		width: 92%;
+		margin-top: 2vh;
+		.avatar {
+  	  	  margin: 0px auto;
   	  	}
   	  }
   	}  
@@ -102,10 +109,10 @@
   .container_right__cards {
 		margin-top: 30vh;
 		@media all and (min-height: 500px) {
-			margin-top: 20vh;
+			margin-top: 15vh;
 		}
 		@media all and (min-height: 600px) {
-			margin-top: 15vh;
+			margin-top: 10vh;
 		}
   }
   
