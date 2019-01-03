@@ -23,14 +23,16 @@ export class LoginComponent
     private _campusUrl: string = '/' + environment.pathCampus;
 	private _form: MkForm;
 	private _form_group: FormGroup;
-	private _subscriptions: Array<any>;
+    private _subscriptions: Array<any>;
+    private _error: boolean;
 
 	public constructor ( private _logger: Logger, private _fs: MkFormService, private _http: Http, private _router: Router, private _as: AuthService ) 
 	{ 
 		_logger.log('LOGIN COMPONENT'); 
 
 		this._form_group = new FormGroup({});
-  		this._subscriptions = new Array();
+        this._subscriptions = new Array();
+        this._error = false;
 	}
 
 	public ngOnInit () : void
@@ -98,6 +100,7 @@ export class LoginComponent
             else
             {
                 this._logger.log(response['error_description']);
+                this._error = true;
             }            
     	});
     }

@@ -1,5 +1,10 @@
 <div class="wrapper">
     <mk-form (onEnter)="falseClick()" name="login"></mk-form>
+
+    <div class="log_error" *ngIf="_error">
+        <p class="log_error__text">El nombre de usuario y/o contraseña introducidos no son correctos. Por favor, revísalos e inténtalo de nuevo.</p>
+    </div>
+
     <span><a routerLink="/public/recuperar"><strong>¿Olvidaste tu contraseña?</strong></a></span>
 
     <button #button class="btn-registration" (click)="send()">INGRESAR</button>

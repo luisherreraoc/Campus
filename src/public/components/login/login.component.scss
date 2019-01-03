@@ -6,6 +6,26 @@
   @media all and (min-width: 48em) {
     padding: 0px;
   }
+
+  .log_error {
+    width: 320px;
+    margin:  1vh 0px 2vh;
+    padding: 2vh 10vw;
+    border-radius: 30px;
+    background-color: rgb(252, 191, 200);
+    @media all and (min-width: 33em) {
+      padding: 2vh 2vw;
+    }
+    @media all and (min-width: 48em) {
+      width: 380px;
+    }
+
+    .log_error__text {
+      margin-bottom: 0px;
+      font-size: 1.25rem;
+      color: rgb(195, 10, 10);
+    }
+  }
 }
 ::ng-deep {
   .pass-wrapper {
