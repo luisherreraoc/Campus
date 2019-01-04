@@ -77,8 +77,7 @@ export class LoginComponent
         let url: string = this._as.redirectUrl ? this._as.redirectUrl : this._campusUrl;
 
     	obj.product_id = 0;
-    	obj.grant_type = 'password';
-
+        obj.grant_type = 'password';
     	this._as.login(obj)
     	.first()
         .subscribe( ( response: Response ) =>

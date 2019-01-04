@@ -231,6 +231,7 @@ export class RegistroComponent
 
     private nextStep () : void
     {
+        this._fieldError = false;
         let aux: any;
         let data: any;
         let len: number = this._steps.length - 1;
