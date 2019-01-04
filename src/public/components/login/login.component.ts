@@ -25,6 +25,7 @@ export class LoginComponent
 	private _form_group: FormGroup;
     private _subscriptions: Array<any>;
     private _error: boolean;
+    private _fieldError: boolean;
 
 	public constructor ( private _logger: Logger, private _fs: MkFormService, private _http: Http, private _router: Router, private _as: AuthService ) 
 	{ 
@@ -33,6 +34,7 @@ export class LoginComponent
 		this._form_group = new FormGroup({});
         this._subscriptions = new Array();
         this._error = false;
+        this._fieldError = false;
 	}
 
 	public ngOnInit () : void
@@ -58,6 +60,7 @@ export class LoginComponent
             { 
                 this._form = form; 
                 this._form_group = this._form.formGroup;
+                this._form_group.reset();
             }
         });
     }
@@ -103,5 +106,9 @@ export class LoginComponent
                 this._error = true;
             }            
     	});
+    }
+
+    private checkError () {
+        this._fieldError = true;
     }
 }

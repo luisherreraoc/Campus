@@ -118,6 +118,7 @@ export class RegistroComponent
     private _sended: boolean;
     private _response_obj: {title:string,text:string,img:string,btn:string,callback:any};
     private _error: boolean;
+    private _fieldError: boolean;
 
 	public constructor ( 
         private _logger: Logger, 
@@ -157,6 +158,8 @@ export class RegistroComponent
         };
 
         this._error = false;
+
+        this._fieldError = false;
 	}
 
 	public ngOnInit ()
@@ -374,5 +377,9 @@ export class RegistroComponent
     private goToRegistro () : void
     {
          this._router.navigateByUrl('/public/registro');   
+    }
+
+    private checkError () {
+        this._fieldError = true;
     }
 }

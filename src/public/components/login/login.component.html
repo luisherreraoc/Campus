@@ -1,5 +1,5 @@
 <div class="wrapper">
-    <mk-form (onEnter)="falseClick()" name="login"></mk-form>
+    <mk-form (onEnter)="falseClick()" name="login" [checkerr]="_fieldError"></mk-form>
 
     <div class="log_error" *ngIf="_error">
         <p class="log_error__text">El nombre de usuario y/o contraseña introducidos no son correctos. Por favor, revísalos e inténtalo de nuevo.</p>
@@ -7,6 +7,6 @@
 
     <span><a routerLink="/public/recuperar"><strong>¿Olvidaste tu contraseña?</strong></a></span>
 
-    <button #button class="btn-registration" (click)="send()">INGRESAR</button>
+    <button #button mkStepvalidate [form]="_form_group" class="btn-registration" (onClicked)="send()" (onChecking)="checkError()">INGRESAR</button>
     <button class="btn-registration white-btn"><a routerLink="/public/registro">REGISTRARSE</a></button>    
 </div>

@@ -23,12 +23,8 @@
     .log_error__text {
       margin-bottom: 0px;
       font-size: 1.25rem;
+      font-weight: 400;
       color: rgb(195, 10, 10);
     }
-  }
-}
-::ng-deep {
-  .pass-wrapper {
-    border-bottom: .1rem solid #8e8e8e;
   }
 }
