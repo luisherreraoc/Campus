@@ -100,6 +100,8 @@ export class UserJobsDialogComponent
     private showMe: boolean;
     private showDialog: boolean;
     private showText: boolean;
+    private confirmClose: boolean;
+    private fieldError: boolean;
 
     private _step: number;
     private _steps: Array<Array<string>>;
@@ -130,6 +132,8 @@ export class UserJobsDialogComponent
         this.showMe = true;
         this.showDialog = true;
         this.showText = false;
+        this.confirmClose = false;
+        this.fieldError = false;
         
         this._step = 0;
         this._steps = [
@@ -174,6 +178,7 @@ export class UserJobsDialogComponent
 
     private next () : void
     {
+        this.fieldError = false;
         let aux: any;
         let data: any;
         let len: number = this._steps.length -1;
@@ -244,4 +249,15 @@ export class UserJobsDialogComponent
         );
     }
 
+    private checkError() {
+        this.fieldError = true;
+    }
+
+    private confirm() {
+        this.confirmClose = !this.confirmClose;
+    }
+
+    private closeDialog() {
+        this.dialogRef.close({close: true});
+    }
 }

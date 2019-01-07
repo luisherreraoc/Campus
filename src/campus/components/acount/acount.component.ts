@@ -55,6 +55,8 @@ export class AcountComponent
 	private inactive : boolean;
 	private _currentWindowWidth: number;
 
+	private _fieldError: boolean;
+
 	public constructor ( 
 		private logger: Logger, 
 		private _fs: MkFormService, 
@@ -94,6 +96,7 @@ export class AcountComponent
 
 		this.inactive = true;
 
+		this._fieldError = false;
 	}
 
 	public ngOnInit () : void
@@ -226,6 +229,7 @@ export class AcountComponent
     		id: 'user-jobs-dialog',
     		panelClass: 'custom-dialog',
 			viewContainerRef: this._vcr,
+			disableClose: true,
       		data: { 
 				ids: this._ids, 
 				ref: this._vcr
@@ -328,5 +332,9 @@ export class AcountComponent
         let clickMe = this._button.nativeElement;
 
         clickMe.click();
+	}
+
+	private showError() {
+		this._fieldError = true;
 	}
 }
