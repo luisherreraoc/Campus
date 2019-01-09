@@ -179,8 +179,6 @@ export class AcountComponent
 			}
 		};
 
-		let arr = [];
-
 		for (let cont in controls) {			
 			groupControls[controls[cont]].valueChanges
 			.debounceTime(1000)

@@ -11,7 +11,7 @@
     <div class="dialog" *ngIf="showDialog"
          [ngClass]="{ dialog_hide : this.confirmClose }">
         
-        <div class="dialog__close">
+        <div class="dialog__close" title="Cerrar">
             <i class="material-icons" (click)="confirm()">
                 clear
             </i>
@@ -23,7 +23,7 @@
             </div>
         </div>
         
-        <div #button class="dialog__button" mkStepvalidate [form]="_form_group" 
+        <div #button class="dialog__button" mkStepvalidate [form]="_form_group" [filter]="_steps[_step]" 
              _ngcontent-c3="" (onClicked)="next()" (onChecking)="checkError()">
             ACEPTAR
         </div>        

@@ -33,6 +33,7 @@
     display: flex;
     flex-direction: row-reverse;
     padding: 10px;
+    cursor: pointer;
   }
 
   .dialog__form {
@@ -54,7 +55,7 @@
     display: flex;
     justify-content: center;
     padding: 1vmax;
-    margin: 0px auto 2vh;
+    margin: 2vh auto;
     width: 40vw;
 	  font-size: calc(1.2vw + 1.2vh + 0.6vmin);
     font-weight: 500;
