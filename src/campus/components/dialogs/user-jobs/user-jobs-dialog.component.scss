@@ -19,6 +19,10 @@
     font-size: 2rem;
     font-weight: 450;
 
+    p {
+      cursor: pointer;
+    }
+
     p:hover {
       color: #53b0ed;
     }
