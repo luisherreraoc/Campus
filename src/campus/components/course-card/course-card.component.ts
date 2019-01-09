@@ -93,7 +93,7 @@ export class CourseCardComponent
 
 	private go () : void 
 	{
-		if (this._state === 'expired')
+		if (this._state === 'untouched')
 		{
 			this.iniciar.emit(this._currentCourse);
 		} else {
