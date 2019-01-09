@@ -1,4 +1,20 @@
 <div class="wrapper">
+    <div class="close" title="Cerrar">
+        <i class="material-icons" (click)="cerrar()">
+            clear
+        </i>
+    </div>
+
+    <div class="close_wrapper">
+        <div class="close_confirm" *ngIf="confirmClose">
+            <p>¿Seguro que desea salir?</p>
+            <div class="close_confirm__opt">
+                <p (click)="back(true)">Si</p>
+                <p (click)="cerrar()">No</p>            
+            </div>
+        </div>       
+    </div>
+
     <div class="select" *ngIf="!_activar && !_ceder && !_cederSuccess">
         <h2 class="select__header">Solicitud de datos personales para la certificación</h2>
 

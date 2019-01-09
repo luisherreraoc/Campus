@@ -55,6 +55,8 @@ export class CourseActivacionComponent
     private _step : number;
     private _steps : Array<Array<string>>;
 
+    private confirmClose: boolean;
+
     constructor(
         private _fs: MkFormService, 
         private _http: Http, 
@@ -72,6 +74,7 @@ export class CourseActivacionComponent
         this._activar = false;
         this._ceder = false;
         this._cederSuccess = false;
+        this.confirmClose = false;
 
         this._step = 0;
         this._steps = [
@@ -222,6 +225,10 @@ export class CourseActivacionComponent
         } else {
             this.formHasError('Por favor, introduzca una dirección de e-mail válida')
         }
+    }
+
+    private cerrar () {
+        this.confirmClose = !this.confirmClose;
     }
 
     // ACTIVAR CLICK EN ENTER
