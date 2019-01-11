@@ -9,6 +9,7 @@ import { Logger, MkFormService, MkForm } from 'mk';
 import { UserService } from './../../../services/user.service';
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA}                 from '@angular/material';
+import { INVALID } from '@angular/forms/src/model';
 
 const especialidad: any = {
     "Médico": [
@@ -100,6 +101,9 @@ export class UserJobsDialogComponent
     private showMe: boolean;
     private showDialog: boolean;
     private showText: boolean;
+    private confirmClose: boolean;
+    private fieldError: boolean;
+    private valueChanged: boolean;
 
     private _step: number;
     private _steps: Array<Array<string>>;
@@ -116,6 +120,8 @@ export class UserJobsDialogComponent
 
     private _subscription : any;
 
+    private initJob : any;
+
     constructor( 
         public dialogRef: MatDialogRef<UserJobsDialogComponent>, 
         @Inject(MAT_DIALOG_DATA) 
@@ -130,6 +136,9 @@ export class UserJobsDialogComponent
         this.showMe = true;
         this.showDialog = true;
         this.showText = false;
+        this.confirmClose = false;
+        this.fieldError = false;
+        this.valueChanged = false;
         
         this._step = 0;
         this._steps = [
@@ -161,7 +170,20 @@ export class UserJobsDialogComponent
             {
                 this._form = form; 
                 this._form_group = this._form.formGroup;
+                this.initJob = this._form_group.controls.user_details_job.value;
+                this.getFieldChange();
                 this.showMe = false;
+            }
+        });
+    }
+
+    private getFieldChange() {
+        this._form_group.controls.user_details_job.valueChanges
+        .subscribe(sub => {
+            if (sub.value !== this.initJob) {
+                this.valueChanged = true;
+            } else {
+                this.valueChanged = false;
             }
         });
     }
@@ -174,14 +196,21 @@ export class UserJobsDialogComponent
 
     private next () : void
     {
+        this.fieldError = false;
         let aux: any;
         let data: any;
         let len: number = this._steps.length -1;
 
-        if ( this._step < len ) {
+        if (this._step == 1 && this.valueChanged) {
+            this._form_group.controls.user_details_especialization.reset(null);
+            this.valueChanged = false;
+            this.checkError();
+        } else if ( this._step < len ) {
+
             this._step++;
-    
+
             if ( this._step == 1 ) {
+
                 let job : any = this._form.find('user_details_job').value || 'Médico';
 
                 this._fs.getFormQuestions('jobs').map( (q:any) => {
@@ -244,4 +273,16 @@ export class UserJobsDialogComponent
         );
     }
 
+    private checkError() {
+        this.fieldError = true;
+    }
+
+    private confirm() {
+        this.confirmClose = !this.confirmClose;
+    }
+
+    private closeDialog() {
+        this.valueChanged = false;
+        this.dialogRef.close({close: true});
+    }
 }

@@ -14,6 +14,43 @@
   }
 }
 
+.close {
+  cursor: pointer;
+}
+
+.close_wrapper {
+  display: flex;
+  flex-direction: row-reverse;
+
+  .close_confirm {
+    margin: 0px 20px;
+    padding: 15px;
+    font-size: 1.75rem;
+    border: 1px solid;
+    width: 250px;
+    position: absolute;
+    background-color: white;
+    margin: 0 20px;
+    text-align: center;
+
+    .close_confirm__opt {
+      display: flex;
+      justify-content: space-around;
+      padding-top: 2vh;
+      font-size: 2rem;
+      font-weight: 450;
+
+      p {
+        cursor: pointer;
+      }
+
+      p:hover {
+        color: #44c6ea;
+      }
+    }
+  }
+}
+
 .select {
   text-align: center;
   padding: 5vmin;

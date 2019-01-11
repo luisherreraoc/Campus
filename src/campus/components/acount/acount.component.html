@@ -3,9 +3,9 @@
     <h1 *ngIf="_currentWindowWidth >= 768">MI CUENTA</h1>
 
     <div class="forms_container">
-        <mk-form (onEnter)="falseClick()" *ngIf="_ids" name="user" [only]="_onl1" [ids]="_ids"></mk-form>
-        <mk-form (onEnter)="falseClick()" *ngIf="_ids" name="user" [only]="_onl3" [ids]="_ids"></mk-form>
-        <mk-form (onEnter)="falseClick()" *ngIf="_ids" name="user" cols="2" [only]="_onl2" [ids]="_ids"></mk-form>        
+        <mk-form (onEnter)="falseClick()" *ngIf="_ids" name="user" [checkerr]="_fieldError" [only]="_onl1" [ids]="_ids"></mk-form>
+        <mk-form (onEnter)="falseClick()" *ngIf="_ids" name="user" [checkerr]="_fieldError" [only]="_onl3" [ids]="_ids"></mk-form>
+        <mk-form (onEnter)="falseClick()" *ngIf="_ids" name="user" [checkerr]="_fieldError" cols="2" [only]="_onl2" [ids]="_ids"></mk-form>        
     </div>
 
 
@@ -42,8 +42,8 @@
     </div>
 
     <div class="submit">
-        <button class="submit__button" #button (click)="send()" 
-                [disabled]="inactive">
+        <button class="submit__button" #button (onClicked)="send()" (onChecking)="showError()"
+                [disabled]="inactive" mkStepvalidate [form]="_form_group">
             ACEPTAR
         </button>
     </div>

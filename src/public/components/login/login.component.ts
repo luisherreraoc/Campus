@@ -23,14 +23,18 @@ export class LoginComponent
     private _campusUrl: string = '/' + environment.pathCampus;
 	private _form: MkForm;
 	private _form_group: FormGroup;
-	private _subscriptions: Array<any>;
+    private _subscriptions: Array<any>;
+    private _error: boolean;
+    private _fieldError: boolean;
 
 	public constructor ( private _logger: Logger, private _fs: MkFormService, private _http: Http, private _router: Router, private _as: AuthService ) 
 	{ 
 		_logger.log('LOGIN COMPONENT'); 
 
 		this._form_group = new FormGroup({});
-  		this._subscriptions = new Array();
+        this._subscriptions = new Array();
+        this._error = false;
+        this._fieldError = false;
 	}
 
 	public ngOnInit () : void
@@ -56,6 +60,7 @@ export class LoginComponent
             { 
                 this._form = form; 
                 this._form_group = this._form.formGroup;
+                this._form_group.reset();
             }
         });
     }
@@ -72,8 +77,7 @@ export class LoginComponent
         let url: string = this._as.redirectUrl ? this._as.redirectUrl : this._campusUrl;
 
     	obj.product_id = 0;
-    	obj.grant_type = 'password';
-
+        obj.grant_type = 'password';
     	this._as.login(obj)
     	.first()
         .subscribe( ( response: Response ) =>
@@ -98,7 +102,12 @@ export class LoginComponent
             else
             {
                 this._logger.log(response['error_description']);
+                this._error = true;
             }            
     	});
+    }
+
+    private checkError () {
+        this._fieldError = true;
     }
 }

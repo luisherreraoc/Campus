@@ -7,9 +7,38 @@
   box-shadow:  6px 6px 12px rgba(0,0,0,.5);
 }
 
+.close_dialog__confirm {
+  margin: 0px 20px;
+  padding: 25px;
+  font-size: 1.75rem;
+
+  .close_dialog__confirm__opt {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 2vh;
+    font-size: 2rem;
+    font-weight: 450;
+
+    p {
+      cursor: pointer;
+    }
+
+    p:hover {
+      color: #53b0ed;
+    }
+  }
+}
+
 .dialog {
   display: flex;
   flex-direction: column;
+
+  .dialog__close {
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 10px;
+    cursor: pointer;
+  }
 
   .dialog__form {
     margin-left: auto;
@@ -30,7 +59,7 @@
     display: flex;
     justify-content: center;
     padding: 1vmax;
-    margin: 0px auto 2vh;
+    margin: 2vh auto;
     width: 40vw;
 	  font-size: calc(1.2vw + 1.2vh + 0.6vmin);
     font-weight: 500;
@@ -45,6 +74,16 @@
   }
 }
 
+.dialog_hide {
+  display: none;
+}
+
 .submit__mes {
   padding: 20px;
+}
+
+:host ::ng-deep {
+  .heading-para {
+    margin-top: 0;
+  }
 }
