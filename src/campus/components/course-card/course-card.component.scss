@@ -1,5 +1,10 @@
 @import '~scss/abstracts/variables';
 
+$initiate-color: rgb(231, 184, 31);
+$enter-color: rgb(53, 206, 99);
+$expired-color: rgb(180, 30, 13);
+$terminated-color: rgb(128, 13, 5);
+
 .card {
 	position: relative;
   width: 100%;
@@ -51,6 +56,11 @@
 	  	color: white;
 	  	border-color: transparent;
 			cursor: pointer;
+
+			&:focus {
+				outline: 0;
+			}
+
 			@media all and (min-width: 48em) {
 				padding: 1.2vh;
 				font-size: calc(.7vh + .7vw + .3vmin);
@@ -100,29 +110,54 @@
 		}
 
 		.activate {
-		  background-color: $color-cursos
+			background-color: $color-cursos;
+			
+			&:focus {
+				border-color: $color-cursos;
+				box-shadow: 0 0 0 0.3rem rgba(20, 150, 255, 0.25);
+			}
 		}
 	
 		.initiate {
-		  background-color: rgb(231, 184, 31);
+			background-color: $initiate-color;
+			
+			&:focus {
+				border-color: $initiate-color;
+				box-shadow: 0 0 0 0.3rem rgba(240, 180, 10, 0.25);
+			}
 		}
 	
 		.enter {
-		  background-color: rgb(53, 206, 99);
+			background-color: $enter-color;
+			
+			&:focus {
+				border-color: $enter-color;
+				box-shadow: 0 0 0 0.3rem rgba(0, 250, 50, 0.25);
+			}
 		}
 	
 		.expired {
-		  background-color: rgb(180, 30, 13);
+			background-color: $expired-color;
+
+			&:focus {
+				border-color: $expired-color;
+				box-shadow: 0 0 0 0.3rem rgba(105, 16, 3, 0.25);
+			}
 		}
 	
 		.terminated {
-		  background-color: rgb(128, 13, 5);
+			background-color: $terminated-color;
+			
+			&:focus {
+				border-color: $terminated-color;
+				box-shadow: 0 0 0 0.3rem rgba(125, 10, 0, 0.25);
+			}
 		}
   }
 }
 
 .inactive {
-  filter: opacity(0.3);
+  opacity: .3;
 }
 
 .licencia_popover {

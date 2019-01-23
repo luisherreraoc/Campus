@@ -91,14 +91,18 @@ export class CourseCardComponent
 		this.show = !this.show;
 	}
 
-	private go () : void 
-	{
-		if (this._state === 'untouched')
-		{
+	private go () : void {
+		if (this._state === 'untouched') {
 			this.iniciar.emit(this._currentCourse);
-		} else {
+		} else if (this._state === 'pending') {
+			console.log('PENDING')
+		} else if (this._state === 'active') {
 			let tkn: any = this._as.getToken();
 			window.open(environment.ssoRedirectUrl + this._code + '&access_token=' + tkn);
-		}
+		} else if (this._state === 'expired') {
+			console.log('EXPIRED')
+		} else if (this._state === 'terminated') {
+			console.log('TERMINATED')
+		} 
 	}
 }
