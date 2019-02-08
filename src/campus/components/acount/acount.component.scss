@@ -10,7 +10,9 @@
 	}
 	
 	.account {
-		padding: 5vh 7vw;
+		max-height: 100vh;
+		overflow: auto;
+		padding: 10vh 5vw;
 	}
 
   h1	{
