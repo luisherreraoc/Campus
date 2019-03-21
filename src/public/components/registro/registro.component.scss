@@ -17,6 +17,16 @@
   	}
   }
 
+  .wrap_overflow {
+	max-height: 100vh;
+    overflow: auto;
+	padding: 0;
+	
+	@media all and (min-width: 48em) {
+	  padding: 10vh 0;
+	}
+  }
+
   .terms-wrapper {
   	position: absolute;
     top: -60px;
