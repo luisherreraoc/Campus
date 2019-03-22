@@ -32,7 +32,12 @@
   	.container-left	{
   	  background-color: $color-certificaciones;
   	}
-  }  
+	}
+	.terminos-y-condiciones {
+		.container-left {
+			background-color: $color-certificaciones;
+		}
+	}	
   .container-left-heading {
   	display: inline;
   	margin: 0px;  
@@ -134,17 +139,13 @@
 }
 
 .watermark {
-	position: absolute;
-	bottom: -15vh;
+	position: fixed;
+	bottom: 15px;
 	right: 5vw;
 	text-align: end;
 	color: #BBB;
 	p {
 		margin: 0;
-	}
-
-	@media all and (min-width: 48em) {
-		bottom: 15px;
 	}
 }
 

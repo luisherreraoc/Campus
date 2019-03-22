@@ -1,4 +1,5 @@
 import { Component }                         	from '@angular/core';
+import { Location }								from '@angular/common';
 
 @Component({
 	templateUrl: './terms-and-conditions.component.html',
@@ -7,9 +8,13 @@ import { Component }                         	from '@angular/core';
 export class TermsAndConditionsComponent
 {
 
-	public constructor (  ) 
+	public constructor ( private _location : Location ) 
 	{ 
 		
+	}
+
+	private backClick() {
+		this._location.back();
 	}
 
 }
