@@ -15,11 +15,12 @@
   bottom: 5vh;
   right: 5vw;
   background: $color-certificaciones;
-  padding: 20px;
+  padding: 13px 20px;
   border-radius: 50%;
   font-size: 2rem;
   color: white;
   box-shadow: 1px 1px 1px darken($color-certificaciones, 50);
+  cursor: pointer;
   &:active {
     box-shadow: none;
     bottom: 4.75vh;
