@@ -3,7 +3,7 @@
 .certificates {
 	width: 90vw;
 	@media all and (min-width: 48em) {
-		margin-top: 15vh;
+		margin-top: 10vh;
 		width: 52vw;	
 	}
 	@media all and (min-width: 54em) {
@@ -60,7 +60,7 @@
 	  }
 
 	.certificates_progress {
-	  margin: auto;
+	  margin-top: 20px;
 	  width: 90vw;
 	  height: 6px;
 		@media all and (min-width: 48em) {

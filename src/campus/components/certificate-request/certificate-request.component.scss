@@ -13,7 +13,12 @@
 	}
 
   .request {
-		margin: 10vh 10vw;
+		margin: 5vh 10vw;
+		
+		@media all and (min-width: 48em) {
+			max-height: 80vh;
+			overflow: auto;
+		}
 
 	.request__header {
 	  display: flex;
