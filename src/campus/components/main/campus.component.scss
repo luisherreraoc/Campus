@@ -128,11 +128,15 @@
 		@media all and (min-height: 600px) {
 		  margin-top: 11vh;
 		}
-  }
+	}
+	
+	.container_right__terminos {
+		margin-top: 30vh;
+	}
   
   @media all and (min-width: 48em) {
 		.container_right__cuenta, .container_right__cursos,
-		.container_right__certificados {
+		.container_right__certificados, .container_right__terminos {
 		  margin-top: 0px;
 		}
   }
