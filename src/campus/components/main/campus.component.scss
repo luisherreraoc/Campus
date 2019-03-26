@@ -133,10 +133,15 @@
 	.container_right__terminos {
 		margin-top: 30vh;
 	}
+
+	.container_right__password {
+		margin-top: 10vh;
+	}
   
   @media all and (min-width: 48em) {
 		.container_right__cuenta, .container_right__cursos,
-		.container_right__certificados, .container_right__terminos {
+		.container_right__certificados, .container_right__terminos,
+		.container_right__password {
 		  margin-top: 0px;
 		}
   }

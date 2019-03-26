@@ -28,6 +28,7 @@ export class CampusComponent
 	private _cursos : boolean;
 	private _certificados : boolean;
 	private _terminos : boolean;
+	private _password : boolean;
 
 	private _currentWindowWidth: number;
 
@@ -92,5 +93,7 @@ export class CampusComponent
 		cl === 'mis-certificaciones' ? this._certificados = true : this._certificados = false;
 
 		cl === 'terminos-y-condiciones' ? this._terminos = true : this._terminos = false;
+
+		cl === 'cambiar-contrasena' ? this._password = true : this._password = false;
 	}
 }
