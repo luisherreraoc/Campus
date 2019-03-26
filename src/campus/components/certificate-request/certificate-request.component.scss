@@ -16,7 +16,7 @@
 		margin: 5vh 10vw;
 		
 		@media all and (min-width: 48em) {
-			max-height: 80vh;
+			max-height: 85vh;
 			overflow: auto;
 		}
 
@@ -24,14 +24,22 @@
 	  display: flex;
 	  flex-direction: row-reverse;
 	  justify-content: space-between;
-	  padding-bottom: 3vh;
+		padding-bottom: 1vh;
+		mat-icon {
+			cursor: pointer;
+		}
     h1 {
 		  color: $color-certificaciones;
 			font-size: calc(1.7vw + 1.7vh + .7vmin);
 			@media all and (min-width: 48em) {
 				font-size: calc(1.1vw + 1.1vh + .7vmin);
 			}
-	  }
+		}
+		@media all and (min-width: 48em) {
+			position: fixed;
+			width: 45%;
+			background-color: white;
+		}
 	}
 
 	.request__form {
@@ -41,6 +49,9 @@
 		}
 		input {
 			font-size: 3vh;
+		}
+		@media all and (min-width: 48em) {
+			margin-top: 8vh;
 		}
 	}
 
