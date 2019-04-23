@@ -114,6 +114,10 @@ export class PasswordRecoveryComponent
                 {
                     this.setResponseRecoveryMail(res);
                 }
+                else 
+                {
+                    this.setResponseError(res);
+                }
                 this._show_response = true;
                 this._loader.dismiss('password');
             });
@@ -172,6 +176,17 @@ export class PasswordRecoveryComponent
             btn: 'INGRESAR',
             callback: this.goToLogin
         };
+    }
+
+    private setResponseError ( res: any ) : void
+    {
+        this._response_obj = {
+            title: 'HA OCURRIDO UN ERROR',
+            text: 'No se ha podido procesar su petición. Por favor, inténtelo más tarde.',
+            img: '',
+            btn: 'VOLVER A LOG IN',
+            callback: this.goToLogin
+        }
     }
 
     private subscribeQuestionForm () : Subscription
