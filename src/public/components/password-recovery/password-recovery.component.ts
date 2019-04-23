@@ -54,6 +54,8 @@ export class PasswordRecoveryComponent
 
     private _publicUrl: string;
 
+    private _fieldError: boolean;
+
     constructor ( private _logger: Logger, private _loader: Loader, private _router: Router, private _route: ActivatedRoute, private _ps: PasswordService, private _fs: MkFormService )
     {
         this._logger.log('PASSWORD-RECOVERY.COMPONENT');
@@ -73,6 +75,8 @@ export class PasswordRecoveryComponent
         this._form = null;
 
         this._publicUrl = environment.pathPublic;
+
+        this._fieldError = false;
     }
 
     public ngOnInit () : void
@@ -100,8 +104,9 @@ export class PasswordRecoveryComponent
         let form: any;
         if ( this._recovery )
         {
+            form = this._form.getRawValue();
             this._loader.show('password');
-            this._ps.recoveryMail({email: this._mail, url: environment.domain})
+            this._ps.recoveryMail({email: form.recover, url: environment.domain})
             .subscribe( (response:any) =>
             {
                 let res: any = response.json();
@@ -160,7 +165,6 @@ export class PasswordRecoveryComponent
 
     private setResponseNewPass ( res: any ) : void
     {
-        debugger
         this._response_obj = {
             title: 'Tu constraseña ha sido modificada con éxito.',
             text: '',
@@ -172,12 +176,21 @@ export class PasswordRecoveryComponent
 
     private subscribeQuestionForm () : Subscription
     {
-        return this._fs.forms
-        .map( forms => forms.find( form => form.name === 'passchange' ))
-        .subscribe( form =>
-        {
-            if (form) { this._form = form.formGroup; }
-        });
+        if (this._recovery) return this._fs.forms
+            .map( forms => forms.find( form => form.name === 'recovery-password' ))
+            .subscribe( form =>
+            {
+                if (form) { 
+                    this._form = form.formGroup;
+                    this._form.reset();
+                }
+            });
+        if (this._change) return this._fs.forms
+            .map( forms => forms.find( form => form.name === 'passchange' ))
+            .subscribe( form =>
+            {
+                if (form) { this._form = form.formGroup; }
+            });
     }
 
     private subscribeChanges () : Subscription
@@ -194,5 +207,10 @@ export class PasswordRecoveryComponent
         {
             this._mail = query;
         });
+    }
+
+    private checkError () 
+    {
+        this._fieldError = true;
     }
 }    
