@@ -2,7 +2,6 @@
 {
 	overflow: hidden;
 
-
 	.result
 	{
 		display: inline-block;
@@ -17,4 +16,12 @@
 		width: 160px;
 		height:160px;
 	}
+}
+
+.wrapper {
+	width: 270px;
+    height: 220px;
+    border-radius: 0;
+    padding: 20px 0 20px 40px;
+    background-color: white;
 }

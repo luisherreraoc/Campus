@@ -126,9 +126,11 @@ export class AvatarComponent
 		{
 			let d: MatDialogRef<any> = dialogRef;
 			let c: string = d.componentInstance.cropped;
-			this._img.nativeElement.src = c;
 			this._input.nativeElement.value = '';
-			this.saveAvatar(c);
+			if ( c !== undefined) {
+				this._img.nativeElement.src = c;
+				this.saveAvatar(c);
+			}
 		});
 	}
 
@@ -145,8 +147,8 @@ export class AvatarComponent
 
     private saveAvatar ( img: string ) : void
     {
-    	this._loader.show('avatar');
-    	this._us.saveAvantar(img)
+		this._loader.show('avatar');
+    	this._us.saveAvatar(img)
     	.first()
     	.subscribe( ( resp: any ) => this._loader.dismiss('avatar') );
     }
