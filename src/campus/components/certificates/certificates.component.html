@@ -44,3 +44,5 @@
 <certificate-request *ngIf="_showRequest" (submit)="requestCompleted()" (close)="closeRequest()" [code]="_code"></certificate-request>
 
 <cam-response *ngIf="_sent" [title]="_response_obj.title" [text]="_response_obj.text" [btn]="_response_obj.btn" [img]="_response_obj.img" [callback]="_response_obj.callback.bind(this)"></cam-response>
+
+<terms-footer></terms-footer>
