@@ -32,7 +32,6 @@
 .dialog {
   display: flex;
   flex-direction: column;
-  max-height: 80vh;
 
   .dialog__close {
     display: flex;
@@ -47,13 +46,17 @@
     display: flex;
     justify-content: space-around;
     flex-direction: row-reverse;
-    max-height: 70vh;
-    overflow: hidden;
         
     .dialog__form__select {
       margin: 3vh 3vw;
       @media all and (min-width: 48em) {
         margin: auto 25px;
+      }
+      ::ng-deep .heading-para {
+        margin-bottom: 3rem;
+      }
+      ::ng-deep .list-group {
+        max-height: 30vh;
       }
     }
   }
