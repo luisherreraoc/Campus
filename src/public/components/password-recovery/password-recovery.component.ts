@@ -112,6 +112,7 @@ export class PasswordRecoveryComponent
                 let res: any = response.json();
                 if ( res.code === 200 )
                 {
+                    isNaN(form.recover) === true ? this.setResponseRecoveryMail(res) : this.setResponseRecoveryPhone(res);
                     this.setResponseRecoveryMail(res);
                 }
                 else 
@@ -163,6 +164,17 @@ export class PasswordRecoveryComponent
             text: 'Comprueba tu correo electrónico y haz clic en el enlace, revisa tu carpeta de spam',
             img: 'assets/img/icon-plane.png',
             btn: 'REENVIAR ENLACE',
+            callback: this.send
+        };
+    }
+
+    private setResponseRecoveryPhone ( res: any ) : void
+    {
+        this._response_obj = {
+            title: 'Te acabamos de enviar un SMS',
+            text: 'Sigue las instrucciones para completar la petición',
+            img: 'assets/img/icon-plane.png',
+            btn: 'REENVIAR MENSAJE',
             callback: this.send
         };
     }
