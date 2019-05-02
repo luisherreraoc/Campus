@@ -33,15 +33,16 @@ export class DraggableDirective
         this._element.nativeElement.style.position = 'relative';
         this._element.nativeElement.style.cursor = 'pointer';
 
-        let mouseMove = Observable.fromEvent( _document, 'mousemove');
-        let mouseUp = Observable.fromEvent( _document, 'mouseup');
-        let touchMove = Observable.fromEvent( _document, 'touchmove');
-        let touchUp = Observable.fromEvent( _document, 'touchend');
+        let mouseMove = Observable.fromEvent( _document, 'mousemove' );
+        let mouseUp = Observable.fromEvent( _document, 'mouseup' );
         
-        this._dragMove = Observable.merge(mouseMove, touchMove);
-        this._dragUp = Observable.merge(mouseUp, touchUp);
+        let touchMove = Observable.fromEvent( _document, 'touchmove' );
+        let touchUp = Observable.fromEvent( _document, 'touchend' );
+        
+        this._dragMove = Observable.merge( mouseMove, touchMove );
+        this._dragUp = Observable.merge( mouseUp, touchUp );
 
-        this._dragImage = this.mouseDrag();
+        this._dragImage = this.dragImage();
     }
 
     public ngOnInit() : void
@@ -59,7 +60,7 @@ export class DraggableDirective
         this._subscriptions.length = 0;
     }
 
-    private mouseDrag () : Observable<any>
+    private dragImage () : Observable<any>
     {
         let el: HTMLElement = this._element.nativeElement;
         let pa: HTMLElement = el.parentElement; 
@@ -69,26 +70,26 @@ export class DraggableDirective
             event.preventDefault();
 
             let clientX = event.clientX ? event.clientX : event.changedTouches[0].clientX;
-            let clientY = event.clientY ? event.clientY : event. changedTouches[0].clientY;
+            let clientY = event.clientY ? event.clientY : event.changedTouches[0].clientY;
 
             let left: number = clientX + (pa.offsetLeft - Math.abs(el.offsetLeft));
             let top: number = clientY + (pa.offsetTop - Math.abs(el.offsetTop));
             
-            return { left: left, top: top };
+            return { top: top, left: left };
         })
         .flatMap( imageOffset => 
         { 
             return this._dragMove.map( (pos:any) => 
             {
-                let posX= pos.clientX ? pos.clientX : pos.changedTouches[0].clientX;
-                let posY = pos.clientY ? pos.clientY : pos. changedTouches[0].clientY;
+                let posX = pos.clientX ? pos.clientX : pos.changedTouches[0].clientX;
+                let posY = pos.clientY ? pos.clientY : pos.changedTouches[0].clientY;
 
                 let posTop = posY - imageOffset.top;
                 let posLeft = posX - imageOffset.left;
                 
-                return { top:  posTop, left: posLeft }
+                return { top: posTop, left: posLeft }
             })
-            .takeUntil(this._dragUp);
+            .takeUntil( this._dragUp );
         });
 
     }
