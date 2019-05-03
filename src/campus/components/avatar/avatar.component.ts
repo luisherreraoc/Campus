@@ -32,6 +32,8 @@ export class AvatarComponent
 
 	public _currentUser : Object;
 
+	public _currentAvatar : string;
+
 	public constructor ( 
 		private _logger: Logger, 
 		private _loader: Loader, 
@@ -125,6 +127,7 @@ export class AvatarComponent
 		.subscribe( ( me ) => 
 		{
 			let d: MatDialogRef<any> = dialogRef;
+			debugger
 			let c: string = d.componentInstance.cropped;
 			this._input.nativeElement.value = '';
 			if ( c !== undefined) {
@@ -140,7 +143,11 @@ export class AvatarComponent
     	{
     		id: 'user-avatar-cropper-dialog',
     		viewContainerRef: this._vcr,
-      		data: { img: image, rep: this._img }
+      		data: { 
+				img: image, 
+				rep: this._img,
+				currentAvatar: this._currentAvatar
+			}
     	});
     	this.subscribeDialogClosed( dialogRef );
     }
@@ -159,7 +166,8 @@ export class AvatarComponent
 		{
 			if ( Object.keys(detail).find((v:string) => v === 'avatar') )
 			{	
-				this._img.nativeElement.src = detail.avatar;
+				this._currentAvatar = detail.avatar;
+				this._img.nativeElement.src = this._currentAvatar;
 			}
 		});
     } 

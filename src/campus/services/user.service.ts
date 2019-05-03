@@ -75,6 +75,7 @@ export class UserService extends DataService<User>
 	public saveAvatar ( img: string ) : Observable<any>
 	{
 		let data: any = { 'avatar': img, 'user_id': this._as.getToken() }
+		debugger
 		return this.http.post(this._dsUrl + '/api/user/avatar', data);
 	}
 
