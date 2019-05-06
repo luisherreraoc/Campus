@@ -21,21 +21,9 @@ import { PasswordService }                                                      
 })
 export class PasswordRecoveryComponent
 {
-    @ViewChild('recovery') set input ( inp: ElementRef ) {
-        if (inp)
-        {
-            this._input = inp;
-            this._subscriptions = [
-                this.subscribeChanges()
-            ];
-        }
-    }
     @ViewChild('button') private _button: ElementRef;
 
     private _subscriptions: Array<any>;
-
-    private _input: ElementRef;
-    private _mail: string;
 
     private _title: string;
     private _text: string;
@@ -56,7 +44,13 @@ export class PasswordRecoveryComponent
 
     private _fieldError: boolean;
 
-    constructor ( private _logger: Logger, private _loader: Loader, private _router: Router, private _route: ActivatedRoute, private _ps: PasswordService, private _fs: MkFormService )
+    constructor ( 
+        private _logger: Logger, 
+        private _loader: Loader, 
+        private _router: Router, 
+        private _route: ActivatedRoute, 
+        private _ps: PasswordService, 
+        private _fs: MkFormService )
     {
         this._logger.log('PASSWORD-RECOVERY.COMPONENT');
 
@@ -94,9 +88,9 @@ export class PasswordRecoveryComponent
     }
 
     private falseClick() {
-        let clickMe = this._button.nativeElement;
+        let clickableButton = this._button.nativeElement;
 
-        clickMe.click();
+        clickableButton.click();
     }
 
     private send ( ) : void
@@ -112,8 +106,8 @@ export class PasswordRecoveryComponent
                 let res: any = response.json();
                 if ( res.code === 200 )
                 {
+                    //handle the response in case of phone or e-mail submitted
                     isNaN(form.recover) === true ? this.setResponseRecoveryMail(res) : this.setResponseRecoveryPhone(res);
-                    this.setResponseRecoveryMail(res);
                 }
                 else 
                 {
@@ -216,24 +210,11 @@ export class PasswordRecoveryComponent
             .map( forms => forms.find( form => form.name === 'passchange' ))
             .subscribe( form =>
             {
-                if (form) { this._form = form.formGroup; }
+                if (form) { 
+                    this._form = form.formGroup; 
+                    this._form.reset();
+                }
             });
-    }
-
-    private subscribeChanges () : Subscription
-    {
-        let input = this._input.nativeElement;
-
-        return Observable.fromEvent( input, 'keyup' )
-        .filter( (e:any) => e.which !== 0 && !e.ctrlKey && !e.altKey )
-        .debounceTime(400)
-        .map((e: any) => e.target.value)
-        .concat()
-        .distinctUntilChanged()
-        .subscribe((query: string) => 
-        {
-            this._mail = query;
-        });
     }
 
     private checkError () 

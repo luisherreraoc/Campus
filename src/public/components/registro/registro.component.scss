@@ -7,31 +7,31 @@
   }
 
   .form-wrapper {
-		position: absolute;
-		left: 5vw;
-		top: 0;
+	position: absolute;
+	left: 5vw;
+	top: 0;
   	margin-bottom: 40px;
   	background-color: white;
-		padding: 5vh 6vw;
-		@media all and (min-width: 28em) {
-			left: 22.5vw;
-		}
+	padding: 5vh 6vw;
+	@media all and (min-width: 28em) {
+	  left: 22.5vw;
+	}
 
   	@media all and (min-width: 48em) {
-			position: static;
+	  position: static;
   	  padding: 0px;
   	  margin: 0px;
   	}
   }
 
   .wrap_overflow {
-		@media all and (min-width: 48em) {
-			max-height: 90vh;
-			overflow: auto;
-		}
-		.btn-registration {
-			margin: 4rem auto 0;
-		}
+	@media all and (min-width: 48em) {
+	  max-height: 90vh;
+	  overflow: auto;
+	}
+	.btn-registration {
+	  margin: 4rem auto 0;
+	}
   }
 
   .terms-wrapper {
@@ -57,15 +57,15 @@
   	  background-color: white;
   	  height: 100%;  
   	  h1 {
-  	  	font-size: 2.7rem;
-	  	}		  
+  	    font-size: 2.7rem;
+	  }		  
   	  p {
   	  	font-size: 1.5rem;
   	  }  	  
   	  button {
   	  	margin: 0px auto;
   	  	width:50%;
-	  	}		  
+	  }		  
   	  @media all and (min-width: 48em) {
   	  	h1 {
   	  	  font-size: 3.5rem;

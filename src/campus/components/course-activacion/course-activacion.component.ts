@@ -234,9 +234,9 @@ export class CourseActivacionComponent
     // ACTIVAR CLICK EN ENTER
 
     private falseClick() {
-        let clickMe = this._button.nativeElement;
+        let clickableButton = this._button.nativeElement;
 
-        clickMe.click();
+        clickableButton.click();
     }
 
     // CERRAR ESTE COMPONENTE
