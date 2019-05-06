@@ -127,7 +127,6 @@ export class AvatarComponent
 		.subscribe( ( me ) => 
 		{
 			let d: MatDialogRef<any> = dialogRef;
-			debugger
 			let c: string = d.componentInstance.cropped;
 			this._input.nativeElement.value = '';
 			if ( c !== undefined) {

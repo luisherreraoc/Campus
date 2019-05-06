@@ -18,8 +18,7 @@
                     {{ currentUser.user_details_job }} 
                 </span>
                 <span>- </span>
-                <span
-                *ngFor="let esp of currentUser.user_details_especialization"> 
+                <span *ngFor="let esp of currentUser.user_details_especialization"> 
                     {{ esp }}  -  
                 </span>
                 <span> 
@@ -35,8 +34,9 @@
 
     <div class="password-button">
         <img src="{{_key}}"/>
-        <a routerLink="/campus/{{_pass_change}}" routerLinkActive="active"
-        class="password-button__text">
+        <a routerLink="/campus/{{_pass_change}}" 
+            routerLinkActive="active"
+            class="password-button__text">
             Cambiar contraseña
         </a>
     </div>
