@@ -134,7 +134,7 @@ export class CourseActivacionComponent
         } else {
             if (this._step === 0 && this._form_act_group.status === 'VALID') {
                 this._step++;
-            } else if (this._step === 0 && this._form_act_group.status != 'VALID') {
+            } else if (this._step === 0 && this._form_act_group.status !== 'VALID') {
                 this.formHasError('Por favor, revise los campos introducidos');
             } else {
                 this.activarCurso();
@@ -164,7 +164,9 @@ export class CourseActivacionComponent
         if (this._form_act_group.status === 'VALID') {
             let route = '';
 
-            this._id === 1 || this._id === 2 ? route = 'alcala' : route = 'defaultHandler';
+            ( this._id === 1 || this._id === 2 ) ? 
+                route = 'alcala' : 
+                route = 'defaultHandler';
 
             this._us.updateBeforeCourse(data, route, this._code)
             .subscribe( (response: any ) => { 
