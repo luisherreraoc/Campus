@@ -38,7 +38,7 @@
 
 <div class="certificates_progress">
 	<div class="certificates_progress__bar"
-		 [style.width]="''+barWidth+'%'"></div>
+		 [style.width]="''+progressBarWidth+'%'"></div>
 </div>
 
 <certificate-request *ngIf="_showRequest" (submit)="requestCompleted()" (close)="closeRequest()" [code]="_code"></certificate-request>

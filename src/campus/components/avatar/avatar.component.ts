@@ -61,7 +61,7 @@ export class AvatarComponent
 			this._us.get(this._as.getToken())
 			.subscribe( user => 
 			{
-				this.updateSrc(user); 
+				this.updateSource(user); 
 			});
 		}
 	}
@@ -114,7 +114,7 @@ export class AvatarComponent
 		{
 			if ( user )
 			{
-				this.updateSrc(user);
+				this.updateSource(user);
 				this._currentUser = user;
 			}
 		});
@@ -159,7 +159,7 @@ export class AvatarComponent
     	.subscribe( ( resp: any ) => this._loader.dismiss('avatar') );
     }
 
-    private updateSrc ( user: any ) : void
+    private updateSource ( user: any ) : void
     {
     	user.oauth_user_details.map( (detail:any) => 
 		{
