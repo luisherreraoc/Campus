@@ -94,7 +94,7 @@ export class LoginComponent
                 
                 this._as.setSession(aux).first().subscribe((response: Response) =>
                 {
-                    debugger
+                    
                 });
 
                 this._router.navigateByUrl(url);
