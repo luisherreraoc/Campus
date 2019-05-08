@@ -1,3 +1,5 @@
+@import '~scss/abstracts/variables';
+
 :host ::ng-deep
 {
 	overflow: hidden;
@@ -9,7 +11,7 @@
 		overflow: hidden;
 	}
 
-	div
+	.cropper-container
 	{
 		overflow:hidden;
 		border-radius: 50%;
@@ -19,9 +21,38 @@
 }
 
 .wrapper {
+	display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 	width: 270px;
     height: 220px;
     border-radius: 0;
-    padding: 20px 0 20px 40px;
     background-color: white;
+	.button-container {
+		display: flex;
+		justify-content: space-between;
+		width: 200px;
+		.cropper-button {
+			padding: 7px;
+			border: 1px solid transparent;
+			border-radius: 25px;
+			width: 80px;
+			background-color: $color-cuenta;
+			color: white;
+			font-weight: 500;
+			&:hover {
+				background-color: darken($color-cuenta, 25);
+			}
+			&:focus {
+				outline: 0;
+			}
+		}
+		.cropper-button_reset {
+			background-color: $color-certificaciones;
+			&:hover {
+				background-color: darken($color-certificaciones, 25);
+			}
+		}
+	}
 }

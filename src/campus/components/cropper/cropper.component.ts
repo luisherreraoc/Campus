@@ -55,7 +55,6 @@ export class CropperComponent
     {
         let cropper: HTMLElement = this._cropper.nativeElement;
         let img: any = this._img.nativeElement;
-        debugger
         let left: number = cropper.offsetLeft - img.offsetLeft;
         let top: number =  cropper.offsetTop - img.offsetTop;
         let width: number = cropper.offsetWidth;
@@ -91,7 +90,7 @@ export class CropperComponent
     private reset () : void
     {
         this._img.nativeElement.src = this.data.currentAvatar;
-        this._img.nativeElement.left = '150px';
-        this._img.nativeElement.top = '150px';
+        this._img.nativeElement.style.left = '0px';
+        this._img.nativeElement.style.top = '0px';
     }
 }
