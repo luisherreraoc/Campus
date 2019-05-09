@@ -108,6 +108,11 @@ export class CourseCardComponent
 		} 
 	}
 
+	private launchForm () : void {
+		// TO DO - incluir estados del curso en los que el usuario pueda abrir el formulario de datos
+		this.iniciar.emit(this._currentCourse);
+	}
+
 	private openDialog (estadoCurso) {
 		let dialogRef = this._dialog.open(CourseClosedDialog, {
 			id: 'course-closed-dialog',

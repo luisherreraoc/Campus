@@ -25,6 +25,7 @@ export class CourseActivacionComponent
     @Output() close = new EventEmitter<boolean>();
     @Input('course') set course ( c: any )
 	{
+        this._course = c;
 		this._id = c.id;
 		this._title = c.name;
 		this._code = c.license ? c.license.code : null;
@@ -33,6 +34,7 @@ export class CourseActivacionComponent
 
 	private _suite: string;
 
+    private _course : any;
 	private _id: number|string;
 	private _title: string;
 	private	_code: string;
@@ -83,6 +85,11 @@ export class CourseActivacionComponent
         ]
     }
 
+    public ngOnInit () : void 
+    {
+		// TO DO - incluir estados del curso en los que el usuario pueda abrir el formulario de datos
+        if ( this._course.license.status === 'active' ) this.activar();
+    }
 	public ngOnDestroy () : void 
     { 
         this._subscriptions.forEach( sub => {
