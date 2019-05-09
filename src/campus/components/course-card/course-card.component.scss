@@ -70,8 +70,10 @@ $terminated-color: rgb(128, 13, 5);
 		}
 
 		.card__text__button {
-		  display: flex;
-		  margin: 1vmin 0.5vmin;
+			display: flex;
+			// TO DO - cambiar valores cuando estén disponibles los manuales
+			// margin: 1vh 0.5vw;
+			margin: 5vh 0.5vw;
 		  cursor: pointer;
 		  i {
 			  margin-top: 1.1vh;
